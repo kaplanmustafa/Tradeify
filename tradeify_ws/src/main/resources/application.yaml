@@ -7,3 +7,30 @@ spring:
         persistence:
           validation:
             mode: none
+# Oracle Settings
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: CALISMA
+    password: 12345 
+    driver-class-name: oracle.jdbc.OracleDriver
+#----
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+        max-page-size: 100
+  profiles:
+    active:
+    - dev
+  servlet:
+    multipart:
+      max-file-size: 10MB
+---
+spring:
+  profiles: production
+---
+spring:
+  profiles: dev
+  jpa:
+    hibernate:
+      ddl-auto: update
