@@ -15,8 +15,8 @@ spring:
 # Oracle Settings
   datasource:
     url: jdbc:oracle:thin:@localhost:1521:xe
-    username: CALISMA
-    password: 12345 
+    username: ${{secrets.DB}}
+    password: ${{secrets.DB_PASSWORD}} 
     driver-class-name: oracle.jdbc.OracleDriver
   profiles:
     active:
