@@ -1,6 +1,7 @@
 package com.tradeify.tradeify_ws.user;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,9 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -38,7 +41,24 @@ public class Users implements UserDetails{
 	
 	@NotNull
 	@Size(min = 1, max= 255)
-	private String fullName;
+	private String name;
+	
+	@NotNull
+	@Size(min = 1, max= 255)
+	private String surname;
+	
+	@NotNull
+	@Past
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date birthDate;
+	
+	@NotNull
+	@Size(min = 11, max= 11)
+	@Pattern(regexp="(^$|[0-9]{10})")
+	private String phone;
+	
+	@NotNull
+    private Gender gender;
 	
 	@NotNull
 	@Size(min = 8, max= 255)
@@ -50,8 +70,14 @@ public class Users implements UserDetails{
 	
 	private String keyreg;
 	
+	private boolean isActive;
+	
 	/*@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
 	private List<Token> tokens;*/
+	
+	public enum Gender {
+		MALE, FEMALE
+	}
 
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return AuthorityUtils.createAuthorityList("Role_user");
@@ -70,7 +96,7 @@ public class Users implements UserDetails{
 	}
 
 	public boolean isEnabled() {
-		return true;
+		return isActive;
 	}
 
 	@Override

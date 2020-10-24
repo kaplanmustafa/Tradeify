@@ -8,20 +8,22 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.tradeify.tradeify_ws.user.Users;
+
 @Service
 public class MailService {
 	
 	@Autowired
     private JavaMailSender mailSender;
 	
-	public void sendMail(String toMail, String fullName, String keyreg) {
+	public void sendMail(Users user, String keyreg) {
 		
 		MimeMessage mimeMessage = mailSender.createMimeMessage();
 	    MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
 
 	    try {
-	        messageHelper.setTo(toMail);
-	        messageHelper.setText("Sayın " + fullName +
+	        messageHelper.setTo(user.getEmail());
+	        messageHelper.setText("Sayın " + user.getName() + " " + user.getSurname() +
 	        		",\n\nTradeify Üyeliğinizi Tamamlamak İçin Lütfen Aşağıdaki Linke Tıklayın:\n\n"
 	        		+ "http://localhost:3000/reg/" + keyreg);
 	        messageHelper.setSubject("Üyeliğinizi Tamamlayın");

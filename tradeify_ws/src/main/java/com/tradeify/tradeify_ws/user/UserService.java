@@ -23,10 +23,11 @@ public class UserService {
 	public void save(Users user) {
 		String uuid = UUID.randomUUID().toString();	
 		user.setKeyreg(uuid);
+		user.setActive(false);
 		user.setPassword(this.passwordEncoder.encode(user.getPassword()));
 		
 		userRepository.save(user);
 		
-		mailService.sendMail(user.getEmail(), user.getFullName(), uuid);
+		mailService.sendMail(user, uuid);
 	}
 }
