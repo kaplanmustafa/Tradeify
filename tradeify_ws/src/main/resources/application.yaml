@@ -27,8 +27,8 @@ spring:
   mail:
     default-encoding: UTF-8
     host: smtp.gmail.com
-    username: tradeifyweb@gmail.com
-    password: MezuniyetTez19261
+    username: ${{secrets.MAIL}}
+    password: ${{secrets.MAIL_PASSWORD}}
     port: 587
     properties:
       mail:
