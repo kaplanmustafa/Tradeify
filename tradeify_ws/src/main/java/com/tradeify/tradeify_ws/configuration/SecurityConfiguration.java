@@ -25,7 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.and()
 			.authorizeRequests().anyRequest().permitAll();
 		
-		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); // Tüm isteklerde bilgileri kontrol et
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); 
 		
 		//http.addFilterBefore(tokenFilter(), UsernamePasswordAuthenticationFilter.class); 
 	}

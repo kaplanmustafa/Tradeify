@@ -7,24 +7,37 @@ spring:
         persistence:
           validation:
             mode: none
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+        max-page-size: 100
 # Oracle Settings
   datasource:
     url: jdbc:oracle:thin:@localhost:1521:xe
     username: CALISMA
     password: 12345 
     driver-class-name: oracle.jdbc.OracleDriver
-#----
-  data:
-    web:
-      pageable:
-        default-page-size: 10
-        max-page-size: 100
   profiles:
     active:
     - dev
   servlet:
     multipart:
       max-file-size: 10MB
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    username: tradeifyweb@gmail.com
+    password: MezuniyetTez19261
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    protocol: smtp
+    test-connection: false
 ---
 spring:
   profiles: production

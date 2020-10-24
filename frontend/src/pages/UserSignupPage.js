@@ -27,8 +27,6 @@ const UserSignupPage = (props) => {
   const onClickSignup = async (event) => {
     event.preventDefault();
 
-    //const { history } = props;
-    //const { push } = history;
     const { email, fullName, password, passwordRepeat } = form;
 
     const body = {
@@ -40,7 +38,7 @@ const UserSignupPage = (props) => {
 
     try {
       await dispatch(signupHandler(body));
-      //push("/");
+      
     } catch (error) {
       if (error.response.data.validationErrors) {
         setErrors(error.response.data.validationErrors);
@@ -75,6 +73,7 @@ const UserSignupPage = (props) => {
           label={t("Email")}
           error={emailError}
           onChange={onChange}
+          type="email"
         />
         <Input
           name="fullName"

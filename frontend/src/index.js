@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import App from "./container/App";
 import "./bootstrap-override.scss";
 import * as serviceWorker from "./serviceWorker";
 import UserSignupPage from "./pages/UserSignupPage";

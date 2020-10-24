@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -29,22 +30,25 @@ public class Users implements UserDetails{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@NotNull(message = "{hoaxify.constraints.username.NotNull.message}")
-	@Size(min = 10, max= 255)
-	//@UniqueUsername
+	@NotNull(message = "{tradeify.constraints.email.NotNull.message}")
+	@Size(min = 1, max= 255)
+	@UniqueEmail
+	@Email(message = "{tradeify.constraint.email.Valid.message}")
 	private String email;
 	
 	@NotNull
-	@Size(min = 4, max= 255)
+	@Size(min = 1, max= 255)
 	private String fullName;
 	
 	@NotNull
 	@Size(min = 8, max= 255)
 	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", 
-	message = "{hoaxify.constraints.username.Pattern.message}")
+	message = "{tradeify.constraints.email.Pattern.message}")
 	private String password;
 	
 	private String image;
+	
+	private String keyreg;
 	
 	/*@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
 	private List<Token> tokens;*/
