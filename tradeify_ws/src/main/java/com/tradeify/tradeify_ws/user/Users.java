@@ -57,6 +57,7 @@ public class Users implements UserDetails{
 	@NotNull
 	@Size(min = 11, max= 11, message = "{tradeify.constraint.phone.Valid.message}")
 	@Pattern(regexp="[0-9\\\\s]{11}", message = "{tradeify.constraint.phone.Pattern.message}")
+	@UniquePhone
 	private String phone;
 	
 	@NotNull(message = "{tradeify.constraint.gender.NotNull.message}")
