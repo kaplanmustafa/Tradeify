@@ -5,7 +5,6 @@ import ButtonWithProgress from "../components/ButtonWithProgress";
 import { useApiProgress } from "../shared/ApiProgress";
 import { useDispatch } from "react-redux";
 import { signupHandler } from "../redux/authActions";
-import background from "../assets/signup_background.jpg";
 
 const UserSignupPage = (props) => {
   const [form, setForm] = useState({
@@ -15,6 +14,8 @@ const UserSignupPage = (props) => {
     password: null,
     passwordRepeat: null,
     birthDate: null,
+    phone: null,
+    gender: null,
   });
   const [errors, setErrors] = useState({});
   const [verification, setVerification] = useState(false);
@@ -23,7 +24,7 @@ const UserSignupPage = (props) => {
 
   const onChange = (event) => {
     const { name, value } = event.target;
-
+    console.log(name, value);
     setVerification(false);
     setErrors((previousErrors) => ({ ...previousErrors, [name]: undefined }));
     setForm((previousForm) => ({ ...previousForm, [name]: value }));
@@ -32,7 +33,16 @@ const UserSignupPage = (props) => {
   const onClickSignup = async (event) => {
     event.preventDefault();
 
-    const { email, name, surname, password, passwordRepeat, birthDate } = form;
+    const {
+      email,
+      name,
+      surname,
+      password,
+      passwordRepeat,
+      birthDate,
+      phone,
+      gender,
+    } = form;
 
     const body = {
       email,
@@ -41,6 +51,8 @@ const UserSignupPage = (props) => {
       password,
       passwordRepeat,
       birthDate,
+      phone,
+      gender,
     };
 
     try {
@@ -61,6 +73,8 @@ const UserSignupPage = (props) => {
     surname: surnameError,
     password: passwordError,
     birthDate: birthdateError,
+    phone: phoneError,
+    gender: genderError,
   } = errors;
 
   const pendingApiCallSignup = useApiProgress("post", "/api/1.0/users");
@@ -74,71 +88,104 @@ const UserSignupPage = (props) => {
   }
 
   return (
-    <div className="container w-25">
-      <form>
-        <h1 className="text-center text-primary">{t("Sign Up")}</h1>
-        <Input
-          name="email"
-          label={t("Email")}
-          error={emailError}
-          onChange={onChange}
-          type="email"
-        />
-        <div className="row">
-          <div className="col">
-            <Input
-              name="name"
-              label={t("Name")}
-              error={nameError}
-              onChange={onChange}
-            />
-          </div>
-          <div className="col">
-            <Input
-              name="surname"
-              label={t("Surname")}
-              error={surnameError}
-              onChange={onChange}
-            />
-          </div>
-        </div>
-        <Input
-          name="birthDate"
-          label={t("Date of Birth")}
-          error={birthdateError}
-          onChange={onChange}
-          placeHolder={t("month.day.year")}
-        />
-        <Input
-          name="password"
-          label={t("Password")}
-          error={passwordError}
-          onChange={onChange}
-          type="password"
-        />
-        <Input
-          name="passwordRepeat"
-          label={t("Password Repeat")}
-          error={passwordRepeatError}
-          onChange={onChange}
-          type="password"
-        />
-        <div className="text-center mb-3">
-          <ButtonWithProgress
-            disabled={pendingApiCall || passwordRepeatError !== undefined}
-            onClick={onClickSignup}
-            pendingApiCall={pendingApiCall}
-            text={t("Sign Up")}
-          ></ButtonWithProgress>
-        </div>
-        {verification && (
-          <div className="text-center mt-3">
-            <div className="alert alert-info">
-              {t("Please verify your email address")}
+    <div className="bg-primary">
+      <div className="container w-50 bg-white p-5" style={{borderRadius: "50px"}}>
+        <form>
+          <h1 className="text-center text-primary">{t("Sign Up")}</h1>
+          {verification && (
+            <div className="text-center mt-3">
+              <div className="alert alert-info">
+                {t("Registration Successful!")}
+                <br />
+                {t("Please verify your email address")}
+              </div>
+            </div>
+          )}
+          <Input
+            name="email"
+            label={t("Email")}
+            error={emailError}
+            onChange={onChange}
+            type="email"
+          />
+          <div className="row">
+            <div className="col">
+              <Input
+                name="name"
+                label={t("Name")}
+                error={nameError}
+                onChange={onChange}
+              />
+            </div>
+            <div className="col">
+              <Input
+                name="surname"
+                label={t("Surname")}
+                error={surnameError}
+                onChange={onChange}
+              />
             </div>
           </div>
-        )}
-      </form>
+          <Input
+            name="birthDate"
+            label={t("Date of Birth")}
+            error={birthdateError}
+            onChange={onChange}
+            type="date"
+          />
+          <Input
+            name="phone"
+            label={t("Phone")}
+            error={phoneError}
+            onChange={onChange}
+            type="phone"
+          />
+          <label>Gender</label>
+          <div className="row">
+            <div className="col">
+              <Input
+                name="gender"
+                label={t("Male")}
+                error={genderError}
+                onChange={onChange}
+                type="radio"
+                value="MALE"
+              />
+            </div>
+            <div className="col">
+              <Input
+                name="gender"
+                label={t("Female")}
+                onChange={onChange}
+                type="radio"
+                value="FEMALE"
+              />
+            </div>
+          </div>
+          <Input
+            name="password"
+            label={t("Password")}
+            error={passwordError}
+            onChange={onChange}
+            type="password"
+          />
+          <Input
+            name="passwordRepeat"
+            label={t("Password Repeat")}
+            error={passwordRepeatError}
+            onChange={onChange}
+            type="password"
+          />
+          <div className="text-center">
+            <ButtonWithProgress
+              disabled={pendingApiCall || passwordRepeatError !== undefined}
+              onClick={onClickSignup}
+              pendingApiCall={pendingApiCall}
+              text={t("Sign Up")}
+            ></ButtonWithProgress>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

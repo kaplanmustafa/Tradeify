@@ -40,24 +40,26 @@ public class Users implements UserDetails{
 	private String email;
 	
 	@NotNull
+	@Pattern(regexp = "^[\\p{L} .'-]+$", message = "{tradeify.constraint.name.Valid.message}")
 	@Size(min = 1, max= 255)
 	private String name;
 	
 	@NotNull
+	@Pattern(regexp = "^[\\p{L} .'-]+$", message = "{tradeify.constraint.surname.Valid.message}")
 	@Size(min = 1, max= 255)
 	private String surname;
 	
 	@NotNull
-	@Past
+	@Past(message = "{tradeify.constraint.date.Past.message}")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birthDate;
 	
 	@NotNull
-	@Size(min = 11, max= 11)
-	@Pattern(regexp="(^$|[0-9]{10})")
+	@Size(min = 11, max= 11, message = "{tradeify.constraint.phone.Valid.message}")
+	@Pattern(regexp="[0-9\\\\s]{11}", message = "{tradeify.constraint.phone.Pattern.message}")
 	private String phone;
 	
-	@NotNull
+	@NotNull(message = "{tradeify.constraint.gender.NotNull.message}")
     private Gender gender;
 	
 	@NotNull
