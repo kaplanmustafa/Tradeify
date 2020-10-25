@@ -24,7 +24,7 @@ const UserSignupPage = (props) => {
 
   const onChange = (event) => {
     const { name, value } = event.target;
-    console.log(name, value);
+
     setVerification(false);
     setErrors((previousErrors) => ({ ...previousErrors, [name]: undefined }));
     setForm((previousForm) => ({ ...previousForm, [name]: value }));
@@ -58,6 +58,7 @@ const UserSignupPage = (props) => {
     try {
       await dispatch(signupHandler(body));
       setVerification(true);
+      document.getElementById("user-info").reset();
     } catch (error) {
       if (error.response.data.validationErrors) {
         setErrors(error.response.data.validationErrors);
@@ -89,18 +90,21 @@ const UserSignupPage = (props) => {
 
   return (
     <div className="bg-primary">
-      <div className="container w-50 bg-white p-5" style={{borderRadius: "50px"}}>
-        <form>
-          <h1 className="text-center text-primary">{t("Sign Up")}</h1>
-          {verification && (
-            <div className="text-center mt-3">
-              <div className="alert alert-info">
-                {t("Registration Successful!")}
-                <br />
-                {t("Please verify your email address")}
-              </div>
+      <div
+        className="container h-100 w-50 bg-white p-5 border border-primary"
+        style={{ borderRadius: "50px" }}
+      >
+        <h1 className="text-center text-primary">{t("Sign Up")}</h1>
+        {verification && (
+          <div className="container text-center mt-5">
+            <div className="alert alert-info">
+              {t("Registration Successful!")}
+              <br />
+              {t("Please verify your email address")}
             </div>
-          )}
+          </div>
+        )}
+        <form id="user-info">
           <Input
             name="email"
             label={t("Email")}
