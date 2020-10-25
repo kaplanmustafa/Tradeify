@@ -28,6 +28,6 @@ public class UserService {
 		
 		userRepository.save(user);
 		
-		mailService.sendMail(user, uuid);
+		//mailService.sendMail(user, uuid);
 	}
 }

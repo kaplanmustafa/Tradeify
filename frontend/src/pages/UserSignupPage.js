@@ -7,6 +7,17 @@ import { useDispatch } from "react-redux";
 import { signupHandler } from "../redux/authActions";
 
 const UserSignupPage = (props) => {
+  const initialForm = {
+    email: null,
+    name: null,
+    surname: null,
+    password: null,
+    passwordRepeat: null,
+    birthDate: null,
+    phone: null,
+    gender: null,
+  };
+
   const [form, setForm] = useState({
     email: null,
     name: null,
@@ -58,6 +69,7 @@ const UserSignupPage = (props) => {
     try {
       await dispatch(signupHandler(body));
       setVerification(true);
+      setForm({ ...initialForm });
       document.getElementById("user-info").reset();
     } catch (error) {
       if (error.response.data.validationErrors) {
