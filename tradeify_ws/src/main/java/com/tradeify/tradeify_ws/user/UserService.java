@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.tradeify.tradeify_ws.error.NotFoundException;
 import com.tradeify.tradeify_ws.shared.MailService;
 
 @Service
@@ -28,6 +29,22 @@ public class UserService {
 		
 		userRepository.save(user);
 		
-		//mailService.sendMail(user, uuid);
+		mailService.sendMail(user, uuid);
+	}
+
+	public void verifyEmail(String keyreg) {
+		Users inDB = getByKeyreg(keyreg);
+		inDB.setActive(true);
+		userRepository.save(inDB);
+	}
+	
+	public Users getByKeyreg(String keyreg) {
+		Users inDB = userRepository.findByKeyreg(keyreg); 
+		
+		if(inDB == null) {
+			throw new NotFoundException();
+		}
+		
+		return inDB;
 	}
 }

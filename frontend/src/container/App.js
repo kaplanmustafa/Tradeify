@@ -9,6 +9,7 @@ import {
   Switch,
 } from "react-router-dom";
 import { useSelector } from "react-redux";
+import EmailValidationPage from "../pages/EmailValidationPage";
 
 const App = () => {
   const { isLoggedIn } = useSelector((store) => ({
@@ -22,6 +23,9 @@ const App = () => {
           <Route exact path="/" component={HomePage} />
           {!isLoggedIn && <Route path="/login" component={LoginPage} />}
           {!isLoggedIn && <Route path="/signup" component={UserSignupPage} />}
+          {!isLoggedIn && (
+            <Route path="/reg/:keyreg" component={EmailValidationPage} />
+          )}
           <Redirect to="/" />
         </Switch>
       </Router>

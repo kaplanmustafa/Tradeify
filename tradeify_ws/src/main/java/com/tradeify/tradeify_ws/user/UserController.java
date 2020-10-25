@@ -3,6 +3,7 @@ package com.tradeify.tradeify_ws.user;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +27,11 @@ public class UserController {
 		
 		userService.save(user);
 		return new GenericResponse("User Created"); 
+	}
+	
+	@PostMapping("/users/{keyreg}")
+	public GenericResponse verifyEmail(@PathVariable String keyreg) {
+		userService.verifyEmail(keyreg);
+		return new GenericResponse("Email verified");
 	}
 }

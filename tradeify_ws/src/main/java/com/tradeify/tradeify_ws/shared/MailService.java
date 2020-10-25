@@ -25,7 +25,7 @@ public class MailService {
 	        messageHelper.setTo(user.getEmail());
 	        messageHelper.setText("Sayın " + user.getName() + " " + user.getSurname() +
 	        		",\n\nTradeify Üyeliğinizi Tamamlamak İçin Lütfen Aşağıdaki Linke Tıklayın:\n\n"
-	        		+ "http://localhost:3000/reg/" + keyreg);
+	        		+ "http://localhost:3000/#/reg/" + keyreg);
 	        messageHelper.setSubject("Üyeliğinizi Tamamlayın");
 	    } catch (MessagingException e) {
 	        e.printStackTrace();
