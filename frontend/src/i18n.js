@@ -17,6 +17,9 @@ i18n.use(initReactI18next).init({
         "Password Repeat": "Password Repeat",
         "Registration Successful!": "Registration Successful!",
         "Please verify your email address": "Please verify your email address",
+        "To login, you must confirm your email!":
+          "To login, you must confirm your email!",
+        "Incorrect email or password!": "Incorrect email or password!",
       },
     },
     tr: {
@@ -33,6 +36,9 @@ i18n.use(initReactI18next).init({
         "Registration Successful!": "Kayıt Başarılı!",
         "Please verify your email address":
           "Lütfen e-posta adresinizi doğrulayın",
+        "To login, you must confirm your email!":
+          "Giriş yapmak için e-postanızı onaylamalısınız!",
+        "Incorrect email or password!": "Yanlış eposta adresi veya şifre!",
       },
     },
   },

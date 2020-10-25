@@ -14,14 +14,11 @@ public class UserVM {
 	private String surname;
 	
 	private String image;
-	
-	private boolean isActive;
-	
+		
 	public UserVM(Users user) {
 		this.setEmail(user.getEmail());
 		this.setName(user.getName());
 		this.setSurname(user.getSurname());
 		this.setImage(user.getImage());
-		this.setActive(user.isActive());
 	}
 }

@@ -8,12 +8,13 @@ import UserSignupPage from "./pages/UserSignupPage";
 import "./i18n";
 import { Provider } from "react-redux";
 import configureStore from "./redux/configureStore";
+import LoginPage from "./pages/LoginPage";
 
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <UserSignupPage />
+    <LoginPage />
   </Provider>,
   document.getElementById("root")
 );

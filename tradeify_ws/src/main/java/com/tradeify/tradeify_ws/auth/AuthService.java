@@ -28,9 +28,11 @@ public class AuthService {
 	}
 
 	public AuthResponse authenticate(Credentials credentials) {
-		Users inDB = userRepository.findByEmail(credentials.getUsername());
+		Users inDB = userRepository.findByEmail(credentials.getEmail());
 		if(inDB == null) {
 			throw new AuthException();
+		} else if(!inDB.isActive()) {
+			throw new EmailVerificationException();
 		}
 		
 		boolean matches = passwordEncoder.matches(credentials.getPassword(), inDB.getPassword());

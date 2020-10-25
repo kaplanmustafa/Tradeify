@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -27,7 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); 
 		
-		//http.addFilterBefore(tokenFilter(), UsernamePasswordAuthenticationFilter.class); 
+		http.addFilterBefore(tokenFilter(), UsernamePasswordAuthenticationFilter.class); 
 	}
 	
 	@Bean
@@ -35,10 +36,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		return new BCryptPasswordEncoder();
 	}
 	
-	/*@Bean
+	@Bean
 	TokenFilter tokenFilter() {
 		return new TokenFilter();
-	}*/
+	}
 }
 
 
