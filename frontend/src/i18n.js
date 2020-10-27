@@ -20,6 +20,9 @@ i18n.use(initReactI18next).init({
         "To login, you must confirm your email!":
           "To login, you must confirm your email!",
         "Incorrect email or password!": "Incorrect email or password!",
+        Search: "Search",
+        Login: "Login",
+        Logout: "Logout",
       },
     },
     tr: {
@@ -39,6 +42,9 @@ i18n.use(initReactI18next).init({
         "To login, you must confirm your email!":
           "Giriş yapmak için e-postanızı onaylamalısınız!",
         "Incorrect email or password!": "Yanlış eposta adresi veya şifre!",
+        Search: "Ara",
+        Login: "Giriş Yap",
+        Logout: "Çıkış",
       },
     },
   },

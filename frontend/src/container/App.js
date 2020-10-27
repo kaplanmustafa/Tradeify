@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 import EmailValidationPage from "../pages/EmailValidationPage";
+import TopBar from "../components/TopBar";
 
 const App = () => {
   const { isLoggedIn } = useSelector((store) => ({
@@ -19,6 +20,7 @@ const App = () => {
   return (
     <div>
       <Router>
+        <TopBar />
         <Switch>
           <Route exact path="/" component={HomePage} />
           {!isLoggedIn && <Route path="/login" component={LoginPage} />}
