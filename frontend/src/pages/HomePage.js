@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../components/Footer";
 import ImageSlider from "../components/ImageSlider";
 import ProductCard from "../components/ProductCard";
 import ProductHeaderCard from "../components/ProductHeaderCard";
@@ -16,6 +17,10 @@ const HomePage = () => {
 
       <div className="row">
         <ProductCard />
+      </div>
+
+      <div className="row">
+        <Footer />
       </div>
     </div>
   );
