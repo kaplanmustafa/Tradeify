@@ -12,13 +12,10 @@ public class UserVM {
 	private String name;
 	
 	private String surname;
-	
-	private String image;
 		
 	public UserVM(Users user) {
 		this.setEmail(user.getEmail());
 		this.setName(user.getName());
 		this.setSurname(user.getSurname());
-		this.setImage(user.getImage());
 	}
 }

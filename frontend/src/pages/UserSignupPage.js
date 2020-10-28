@@ -101,7 +101,7 @@ const UserSignupPage = (props) => {
   }
 
   return (
-    <div className="bg-primary">
+    <div className="bg-primary p-5">
       <div
         className="container h-100 w-50 bg-white p-5 border border-primary"
         style={{ borderRadius: "50px" }}
@@ -156,7 +156,7 @@ const UserSignupPage = (props) => {
             onChange={onChange}
             type="phone"
           />
-          <label>Gender</label>
+          <label>{t("Gender")}</label>
           <div className="row">
             <div className="col">
               <Input

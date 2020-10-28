@@ -9,12 +9,12 @@ import LanguageSelector from "./LanguageSelector";
 const TopBar = (props) => {
   const { t } = useTranslation();
 
-  const { username, isLoggedIn, displayName, image } = useSelector((store) => {
+  const { email, isLoggedIn, name, surname } = useSelector((store) => {
     return {
-      username: store.username,
+      email: store.email,
       isLoggedIn: store.isLoggedIn,
-      displayName: store.displayName,
-      image: store.image,
+      name: store.name,
+      surname: store.surname,
     };
   });
 
@@ -45,12 +45,12 @@ const TopBar = (props) => {
   let links = (
     <ul className="navbar-nav ml-auto">
       <li>
-        <Link className="nav-link" to="/login">
+        <Link className="btn btn-outline-primary mr-1" to="/login">
           {t("Login")}
         </Link>
       </li>
       <li>
-        <Link className="nav-link" to="/signup">
+        <Link className="btn btn-outline-primary" to="/signup">
           {t("Sign Up")}
         </Link>
       </li>
@@ -72,12 +72,14 @@ const TopBar = (props) => {
             style={{ cursor: "pointer" }}
             onClick={() => setMenuVisible(true)}
           >
-            <span className="nav-link dropdown-toggle">{displayName}</span>
+            <span className="nav-link dropdown-toggle btn-outline-primary btn">
+              {name} {surname}
+            </span>
           </div>
           <div className={dropDownClass}>
             <Link
               className="dropdown-item d-flex p-2"
-              to={`/user/${username}`}
+              to={`/user/`}
               onClick={() => setMenuVisible(false)}
             >
               <span className="material-icons text-info mr-2">person</span>
@@ -100,22 +102,19 @@ const TopBar = (props) => {
   }
 
   return (
-    <div className="shadow-sm bg-light mb-2">
-      <nav className="navbar navbar-light container navbar-expand ">
+    <div className="shadow-sm bg-white">
+      <nav className="container navbar navbar-white navbar-expand">
         <Link className="navbar-brand" to="/">
           <img src={logo} width="120" alt="Tradeify Logo" />
         </Link>
-        <form className="form-inline navbar-nav ml-auto">
+        <form className="form-inline ml-auto">
           <input
             className="form-control mr-sm-2"
             type="search"
             placeholder={t("Search")}
             aria-label={t("Search")}
           />
-          <button
-            className="btn btn-outline-success my-2 my-sm-0"
-            type="submit"
-          >
+          <button className="btn btn-outline-success" type="submit">
             {t("Search")}
           </button>
         </form>

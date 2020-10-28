@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { verifyEmail } from "../api/apiCalls";
 
 const EmailValidationPage = () => {
@@ -31,7 +31,9 @@ const EmailValidationPage = () => {
             <br />
             {t("You can start using your account")}
           </div>
-          <button className="btn btn-primary mt-5 ">{t("Login")}</button>
+          <Link className="btn btn-primary mt-5" to="/login">
+            {t("Login")}
+          </Link>
         </div>
       </div>
     </div>

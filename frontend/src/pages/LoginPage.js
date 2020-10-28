@@ -52,7 +52,7 @@ const LoginPage = (props) => {
   const buttonEnabled = email && password;
 
   return (
-    <div className="bg-primary vh-100 d-flex p-5 ">
+    <div className="bg-primary p-5" style={{ height: "100vh" }}>
       <div
         className="container h-75 w-50 bg-white p-5 border border-primary"
         style={{ borderRadius: "50px" }}
