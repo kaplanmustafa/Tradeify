@@ -9,9 +9,8 @@ import LanguageSelector from "./LanguageSelector";
 const TopBar = (props) => {
   const { t } = useTranslation();
 
-  const { email, isLoggedIn, name, surname } = useSelector((store) => {
+  const { isLoggedIn, name, surname } = useSelector((store) => {
     return {
-      email: store.email,
       isLoggedIn: store.isLoggedIn,
       name: store.name,
       surname: store.surname,

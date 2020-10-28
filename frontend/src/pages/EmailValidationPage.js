@@ -14,7 +14,7 @@ const EmailValidationPage = () => {
     };
 
     loadUser();
-  }, []);
+  }, [keyreg]);
 
   const { t } = useTranslation();
 
