@@ -30,6 +30,8 @@ i18n.use(initReactI18next).init({
         "Email Verification": "Email Verification",
         "Verification Successful!": "Verification Successful!",
         "You can start using your account": "You can start using your account",
+        FRUITS: "FRUITS",
+        "DISCOVER ALL PRODUCTS": "DISCOVER ALL PRODUCTS",
       },
     },
     tr: {
@@ -60,6 +62,8 @@ i18n.use(initReactI18next).init({
         "Verification Successful!": "Doğrulama Başarılı!",
         "You can start using your account":
           "Hesabınızı kullanmaya başlayabilirsiniz",
+        FRUITS: "MEYVELER",
+        "DISCOVER ALL PRODUCTS": "TÜM ÜRÜNLERİ KEŞFET",
       },
     },
   },
