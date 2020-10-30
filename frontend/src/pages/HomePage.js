@@ -12,11 +12,17 @@ const HomePage = () => {
       </div>
 
       <div className="row">
-        <ProductHeaderCard />
+        <ProductHeaderCard category="popular products" />
+      </div>
+      <div className="row">
+        <ProductCard category="discover" />
       </div>
 
       <div className="row">
-        <ProductCard />
+        <ProductHeaderCard category="fruits"  />
+      </div>
+      <div className="row">
+        <ProductCard category="fruits" />
       </div>
 
       <div className="row">

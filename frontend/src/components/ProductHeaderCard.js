@@ -2,7 +2,8 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import background from "../assets/product_header.jpg";
 
-const ProductHeaderCard = () => {
+const ProductHeaderCard = (props) => {
+  const { category } = props;
   const { t } = useTranslation();
 
   return (
@@ -15,7 +16,7 @@ const ProductHeaderCard = () => {
           height="128px"
         />
         <div className="card-img-overlay">
-          <h1 className="card-title text-center">{t("FRUITS")}</h1>
+          <h1 className="card-title text-center">{t(`${category}`)}</h1>
           <div className="text-center">
             <button className="btn btn-light text-primary ">
               {t("DISCOVER ALL PRODUCTS")}
