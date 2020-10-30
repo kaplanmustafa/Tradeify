@@ -11,6 +11,8 @@ import {
 import { useSelector } from "react-redux";
 import EmailValidationPage from "../pages/EmailValidationPage";
 import TopBar from "../components/TopBar";
+import UserPage from "../pages/UserPage";
+import Footer from "../components/Footer";
 
 const App = () => {
   const { isLoggedIn } = useSelector((store) => ({
@@ -28,8 +30,10 @@ const App = () => {
           {!isLoggedIn && (
             <Route path="/reg/:keyreg" component={EmailValidationPage} />
           )}
+          {isLoggedIn && <Route path="/myprofile" component={UserPage} />}
           <Redirect to="/" />
         </Switch>
+        <Footer />
       </Router>
     </div>
   );

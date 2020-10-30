@@ -5,7 +5,7 @@ const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="container w-100 mt-5 border">
+    <div className="container w-100 mt-5 mb-1 border">
       <footer className="page-footer font-small mdb-color pt-4">
         <div className="container text-center text-md-left">
           <div className="row text-center text-md-left mt-3 pb-3">

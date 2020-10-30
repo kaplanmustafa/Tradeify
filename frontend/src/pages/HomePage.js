@@ -24,10 +24,6 @@ const HomePage = () => {
       <div className="row">
         <ProductCard category="fruits" />
       </div>
-
-      <div className="row">
-        <Footer />
-      </div>
     </div>
   );
 };

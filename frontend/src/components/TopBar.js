@@ -78,7 +78,7 @@ const TopBar = (props) => {
           <div className={dropDownClass}>
             <Link
               className="dropdown-item d-flex p-2"
-              to={`/user/`}
+              to={`/myprofile`}
               onClick={() => setMenuVisible(false)}
             >
               <span className="material-icons text-info mr-2">person</span>

@@ -39,6 +39,7 @@ i18n.use(initReactI18next).init({
         Contact: "Contact",
         "Add to Cart": "Add to Cart",
         "popular products": "POPULAR PRODUCTS",
+        "User Not Found!": "User Not Found!",
       },
     },
     tr: {
@@ -78,6 +79,7 @@ i18n.use(initReactI18next).init({
         Contact: "İLETİŞİM",
         "Add to Cart": "Sepete Ekle",
         "popular products": "POPÜLER ÜRÜNLER",
+        "User Not Found!": "Kullanıcı Bulunamadı!",
       },
     },
   },

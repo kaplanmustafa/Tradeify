@@ -33,12 +33,12 @@ export const verifyEmail = (keyreg) => {
   return axios.post(`/api/1.0/users/${keyreg}`);
 };
 
-export const getUser = (username) => {
-  return axios.get(`/api/1.0/users/${username}`);
+export const getUser = (email) => {
+  return axios.get(`/api/1.0/users/${email}`);
 };
 
-export const updateUser = (username, body) => {
-  return axios.put(`/api/1.0/users/${username}`, body);
+export const updateUser = (email, body) => {
+  return axios.put(`/api/1.0/users/${email}`, body);
 };
 
 export const postHoax = (hoax) => {
@@ -80,6 +80,6 @@ export const deleteHoax = (id) => {
   return axios.delete(`/api/1.0/hoaxes/${id}`);
 };
 
-export const deleteUser = (username) => {
-  return axios.delete(`/api/1.0/users/${username}`);
+export const deleteUser = (email) => {
+  return axios.delete(`/api/1.0/users/${email}`);
 };
