@@ -1,8 +1,7 @@
 import React from "react";
-import Footer from "../components/Footer";
-import ImageSlider from "../components/ImageSlider";
-import ProductCard from "../components/ProductCard";
-import ProductHeaderCard from "../components/ProductHeaderCard";
+import ImageSlider from "../components/homePage/ImageSlider";
+import ProductCard from "../components/homePage/ProductCard";
+import ProductHeaderCard from "../components/homePage/ProductHeaderCard";
 
 const HomePage = () => {
   return (
@@ -19,7 +18,7 @@ const HomePage = () => {
       </div>
 
       <div className="row">
-        <ProductHeaderCard category="fruits"  />
+        <ProductHeaderCard category="fruits" />
       </div>
       <div className="row">
         <ProductCard category="fruits" />

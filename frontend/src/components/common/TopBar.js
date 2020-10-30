@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import logo from "../assets/logo_s.png";
+import logo from "../../assets/logo_s.png";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutSuccess } from "../redux/authActions";
+import { logoutSuccess } from "../../redux/authActions";
 import LanguageSelector from "./LanguageSelector";
 
 const TopBar = (props) => {

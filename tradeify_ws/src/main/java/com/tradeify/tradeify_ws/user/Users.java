@@ -2,11 +2,14 @@ package com.tradeify.tradeify_ws.user;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
@@ -19,6 +22,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.tradeify.tradeify_ws.auth.Token;
 
 import lombok.Data;
 
@@ -64,7 +69,7 @@ public class Users implements UserDetails{
 	private String phone;
 	
 	@NotNull(message = "{tradeify.constraint.gender.NotNull.message}")
-    private Gender gender;
+    private String gender;
 	
 	@NotNull
 	@Size(min = 8, max= 255)
@@ -76,12 +81,8 @@ public class Users implements UserDetails{
 	
 	private boolean isActive;
 	
-	/*@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-	private List<Token> tokens;*/
-	
-	public enum Gender {
-		MALE, FEMALE
-	}
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+	private List<Token> tokens;
 
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return AuthorityUtils.createAuthorityList("Role_user");

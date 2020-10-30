@@ -22,7 +22,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 				
 		http
 			.authorizeRequests()
-				.antMatchers(HttpMethod.PUT, "/api/1.0/users/{username}").authenticated()
+				.antMatchers(HttpMethod.PUT, "/api/1.0/users/{email}").authenticated()
 			.and()
 			.authorizeRequests().anyRequest().permitAll();
 		

@@ -47,4 +47,14 @@ public class UserService {
 		
 		return inDB;
 	}
+	
+	public Users getByEmail(String email) {
+		Users inDB = userRepository.findByEmail(email);
+		
+		if(inDB == null) {
+			throw new NotFoundException();
+		}
+		
+		return inDB;
+	}
 }

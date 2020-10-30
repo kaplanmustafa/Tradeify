@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import first from "../assets/first.jpg";
-import second from "../assets/second.jpg";
-import third from "../assets/third.jpg";
+import first from "../../assets/first.jpg";
+import second from "../../assets/second.jpg";
+import third from "../../assets/third.jpg";
 import Carousel from "react-bootstrap/Carousel";
 
 const ImageSlider = () => {

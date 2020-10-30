@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getUser } from "../api/apiCalls";
-//import ProfileCard from "../components/ProfileCard";
+import ProfileCard from "../components/userPage/ProfileCard";
 import { useTranslation } from "react-i18next";
 import { useApiProgress } from "../shared/ApiProgress";
 import { useSelector } from "react-redux";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/toolbox/Spinner";
+import UserMenu from "../components/userPage/UserMenu";
 
 const UserPage = () => {
   const { email } = useSelector((store) => ({
@@ -55,10 +56,14 @@ const UserPage = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container mt-5 w-100">
       <div className="row">
-        <div className="col-4">{/* <ProfileCard user={user} /> */}</div>
-        <div className="col-8">{/* <HoaxFeed /> */}</div>
+        <div className="col-3">
+          <UserMenu />
+        </div>
+        <div className="col-9">
+          <ProfileCard user={user} />
+        </div>
       </div>
     </div>
   );

@@ -10,9 +10,9 @@ import {
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 import EmailValidationPage from "../pages/EmailValidationPage";
-import TopBar from "../components/TopBar";
+import TopBar from "../components/common/TopBar";
 import UserPage from "../pages/UserPage";
-import Footer from "../components/Footer";
+import Footer from "../components/common/Footer";
 
 const App = () => {
   const { isLoggedIn } = useSelector((store) => ({

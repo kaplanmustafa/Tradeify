@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import background from "../assets/product_header.jpg";
+import background from "../../assets/product_header.jpg";
 
 const ProductHeaderCard = (props) => {
   const { category } = props;

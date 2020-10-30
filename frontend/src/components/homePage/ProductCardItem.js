@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import first from "../assets/p-f.jpg";
+import first from "../../assets/p-f.jpg";
 
 const ProductCardItem = () => {
     const { t } = useTranslation();
