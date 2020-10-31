@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.tradeify.tradeify_ws.error.NotFoundException;
 import com.tradeify.tradeify_ws.shared.MailService;
+import com.tradeify.tradeify_ws.user.vm.UserUpdateVM;
 
 @Service
 public class UserService {
@@ -56,5 +57,19 @@ public class UserService {
 		}
 		
 		return inDB;
+	}
+	
+	public Users updateUser(String email, UserUpdateVM updatedUser) {
+		
+		Users inDB = getByEmail(email);
+
+		inDB.setEmail(updatedUser.getEmail());
+		inDB.setName(updatedUser.getName());
+		inDB.setSurname(updatedUser.getSurname());
+		inDB.setBirthDate(updatedUser.getBirthDate());
+		inDB.setGender(updatedUser.getGender());
+		inDB.setPhone(updatedUser.getPhone());
+				
+		return userRepository.save(inDB);
 	}
 }

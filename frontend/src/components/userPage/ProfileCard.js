@@ -219,7 +219,7 @@ const ProfileCard = (props) => {
                 onChange={(event) => {
                   setUpdatedSurname(event.target.value);
                 }}
-                error={nameError}
+                error={surnameError}
               />
               <Input
                 label={t("Phone")}
@@ -227,7 +227,7 @@ const ProfileCard = (props) => {
                 onChange={(event) => {
                   setUpdatedPhone(event.target.value);
                 }}
-                error={nameError}
+                error={phoneError}
                 type="phone"
               />
               <label>{t("Gender")}</label>
@@ -238,7 +238,7 @@ const ProfileCard = (props) => {
                     label={t("Male")}
                     error={genderError}
                     onChange={(event) => {
-                      setUpdatedName(event.target.value);
+                      setUpdatedGender(event.target.value);
                     }}
                     type="radio"
                     value="MALE"
@@ -250,7 +250,7 @@ const ProfileCard = (props) => {
                     name="gender"
                     label={t("Female")}
                     onChange={(event) => {
-                      setUpdatedName(event.target.value);
+                      setUpdatedGender(event.target.value);
                     }}
                     type="radio"
                     value="FEMALE"
@@ -262,7 +262,7 @@ const ProfileCard = (props) => {
                 label={t("Date of Birth")}
                 defaultValue={birthDate}
                 onChange={(event) => {
-                  setUpdatedName(event.target.value);
+                  setUpdatedBirthDate(event.target.value);
                 }}
                 error={birthDateError}
                 type="date"
