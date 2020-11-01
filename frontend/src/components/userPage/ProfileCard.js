@@ -181,6 +181,7 @@ const ProfileCard = (props) => {
     await deleteUser(email);
     setModalVisible(false);
     dispatch(logoutSuccess());
+    alertify.success(t("Account Deletion Successful"));
     history.push("/");
   };
 

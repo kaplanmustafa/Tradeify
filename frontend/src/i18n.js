@@ -49,6 +49,9 @@ i18n.use(initReactI18next).init({
         "New Password Repeat": "New Password Repeat",
         "Delete My Account": "Delete My Account",
         "Update Successful": "Update Successful",
+        "Are you sure to delete your account?":
+          "Are you sure to delete your account?",
+        "Account Deletion Successful": "Account Deletion Successful",
       },
     },
     tr: {
@@ -98,6 +101,9 @@ i18n.use(initReactI18next).init({
         "New Password Repeat": "Yeni Şifre Tekrar",
         "Delete My Account": "Hesabımı Sil",
         "Update Successful": "Güncelleme Başarılı",
+        "Are you sure to delete your account?":
+          "Hesabınızı silmek istediğinizden emin misiniz?",
+        "Account Deletion Successful": "Hesap Silme Başarılı",
       },
     },
   },
