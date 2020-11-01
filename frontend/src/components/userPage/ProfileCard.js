@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import Input from "../toolbox/Input";
-import { deleteUser, updateUser } from "../../api/apiCalls";
+import { deleteUser, updatePassword, updateUser } from "../../api/apiCalls";
 import { useApiProgress } from "../../shared/ApiProgress";
 import ButtonWithProgress from "../toolbox/ButtonWithProgress";
 import { logoutSuccess, updateSuccess } from "../../redux/authActions";
@@ -28,7 +28,7 @@ const ProfileCard = (props) => {
   const history = useHistory();
 
   const { email: loggedInEmail } = useSelector((store) => ({
-    username: store.email,
+    email: store.email,
   }));
 
   useEffect(() => {
@@ -98,6 +98,15 @@ const ProfileCard = (props) => {
     });
   }, [updatedCurrentPassword]);
 
+  useEffect(() => {
+    setValidationErrors((previousValidationErrors) => {
+      return {
+        ...previousValidationErrors,
+        newPassword: undefined,
+      };
+    });
+  }, [updatedPassword]);
+
   const { email, name, surname, phone, gender, birthDate } = user;
 
   const pendingApiCallDeleteUser = useApiProgress(
@@ -146,6 +155,22 @@ const ProfileCard = (props) => {
     }
   };
 
+  const onClickSavePassword = async () => {
+    const body = {
+      email: loggedInEmail,
+      currentPassword: updatedCurrentPassword,
+      newPassword: updatedPassword,
+    };
+
+    try {
+      const response = await updatePassword(email, body);
+      setInEditMode(false);
+      //redux şifre güncellenecek
+    } catch (error) {
+      setValidationErrors(error.response.data.validationErrors);
+    }
+  };
+
   const onClickCancel = () => {
     setModalVisible(false);
   };
@@ -158,6 +183,10 @@ const ProfileCard = (props) => {
   };
 
   const pendingApiCall = useApiProgress("put", "/api/1.0/users/" + email);
+  const pendingApiCallPassword = useApiProgress(
+    "put",
+    "/api/1.0/users/password" + email
+  );
   const {
     email: emailError,
     name: nameError,
@@ -165,7 +194,14 @@ const ProfileCard = (props) => {
     phone: phoneError,
     gender: genderError,
     birthDate: birthDateError,
+    password: passwordError,
+    newPassword: newPasswordError,
   } = validationErrors;
+
+  let passwordRepeatError;
+  if (updatedPassword !== updatedPasswordRepeat) {
+    passwordRepeatError = t("Password mismatch");
+  }
 
   return (
     <div className="card text-center">
@@ -271,7 +307,7 @@ const ProfileCard = (props) => {
                 <ButtonWithProgress
                   className="btn btn-primary d-inline-flex"
                   onClick={onClickSave}
-                  disabled={pendingApiCall}
+                  disabled={pendingApiCall || pendingApiCallPassword}
                   pendingApiCall={pendingApiCall}
                   text={
                     <>
@@ -296,31 +332,35 @@ const ProfileCard = (props) => {
                 onChange={(event) => {
                   setUpdatedCurrentPassword(event.target.value);
                 }}
-                // error={passwordError}
+                error={passwordError}
                 type="password"
               />
               <Input
                 label={t("New Password")}
                 onChange={(event) => {
-                  setUpdatedCurrentPassword(event.target.value);
+                  setUpdatedPassword(event.target.value);
                 }}
-                // error={passwordError}
                 type="password"
+                error={newPasswordError}
               />
               <Input
                 label={t("New Password Repeat")}
                 onChange={(event) => {
-                  setUpdatedCurrentPassword(event.target.value);
+                  setUpdatedPasswordRepeat(event.target.value);
                 }}
-                // error={passwordError}
+                error={passwordRepeatError}
                 type="password"
               />
               <div className="text-right">
                 <ButtonWithProgress
                   className="btn btn-primary d-inline-flex"
-                  onClick={onClickSave}
-                  disabled={pendingApiCall}
-                  pendingApiCall={pendingApiCall}
+                  onClick={onClickSavePassword}
+                  disabled={
+                    pendingApiCall ||
+                    pendingApiCallPassword ||
+                    passwordRepeatError !== undefined
+                  }
+                  pendingApiCall={pendingApiCallPassword}
                   text={
                     <>
                       <span className="material-icons">save</span>

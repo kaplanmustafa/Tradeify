@@ -74,7 +74,7 @@ public class Users implements UserDetails{
 	@NotNull
 	@Size(min = 8, max= 255)
 	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", 
-	message = "{tradeify.constraints.email.Pattern.message}")
+	message = "{tradeify.constraints.password.Pattern.message}")
 	private String password;
 	
 	private String keyreg;

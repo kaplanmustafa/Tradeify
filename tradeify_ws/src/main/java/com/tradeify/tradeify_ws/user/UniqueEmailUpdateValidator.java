@@ -19,8 +19,8 @@ public class UniqueEmailUpdateValidator implements ConstraintValidator<UniqueEma
 		if(inDB == null) {
 			return true;
 		}
-		      
-		if(inDB.getPhone() == userUpdateVM.getPhone()) {
+		   
+		if(inDB.getPhone().equals(userUpdateVM.getPhone())) {
 			return true;
 		}
 		

@@ -10,9 +10,9 @@ import javax.validation.Payload;
 
 @Target( {ElementType.TYPE , ElementType.FIELD}) 
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = UniquePhoneUpdateValidator.class)
-public @interface UniquePhoneUpdate {
-	String message() default "{tradeify.constraint.phone.UniquePhone.message}";
+@Constraint(validatedBy = CurrentPasswordControlValidator.class)
+public @interface CurrentPasswordControl {
+	String message() default "{tradeify.constraints.password.Control.message}";
 
 	Class<?>[] groups() default { };
 

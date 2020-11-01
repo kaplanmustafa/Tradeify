@@ -20,12 +20,12 @@ export const loginSuccess = (authState) => {
   };
 };
 
-export const updateSuccess = ({ fullName, image }) => {
+export const updateSuccess = ({ name, surname }) => {
   return {
     type: ACTIONS.UPDATE_SUCCESS,
     payload: {
-      fullName,
-      image,
+      name,
+      surname,
     },
   };
 };

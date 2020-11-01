@@ -41,6 +41,10 @@ export const updateUser = (email, body) => {
   return axios.put(`/api/1.0/users/${email}`, body);
 };
 
+export const updatePassword = (email, body) => {
+  return axios.put(`/api/1.0/users/password/${email}`, body);
+};
+
 export const postHoax = (hoax) => {
   return axios.post("/api/1.0/hoaxes", hoax);
 };
