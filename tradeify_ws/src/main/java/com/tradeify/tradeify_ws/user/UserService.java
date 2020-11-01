@@ -77,7 +77,6 @@ public class UserService {
 	public Users updatePassword(String email, PasswordUpdateVM passwordUpdateVM) {
 		
 		Users inDB = getByEmail(email);
-
 		inDB.setPassword(this.passwordEncoder.encode(passwordUpdateVM.getNewPassword()));
 				
 		return userRepository.save(inDB);

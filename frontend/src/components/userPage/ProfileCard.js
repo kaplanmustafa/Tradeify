@@ -168,7 +168,6 @@ const ProfileCard = (props) => {
       const response = await updatePassword(email, body);
       setInEditMode(false);
       alertify.success(t("Update Successful"));
-      //redux şifre güncellenecek
     } catch (error) {
       setValidationErrors(error.response.data.validationErrors);
     }

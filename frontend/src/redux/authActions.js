@@ -20,10 +20,11 @@ export const loginSuccess = (authState) => {
   };
 };
 
-export const updateSuccess = ({ name, surname }) => {
+export const updateSuccess = ({ email, name, surname }) => {
   return {
     type: ACTIONS.UPDATE_SUCCESS,
     payload: {
+      email,
       name,
       surname,
     },
@@ -33,10 +34,12 @@ export const updateSuccess = ({ name, surname }) => {
 export const loginHandler = (credentials) => {
   return async function (dispatch) {
     const response = await login(credentials);
+    const userInfo = { ...response.data.user };
 
     const authState = {
-      ...response.data.user,
-      password: credentials.password,
+      email: userInfo.email,
+      name: userInfo.name,
+      surname: userInfo.surname,
       token: response.data.token,
     };
 
