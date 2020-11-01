@@ -3,9 +3,10 @@ import * as ACTIONS from "./Constants";
 const defaultState = {
   isLoggedIn: false,
   email: undefined,
-  fullName: undefined,
-  image: undefined,
-  password: undefined,
+  name: undefined,
+  surname: undefined,
+  token: undefined,
+  id: undefined,
 };
 
 const authReducer = (state = { ...defaultState }, action) => {

@@ -28,8 +28,9 @@ const ProfileCard = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { email: loggedInEmail } = useSelector((store) => ({
+  const { email: loggedInEmail, id: loggedInId } = useSelector((store) => ({
     email: store.email,
+    id: store.id,
   }));
 
   useEffect(() => {
@@ -138,6 +139,7 @@ const ProfileCard = (props) => {
 
   const onClickSave = async () => {
     const body = {
+      id: loggedInId,
       email: updatedEmail,
       name: updatedName,
       surname: updatedSurname,
@@ -150,8 +152,13 @@ const ProfileCard = (props) => {
       const response = await updateUser(email, body);
       setInEditMode(false);
       setUser(response.data);
-      dispatch(updateSuccess(response.data));
+
       alertify.success(t("Update Successful"));
+      if (loggedInEmail !== response.data.email) {
+        alertify.success(t("Please verify your email address"));
+      }
+
+      dispatch(updateSuccess(response.data));
     } catch (error) {
       setValidationErrors(error.response.data.validationErrors);
     }

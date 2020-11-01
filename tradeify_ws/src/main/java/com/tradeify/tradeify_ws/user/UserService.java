@@ -70,6 +70,14 @@ public class UserService {
 		inDB.setBirthDate(updatedUser.getBirthDate());
 		inDB.setGender(updatedUser.getGender());
 		inDB.setPhone(updatedUser.getPhone());
+		
+		if(!email.equals(updatedUser.getEmail())) {
+			String uuid = UUID.randomUUID().toString();	
+			inDB.setKeyreg(uuid);
+			inDB.setActive(false);
+			
+			mailService.sendMail(inDB, uuid);
+		}
 				
 		return userRepository.save(inDB);
 	}

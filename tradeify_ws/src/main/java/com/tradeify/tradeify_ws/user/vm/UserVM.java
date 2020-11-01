@@ -8,6 +8,8 @@ import lombok.Data;
 
 @Data
 public class UserVM {
+	
+	private long id;
 
 	private String email;
 	
@@ -22,6 +24,7 @@ public class UserVM {
 	private Date birthDate;
 		
 	public UserVM(Users user) {
+		this.setId(user.getId());
 		this.setEmail(user.getEmail());
 		this.setName(user.getName());
 		this.setSurname(user.getSurname());

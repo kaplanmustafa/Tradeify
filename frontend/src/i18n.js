@@ -52,6 +52,7 @@ i18n.use(initReactI18next).init({
         "Are you sure to delete your account?":
           "Are you sure to delete your account?",
         "Account Deletion Successful": "Account Deletion Successful",
+        "Please verify your email address": "Please verify your email address",
       },
     },
     tr: {
@@ -104,6 +105,8 @@ i18n.use(initReactI18next).init({
         "Are you sure to delete your account?":
           "Hesabınızı silmek istediğinizden emin misiniz?",
         "Account Deletion Successful": "Hesap Silme Başarılı",
+        "Please verify your email address":
+          "Lütfen e-posta adresinizi doğrulayın",
       },
     },
   },

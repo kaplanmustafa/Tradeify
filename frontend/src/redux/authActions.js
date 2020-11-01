@@ -37,6 +37,7 @@ export const loginHandler = (credentials) => {
     const userInfo = { ...response.data.user };
 
     const authState = {
+      id: userInfo.id,
       email: userInfo.email,
       name: userInfo.name,
       surname: userInfo.surname,

@@ -20,7 +20,7 @@ public class UniqueEmailUpdateValidator implements ConstraintValidator<UniqueEma
 			return true;
 		}
 		   
-		if(inDB.getPhone().equals(userUpdateVM.getPhone())) {
+		if(inDB.getId() == userUpdateVM.getId()) {
 			return true;
 		}
 		

@@ -22,6 +22,8 @@ import lombok.Data;
 @UniquePhoneUpdate
 public class UserUpdateVM {
 	
+	private long id;
+	
 	@NotNull(message = "{tradeify.constraints.email.NotNull.message}")
 	@Size(min = 1, max= 255)
 	@Email(message = "{tradeify.constraint.email.Valid.message}")

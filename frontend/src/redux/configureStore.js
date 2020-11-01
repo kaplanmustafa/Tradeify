@@ -12,9 +12,10 @@ const getStateFromStorage = () => {
   let stateInLocalStorage = {
     isLoggedIn: false,
     email: undefined,
-    fullName: undefined,
-    image: undefined,
-    password: undefined,
+    name: undefined,
+    surname: undefined,
+    token: undefined,
+    id: undefined,
   };
 
   if (tradeifyAuth) {

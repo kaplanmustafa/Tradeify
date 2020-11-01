@@ -12,6 +12,8 @@ import lombok.Data;
 @CurrentPasswordControl
 public class PasswordUpdateVM {
 	
+	private long id;
+	
 	private String email;
 	
 	@NotNull
