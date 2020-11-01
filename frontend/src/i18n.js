@@ -48,6 +48,7 @@ i18n.use(initReactI18next).init({
         "New Password": "New Password",
         "New Password Repeat": "New Password Repeat",
         "Delete My Account": "Delete My Account",
+        "Update Successful": "Update Successful",
       },
     },
     tr: {
@@ -96,6 +97,7 @@ i18n.use(initReactI18next).init({
         "New Password": "Yeni Şifre",
         "New Password Repeat": "Yeni Şifre Tekrar",
         "Delete My Account": "Hesabımı Sil",
+        "Update Successful": "Güncelleme Başarılı",
       },
     },
   },

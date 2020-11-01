@@ -7,6 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 import "./i18n";
 import { Provider } from "react-redux";
 import configureStore from "./redux/configureStore";
+import "alertifyjs/build/css/alertify.min.css";
 
 const store = configureStore();
 

@@ -8,6 +8,7 @@ import ButtonWithProgress from "../toolbox/ButtonWithProgress";
 import { logoutSuccess, updateSuccess } from "../../redux/authActions";
 import Modal from "../toolbox/Modal";
 import { useHistory } from "react-router-dom";
+import alertify from "alertifyjs";
 
 const ProfileCard = (props) => {
   const [inEditMode, setInEditMode] = useState(false);
@@ -150,6 +151,7 @@ const ProfileCard = (props) => {
       setInEditMode(false);
       setUser(response.data);
       dispatch(updateSuccess(response.data));
+      alertify.success(t("Update Successful"));
     } catch (error) {
       setValidationErrors(error.response.data.validationErrors);
     }
@@ -165,6 +167,7 @@ const ProfileCard = (props) => {
     try {
       const response = await updatePassword(email, body);
       setInEditMode(false);
+      alertify.success(t("Update Successful"));
       //redux şifre güncellenecek
     } catch (error) {
       setValidationErrors(error.response.data.validationErrors);
@@ -358,7 +361,9 @@ const ProfileCard = (props) => {
                   disabled={
                     pendingApiCall ||
                     pendingApiCallPassword ||
-                    passwordRepeatError !== undefined
+                    passwordRepeatError !== undefined ||
+                    updatedCurrentPassword === undefined ||
+                    updatedCurrentPassword === ""
                   }
                   pendingApiCall={pendingApiCallPassword}
                   text={
