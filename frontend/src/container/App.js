@@ -13,8 +13,9 @@ import EmailValidationPage from "../pages/EmailValidationPage";
 import TopBar from "../components/common/TopBar";
 import UserPage from "../pages/UserPage";
 import Footer from "../components/common/Footer";
+import NotFoundPage from "../pages/NotFoundPage";
 
-const App = () => {
+const App = (props) => {
   const { isLoggedIn } = useSelector((store) => ({
     isLoggedIn: store.isLoggedIn,
   }));
@@ -28,8 +29,9 @@ const App = () => {
           {!isLoggedIn && <Route path="/login" component={LoginPage} />}
           {!isLoggedIn && <Route path="/signup" component={UserSignupPage} />}
           <Route path="/reg/:keyreg" component={EmailValidationPage} />
+          <Route exact path="/error" component={NotFoundPage} />
           {isLoggedIn && <Route path="/myprofile" component={UserPage} />}
-          <Redirect to="/" />
+          <Redirect to="/error" />
         </Switch>
         <Footer />
       </Router>

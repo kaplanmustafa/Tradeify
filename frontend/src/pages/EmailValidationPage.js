@@ -13,7 +13,7 @@ const EmailValidationPage = (props) => {
       try {
         const response = await verifyEmail(keyreg);
       } catch (error) {
-        push("/");
+        push("/error");
       }
     };
 

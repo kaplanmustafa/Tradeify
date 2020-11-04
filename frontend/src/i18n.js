@@ -53,6 +53,9 @@ i18n.use(initReactI18next).init({
           "Are you sure to delete your account?",
         "Account Deletion Successful": "Account Deletion Successful",
         "Please verify your email address": "Please verify your email address",
+        "We do not have such a page but unique opportunities are here!":
+          "We do not have such a page but unique opportunities are here!",
+        "Go to Homepage": "Go to Homepage",
       },
     },
     tr: {
@@ -107,6 +110,9 @@ i18n.use(initReactI18next).init({
         "Account Deletion Successful": "Hesap Silme Başarılı",
         "Please verify your email address":
           "Lütfen e-posta adresinizi doğrulayın",
+        "We do not have such a page but unique opportunities are here!":
+          "Böyle bir sayfamız yok ama benzersiz fırsatlar burada!",
+        "Go to Homepage": "Anasayfaya Git",
       },
     },
   },
