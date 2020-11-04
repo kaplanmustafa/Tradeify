@@ -1,28 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { ListGroup, ListGroupItem } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 
-const UserMenu = () => {
+const UserMenu = (props) => {
   const [t] = useTranslation();
+  const { categories, currentCategory, onClickCategory } = props;
 
   return (
     <div className="container">
-      <div className="list-group">
-        <a href="#" className="list-group-item list-group-item-action active">
-          {t("My User Information")}
-        </a>
-        <a href="#" className="list-group-item list-group-item-action">
-          Dapibus ac facilisis in
-        </a>
-        <a href="#" className="list-group-item list-group-item-action">
-          Morbi leo risus
-        </a>
-        <a href="#" className="list-group-item list-group-item-action">
-          Porta ac consectetur ac
-        </a>
-        <a href="#" className="list-group-item list-group-item-action">
-          Vestibulum at eros
-        </a>
-      </div>
+      <ListGroup>
+        {categories.map((category) => (
+          <ListGroupItem
+            className=""
+            tag="button"
+            action
+            active={category.categoryName === currentCategory}
+            onClick={() => onClickCategory(category)}
+            key={category.id}
+          >
+            {t(`${category.categoryName}`)}
+          </ListGroupItem>
+        ))}
+      </ListGroup>
     </div>
   );
 };

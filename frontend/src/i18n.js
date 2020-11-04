@@ -56,6 +56,8 @@ i18n.use(initReactI18next).init({
         "We do not have such a page but unique opportunities are here!":
           "We do not have such a page but unique opportunities are here!",
         "Go to Homepage": "Go to Homepage",
+        "My Orders": "My Orders",
+        "My Address Information": "My Address Information",
       },
     },
     tr: {
@@ -113,6 +115,8 @@ i18n.use(initReactI18next).init({
         "We do not have such a page but unique opportunities are here!":
           "Böyle bir sayfamız yok ama benzersiz fırsatlar burada!",
         "Go to Homepage": "Anasayfaya Git",
+        "My Orders": "Siparişlerim",
+        "My Address Information": "Adres Bilgilerim",
       },
     },
   },

@@ -12,7 +12,7 @@ const ImageSlider = () => {
   };
 
   return (
-    <div className="container mt-5 mb-5 w-75">
+    <div className="container mt-3 mb-5 w-75">
       <Carousel activeIndex={index} onSelect={handleSelect}>
         <Carousel.Item>
           <img className="d-block w-100" src={first} alt="First slide" />
