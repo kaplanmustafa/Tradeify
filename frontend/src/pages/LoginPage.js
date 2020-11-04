@@ -25,14 +25,14 @@ const LoginPage = (props) => {
       password,
     };
 
-    // const { history } = props;
-    // const { push } = history;
+    const { history } = props;
+    const { push } = history;
 
     setError(undefined);
 
     try {
       await dispatch(loginHandler(creds));
-      //push("/");
+      push("/");
     } catch (apiError) {
       let errorMessage;
 

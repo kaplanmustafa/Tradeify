@@ -3,14 +3,18 @@ import { useTranslation } from "react-i18next";
 import { useParams, Link } from "react-router-dom";
 import { verifyEmail } from "../api/apiCalls";
 
-const EmailValidationPage = () => {
+const EmailValidationPage = (props) => {
   const { keyreg } = useParams();
+  const { history } = props;
+  const { push } = history;
 
   useEffect(() => {
-    const loadUser = () => {
+    const loadUser = async () => {
       try {
-        verifyEmail(keyreg);
-      } catch (error) {}
+        const response = await verifyEmail(keyreg);
+      } catch (error) {
+        push("/");
+      }
     };
 
     loadUser();

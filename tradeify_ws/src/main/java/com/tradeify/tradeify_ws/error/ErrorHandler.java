@@ -20,7 +20,6 @@ public class ErrorHandler implements ErrorController{
 	@Autowired
 	private ErrorAttributes errorAttributes;
 	
-	@SuppressWarnings("unused")
 	@RequestMapping("/error")
 	ApiError handleError(WebRequest webRequest) {
 		Map<String, Object> attributes = this.errorAttributes.getErrorAttributes(webRequest, true);
@@ -53,6 +52,8 @@ public class ErrorHandler implements ErrorController{
 					errorHeader = "password";
 				else if(objectError.getDefaultMessage().contains("email"))
 					errorHeader = "email";
+				else if(objectError.getDefaultMessage().contains("phone"))
+					errorHeader = "phone";
 				validationErrors.put(errorHeader, objectError.getDefaultMessage());
 			}
 			

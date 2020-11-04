@@ -36,8 +36,13 @@ public class UserService {
 
 	public void verifyEmail(String keyreg) {
 		Users inDB = getByKeyreg(keyreg);
-		inDB.setActive(true);
-		userRepository.save(inDB);
+		
+		if(inDB != null && !inDB.isActive()) {
+			inDB.setActive(true);
+			userRepository.save(inDB);
+		}
+			
+		throw new NotFoundException();
 	}
 	
 	public Users getByKeyreg(String keyreg) {
