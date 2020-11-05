@@ -31,7 +31,7 @@ const App = (props) => {
           <Route path="/reg/:keyreg" component={EmailValidationPage} />
           <Route exact path="/error" component={NotFoundPage} />
           {isLoggedIn && <Route path="/myprofile" component={UserPage} />}
-          <Redirect to="/error" />
+          <Redirect to="/" />
         </Switch>
         <Footer />
       </Router>

@@ -172,7 +172,7 @@ const ProfileCard = (props) => {
     };
 
     try {
-      const response = await updatePassword(email, body);
+      await updatePassword(email, body);
       setInEditMode(false);
       alertify.success(t("Update Successful"));
     } catch (error) {

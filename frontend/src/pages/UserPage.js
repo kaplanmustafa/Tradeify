@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import Spinner from "../components/toolbox/Spinner";
 import UserMenu from "../components/userPage/UserMenu";
 import UserOrders from "../components/userPage/UserOrders";
+import UserAddress from "../components/userPage/UserAddress";
 
 const UserPage = () => {
   const { email } = useSelector((store) => ({
@@ -64,6 +65,8 @@ const UserPage = () => {
       return <ProfileCard user={user} />;
     } else if (currentCategory === "My Orders") {
       return <UserOrders />;
+    } else if (currentCategory === "My Address Information") {
+      return <UserAddress currentAddress={user.address} />;
     }
   };
 

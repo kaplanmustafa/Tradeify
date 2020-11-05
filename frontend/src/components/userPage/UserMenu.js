@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 

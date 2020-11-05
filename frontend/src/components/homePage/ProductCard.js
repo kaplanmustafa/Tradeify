@@ -1,10 +1,10 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+//import { useTranslation } from "react-i18next";
 import ProductCardItem from "./ProductCardItem";
 
 const ProductCard = (props) => {
-  const { category } = props;
-  const { t } = useTranslation();
+  // const { category } = props;
+  // const { t } = useTranslation();
 
   return (
     <div className="container mt-5 mb-5 w-75">

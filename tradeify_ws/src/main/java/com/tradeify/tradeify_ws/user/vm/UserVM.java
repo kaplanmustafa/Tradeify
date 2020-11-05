@@ -22,6 +22,8 @@ public class UserVM {
 	private String gender;
 	
 	private Date birthDate;
+	
+	private String address;
 		
 	public UserVM(Users user) {
 		this.setId(user.getId());
@@ -31,5 +33,6 @@ public class UserVM {
 		this.setPhone(user.getPhone());
 		this.setGender(user.getGender());
 		this.setBirthDate(user.getBirthDate());
+		this.setAddress(user.getAddress());
 	}
 }

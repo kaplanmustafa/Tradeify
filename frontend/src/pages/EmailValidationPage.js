@@ -9,16 +9,16 @@ const EmailValidationPage = (props) => {
   const { push } = history;
 
   useEffect(() => {
-    const loadUser = async () => {
+    const loadUser = () => {
       try {
-        const response = await verifyEmail(keyreg);
+        verifyEmail(keyreg);
       } catch (error) {
         push("/error");
       }
     };
 
     loadUser();
-  }, [keyreg]);
+  }, [keyreg, push]);
 
   const { t } = useTranslation();
 

@@ -80,7 +80,7 @@ const Footer = () => {
             <div className="col-md-7 col-lg-8">
               <p className="text-center text-md-left">
                 © 2020 Copyright:
-                <a href="#">
+                <a href="##">
                   <strong> Tradeify.com</strong>
                 </a>
               </p>

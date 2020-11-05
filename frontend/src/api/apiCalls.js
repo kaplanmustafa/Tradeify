@@ -45,43 +45,8 @@ export const updatePassword = (email, body) => {
   return axios.put(`/api/1.0/users/password/${email}`, body);
 };
 
-export const postHoax = (hoax) => {
-  return axios.post("/api/1.0/hoaxes", hoax);
-};
-
-export const getHoaxes = (username, page = 0) => {
-  const path = username
-    ? `/api/1.0/users/${username}/hoaxes?page=`
-    : "/api/1.0/hoaxes?page=";
-  return axios.get(path + page);
-};
-
-export const getOldHoaxes = (id, username) => {
-  const path = username
-    ? `/api/1.0/users/${username}/hoaxes/`
-    : "/api/1.0/hoaxes/";
-  return axios.get(path + id);
-};
-
-export const getNewHoaxCount = (id, username) => {
-  const path = username
-    ? `/api/1.0/users/${username}/hoaxes/${id}?count=true`
-    : `/api/1.0/hoaxes/${id}?count=true`;
-  return axios.get(path);
-};
-export const getNewHoaxes = (id, username) => {
-  const path = username
-    ? `/api/1.0/users/${username}/hoaxes/${id}?direction=after`
-    : `/api/1.0/hoaxes/${id}?direction=after`;
-  return axios.get(path);
-};
-
-export const postHoaxAttachment = (attachment) => {
-  return axios.post("/api/1.0/hoax-attachments", attachment);
-};
-
-export const deleteHoax = (id) => {
-  return axios.delete(`/api/1.0/hoaxes/${id}`);
+export const updateAddress = (email, body) => {
+  return axios.put(`/api/1.0/users/address/${email}`, body);
 };
 
 export const deleteUser = (email) => {

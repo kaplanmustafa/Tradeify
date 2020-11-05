@@ -77,6 +77,8 @@ public class Users implements UserDetails{
 	message = "{tradeify.constraints.password.Pattern.message}")
 	private String password;
 	
+	private String address;
+	
 	private String keyreg;
 	
 	private boolean isActive;

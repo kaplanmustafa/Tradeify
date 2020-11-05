@@ -17,7 +17,11 @@ const NotFoundPage = () => {
         </Link>
       </div>
       <div className="col-8">
-        <img className="w-100 vh-100" src={errorImage} />
+        <img
+          className="w-100 vh-100"
+          src={errorImage}
+          alt="Tradeify 404 Not Found"
+        />
       </div>
     </div>
   );

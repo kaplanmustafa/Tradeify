@@ -46,4 +46,4 @@ spring:
   profiles: dev
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
