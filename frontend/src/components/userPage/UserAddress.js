@@ -11,9 +11,8 @@ const UserAddress = (props) => {
   const [updatedAddress, setUpdatedAddress] = useState(props.currentAddress);
   const [validationErrors, setValidationErrors] = useState({});
 
-  const { email: loggedInEmail, id: loggedInId } = useSelector((store) => ({
+  const { email: loggedInEmail } = useSelector((store) => ({
     email: store.email,
-    id: store.id,
   }));
 
   useEffect(() => {
@@ -27,17 +26,13 @@ const UserAddress = (props) => {
 
   const onClickSave = async () => {
     const body = {
-      id: loggedInId,
-      email: loggedInEmail,
-      address: updatedAddress,
+      updatedAddress,
     };
 
     try {
       await updateAddress(loggedInEmail, body);
       alertify.success(t("Update Successful"));
-    } catch (error) {
-      setValidationErrors(error.response.data.validationErrors);
-    }
+    } catch (error) {}
   };
 
   const { t } = useTranslation();

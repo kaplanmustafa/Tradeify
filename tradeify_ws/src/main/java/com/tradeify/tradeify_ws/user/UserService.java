@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.tradeify.tradeify_ws.error.NotFoundException;
 import com.tradeify.tradeify_ws.shared.MailService;
+import com.tradeify.tradeify_ws.user.vm.AddressUpdateVM;
 import com.tradeify.tradeify_ws.user.vm.PasswordUpdateVM;
 import com.tradeify.tradeify_ws.user.vm.UserUpdateVM;
 
@@ -24,8 +25,8 @@ public class UserService {
 	}
 	
 	public void save(Users user) {
-		//String uuid = UUID.randomUUID().toString();	
-		//user.setKeyreg(uuid);
+		String uuid = UUID.randomUUID().toString();	
+		user.setKeyreg(uuid);
 		//user.setActive(false);
 		user.setPassword(this.passwordEncoder.encode(user.getPassword()));
 		
@@ -93,6 +94,14 @@ public class UserService {
 		inDB.setPassword(this.passwordEncoder.encode(passwordUpdateVM.getNewPassword()));
 				
 		return userRepository.save(inDB);
+	}
+	
+	public void updateAddress(String email, AddressUpdateVM addressUpdateVM) {
+		
+		Users inDB = getByEmail(email);
+		inDB.setAddress(addressUpdateVM.getUpdatedAddress());
+				
+		userRepository.save(inDB);
 	}
 	
 	public void deleteUser(String email) {

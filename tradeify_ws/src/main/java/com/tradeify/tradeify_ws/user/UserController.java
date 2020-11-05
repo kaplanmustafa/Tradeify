@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tradeify.tradeify_ws.shared.GenericResponse;
 import com.tradeify.tradeify_ws.shared.MailService;
+import com.tradeify.tradeify_ws.user.vm.AddressUpdateVM;
 import com.tradeify.tradeify_ws.user.vm.PasswordUpdateVM;
 import com.tradeify.tradeify_ws.user.vm.UserUpdateVM;
 import com.tradeify.tradeify_ws.user.vm.UserVM;
@@ -60,6 +61,13 @@ public class UserController {
 	UserVM updatePassword(@Valid @RequestBody PasswordUpdateVM updatedPassword, @PathVariable String email) {
 		Users user = userService.updatePassword(email, updatedPassword);
 		return new UserVM(user);
+	}
+	
+	@PutMapping("/users/address/{email}")
+	@PreAuthorize("#email == principal.email") 
+	public GenericResponse updateAddress(@RequestBody AddressUpdateVM addressUpdateVM, @PathVariable String email) {
+		userService.updateAddress(email, addressUpdateVM);
+		return new GenericResponse("Adress changed");
 	}
 	
 	@DeleteMapping("/users/{email}")
