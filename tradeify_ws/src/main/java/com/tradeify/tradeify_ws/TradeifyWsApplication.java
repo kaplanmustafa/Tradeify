@@ -1,15 +1,7 @@
 package com.tradeify.tradeify_ws;
 
-import java.util.Date;
-
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Profile;
-
-import com.tradeify.tradeify_ws.user.UserService;
-import com.tradeify.tradeify_ws.user.Users;
 
 
 @SpringBootApplication
@@ -18,7 +10,7 @@ public class TradeifyWsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TradeifyWsApplication.class, args);
 	}
-	
+	/*
 	@Bean
 	@Profile("dev") 
 	CommandLineRunner createInitialUsers(UserService userService) {
@@ -46,6 +38,6 @@ public class TradeifyWsApplication {
 				}
 			}
 		};
-	}
+	}*/
 
 }

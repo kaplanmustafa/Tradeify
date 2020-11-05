@@ -58,6 +58,10 @@ i18n.use(initReactI18next).init({
         "My Orders": "My Orders",
         "My Address Information": "My Address Information",
         Address: "Address",
+        Delete: "Delete",
+        Add: "Add",
+        "There is no registered address You can add a new address":
+          "There is no registered address. You can add a new address.",
       },
     },
     tr: {
@@ -118,6 +122,10 @@ i18n.use(initReactI18next).init({
         "My Orders": "Siparişlerim",
         "My Address Information": "Adres Bilgilerim",
         Address: "Adres",
+        Delete: "Sil",
+        Add: "Ekle",
+        "There is no registered address You can add a new address":
+          "Kayıtlı adres yok. Yeni bir adres ekleyebilirsiniz.",
       },
     },
   },

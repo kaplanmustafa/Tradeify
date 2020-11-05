@@ -96,13 +96,13 @@ public class UserService {
 		return userRepository.save(inDB);
 	}
 	
-	public void updateAddress(String email, AddressUpdateVM addressUpdateVM) {
+	/*public void updateAddress(String email, AddressUpdateVM addressUpdateVM) {
 		
 		Users inDB = getByEmail(email);
 		inDB.setAddress(addressUpdateVM.getUpdatedAddress());
 				
 		userRepository.save(inDB);
-	}
+	}*/
 	
 	public void deleteUser(String email) {
 		Users inDB = userRepository.findByEmail(email);

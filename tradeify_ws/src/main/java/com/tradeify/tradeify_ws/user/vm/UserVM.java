@@ -23,7 +23,11 @@ public class UserVM {
 	
 	private Date birthDate;
 	
-	private String address;
+	private String address1;
+	
+	private String address2;
+	
+	private String address3;
 		
 	public UserVM(Users user) {
 		this.setId(user.getId());
@@ -33,6 +37,8 @@ public class UserVM {
 		this.setPhone(user.getPhone());
 		this.setGender(user.getGender());
 		this.setBirthDate(user.getBirthDate());
-		this.setAddress(user.getAddress());
+		this.setAddress1(user.getAddress1());
+		this.setAddress2(user.getAddress2());
+		this.setAddress3(user.getAddress3());
 	}
 }
