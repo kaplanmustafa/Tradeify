@@ -63,12 +63,12 @@ public class UserController {
 		return new UserVM(user);
 	}
 	
-	/*@PutMapping("/users/address/{email}")
+	@PutMapping("/users/address/{email}")
 	@PreAuthorize("#email == principal.email") 
-	public GenericResponse updateAddress(@RequestBody AddressUpdateVM addressUpdateVM, @PathVariable String email) {
-		userService.updateAddress(email, addressUpdateVM);
-		return new GenericResponse("Adress changed");
-	}*/
+	UserVM updateAddress(@RequestBody AddressUpdateVM addressUpdateVM, @PathVariable String email) {
+		Users user = userService.updateAddress(email, addressUpdateVM);
+		return new UserVM(user);
+	}
 	
 	@DeleteMapping("/users/{email}")
 	@PreAuthorize("#email == principal.email")

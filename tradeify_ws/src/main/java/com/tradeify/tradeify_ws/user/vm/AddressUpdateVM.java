@@ -8,5 +8,9 @@ import lombok.Data;
 @CurrentPasswordControl
 public class AddressUpdateVM {
 	
-	private String updatedAddress;
+	private String address1;
+	
+	private String address2;
+	
+	private String address3;
 }
