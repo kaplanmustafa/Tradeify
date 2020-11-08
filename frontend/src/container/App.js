@@ -14,6 +14,7 @@ import TopBar from "../components/common/TopBar";
 import UserPage from "../pages/UserPage";
 import Footer from "../components/common/Footer";
 import NotFoundPage from "../pages/NotFoundPage";
+import AdminPage from "../pages/AdminPage";
 
 const App = (props) => {
   const { isLoggedIn } = useSelector((store) => ({
@@ -31,6 +32,7 @@ const App = (props) => {
           <Route path="/reg/:keyreg" component={EmailValidationPage} />
           <Route exact path="/error" component={NotFoundPage} />
           {isLoggedIn && <Route path="/myprofile" component={UserPage} />}
+          {isLoggedIn && <Route exact path="/admin" component={AdminPage} />}
           <Redirect to="/" />
         </Switch>
         <Footer />

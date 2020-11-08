@@ -62,6 +62,10 @@ i18n.use(initReactI18next).init({
         Add: "Add",
         "There is no registered address You can add a new address":
           "There is no registered address. You can add a new address.",
+        "Add Product": "Add Product",
+        "Edit Product": "Edit Product",
+        Users: "Users",
+        Reviews: "Reviews",
       },
     },
     tr: {
@@ -126,6 +130,10 @@ i18n.use(initReactI18next).init({
         Add: "Ekle",
         "There is no registered address You can add a new address":
           "Kayıtlı adres yok. Yeni bir adres ekleyebilirsiniz.",
+        "Add Product": "Ürün Ekle",
+        "Edit Product": "Ürün Düzenle",
+        Users: "Kullanıcılar",
+        Reviews: "Yorumlar",
       },
     },
   },

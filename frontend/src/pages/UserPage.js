@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useApiProgress } from "../shared/ApiProgress";
 import { useSelector } from "react-redux";
 import Spinner from "../components/toolbox/Spinner";
-import UserMenu from "../components/userPage/UserMenu";
+import UserMenu from "../components/toolbox/ComponentList";
 import UserOrders from "../components/userPage/UserOrders";
 import UserAddress from "../components/userPage/UserAddress";
 
@@ -53,8 +53,6 @@ const UserPage = () => {
 
     loadUser();
   }, [email]);
-
-  useEffect(() => {}, [currentCategory]);
 
   const onChangeCategory = (category) => {
     setCurrentCategory(category.categoryName);
