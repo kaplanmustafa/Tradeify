@@ -41,9 +41,11 @@ spring:
 ---
 spring:
   profiles: production
+tradeify:  upload-path: storage-production
 ---
 spring:
   profiles: dev
   jpa:
     hibernate:
       ddl-auto: update
+tradeify:  upload-path: storage-dev
