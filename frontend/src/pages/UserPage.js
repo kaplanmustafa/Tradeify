@@ -14,7 +14,7 @@ const UserPage = () => {
     email: store.email,
   }));
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
   const [notFound, setNotFound] = useState(false);
 
   const [currentCategory, setCurrentCategory] = useState("My User Information");

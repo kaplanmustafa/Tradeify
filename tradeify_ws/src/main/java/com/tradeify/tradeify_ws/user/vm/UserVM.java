@@ -28,6 +28,8 @@ public class UserVM {
 	private String address2;
 	
 	private String address3;
+	
+	
 		
 	public UserVM(Users user) {
 		this.setId(user.getId());

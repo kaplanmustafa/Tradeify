@@ -52,3 +52,7 @@ export const updateAddress = (email, updatedAddress) => {
 export const deleteUser = (email) => {
   return axios.delete(`/api/1.0/users/${email}`);
 };
+
+export const getCategory = () => {
+  return axios.get("/api/1.0/categories");
+};
