@@ -56,3 +56,7 @@ export const deleteUser = (email) => {
 export const getCategory = () => {
   return axios.get("/api/1.0/categories");
 };
+
+export const getMiddleCategory = (id) => {
+  return axios.get(`/api/1.0/categories/middle/${id}`);
+};

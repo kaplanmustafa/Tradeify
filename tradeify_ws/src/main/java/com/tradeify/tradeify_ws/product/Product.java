@@ -7,12 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.tradeify.tradeify_ws.category.GeneralCategory;
 import com.tradeify.tradeify_ws.file.FileAttachment;
 
 import lombok.Data;
@@ -29,9 +27,9 @@ public class Product {
 	@Size(min = 1, max= 255)
 	private String productName;
 
-	@NotNull
+	/*@NotNull
 	@ManyToOne
-	private GeneralCategory category;
+	private GeneralCategory category;*/
 	
 	@NotNull
 	@Size(min = 1, max= 255)
