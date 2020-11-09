@@ -16,7 +16,7 @@ import Footer from "../components/common/Footer";
 import NotFoundPage from "../pages/NotFoundPage";
 import AdminPage from "../pages/AdminPage";
 
-const App = (props) => {
+const App = () => {
   const { isLoggedIn } = useSelector((store) => ({
     isLoggedIn: store.isLoggedIn,
   }));

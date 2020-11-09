@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class CategoryService {
+public class GeneralCategoryService {
 	
 	@Autowired
-	CategoryRepository categoryRepository;
+	GeneralCategoryRepository categoryRepository;
 	
-	public List<Category> getCategories() {
+	public List<GeneralCategory> getCategories() {
 		
 		return categoryRepository.findAll();
 	}	

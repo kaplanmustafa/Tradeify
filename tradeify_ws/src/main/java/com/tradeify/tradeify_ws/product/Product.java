@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.tradeify.tradeify_ws.category.Category;
+import com.tradeify.tradeify_ws.category.GeneralCategory;
 import com.tradeify.tradeify_ws.file.FileAttachment;
 
 import lombok.Data;
@@ -31,7 +31,7 @@ public class Product {
 
 	@NotNull
 	@ManyToOne
-	private Category category;
+	private GeneralCategory category;
 	
 	@NotNull
 	@Size(min = 1, max= 255)

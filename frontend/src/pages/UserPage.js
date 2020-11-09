@@ -14,7 +14,7 @@ const UserPage = () => {
     email: store.email,
   }));
 
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
   const [notFound, setNotFound] = useState(false);
 
   const [currentCategory, setCurrentCategory] = useState("My User Information");
@@ -44,6 +44,7 @@ const UserPage = () => {
   useEffect(() => {
     const loadUser = async () => {
       try {
+        console.log(email);
         const response = await getUser(email);
         setUser(response.data);
       } catch (error) {

@@ -68,7 +68,7 @@ i18n.use(initReactI18next).init({
         Reviews: "Reviews",
         "Add New Product": "Add New Product",
         "Product Name": "Product Name",
-        Category: "Category",
+        "General Category": "General Category",
       },
     },
     tr: {
@@ -139,7 +139,7 @@ i18n.use(initReactI18next).init({
         Reviews: "Yorumlar",
         "Add New Product": "Yeni Ürün Ekle",
         "Product Name": "Ürün Adı",
-        Category: "Kategori",
+        "General Category": "Genel Kategori",
       },
     },
   },

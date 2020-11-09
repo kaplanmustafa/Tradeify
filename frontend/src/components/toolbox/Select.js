@@ -8,7 +8,7 @@ const Select = (props) => {
       <label>{label}</label>
       <select className="form-control" onChange={onChangeCategory}>
         {categories.map((category) => (
-          <option key={category.id}>{category.categoryName}</option>
+          <option key={category.id} id={category.id}>{category.categoryName}</option>
         ))}
       </select>
     </div>

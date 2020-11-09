@@ -6,14 +6,14 @@ import { getCategory } from "../../api/apiCalls";
 
 const AddProduct = () => {
   const [productName, setProductName] = useState();
-  const [selectedCategory, setSelectedCategory] = useState("Electronic");
+  const [selectedCategory, setSelectedCategory] = useState(1);
 
   const [categories, setCategories] = useState([]);
 
   const { t } = useTranslation();
 
   const onChangeCategory = (event) => {
-    setSelectedCategory(event.target.value);
+    setSelectedCategory(event.target.options.selectedIndex + 1);
   };
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const AddProduct = () => {
           <div className="container col-6 text-left">
             <form id="new-product">
               <Select
-                label={t("Category")}
+                label={t("General Category")}
                 onChangeCategory={onChangeCategory}
                 categories={categories}
               />

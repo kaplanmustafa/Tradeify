@@ -1,6 +1,6 @@
 package com.tradeify.tradeify_ws.category.vm;
 
-import com.tradeify.tradeify_ws.category.Category;
+import com.tradeify.tradeify_ws.category.GeneralCategory;
 
 import lombok.Data;
 
@@ -11,7 +11,7 @@ public class CategoryVM {
 
 	private String categoryName;
 	
-	public CategoryVM(Category category) {
+	public CategoryVM(GeneralCategory category) {
 		this.setId(category.getId());
 		this.setCategoryName(category.getCategoryName());
 	}
