@@ -25,6 +25,9 @@ public class GeneralCategory {
 	@Size(min = 1, max= 255)
 	private String categoryName;
 	
-	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "middlePrivateId", cascade = CascadeType.REMOVE)
 	private List<MiddleCategory> middleCategories;
+	
+	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
+	private List<SubCategory> subCategories;
 }

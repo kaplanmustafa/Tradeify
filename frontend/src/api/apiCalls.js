@@ -60,3 +60,7 @@ export const getCategory = () => {
 export const getMiddleCategory = (id) => {
   return axios.get(`/api/1.0/categories/middle/${id}`);
 };
+
+export const getSubCategory = (middleId, generalId) => {
+  return axios.get(`/api/1.0/categories/sub/${middleId}/${generalId}`);
+};

@@ -153,6 +153,7 @@ i18n.use(initReactI18next).init({
         "Hobby & Game": "Hobby & Game",
         Movie: "Movie",
         "Music (Media)": "Music (Media)",
+        "Sub Category": "Sub Category",
       },
     },
     tr: {
@@ -307,6 +308,7 @@ i18n.use(initReactI18next).init({
         "Hobby & Game": "Hobi & Oyun",
         Movie: "Film",
         "Music (Media)": "Muzik (Medya)",
+        "Sub Category": "Alt Kategori",
       },
     },
   },
