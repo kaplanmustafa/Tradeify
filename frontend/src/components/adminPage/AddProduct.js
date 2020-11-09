@@ -74,11 +74,13 @@ const AddProduct = () => {
                 onChangeCategory={onChangeMiddleCategory}
                 categories={middleCategories}
               />
-              <Select
-                label={t("Sub Category")}
-                //onChangeCategory={onChangeMiddleCategory}
-                categories={subCategories}
-              />
+              {subCategories.length !== 0 && (
+                <Select
+                  label={t("Sub Category")}
+                  //onChangeCategory={onChangeMiddleCategory}
+                  categories={subCategories}
+                />
+              )}
               <Input
                 label={t("Product Name")}
                 onChange={(event) => {
