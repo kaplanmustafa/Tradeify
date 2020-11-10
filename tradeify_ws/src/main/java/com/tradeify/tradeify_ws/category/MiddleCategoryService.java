@@ -13,6 +13,6 @@ public class MiddleCategoryService {
 	
 	public List<MiddleCategory> getCategories(Long id) {
 		
-		return middleCategoryRepository.findAllByGeneralCategoryId(id);
+		return middleCategoryRepository.findAllByGeneralCategoryIdOrderById(id);
 	}	
 }
