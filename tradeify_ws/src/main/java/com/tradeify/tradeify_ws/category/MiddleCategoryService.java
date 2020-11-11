@@ -15,4 +15,9 @@ public class MiddleCategoryService {
 		
 		return middleCategoryRepository.findAllByGeneralCategoryIdOrderById(id);
 	}	
+	
+	public List<MiddleCategory> getAllCategories() {
+		
+		return middleCategoryRepository.findAll();
+	}	
 }

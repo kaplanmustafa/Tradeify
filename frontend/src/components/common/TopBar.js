@@ -18,7 +18,6 @@ const TopBar = (props) => {
   });
 
   const menuArea = useRef(null);
-
   const [menuVisible, setMenuVisible] = useState(false);
 
   useEffect(() => {
@@ -56,6 +55,14 @@ const TopBar = (props) => {
     </ul>
   );
 
+  const editMenuVisible = () => {
+    if (menuVisible) {
+      setMenuVisible(false);
+    } else {
+      setMenuVisible(true);
+    }
+  };
+
   if (isLoggedIn) {
     let dropDownClass = "dropdown-menu p-0 shadow";
 
@@ -69,7 +76,7 @@ const TopBar = (props) => {
           <div
             className="d-flex"
             style={{ cursor: "pointer" }}
-            onClick={() => setMenuVisible(true)}
+            onClick={editMenuVisible}
           >
             <span className="nav-link dropdown-toggle btn-outline-primary btn">
               {name} {surname}

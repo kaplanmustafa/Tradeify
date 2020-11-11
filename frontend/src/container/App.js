@@ -15,6 +15,7 @@ import UserPage from "../pages/UserPage";
 import Footer from "../components/common/Footer";
 import NotFoundPage from "../pages/NotFoundPage";
 import AdminPage from "../pages/AdminPage";
+import MegaMenu from "../components/common/MegaMenu";
 
 const App = () => {
   const { isLoggedIn } = useSelector((store) => ({
@@ -25,6 +26,7 @@ const App = () => {
     <div>
       <Router>
         <TopBar />
+        <MegaMenu />
         <Switch>
           <Route exact path="/" component={HomePage} />
           {!isLoggedIn && <Route path="/login" component={LoginPage} />}

@@ -44,7 +44,6 @@ const UserPage = () => {
   useEffect(() => {
     const loadUser = async () => {
       try {
-        console.log(email);
         const response = await getUser(email);
         setUser(response.data);
       } catch (error) {

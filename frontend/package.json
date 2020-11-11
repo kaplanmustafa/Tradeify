@@ -15,9 +15,11 @@
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
     "react-i18next": "^11.7.3",
+    "react-multilevel-dropdown": "^1.0.5",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.4",
+    "reactstrap": "^8.7.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "secure-ls": "^1.2.6"
