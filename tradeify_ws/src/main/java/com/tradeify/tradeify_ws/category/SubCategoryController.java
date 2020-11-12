@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tradeify.tradeify_ws.category.vm.CategoryVM;
+import com.tradeify.tradeify_ws.category.vm.SubCategoryVM;
 
 @RestController
 public class SubCategoryController {
@@ -26,6 +27,18 @@ public class SubCategoryController {
 		}
 		
 		return categoryVM;
+	}
+	
+	@GetMapping("/api/1.0/categories/sub")
+	List<SubCategoryVM> getAllCategories() {
+		List<SubCategoryVM> subCategoryVM = new ArrayList<>();
+		
+		List<SubCategory> categories = subCategoryService.getAllCategories();
+		for(SubCategory category: categories) {
+			subCategoryVM.add(new SubCategoryVM(category));
+		}
+		
+		return subCategoryVM;
 	}
 }
 	

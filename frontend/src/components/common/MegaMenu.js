@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Dropdown from "react-multilevel-dropdown";
-import { getCategory, getAllMiddleCategory } from "../../api/apiCalls";
+import {
+  getCategory,
+  getAllMiddleCategory,
+  getAllSubCategory,
+} from "../../api/apiCalls";
+import first from "../../assets/first.jpg";
 
 const MegaMenu = () => {
   const [categories, setCategories] = useState([]);
   const [middleCategories, setMiddleCategories] = useState([]);
+  const [subCategories, setSubCategories] = useState([]);
   const [currentMiddleIndex, setCurrentMiddleIndex] = useState(1);
 
   const { t } = useTranslation();
@@ -24,10 +30,34 @@ const MegaMenu = () => {
     } catch (error) {}
   };
 
+  const loadAllSubCategories = async (id) => {
+    try {
+      const response = await getAllSubCategory();
+      setSubCategories(response.data);
+    } catch (error) {}
+  };
+
   useEffect(() => {
     loadCategories();
     loadAllMiddleCategories();
+    loadAllSubCategories();
   }, []);
+
+  const subCategoryItems = (generalId, middleId) => {
+    console.log(generalId, middleId);
+    return subCategories
+      .filter((sub) => {
+        return (
+          sub.generalCategoryId === generalId &&
+          sub.middleCategoryId === middleId
+        );
+      })
+      .map((category) => (
+        <Dropdown.Item className="btn-outline-primary">
+          {category.categoryName}
+        </Dropdown.Item>
+      ));
+  };
 
   const middleCategoryItems = (index) => {
     return middleCategories
@@ -40,6 +70,18 @@ const MegaMenu = () => {
           key={middle.id + middle.categoryName}
         >
           {t(middle.categoryName)}
+          {subCategories.filter((sub) => {
+            return (
+              sub.generalCategoryId === index &&
+              sub.middleCategoryId === key + 1
+            );
+          }).length !== 0 && (
+            <Dropdown.Submenu
+              position={index === 8 || index === 9 ? "left" : "right"}
+            >
+              {subCategoryItems(index, key + 1)}
+            </Dropdown.Submenu>
+          )}
         </Dropdown.Item>
       ));
   };
@@ -51,10 +93,13 @@ const MegaMenu = () => {
           title={t(category.categoryName)}
           position="right"
           buttonClassName="btn btn-primary m-1"
-          menuClassName="vw-75"
+          menuClassName="w-100 p-0"
           key={category.id + category.categoryName}
         >
           {middleCategoryItems(key + 1)}
+          <Dropdown.Item>
+            <img className="d-block w-100" src={first} alt="First slide" />
+          </Dropdown.Item>
         </Dropdown>
       ))}
     </div>

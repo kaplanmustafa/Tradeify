@@ -18,6 +18,6 @@ public class MiddleCategoryService {
 	
 	public List<MiddleCategory> getAllCategories() {
 		
-		return middleCategoryRepository.findAll();
+		return middleCategoryRepository.findAllByOrderById();
 	}	
 }

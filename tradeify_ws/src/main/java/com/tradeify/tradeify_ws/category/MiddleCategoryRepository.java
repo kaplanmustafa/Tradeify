@@ -8,4 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface MiddleCategoryRepository extends JpaRepository<MiddleCategory, Long>{
 
 	List<MiddleCategory> findAllByGeneralCategoryIdOrderById(Long generalCategoryId);
+	
+	List<MiddleCategory> findAllByOrderById();
 }

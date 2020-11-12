@@ -68,3 +68,7 @@ export const getAllMiddleCategory = () => {
 export const getSubCategory = (middleId, generalId) => {
   return axios.get(`/api/1.0/categories/sub/${middleId}/${generalId}`);
 };
+
+export const getAllSubCategory = () => {
+  return axios.get("/api/1.0/categories/sub");
+};
