@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
 import AddProduct from "../components/adminPage/AddProduct";
 import EditProduct from "../components/adminPage/EditProduct";
 import Users from "../components/adminPage/Users";
@@ -26,8 +25,6 @@ const AdminPage = () => {
       categoryName: "Reviews",
     },
   ];
-
-  const { t } = useTranslation();
 
   const onChangeCategory = (category) => {
     setCurrentCategory(category.categoryName);

@@ -12,7 +12,6 @@ const MegaMenu = () => {
   const [categories, setCategories] = useState([]);
   const [middleCategories, setMiddleCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
-  const [currentMiddleIndex, setCurrentMiddleIndex] = useState(1);
 
   const { t } = useTranslation();
 
@@ -44,7 +43,6 @@ const MegaMenu = () => {
   }, []);
 
   const subCategoryItems = (generalId, middleId) => {
-    console.log(generalId, middleId);
     return subCategories
       .filter((sub) => {
         return (
@@ -53,8 +51,15 @@ const MegaMenu = () => {
         );
       })
       .map((category) => (
-        <Dropdown.Item className="btn-outline-primary">
-          {category.categoryName}
+        <Dropdown.Item
+          className="btn-outline-primary"
+          key={
+            category.categoryName +
+            category.generalCategoryId +
+            category.middleCategoryId
+          }
+        >
+          {t(category.categoryName)}
         </Dropdown.Item>
       ));
   };
