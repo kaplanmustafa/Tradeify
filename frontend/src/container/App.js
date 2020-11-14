@@ -18,8 +18,9 @@ import AdminPage from "../pages/AdminPage";
 import MegaMenu from "../components/common/MegaMenu";
 
 const App = () => {
-  const { isLoggedIn } = useSelector((store) => ({
+  const { isLoggedIn, role } = useSelector((store) => ({
     isLoggedIn: store.isLoggedIn,
+    role: store.role,
   }));
 
   return (
@@ -33,8 +34,12 @@ const App = () => {
           {!isLoggedIn && <Route path="/signup" component={UserSignupPage} />}
           <Route path="/reg/:keyreg" component={EmailValidationPage} />
           <Route exact path="/error" component={NotFoundPage} />
-          {isLoggedIn && <Route path="/myprofile" component={UserPage} />}
-          {isLoggedIn && <Route exact path="/admin" component={AdminPage} />}
+          {isLoggedIn && role === "user" && (
+            <Route path="/myprofile" component={UserPage} />
+          )}
+          {isLoggedIn && role === "admin" && (
+            <Route exact path="/admin" component={AdminPage} />
+          )}
           <Redirect to="/" />
         </Switch>
         <Footer />

@@ -6,6 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.tradeify.tradeify_ws.error.NotFoundException;
+import com.tradeify.tradeify_ws.role.RoleService;
 import com.tradeify.tradeify_ws.shared.MailService;
 import com.tradeify.tradeify_ws.user.vm.AddressUpdateVM;
 import com.tradeify.tradeify_ws.user.vm.PasswordUpdateVM;
@@ -17,21 +18,25 @@ public class UserService {
 	UserRepository userRepository;
 	PasswordEncoder passwordEncoder;
 	MailService mailService;
+	RoleService roleService;
 	
-	public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, MailService mailService) {
+	public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, MailService mailService, 
+			RoleService roleService) {
 		this.userRepository = userRepository;
 		this.passwordEncoder = passwordEncoder;
 		this.mailService = mailService;
+		this.roleService = roleService;
 	}
 	
 	public void save(Users user) {
 		String uuid = UUID.randomUUID().toString();	
 		user.setKeyreg(uuid);
-		//user.setActive(false);
+		user.setActive(false);
 		user.setPassword(this.passwordEncoder.encode(user.getPassword()));
 		
 		userRepository.save(user);
 		
+		roleService.saveUserRole(user);
 		//mailService.sendMail(user, uuid);
 	}
 

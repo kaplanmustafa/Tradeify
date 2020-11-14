@@ -16,6 +16,7 @@ const getStateFromStorage = () => {
     surname: undefined,
     token: undefined,
     id: undefined,
+    role: undefined,
   };
 
   if (tradeifyAuth) {

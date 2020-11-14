@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
@@ -24,6 +25,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.tradeify.tradeify_ws.auth.Token;
+import com.tradeify.tradeify_ws.role.Role;
 
 import lombok.Data;
 
@@ -87,9 +89,12 @@ public class Users implements UserDetails{
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
 	private List<Token> tokens;
+	
+	@OneToOne(mappedBy="user")
+	private Role role;
 
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return AuthorityUtils.createAuthorityList("Role_user");
+		return AuthorityUtils.createAuthorityList("Role_" + role.getName());
 	}
 
 	public boolean isAccountNonExpired() {

@@ -29,7 +29,7 @@ public class UserVM {
 	
 	private String address3;
 	
-	
+	private String role;
 		
 	public UserVM(Users user) {
 		this.setId(user.getId());
@@ -42,5 +42,6 @@ public class UserVM {
 		this.setAddress1(user.getAddress1());
 		this.setAddress2(user.getAddress2());
 		this.setAddress3(user.getAddress3());
+		this.setRole(user.getRole().getName());
 	}
 }

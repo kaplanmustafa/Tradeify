@@ -41,6 +41,7 @@ export const loginHandler = (credentials) => {
       email: userInfo.email,
       name: userInfo.name,
       surname: userInfo.surname,
+      role: userInfo.role,
       token: response.data.token,
     };
 

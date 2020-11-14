@@ -7,6 +7,7 @@ const defaultState = {
   surname: undefined,
   token: undefined,
   id: undefined,
+  role: undefined,
 };
 
 const authReducer = (state = { ...defaultState }, action) => {

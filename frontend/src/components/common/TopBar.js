@@ -9,16 +9,18 @@ import LanguageSelector from "./LanguageSelector";
 const TopBar = (props) => {
   const { t } = useTranslation();
 
-  const { isLoggedIn, name, surname } = useSelector((store) => {
+  const { isLoggedIn, name, surname, role } = useSelector((store) => {
     return {
       isLoggedIn: store.isLoggedIn,
       name: store.name,
       surname: store.surname,
+      role: store.role,
     };
   });
 
   const menuArea = useRef(null);
   const [menuVisible, setMenuVisible] = useState(false);
+  const [userRole, setUserRole] = useState();
 
   useEffect(() => {
     document.addEventListener("click", menuClickTracker);
@@ -39,6 +41,14 @@ const TopBar = (props) => {
   const onLogoutSuccess = () => {
     dispatch(logoutSuccess());
   };
+
+  useEffect(() => {
+    if (role === "admin") {
+      setUserRole("/admin");
+    } else if (role === "user") {
+      setUserRole("/myprofile");
+    }
+  }, [role]);
 
   let links = (
     <ul className="navbar-nav ml-auto">
@@ -85,7 +95,7 @@ const TopBar = (props) => {
           <div className={dropDownClass}>
             <Link
               className="dropdown-item d-flex p-2"
-              to={`/myprofile`}
+              to={userRole}
               onClick={() => setMenuVisible(false)}
             >
               <span className="material-icons text-info mr-2">person</span>
