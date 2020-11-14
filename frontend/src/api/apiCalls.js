@@ -57,18 +57,18 @@ export const getCategory = () => {
   return axios.get("/api/1.0/categories");
 };
 
-export const getMiddleCategory = (id) => {
-  return axios.get(`/api/1.0/categories/middle/${id}`);
-};
-
-export const getAllMiddleCategory = () => {
-  return axios.get(`/api/1.0/categories/middle`);
-};
-
-export const getSubCategory = (middleId, generalId) => {
-  return axios.get(`/api/1.0/categories/sub/${middleId}/${generalId}`);
+export const getSubCategory = (id) => {
+  return axios.get(`/api/1.0/categories/sub/${id}`);
 };
 
 export const getAllSubCategory = () => {
-  return axios.get("/api/1.0/categories/sub");
+  return axios.get(`/api/1.0/categories/sub`);
+};
+
+export const getBrand = (middleId, generalId) => {
+  return axios.get(`/api/1.0/brands/${middleId}/${generalId}`);
+};
+
+export const getAllBrands = () => {
+  return axios.get("/api/1.0/brands");
 };

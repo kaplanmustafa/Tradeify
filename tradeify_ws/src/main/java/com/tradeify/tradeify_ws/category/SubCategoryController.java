@@ -17,11 +17,11 @@ public class SubCategoryController {
 	@Autowired
 	SubCategoryService subCategoryService;
 	
-	@GetMapping("/api/1.0/categories/sub/{id}/{generalId}")
-	List<CategoryVM> getCategories(@PathVariable(name = "id") Long id, @PathVariable(name = "generalId") Long generalId) {
+	@GetMapping("/api/1.0/categories/sub/{id}")
+	List<CategoryVM> getCategories(@PathVariable Long id) {
 		List<CategoryVM> categoryVM = new ArrayList<>();
 		
-		List<SubCategory> categories = subCategoryService.getCategories(id, generalId);
+		List<SubCategory> categories = subCategoryService.getCategories(id);
 		for(SubCategory category: categories) {
 			categoryVM.add(new CategoryVM(category));
 		}

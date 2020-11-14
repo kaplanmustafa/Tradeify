@@ -13,12 +13,9 @@ public class SubCategoryVM {
 	
 	private long generalCategoryId;
 	
-	private long middleCategoryId;
-	
 	public SubCategoryVM(SubCategory category) {
 		this.setId(category.getId());
 		this.setCategoryName(category.getCategoryName());
 		this.setGeneralCategoryId(category.getGeneralCategory().getId());
-		this.setMiddleCategoryId(category.getMiddleCategory().getId());
 	}
 }

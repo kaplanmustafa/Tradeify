@@ -2,32 +2,38 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Input from "../toolbox/Input";
 import Select from "../toolbox/Select";
-import {
-  getCategory,
-  getMiddleCategory,
-  getSubCategory,
-} from "../../api/apiCalls";
+import { getCategory, getSubCategory, getBrand } from "../../api/apiCalls";
 
 const AddProduct = () => {
-  const [productName, setProductName] = useState();
   const [selectedCategory, setSelectedCategory] = useState(1);
-  const [selectedMiddleCategory, setSelectedMiddleCategory] = useState(1);
+  const [selectedSubCategory, setSelectedSubCategory] = useState(1);
+  const [selectedBrand, setSelectedBrand] = useState(1);
+  const [productName, setProductName] = useState();
 
   const [categories, setCategories] = useState([]);
-  const [middleCategories, setMiddleCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
+  const [brands, setBrands] = useState([]);
 
   const { t } = useTranslation();
 
   const onChangeCategory = (event) => {
     setSelectedCategory(event.target.options.selectedIndex + 1);
-    loadMiddleCategories(event.target.options.selectedIndex + 1);
-    loadSubCategories(1, event.target.options.selectedIndex + 1);
+    setSelectedSubCategory(1);
+    setSelectedBrand(1);
+
+    loadSubCategories(event.target.options.selectedIndex + 1);
+    loadBrands(1, event.target.options.selectedIndex + 1);
   };
 
-  const onChangeMiddleCategory = (event) => {
-    setSelectedMiddleCategory(event.target.options.selectedIndex + 1);
-    loadSubCategories(event.target.options.selectedIndex + 1, selectedCategory);
+  const onChangeSubCategory = (event) => {
+    setSelectedSubCategory(event.target.options.selectedIndex + 1);
+    setSelectedBrand(1);
+
+    loadBrands(event.target.options.selectedIndex + 1, selectedCategory);
+  };
+
+  const onChangeBrand = (event) => {
+    setSelectedBrand(event.target.options.selectedIndex + 1);
   };
 
   const loadCategories = async () => {
@@ -37,24 +43,32 @@ const AddProduct = () => {
     } catch (error) {}
   };
 
-  const loadMiddleCategories = async (id) => {
+  const loadSubCategories = async (id) => {
     try {
-      const response = await getMiddleCategory(id);
-      setMiddleCategories(response.data);
+      const response = await getSubCategory(id);
+      setSubCategories(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedSubCategory(null);
+      }
     } catch (error) {}
   };
 
-  const loadSubCategories = async (middleId, generalId) => {
+  const loadBrands = async (subId, generalId) => {
     try {
-      const response = await getSubCategory(middleId, generalId);
-      setSubCategories(response.data);
+      const response = await getBrand(subId, generalId);
+      setBrands(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedBrand(null);
+      }
     } catch (error) {}
   };
 
   useEffect(() => {
     loadCategories();
-    loadMiddleCategories(1);
-    loadSubCategories(1, 1);
+    loadSubCategories(1);
+    loadBrands(1, 1);
   }, []);
 
   return (
@@ -69,16 +83,18 @@ const AddProduct = () => {
                 onChangeCategory={onChangeCategory}
                 categories={categories}
               />
-              <Select
-                label={t("Middle Category")}
-                onChangeCategory={onChangeMiddleCategory}
-                categories={middleCategories}
-              />
               {subCategories.length !== 0 && (
                 <Select
                   label={t("Sub Category")}
-                  //onChangeCategory={onChangeMiddleCategory}
+                  onChangeCategory={onChangeSubCategory}
                   categories={subCategories}
+                />
+              )}
+              {brands.length !== 0 && (
+                <Select
+                  label={t("Brand")}
+                  onChangeCategory={onChangeBrand}
+                  categories={brands}
                 />
               )}
               <Input

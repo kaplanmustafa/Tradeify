@@ -20,7 +20,7 @@ const TopBar = (props) => {
 
   const menuArea = useRef(null);
   const [menuVisible, setMenuVisible] = useState(false);
-  const [userRole, setUserRole] = useState();
+  const [userRole, setUserRole] = useState("");
 
   useEffect(() => {
     document.addEventListener("click", menuClickTracker);

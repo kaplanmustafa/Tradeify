@@ -11,9 +11,9 @@ public class SubCategoryService {
 	@Autowired
 	SubCategoryRepository subCategoryRepository;
 	
-	public List<SubCategory> getCategories(Long id, Long generalId) {
+	public List<SubCategory> getCategories(Long id) {
 		
-		return subCategoryRepository.findAllByMiddleCategoryIdAndGeneralCategoryId(id, generalId);
+		return subCategoryRepository.findAllByGeneralCategoryIdOrderById(id);
 	}	
 	
 	public List<SubCategory> getAllCategories() {

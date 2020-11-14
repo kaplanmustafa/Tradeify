@@ -1,8 +1,8 @@
 package com.tradeify.tradeify_ws.category.vm;
 
 import com.tradeify.tradeify_ws.category.GeneralCategory;
-import com.tradeify.tradeify_ws.category.MiddleCategory;
 import com.tradeify.tradeify_ws.category.SubCategory;
+import com.tradeify.tradeify_ws.product.Brand;
 
 import lombok.Data;
 
@@ -18,13 +18,13 @@ public class CategoryVM {
 		this.setCategoryName(category.getCategoryName());
 	}
 	
-	public CategoryVM(MiddleCategory category) {
+	public CategoryVM(SubCategory category) {
 		this.setId(category.getId());
 		this.setCategoryName(category.getCategoryName());
 	}
 	
-	public CategoryVM(SubCategory category) {
-		this.setId(category.getId());
-		this.setCategoryName(category.getCategoryName());
+	public CategoryVM(Brand brand) {
+		this.setId(brand.getId());
+		this.setCategoryName(brand.getBrandName());
 	}
 }
