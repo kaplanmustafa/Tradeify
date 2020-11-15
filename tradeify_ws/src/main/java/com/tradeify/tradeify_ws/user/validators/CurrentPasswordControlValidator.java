@@ -1,4 +1,4 @@
-package com.tradeify.tradeify_ws.user;
+package com.tradeify.tradeify_ws.user.validators;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -6,6 +6,8 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.tradeify.tradeify_ws.user.UserRepository;
+import com.tradeify.tradeify_ws.user.Users;
 import com.tradeify.tradeify_ws.user.vm.PasswordUpdateVM;
 
 public class CurrentPasswordControlValidator implements ConstraintValidator<CurrentPasswordControl, PasswordUpdateVM>{

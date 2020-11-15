@@ -1,6 +1,6 @@
 package com.tradeify.tradeify_ws.user.vm;
 
-import com.tradeify.tradeify_ws.user.CurrentPasswordControl;
+import com.tradeify.tradeify_ws.user.validators.CurrentPasswordControl;
 
 import lombok.Data;
 

@@ -26,6 +26,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.tradeify.tradeify_ws.auth.Token;
 import com.tradeify.tradeify_ws.role.Role;
+import com.tradeify.tradeify_ws.user.validators.UniqueEmail;
+import com.tradeify.tradeify_ws.user.validators.UniquePhone;
 
 import lombok.Data;
 

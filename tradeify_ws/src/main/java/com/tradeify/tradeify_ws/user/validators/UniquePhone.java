@@ -1,4 +1,4 @@
-package com.tradeify.tradeify_ws.user;
+package com.tradeify.tradeify_ws.user.validators;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;

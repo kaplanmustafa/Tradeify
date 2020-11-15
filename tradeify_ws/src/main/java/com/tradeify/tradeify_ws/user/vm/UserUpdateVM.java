@@ -12,8 +12,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.tradeify.tradeify_ws.user.UniqueEmailUpdate;
-import com.tradeify.tradeify_ws.user.UniquePhoneUpdate;
+import com.tradeify.tradeify_ws.user.validators.UniqueEmailUpdate;
+import com.tradeify.tradeify_ws.user.validators.UniquePhoneUpdate;
 
 import lombok.Data;
 

@@ -1,9 +1,12 @@
-package com.tradeify.tradeify_ws.user;
+package com.tradeify.tradeify_ws.user.validators;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.tradeify.tradeify_ws.user.UserRepository;
+import com.tradeify.tradeify_ws.user.Users;
 
 public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String>{
 

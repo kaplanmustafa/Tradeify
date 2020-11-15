@@ -1,4 +1,4 @@
-package com.tradeify.tradeify_ws.user;
+package com.tradeify.tradeify_ws.user.validators;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
