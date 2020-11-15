@@ -12,8 +12,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.tradeify.tradeify_ws.product.Brand;
+import com.tradeify.tradeify_ws.product.CaseDiameter;
 import com.tradeify.tradeify_ws.product.Color;
 import com.tradeify.tradeify_ws.product.OperatingType;
+import com.tradeify.tradeify_ws.product.WarrantyType;
 
 import lombok.Data;
 
@@ -40,4 +42,10 @@ public class GeneralCategory {
 	
 	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
 	private List<OperatingType> operatingTypes;
+	
+	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
+	private List<CaseDiameter> caseDiameters;
+	
+	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
+	private List<WarrantyType> warrantyTypes;
 }

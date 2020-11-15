@@ -8,6 +8,8 @@ import {
   getBrand,
   getColor,
   getOperatingType,
+  getCaseDiameter,
+  getWarrantyType,
 } from "../../api/apiCalls";
 
 const AddProduct = () => {
@@ -16,6 +18,8 @@ const AddProduct = () => {
   const [selectedBrand, setSelectedBrand] = useState(1);
   const [selectedColor, setSelectedColor] = useState(1);
   const [selectedOperatingType, setSelectedOperatingType] = useState(1);
+  const [selectedCaseDiameter, setSelectedCaseDiameter] = useState(1);
+  const [selectedWarrantyType, setSelectedWarrantyType] = useState(1);
   const [productName, setProductName] = useState();
 
   const [categories, setCategories] = useState([]);
@@ -23,6 +27,8 @@ const AddProduct = () => {
   const [brands, setBrands] = useState([]);
   const [colors, setColors] = useState([]);
   const [operatingTypes, setOperatingTypes] = useState([]);
+  const [caseDiameters, setCaseDiameters] = useState([]);
+  const [warrantyTypes, setWarrantyTypes] = useState([]);
 
   const { t } = useTranslation();
 
@@ -32,11 +38,15 @@ const AddProduct = () => {
     setSelectedBrand(1);
     setSelectedColor(1);
     setSelectedOperatingType(1);
+    setSelectedCaseDiameter(1);
+    setSelectedWarrantyType(1);
 
     loadSubCategories(event.target.options.selectedIndex + 1);
     loadBrands(1, event.target.options.selectedIndex + 1);
     loadColors(1, event.target.options.selectedIndex + 1);
     loadOperatingTypes(1, event.target.options.selectedIndex + 1);
+    loadCaseDiameters(1, event.target.options.selectedIndex + 1);
+    loadWarrantyTypes(1, event.target.options.selectedIndex + 1);
   };
 
   const onChangeSubCategory = (event) => {
@@ -44,6 +54,8 @@ const AddProduct = () => {
     setSelectedBrand(1);
     setSelectedColor(1);
     setSelectedOperatingType(1);
+    setSelectedCaseDiameter(1);
+    setSelectedWarrantyType(1);
 
     loadBrands(event.target.options.selectedIndex + 1, selectedCategory);
     loadColors(event.target.options.selectedIndex + 1, selectedCategory);
@@ -51,6 +63,8 @@ const AddProduct = () => {
       event.target.options.selectedIndex + 1,
       selectedCategory
     );
+    loadCaseDiameters(event.target.options.selectedIndex + 1, selectedCategory);
+    loadWarrantyTypes(event.target.options.selectedIndex + 1, selectedCategory);
   };
 
   const onChangeBrand = (event) => {
@@ -63,6 +77,14 @@ const AddProduct = () => {
 
   const onChangeOperatingType = (event) => {
     setSelectedOperatingType(event.target.options.selectedIndex + 1);
+  };
+
+  const onChangeCaseDiameter = (event) => {
+    setSelectedCaseDiameter(event.target.options.selectedIndex + 1);
+  };
+
+  const onChangeWarrantyType = (event) => {
+    setSelectedWarrantyType(event.target.options.selectedIndex + 1);
   };
 
   const loadCategories = async () => {
@@ -116,12 +138,36 @@ const AddProduct = () => {
     } catch (error) {}
   };
 
+  const loadCaseDiameters = async (subId, generalId) => {
+    try {
+      const response = await getCaseDiameter(subId, generalId);
+      setCaseDiameters(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedCaseDiameter(null);
+      }
+    } catch (error) {}
+  };
+
+  const loadWarrantyTypes = async (subId, generalId) => {
+    try {
+      const response = await getWarrantyType(subId, generalId);
+      setWarrantyTypes(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedWarrantyType(null);
+      }
+    } catch (error) {}
+  };
+
   useEffect(() => {
     loadCategories();
     loadSubCategories(1);
     loadBrands(1, 1);
     loadColors(1, 1);
     loadOperatingTypes(1, 1);
+    loadCaseDiameters(1, 1);
+    loadWarrantyTypes(1, 1);
   }, []);
 
   return (
@@ -162,6 +208,20 @@ const AddProduct = () => {
                   label={t("Operating Type")}
                   onChangeCategory={onChangeOperatingType}
                   categories={operatingTypes}
+                />
+              )}
+              {caseDiameters.length !== 0 && (
+                <Select
+                  label={t("Case Diameter")}
+                  onChangeCategory={onChangeCaseDiameter}
+                  categories={caseDiameters}
+                />
+              )}
+              {warrantyTypes.length !== 0 && (
+                <Select
+                  label={t("Warranty Type")}
+                  onChangeCategory={onChangeWarrantyType}
+                  categories={warrantyTypes}
                 />
               )}
               <Input

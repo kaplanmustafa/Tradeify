@@ -1,8 +1,10 @@
 package com.tradeify.tradeify_ws.product.vm;
 
 import com.tradeify.tradeify_ws.product.Brand;
+import com.tradeify.tradeify_ws.product.CaseDiameter;
 import com.tradeify.tradeify_ws.product.Color;
 import com.tradeify.tradeify_ws.product.OperatingType;
+import com.tradeify.tradeify_ws.product.WarrantyType;
 
 import lombok.Data;
 
@@ -36,5 +38,19 @@ public class ProductAttributeVM {
 		this.setCategoryName(operatingType.getOperatingTypeName());
 		this.setGeneralCategoryId(operatingType.getGeneralCategory().getId());
 		this.setMiddleCategoryId(operatingType.getSubCategory().getId());
+	}
+	
+	public ProductAttributeVM(CaseDiameter caseDiameter) {
+		this.setId(caseDiameter.getId());
+		this.setCategoryName(caseDiameter.getCaseDiameterName());
+		this.setGeneralCategoryId(caseDiameter.getGeneralCategory().getId());
+		this.setMiddleCategoryId(caseDiameter.getSubCategory().getId());
+	}
+	
+	public ProductAttributeVM(WarrantyType warrantyType) {
+		this.setId(warrantyType.getId());
+		this.setCategoryName(warrantyType.getWarrantyTypeName());
+		this.setGeneralCategoryId(warrantyType.getGeneralCategory().getId());
+		this.setMiddleCategoryId(warrantyType.getSubCategory().getId());
 	}
 }

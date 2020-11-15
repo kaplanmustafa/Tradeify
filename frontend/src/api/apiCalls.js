@@ -80,3 +80,11 @@ export const getColor = (middleId, generalId) => {
 export const getOperatingType = (middleId, generalId) => {
   return axios.get(`/api/1.0/operatingTypes/${middleId}/${generalId}`);
 };
+
+export const getCaseDiameter = (middleId, generalId) => {
+  return axios.get(`/api/1.0/caseDiameters/${middleId}/${generalId}`);
+};
+
+export const getWarrantyType = (middleId, generalId) => {
+  return axios.get(`/api/1.0/warrantyTypes/${middleId}/${generalId}`);
+};
