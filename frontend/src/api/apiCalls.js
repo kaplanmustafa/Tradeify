@@ -72,3 +72,11 @@ export const getBrand = (middleId, generalId) => {
 export const getAllBrands = () => {
   return axios.get("/api/1.0/brands");
 };
+
+export const getColor = (middleId, generalId) => {
+  return axios.get(`/api/1.0/colors/${middleId}/${generalId}`);
+};
+
+export const getOperatingType = (middleId, generalId) => {
+  return axios.get(`/api/1.0/operatingTypes/${middleId}/${generalId}`);
+};

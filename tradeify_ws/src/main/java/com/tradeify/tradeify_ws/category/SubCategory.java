@@ -13,6 +13,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.tradeify.tradeify_ws.product.Brand;
+import com.tradeify.tradeify_ws.product.Color;
+import com.tradeify.tradeify_ws.product.OperatingType;
 
 import lombok.Data;
 
@@ -35,4 +37,10 @@ public class SubCategory {
 	
 	@OneToMany(mappedBy = "subCategory", cascade = CascadeType.REMOVE)
 	private List<Brand> brands;
+	
+	@OneToMany(mappedBy = "subCategory", cascade = CascadeType.REMOVE)
+	private List<Color> colors;
+	
+	@OneToMany(mappedBy = "subCategory", cascade = CascadeType.REMOVE)
+	private List<OperatingType> operatingTypes;
 }

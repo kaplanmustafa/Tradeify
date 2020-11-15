@@ -11,30 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tradeify.tradeify_ws.product.vm.ProductAttributeVM;
 
 @RestController
-public class BrandController {
+public class ColorController {
 
 	@Autowired
-	BrandService brandService;
+	ColorService colorService;
 	
-	@GetMapping("/api/1.0/brands/{id}/{generalId}")
+	@GetMapping("/api/1.0/colors/{id}/{generalId}")
 	List<ProductAttributeVM> getCategories(@PathVariable(name = "id") Long id, @PathVariable(name = "generalId") Long generalId) {
 		List<ProductAttributeVM> attributeVM = new ArrayList<>();
 		
-		List<Brand> categories = brandService.getBrands(id, generalId);
-		for(Brand category: categories) {
-			attributeVM.add(new ProductAttributeVM(category));
-		}
-		
-		return attributeVM;
-	}
-	
-	@GetMapping("/api/1.0/brands")
-	List<ProductAttributeVM> getAllCategories() {
-		List<ProductAttributeVM> attributeVM = new ArrayList<>();
-		
-		List<Brand> categories = brandService.getAllBrands();
-		for(Brand category: categories) {
-			attributeVM.add(new ProductAttributeVM(category));
+		List<Color> colorList = colorService.getBrands(id, generalId);
+		for(Color colors: colorList) {
+			attributeVM.add(new ProductAttributeVM(colors));
 		}
 		
 		return attributeVM;
