@@ -195,6 +195,7 @@ i18n.use(initReactI18next).init({
         "Internal Graphics Card": "Internal Graphics Card",
         Shared: "Shared",
         "SSD Capacity": "SSD Capacity",
+        "Processor Model": "Processor Model",
       },
     },
     tr: {
@@ -391,6 +392,7 @@ i18n.use(initReactI18next).init({
         "Internal Graphics Card": "Dahili Ekran Kartı",
         Shared: "Paylaşımlı",
         "SSD Capacity": "SSD Kapasitesi",
+        "Processor Model": "İşlemci Modeli",
       },
     },
   },

@@ -132,3 +132,7 @@ export const getGraphicsCard = (middleId, generalId) => {
 export const getSsd = (middleId, generalId) => {
   return axios.get(`/api/1.0/ssd/${middleId}/${generalId}`);
 };
+
+export const getProcessorModel = (middleId, generalId) => {
+  return axios.get(`/api/1.0/processorModels/${middleId}/${generalId}`);
+};

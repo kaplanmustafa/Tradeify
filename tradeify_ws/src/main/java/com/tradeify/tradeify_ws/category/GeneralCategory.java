@@ -21,6 +21,7 @@ import com.tradeify.tradeify_ws.product.entities.FrontCameraResolution;
 import com.tradeify.tradeify_ws.product.entities.GraphicsCard;
 import com.tradeify.tradeify_ws.product.entities.InternalMemory;
 import com.tradeify.tradeify_ws.product.entities.OperatingType;
+import com.tradeify.tradeify_ws.product.entities.ProcessorModel;
 import com.tradeify.tradeify_ws.product.entities.ProcessorType;
 import com.tradeify.tradeify_ws.product.entities.Ram;
 import com.tradeify.tradeify_ws.product.entities.ScreenResolution;
@@ -92,4 +93,7 @@ public class GeneralCategory {
 	
 	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
 	private List<Ssd> ssd;
+	
+	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
+	private List<ProcessorModel> processorModels;
 }

@@ -21,6 +21,7 @@ import {
   getRam,
   getGraphicsCard,
   getSsd,
+  getProcessorModel,
 } from "../../api/apiCalls";
 
 const AddProduct = () => {
@@ -45,6 +46,7 @@ const AddProduct = () => {
   const [selectedRam, setSelectedRam] = useState(1);
   const [selectedGraphicsCard, setSelectedGraphicsCard] = useState(1);
   const [selectedSsd, setSelectedSsd] = useState(1);
+  const [selectedProcessorModel, setSelectedProcessorModel] = useState(1);
   const [productName, setProductName] = useState();
 
   const [categories, setCategories] = useState([]);
@@ -65,6 +67,7 @@ const AddProduct = () => {
   const [rams, setRams] = useState([]);
   const [graphicsCards, setGraphicsCards] = useState([]);
   const [ssd, setSsd] = useState([]);
+  const [processorModels, setProcessorModels] = useState([]);
 
   const { t } = useTranslation();
 
@@ -87,6 +90,7 @@ const AddProduct = () => {
     setSelectedRam(1);
     setSelectedGraphicsCard(1);
     setSelectedSsd(1);
+    setSelectedProcessorModel(1);
 
     loadSubCategories(event.target.options.selectedIndex + 1);
     loadBrands(1, event.target.options.selectedIndex + 1);
@@ -105,6 +109,7 @@ const AddProduct = () => {
     loadRams(1, event.target.options.selectedIndex + 1);
     loadGraphicsCards(1, event.target.options.selectedIndex + 1);
     loadSsd(1, event.target.options.selectedIndex + 1);
+    loadProcessorModels(1, event.target.options.selectedIndex + 1);
   };
 
   const onChangeSubCategory = (event) => {
@@ -125,6 +130,7 @@ const AddProduct = () => {
     setSelectedRam(1);
     setSelectedGraphicsCard(1);
     setSelectedSsd(1);
+    setSelectedProcessorModel(1);
 
     loadBrands(event.target.options.selectedIndex + 1, selectedCategory);
     loadColors(event.target.options.selectedIndex + 1, selectedCategory);
@@ -163,6 +169,10 @@ const AddProduct = () => {
     loadRams(event.target.options.selectedIndex + 1, selectedCategory);
     loadGraphicsCards(event.target.options.selectedIndex + 1, selectedCategory);
     loadSsd(event.target.options.selectedIndex + 1, selectedCategory);
+    loadProcessorModels(
+      event.target.options.selectedIndex + 1,
+      selectedCategory
+    );
   };
 
   const loadCategories = async () => {
@@ -359,6 +369,17 @@ const AddProduct = () => {
     } catch (error) {}
   };
 
+  const loadProcessorModels = async (subId, generalId) => {
+    try {
+      const response = await getProcessorModel(subId, generalId);
+      setProcessorModels(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedProcessorModel(null);
+      }
+    } catch (error) {}
+  };
+
   useEffect(() => {
     loadCategories();
     loadSubCategories(1);
@@ -377,6 +398,7 @@ const AddProduct = () => {
     loadProcessorTypes(1, 1);
     loadRams(1, 1);
     loadSsd(1, 1);
+    loadProcessorModels(1, 1);
   }, []);
 
   return (
@@ -564,6 +586,17 @@ const AddProduct = () => {
                     setSelectedSsd(event.target.options.selectedIndex + 1);
                   }}
                   categories={ssd}
+                />
+              )}
+              {processorModels.length !== 0 && (
+                <Select
+                  label={t("Processor Model")}
+                  onChangeCategory={(event) => {
+                    setSelectedProcessorModel(
+                      event.target.options.selectedIndex + 1
+                    );
+                  }}
+                  categories={processorModels}
                 />
               )}
               <Input

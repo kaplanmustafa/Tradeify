@@ -10,6 +10,7 @@ import com.tradeify.tradeify_ws.product.entities.FrontCameraResolution;
 import com.tradeify.tradeify_ws.product.entities.GraphicsCard;
 import com.tradeify.tradeify_ws.product.entities.InternalMemory;
 import com.tradeify.tradeify_ws.product.entities.OperatingType;
+import com.tradeify.tradeify_ws.product.entities.ProcessorModel;
 import com.tradeify.tradeify_ws.product.entities.ProcessorType;
 import com.tradeify.tradeify_ws.product.entities.Ram;
 import com.tradeify.tradeify_ws.product.entities.ScreenResolution;
@@ -140,5 +141,12 @@ public class ProductAttributeVM {
 		this.setCategoryName(ssd.getSsdName());
 		this.setGeneralCategoryId(ssd.getGeneralCategory().getId());
 		this.setMiddleCategoryId(ssd.getSubCategory().getId());
+	}
+	
+	public ProductAttributeVM(ProcessorModel processorModel) {
+		this.setId(processorModel.getId());
+		this.setCategoryName(processorModel.getProcessorModelName());
+		this.setGeneralCategoryId(processorModel.getGeneralCategory().getId());
+		this.setMiddleCategoryId(processorModel.getSubCategory().getId());
 	}
 }
