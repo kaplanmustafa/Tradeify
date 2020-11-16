@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.tradeify.tradeify_ws.product.WarrantyType;
+import com.tradeify.tradeify_ws.product.entities.WarrantyType;
 
 
 public interface WarrantyTypeRepository extends JpaRepository<WarrantyType, Long>{

@@ -88,3 +88,6 @@ export const getCaseDiameter = (middleId, generalId) => {
 export const getWarrantyType = (middleId, generalId) => {
   return axios.get(`/api/1.0/warrantyTypes/${middleId}/${generalId}`);
 };
+export const getInternalMemory = (middleId, generalId) => {
+  return axios.get(`/api/1.0/internalMemories/${middleId}/${generalId}`);
+};

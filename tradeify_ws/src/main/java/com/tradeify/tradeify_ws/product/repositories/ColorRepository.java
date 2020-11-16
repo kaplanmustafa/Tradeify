@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.tradeify.tradeify_ws.product.Color;
+import com.tradeify.tradeify_ws.product.entities.Color;
 
 
 public interface ColorRepository extends JpaRepository<Color, Long>{

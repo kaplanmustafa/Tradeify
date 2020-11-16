@@ -1,4 +1,4 @@
-package com.tradeify.tradeify_ws.product;
+package com.tradeify.tradeify_ws.product.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,9 +14,9 @@ import com.tradeify.tradeify_ws.category.SubCategory;
 
 import lombok.Data;
 
+@Data 
 @Entity
-@Data
-public class OperatingType {
+public class Brand {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +24,7 @@ public class OperatingType {
 	
 	@NotNull
 	@Size(min = 1, max= 255)
-	private String operatingTypeName;
+	private String brandName;
 	
 	@ManyToOne
 	@JoinColumn(name = "subPrivateId")

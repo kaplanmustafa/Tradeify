@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tradeify.tradeify_ws.product.CaseDiameter;
+import com.tradeify.tradeify_ws.product.entities.CaseDiameter;
 import com.tradeify.tradeify_ws.product.repositories.CaseDiameterRepository;
 
 @Service

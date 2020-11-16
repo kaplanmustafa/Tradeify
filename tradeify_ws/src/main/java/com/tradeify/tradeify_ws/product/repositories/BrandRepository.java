@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.tradeify.tradeify_ws.product.Brand;
+import com.tradeify.tradeify_ws.product.entities.Brand;
 
 
 public interface BrandRepository extends JpaRepository<Brand, Long>{

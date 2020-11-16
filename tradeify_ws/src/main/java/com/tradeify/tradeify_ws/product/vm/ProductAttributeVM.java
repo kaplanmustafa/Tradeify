@@ -1,10 +1,11 @@
 package com.tradeify.tradeify_ws.product.vm;
 
-import com.tradeify.tradeify_ws.product.Brand;
-import com.tradeify.tradeify_ws.product.CaseDiameter;
-import com.tradeify.tradeify_ws.product.Color;
-import com.tradeify.tradeify_ws.product.OperatingType;
-import com.tradeify.tradeify_ws.product.WarrantyType;
+import com.tradeify.tradeify_ws.product.entities.Brand;
+import com.tradeify.tradeify_ws.product.entities.CaseDiameter;
+import com.tradeify.tradeify_ws.product.entities.Color;
+import com.tradeify.tradeify_ws.product.entities.InternalMemory;
+import com.tradeify.tradeify_ws.product.entities.OperatingType;
+import com.tradeify.tradeify_ws.product.entities.WarrantyType;
 
 import lombok.Data;
 
@@ -52,5 +53,12 @@ public class ProductAttributeVM {
 		this.setCategoryName(warrantyType.getWarrantyTypeName());
 		this.setGeneralCategoryId(warrantyType.getGeneralCategory().getId());
 		this.setMiddleCategoryId(warrantyType.getSubCategory().getId());
+	}
+	
+	public ProductAttributeVM(InternalMemory internalMemory) {
+		this.setId(internalMemory.getId());
+		this.setCategoryName(internalMemory.getInternalMemoryName());
+		this.setGeneralCategoryId(internalMemory.getGeneralCategory().getId());
+		this.setMiddleCategoryId(internalMemory.getSubCategory().getId());
 	}
 }

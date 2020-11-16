@@ -1,4 +1,4 @@
-package com.tradeify.tradeify_ws.product;
+package com.tradeify.tradeify_ws.product.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +16,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Color {
+public class InternalMemory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +24,7 @@ public class Color {
 	
 	@NotNull
 	@Size(min = 1, max= 255)
-	private String colorName;
+	private String internalMemoryName;
 	
 	@ManyToOne
 	@JoinColumn(name = "subPrivateId")

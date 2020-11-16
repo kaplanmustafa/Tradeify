@@ -1,4 +1,4 @@
-package com.tradeify.tradeify_ws.product;
+package com.tradeify.tradeify_ws.product.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +16,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class CaseDiameter {
+public class Color {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +24,7 @@ public class CaseDiameter {
 	
 	@NotNull
 	@Size(min = 1, max= 255)
-	private String caseDiameterName;
+	private String colorName;
 	
 	@ManyToOne
 	@JoinColumn(name = "subPrivateId")

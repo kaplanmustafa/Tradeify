@@ -2,7 +2,7 @@ package com.tradeify.tradeify_ws.category.vm;
 
 import com.tradeify.tradeify_ws.category.GeneralCategory;
 import com.tradeify.tradeify_ws.category.SubCategory;
-import com.tradeify.tradeify_ws.product.Brand;
+import com.tradeify.tradeify_ws.product.entities.Brand;
 
 import lombok.Data;
 

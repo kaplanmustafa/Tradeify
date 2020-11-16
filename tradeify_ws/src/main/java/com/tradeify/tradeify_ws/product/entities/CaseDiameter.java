@@ -1,4 +1,4 @@
-package com.tradeify.tradeify_ws.product;
+package com.tradeify.tradeify_ws.product.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +16,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class WarrantyType {
+public class CaseDiameter {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +24,7 @@ public class WarrantyType {
 	
 	@NotNull
 	@Size(min = 1, max= 255)
-	private String warrantyTypeName;
+	private String caseDiameterName;
 	
 	@ManyToOne
 	@JoinColumn(name = "subPrivateId")

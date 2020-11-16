@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tradeify.tradeify_ws.product.Brand;
+import com.tradeify.tradeify_ws.product.entities.Brand;
 import com.tradeify.tradeify_ws.product.services.BrandService;
 import com.tradeify.tradeify_ws.product.vm.ProductAttributeVM;
 

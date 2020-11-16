@@ -10,6 +10,7 @@ import {
   getOperatingType,
   getCaseDiameter,
   getWarrantyType,
+  getInternalMemory,
 } from "../../api/apiCalls";
 
 const AddProduct = () => {
@@ -20,6 +21,7 @@ const AddProduct = () => {
   const [selectedOperatingType, setSelectedOperatingType] = useState(1);
   const [selectedCaseDiameter, setSelectedCaseDiameter] = useState(1);
   const [selectedWarrantyType, setSelectedWarrantyType] = useState(1);
+  const [selectedInternalMemory, setSelectedInternalMemory] = useState(1);
   const [productName, setProductName] = useState();
 
   const [categories, setCategories] = useState([]);
@@ -29,6 +31,7 @@ const AddProduct = () => {
   const [operatingTypes, setOperatingTypes] = useState([]);
   const [caseDiameters, setCaseDiameters] = useState([]);
   const [warrantyTypes, setWarrantyTypes] = useState([]);
+  const [internalMemories, setInternalMemories] = useState([]);
 
   const { t } = useTranslation();
 
@@ -40,6 +43,7 @@ const AddProduct = () => {
     setSelectedOperatingType(1);
     setSelectedCaseDiameter(1);
     setSelectedWarrantyType(1);
+    setSelectedInternalMemory(1);
 
     loadSubCategories(event.target.options.selectedIndex + 1);
     loadBrands(1, event.target.options.selectedIndex + 1);
@@ -47,6 +51,7 @@ const AddProduct = () => {
     loadOperatingTypes(1, event.target.options.selectedIndex + 1);
     loadCaseDiameters(1, event.target.options.selectedIndex + 1);
     loadWarrantyTypes(1, event.target.options.selectedIndex + 1);
+    loadInternalMemories(1, event.target.options.selectedIndex + 1);
   };
 
   const onChangeSubCategory = (event) => {
@@ -65,6 +70,10 @@ const AddProduct = () => {
     );
     loadCaseDiameters(event.target.options.selectedIndex + 1, selectedCategory);
     loadWarrantyTypes(event.target.options.selectedIndex + 1, selectedCategory);
+    loadInternalMemories(
+      event.target.options.selectedIndex + 1,
+      selectedCategory
+    );
   };
 
   const onChangeBrand = (event) => {
@@ -85,6 +94,10 @@ const AddProduct = () => {
 
   const onChangeWarrantyType = (event) => {
     setSelectedWarrantyType(event.target.options.selectedIndex + 1);
+  };
+
+  const onChangeInternalMemory = (event) => {
+    setSelectedInternalMemory(event.target.options.selectedIndex + 1);
   };
 
   const loadCategories = async () => {
@@ -160,6 +173,17 @@ const AddProduct = () => {
     } catch (error) {}
   };
 
+  const loadInternalMemories = async (subId, generalId) => {
+    try {
+      const response = await getInternalMemory(subId, generalId);
+      setInternalMemories(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedInternalMemory(null);
+      }
+    } catch (error) {}
+  };
+
   useEffect(() => {
     loadCategories();
     loadSubCategories(1);
@@ -168,6 +192,7 @@ const AddProduct = () => {
     loadOperatingTypes(1, 1);
     loadCaseDiameters(1, 1);
     loadWarrantyTypes(1, 1);
+    loadInternalMemories(1, 1);
   }, []);
 
   return (
@@ -222,6 +247,13 @@ const AddProduct = () => {
                   label={t("Warranty Type")}
                   onChangeCategory={onChangeWarrantyType}
                   categories={warrantyTypes}
+                />
+              )}
+              {internalMemories.length !== 0 && (
+                <Select
+                  label={t("Capacity")}
+                  onChangeCategory={onChangeInternalMemory}
+                  categories={internalMemories}
                 />
               )}
               <Input

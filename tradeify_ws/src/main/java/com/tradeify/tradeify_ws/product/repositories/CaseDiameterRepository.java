@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.tradeify.tradeify_ws.product.CaseDiameter;
+import com.tradeify.tradeify_ws.product.entities.CaseDiameter;
 
 
 public interface CaseDiameterRepository extends JpaRepository<CaseDiameter, Long>{

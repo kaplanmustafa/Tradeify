@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.tradeify.tradeify_ws.product.OperatingType;
+import com.tradeify.tradeify_ws.product.entities.OperatingType;
 
 
 public interface OperatingTypeRepository extends JpaRepository<OperatingType, Long>{

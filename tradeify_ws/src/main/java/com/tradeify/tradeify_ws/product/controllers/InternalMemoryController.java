@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tradeify.tradeify_ws.product.entities.CaseDiameter;
-import com.tradeify.tradeify_ws.product.services.CaseDiameterService;
+import com.tradeify.tradeify_ws.product.entities.InternalMemory;
+import com.tradeify.tradeify_ws.product.services.InternalMemoryService;
 import com.tradeify.tradeify_ws.product.vm.ProductAttributeVM;
 
 @RestController
-public class CaseDiameterController {
+public class InternalMemoryController {
 
 	@Autowired
-	CaseDiameterService caseDiameterService;
+	InternalMemoryService internalMemoryService;
 	
-	@GetMapping("/api/1.0/caseDiameters/{id}/{generalId}")
+	@GetMapping("/api/1.0/internalMemories/{id}/{generalId}")
 	List<ProductAttributeVM> getCategories(@PathVariable(name = "id") Long id, @PathVariable(name = "generalId") Long generalId) {
 		List<ProductAttributeVM> attributeVM = new ArrayList<>();
 		
-		List<CaseDiameter> caseDiameters = caseDiameterService.getCaseDiameters(id, generalId);
-		for(CaseDiameter diameters: caseDiameters) {
-			attributeVM.add(new ProductAttributeVM(diameters));
+		List<InternalMemory> memories = internalMemoryService.getInternalMemories(id, generalId);
+		for(InternalMemory type: memories) {
+			attributeVM.add(new ProductAttributeVM(type));
 		}
 		
 		return attributeVM;
