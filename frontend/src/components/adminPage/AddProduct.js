@@ -11,6 +11,9 @@ import {
   getCaseDiameter,
   getWarrantyType,
   getInternalMemory,
+  getBatteryPower,
+  getScreenSize,
+  getFrontCameraResolution,
 } from "../../api/apiCalls";
 
 const AddProduct = () => {
@@ -22,6 +25,12 @@ const AddProduct = () => {
   const [selectedCaseDiameter, setSelectedCaseDiameter] = useState(1);
   const [selectedWarrantyType, setSelectedWarrantyType] = useState(1);
   const [selectedInternalMemory, setSelectedInternalMemory] = useState(1);
+  const [selectedBatteryPower, setSelectedBatteryPower] = useState(1);
+  const [selectedScreenSize, setSelectedScreenSize] = useState(1);
+  const [
+    selectedFrontCameraResolution,
+    setSelectedFrontCameraResolution,
+  ] = useState(1);
   const [productName, setProductName] = useState();
 
   const [categories, setCategories] = useState([]);
@@ -32,6 +41,9 @@ const AddProduct = () => {
   const [caseDiameters, setCaseDiameters] = useState([]);
   const [warrantyTypes, setWarrantyTypes] = useState([]);
   const [internalMemories, setInternalMemories] = useState([]);
+  const [batteryPowers, setBatteryPowers] = useState([]);
+  const [screenSizes, setScreenSizes] = useState([]);
+  const [frontCameraResolutions, setFrontCameraResolutions] = useState([]);
 
   const { t } = useTranslation();
 
@@ -44,6 +56,9 @@ const AddProduct = () => {
     setSelectedCaseDiameter(1);
     setSelectedWarrantyType(1);
     setSelectedInternalMemory(1);
+    setSelectedBatteryPower(1);
+    setSelectedScreenSize(1);
+    setSelectedFrontCameraResolution(1);
 
     loadSubCategories(event.target.options.selectedIndex + 1);
     loadBrands(1, event.target.options.selectedIndex + 1);
@@ -52,6 +67,9 @@ const AddProduct = () => {
     loadCaseDiameters(1, event.target.options.selectedIndex + 1);
     loadWarrantyTypes(1, event.target.options.selectedIndex + 1);
     loadInternalMemories(1, event.target.options.selectedIndex + 1);
+    loadBatteryPowers(1, event.target.options.selectedIndex + 1);
+    loadScreenSizes(1, event.target.options.selectedIndex + 1);
+    loadFrontCameraResolutions(1, event.target.options.selectedIndex + 1);
   };
 
   const onChangeSubCategory = (event) => {
@@ -61,6 +79,10 @@ const AddProduct = () => {
     setSelectedOperatingType(1);
     setSelectedCaseDiameter(1);
     setSelectedWarrantyType(1);
+    setSelectedInternalMemory(1);
+    setSelectedBatteryPower(1);
+    setSelectedScreenSize(1);
+    setSelectedFrontCameraResolution(1);
 
     loadBrands(event.target.options.selectedIndex + 1, selectedCategory);
     loadColors(event.target.options.selectedIndex + 1, selectedCategory);
@@ -71,6 +93,12 @@ const AddProduct = () => {
     loadCaseDiameters(event.target.options.selectedIndex + 1, selectedCategory);
     loadWarrantyTypes(event.target.options.selectedIndex + 1, selectedCategory);
     loadInternalMemories(
+      event.target.options.selectedIndex + 1,
+      selectedCategory
+    );
+    loadBatteryPowers(event.target.options.selectedIndex + 1, selectedCategory);
+    loadScreenSizes(event.target.options.selectedIndex + 1, selectedCategory);
+    loadFrontCameraResolutions(
       event.target.options.selectedIndex + 1,
       selectedCategory
     );
@@ -98,6 +126,18 @@ const AddProduct = () => {
 
   const onChangeInternalMemory = (event) => {
     setSelectedInternalMemory(event.target.options.selectedIndex + 1);
+  };
+
+  const onChangeBatteryPower = (event) => {
+    setSelectedBatteryPower(event.target.options.selectedIndex + 1);
+  };
+
+  const onChangeScreenSize = (event) => {
+    setSelectedScreenSize(event.target.options.selectedIndex + 1);
+  };
+
+  const onChangeFrontCameraResolution = (event) => {
+    setSelectedFrontCameraResolution(event.target.options.selectedIndex + 1);
   };
 
   const loadCategories = async () => {
@@ -184,6 +224,39 @@ const AddProduct = () => {
     } catch (error) {}
   };
 
+  const loadBatteryPowers = async (subId, generalId) => {
+    try {
+      const response = await getBatteryPower(subId, generalId);
+      setBatteryPowers(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedBatteryPower(null);
+      }
+    } catch (error) {}
+  };
+
+  const loadScreenSizes = async (subId, generalId) => {
+    try {
+      const response = await getScreenSize(subId, generalId);
+      setScreenSizes(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedScreenSize(null);
+      }
+    } catch (error) {}
+  };
+
+  const loadFrontCameraResolutions = async (subId, generalId) => {
+    try {
+      const response = await getFrontCameraResolution(subId, generalId);
+      setFrontCameraResolutions(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedFrontCameraResolution(null);
+      }
+    } catch (error) {}
+  };
+
   useEffect(() => {
     loadCategories();
     loadSubCategories(1);
@@ -193,6 +266,9 @@ const AddProduct = () => {
     loadCaseDiameters(1, 1);
     loadWarrantyTypes(1, 1);
     loadInternalMemories(1, 1);
+    loadBatteryPowers(1, 1);
+    loadScreenSizes(1, 1);
+    loadFrontCameraResolutions(1, 1);
   }, []);
 
   return (
@@ -254,6 +330,27 @@ const AddProduct = () => {
                   label={t("Capacity")}
                   onChangeCategory={onChangeInternalMemory}
                   categories={internalMemories}
+                />
+              )}
+              {batteryPowers.length !== 0 && (
+                <Select
+                  label={t("Battery Power (mAh)")}
+                  onChangeCategory={onChangeBatteryPower}
+                  categories={batteryPowers}
+                />
+              )}
+              {screenSizes.length !== 0 && (
+                <Select
+                  label={t("Screen Size")}
+                  onChangeCategory={onChangeScreenSize}
+                  categories={screenSizes}
+                />
+              )}
+              {frontCameraResolutions.length !== 0 && (
+                <Select
+                  label={t("Front Camera Resolution")}
+                  onChangeCategory={onChangeFrontCameraResolution}
+                  categories={frontCameraResolutions}
                 />
               )}
               <Input

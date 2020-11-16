@@ -88,6 +88,19 @@ export const getCaseDiameter = (middleId, generalId) => {
 export const getWarrantyType = (middleId, generalId) => {
   return axios.get(`/api/1.0/warrantyTypes/${middleId}/${generalId}`);
 };
+
 export const getInternalMemory = (middleId, generalId) => {
   return axios.get(`/api/1.0/internalMemories/${middleId}/${generalId}`);
+};
+
+export const getBatteryPower = (middleId, generalId) => {
+  return axios.get(`/api/1.0/batteryPowers/${middleId}/${generalId}`);
+};
+
+export const getScreenSize = (middleId, generalId) => {
+  return axios.get(`/api/1.0/screenSizes/${middleId}/${generalId}`);
+};
+
+export const getFrontCameraResolution = (middleId, generalId) => {
+  return axios.get(`/api/1.0/frontCameraResolutions/${middleId}/${generalId}`);
 };
