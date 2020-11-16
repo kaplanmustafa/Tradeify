@@ -7,10 +7,14 @@ import com.tradeify.tradeify_ws.product.entities.CaseDiameter;
 import com.tradeify.tradeify_ws.product.entities.Color;
 import com.tradeify.tradeify_ws.product.entities.DisplayTechnology;
 import com.tradeify.tradeify_ws.product.entities.FrontCameraResolution;
+import com.tradeify.tradeify_ws.product.entities.GraphicsCard;
 import com.tradeify.tradeify_ws.product.entities.InternalMemory;
 import com.tradeify.tradeify_ws.product.entities.OperatingType;
+import com.tradeify.tradeify_ws.product.entities.ProcessorType;
+import com.tradeify.tradeify_ws.product.entities.Ram;
 import com.tradeify.tradeify_ws.product.entities.ScreenResolution;
 import com.tradeify.tradeify_ws.product.entities.ScreenSize;
+import com.tradeify.tradeify_ws.product.entities.Ssd;
 import com.tradeify.tradeify_ws.product.entities.WarrantyType;
 
 import lombok.Data;
@@ -108,5 +112,33 @@ public class ProductAttributeVM {
 		this.setCategoryName(screenResolution.getScreenResolutionName());
 		this.setGeneralCategoryId(screenResolution.getGeneralCategory().getId());
 		this.setMiddleCategoryId(screenResolution.getSubCategory().getId());
+	}
+	
+	public ProductAttributeVM(ProcessorType processorType) {
+		this.setId(processorType.getId());
+		this.setCategoryName(processorType.getProcessorTypeName());
+		this.setGeneralCategoryId(processorType.getGeneralCategory().getId());
+		this.setMiddleCategoryId(processorType.getSubCategory().getId());
+	}
+	
+	public ProductAttributeVM(Ram ram) {
+		this.setId(ram.getId());
+		this.setCategoryName(ram.getRamName());
+		this.setGeneralCategoryId(ram.getGeneralCategory().getId());
+		this.setMiddleCategoryId(ram.getSubCategory().getId());
+	}
+	
+	public ProductAttributeVM(GraphicsCard graphicsCard) {
+		this.setId(graphicsCard.getId());
+		this.setCategoryName(graphicsCard.getGraphicsCardName());
+		this.setGeneralCategoryId(graphicsCard.getGeneralCategory().getId());
+		this.setMiddleCategoryId(graphicsCard.getSubCategory().getId());
+	}
+	
+	public ProductAttributeVM(Ssd ssd) {
+		this.setId(ssd.getId());
+		this.setCategoryName(ssd.getSsdName());
+		this.setGeneralCategoryId(ssd.getGeneralCategory().getId());
+		this.setMiddleCategoryId(ssd.getSubCategory().getId());
 	}
 }

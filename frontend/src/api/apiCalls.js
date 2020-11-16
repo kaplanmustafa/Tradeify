@@ -116,3 +116,19 @@ export const getDisplayTechnology = (middleId, generalId) => {
 export const getScreenResolution = (middleId, generalId) => {
   return axios.get(`/api/1.0/screenResolutions/${middleId}/${generalId}`);
 };
+
+export const getProcessorType = (middleId, generalId) => {
+  return axios.get(`/api/1.0/processorTypes/${middleId}/${generalId}`);
+};
+
+export const getRam = (middleId, generalId) => {
+  return axios.get(`/api/1.0/rams/${middleId}/${generalId}`);
+};
+
+export const getGraphicsCard = (middleId, generalId) => {
+  return axios.get(`/api/1.0/graphicsCards/${middleId}/${generalId}`);
+};
+
+export const getSsd = (middleId, generalId) => {
+  return axios.get(`/api/1.0/ssd/${middleId}/${generalId}`);
+};

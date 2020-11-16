@@ -18,10 +18,14 @@ import com.tradeify.tradeify_ws.product.entities.CaseDiameter;
 import com.tradeify.tradeify_ws.product.entities.Color;
 import com.tradeify.tradeify_ws.product.entities.DisplayTechnology;
 import com.tradeify.tradeify_ws.product.entities.FrontCameraResolution;
+import com.tradeify.tradeify_ws.product.entities.GraphicsCard;
 import com.tradeify.tradeify_ws.product.entities.InternalMemory;
 import com.tradeify.tradeify_ws.product.entities.OperatingType;
+import com.tradeify.tradeify_ws.product.entities.ProcessorType;
+import com.tradeify.tradeify_ws.product.entities.Ram;
 import com.tradeify.tradeify_ws.product.entities.ScreenResolution;
 import com.tradeify.tradeify_ws.product.entities.ScreenSize;
+import com.tradeify.tradeify_ws.product.entities.Ssd;
 import com.tradeify.tradeify_ws.product.entities.WarrantyType;
 
 import lombok.Data;
@@ -76,4 +80,16 @@ public class GeneralCategory {
 	
 	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
 	private List<ScreenResolution> screenResolutions;
+	
+	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
+	private List<ProcessorType> processorTypes;
+	
+	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
+	private List<Ram> rams;
+	
+	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
+	private List<GraphicsCard> graphicsCards;
+	
+	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
+	private List<Ssd> ssd;
 }

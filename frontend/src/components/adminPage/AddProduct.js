@@ -17,6 +17,10 @@ import {
   getFrontCameraResolution,
   getDisplayTechnology,
   getScreenResolution,
+  getProcessorType,
+  getRam,
+  getGraphicsCard,
+  getSsd,
 } from "../../api/apiCalls";
 
 const AddProduct = () => {
@@ -37,6 +41,10 @@ const AddProduct = () => {
   ] = useState(1);
   const [selectedDisplayTechnology, setSelectedDisplayTechnology] = useState(1);
   const [selectedScreenResolution, setSelectedScreenResolution] = useState(1);
+  const [selectedProcessorType, setSelectedProcessorType] = useState(1);
+  const [selectedRam, setSelectedRam] = useState(1);
+  const [selectedGraphicsCard, setSelectedGraphicsCard] = useState(1);
+  const [selectedSsd, setSelectedSsd] = useState(1);
   const [productName, setProductName] = useState();
 
   const [categories, setCategories] = useState([]);
@@ -53,6 +61,10 @@ const AddProduct = () => {
   const [frontCameraResolutions, setFrontCameraResolutions] = useState([]);
   const [displayTechnologies, setDisplayTechnologies] = useState([]);
   const [screenResolutions, setScreenResolutions] = useState([]);
+  const [processorTypes, setProcessorTypes] = useState([]);
+  const [rams, setRams] = useState([]);
+  const [graphicsCards, setGraphicsCards] = useState([]);
+  const [ssd, setSsd] = useState([]);
 
   const { t } = useTranslation();
 
@@ -71,6 +83,10 @@ const AddProduct = () => {
     setSelectedFrontCameraResolution(1);
     setSelectedDisplayTechnology(1);
     setSelectedScreenResolution(1);
+    setSelectedProcessorType(1);
+    setSelectedRam(1);
+    setSelectedGraphicsCard(1);
+    setSelectedSsd(1);
 
     loadSubCategories(event.target.options.selectedIndex + 1);
     loadBrands(1, event.target.options.selectedIndex + 1);
@@ -85,6 +101,10 @@ const AddProduct = () => {
     loadFrontCameraResolutions(1, event.target.options.selectedIndex + 1);
     loadDisplayTechnologies(1, event.target.options.selectedIndex + 1);
     loadScreenResolutions(1, event.target.options.selectedIndex + 1);
+    loadProcessorTypes(1, event.target.options.selectedIndex + 1);
+    loadRams(1, event.target.options.selectedIndex + 1);
+    loadGraphicsCards(1, event.target.options.selectedIndex + 1);
+    loadSsd(1, event.target.options.selectedIndex + 1);
   };
 
   const onChangeSubCategory = (event) => {
@@ -101,6 +121,10 @@ const AddProduct = () => {
     setSelectedFrontCameraResolution(1);
     setSelectedDisplayTechnology(1);
     setSelectedScreenResolution(1);
+    setSelectedProcessorType(1);
+    setSelectedRam(1);
+    setSelectedGraphicsCard(1);
+    setSelectedSsd(1);
 
     loadBrands(event.target.options.selectedIndex + 1, selectedCategory);
     loadColors(event.target.options.selectedIndex + 1, selectedCategory);
@@ -132,6 +156,13 @@ const AddProduct = () => {
       event.target.options.selectedIndex + 1,
       selectedCategory
     );
+    loadProcessorTypes(
+      event.target.options.selectedIndex + 1,
+      selectedCategory
+    );
+    loadRams(event.target.options.selectedIndex + 1, selectedCategory);
+    loadGraphicsCards(event.target.options.selectedIndex + 1, selectedCategory);
+    loadSsd(event.target.options.selectedIndex + 1, selectedCategory);
   };
 
   const loadCategories = async () => {
@@ -284,6 +315,50 @@ const AddProduct = () => {
     } catch (error) {}
   };
 
+  const loadProcessorTypes = async (subId, generalId) => {
+    try {
+      const response = await getProcessorType(subId, generalId);
+      setProcessorTypes(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedProcessorType(null);
+      }
+    } catch (error) {}
+  };
+
+  const loadRams = async (subId, generalId) => {
+    try {
+      const response = await getRam(subId, generalId);
+      setRams(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedRam(null);
+      }
+    } catch (error) {}
+  };
+
+  const loadGraphicsCards = async (subId, generalId) => {
+    try {
+      const response = await getGraphicsCard(subId, generalId);
+      setGraphicsCards(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedGraphicsCard(null);
+      }
+    } catch (error) {}
+  };
+
+  const loadSsd = async (subId, generalId) => {
+    try {
+      const response = await getSsd(subId, generalId);
+      setSsd(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedSsd(null);
+      }
+    } catch (error) {}
+  };
+
   useEffect(() => {
     loadCategories();
     loadSubCategories(1);
@@ -299,6 +374,9 @@ const AddProduct = () => {
     loadFrontCameraResolutions(1, 1);
     loadDisplayTechnologies(1, 1);
     loadScreenResolutions(1, 1);
+    loadProcessorTypes(1, 1);
+    loadRams(1, 1);
+    loadSsd(1, 1);
   }, []);
 
   return (
@@ -446,6 +524,46 @@ const AddProduct = () => {
                     );
                   }}
                   categories={screenResolutions}
+                />
+              )}
+              {processorTypes.length !== 0 && (
+                <Select
+                  label={t("Processor Type")}
+                  onChangeCategory={(event) => {
+                    setSelectedProcessorType(
+                      event.target.options.selectedIndex + 1
+                    );
+                  }}
+                  categories={processorTypes}
+                />
+              )}
+              {rams.length !== 0 && (
+                <Select
+                  label={t("Ram")}
+                  onChangeCategory={(event) => {
+                    setSelectedRam(event.target.options.selectedIndex + 1);
+                  }}
+                  categories={rams}
+                />
+              )}
+              {graphicsCards.length !== 0 && (
+                <Select
+                  label={t("Graphics Card")}
+                  onChangeCategory={(event) => {
+                    setSelectedGraphicsCard(
+                      event.target.options.selectedIndex + 1
+                    );
+                  }}
+                  categories={graphicsCards}
+                />
+              )}
+              {ssd.length !== 0 && (
+                <Select
+                  label={t("SSD Capacity")}
+                  onChangeCategory={(event) => {
+                    setSelectedSsd(event.target.options.selectedIndex + 1);
+                  }}
+                  categories={ssd}
                 />
               )}
               <Input

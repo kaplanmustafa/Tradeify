@@ -45,7 +45,7 @@ const MegaMenu = () => {
   };
 
   return (
-    <div className="container text-center border-bottom border-solid pb-3 pt-3">
+    <div className=" text-center border-bottom border-solid pb-3 pt-3">
       {categories.map((category, key) => (
         <Dropdown
           title={t(category.categoryName)}
