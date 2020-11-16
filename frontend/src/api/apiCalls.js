@@ -101,6 +101,18 @@ export const getScreenSize = (middleId, generalId) => {
   return axios.get(`/api/1.0/screenSizes/${middleId}/${generalId}`);
 };
 
+export const getCameraResolution = (middleId, generalId) => {
+  return axios.get(`/api/1.0/cameraResolutions/${middleId}/${generalId}`);
+};
+
 export const getFrontCameraResolution = (middleId, generalId) => {
   return axios.get(`/api/1.0/frontCameraResolutions/${middleId}/${generalId}`);
+};
+
+export const getDisplayTechnology = (middleId, generalId) => {
+  return axios.get(`/api/1.0/displayTechnologies/${middleId}/${generalId}`);
+};
+
+export const getScreenResolution = (middleId, generalId) => {
+  return axios.get(`/api/1.0/screenResolutions/${middleId}/${generalId}`);
 };

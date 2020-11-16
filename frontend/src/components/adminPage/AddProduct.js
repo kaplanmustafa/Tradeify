@@ -13,7 +13,10 @@ import {
   getInternalMemory,
   getBatteryPower,
   getScreenSize,
+  getCameraResolution,
   getFrontCameraResolution,
+  getDisplayTechnology,
+  getScreenResolution,
 } from "../../api/apiCalls";
 
 const AddProduct = () => {
@@ -27,10 +30,13 @@ const AddProduct = () => {
   const [selectedInternalMemory, setSelectedInternalMemory] = useState(1);
   const [selectedBatteryPower, setSelectedBatteryPower] = useState(1);
   const [selectedScreenSize, setSelectedScreenSize] = useState(1);
+  const [selectedCameraResolution, setSelectedCameraResolution] = useState(1);
   const [
     selectedFrontCameraResolution,
     setSelectedFrontCameraResolution,
   ] = useState(1);
+  const [selectedDisplayTechnology, setSelectedDisplayTechnology] = useState(1);
+  const [selectedScreenResolution, setSelectedScreenResolution] = useState(1);
   const [productName, setProductName] = useState();
 
   const [categories, setCategories] = useState([]);
@@ -43,7 +49,10 @@ const AddProduct = () => {
   const [internalMemories, setInternalMemories] = useState([]);
   const [batteryPowers, setBatteryPowers] = useState([]);
   const [screenSizes, setScreenSizes] = useState([]);
+  const [cameraResolutions, setCameraResolutions] = useState([]);
   const [frontCameraResolutions, setFrontCameraResolutions] = useState([]);
+  const [displayTechnologies, setDisplayTechnologies] = useState([]);
+  const [screenResolutions, setScreenResolutions] = useState([]);
 
   const { t } = useTranslation();
 
@@ -58,7 +67,10 @@ const AddProduct = () => {
     setSelectedInternalMemory(1);
     setSelectedBatteryPower(1);
     setSelectedScreenSize(1);
+    setSelectedCameraResolution(1);
     setSelectedFrontCameraResolution(1);
+    setSelectedDisplayTechnology(1);
+    setSelectedScreenResolution(1);
 
     loadSubCategories(event.target.options.selectedIndex + 1);
     loadBrands(1, event.target.options.selectedIndex + 1);
@@ -69,7 +81,10 @@ const AddProduct = () => {
     loadInternalMemories(1, event.target.options.selectedIndex + 1);
     loadBatteryPowers(1, event.target.options.selectedIndex + 1);
     loadScreenSizes(1, event.target.options.selectedIndex + 1);
+    loadCameraResolutions(1, event.target.options.selectedIndex + 1);
     loadFrontCameraResolutions(1, event.target.options.selectedIndex + 1);
+    loadDisplayTechnologies(1, event.target.options.selectedIndex + 1);
+    loadScreenResolutions(1, event.target.options.selectedIndex + 1);
   };
 
   const onChangeSubCategory = (event) => {
@@ -82,7 +97,10 @@ const AddProduct = () => {
     setSelectedInternalMemory(1);
     setSelectedBatteryPower(1);
     setSelectedScreenSize(1);
+    setSelectedCameraResolution(1);
     setSelectedFrontCameraResolution(1);
+    setSelectedDisplayTechnology(1);
+    setSelectedScreenResolution(1);
 
     loadBrands(event.target.options.selectedIndex + 1, selectedCategory);
     loadColors(event.target.options.selectedIndex + 1, selectedCategory);
@@ -98,46 +116,22 @@ const AddProduct = () => {
     );
     loadBatteryPowers(event.target.options.selectedIndex + 1, selectedCategory);
     loadScreenSizes(event.target.options.selectedIndex + 1, selectedCategory);
+    loadCameraResolutions(
+      event.target.options.selectedIndex + 1,
+      selectedCategory
+    );
     loadFrontCameraResolutions(
       event.target.options.selectedIndex + 1,
       selectedCategory
     );
-  };
-
-  const onChangeBrand = (event) => {
-    setSelectedBrand(event.target.options.selectedIndex + 1);
-  };
-
-  const onChangeColor = (event) => {
-    setSelectedColor(event.target.options.selectedIndex + 1);
-  };
-
-  const onChangeOperatingType = (event) => {
-    setSelectedOperatingType(event.target.options.selectedIndex + 1);
-  };
-
-  const onChangeCaseDiameter = (event) => {
-    setSelectedCaseDiameter(event.target.options.selectedIndex + 1);
-  };
-
-  const onChangeWarrantyType = (event) => {
-    setSelectedWarrantyType(event.target.options.selectedIndex + 1);
-  };
-
-  const onChangeInternalMemory = (event) => {
-    setSelectedInternalMemory(event.target.options.selectedIndex + 1);
-  };
-
-  const onChangeBatteryPower = (event) => {
-    setSelectedBatteryPower(event.target.options.selectedIndex + 1);
-  };
-
-  const onChangeScreenSize = (event) => {
-    setSelectedScreenSize(event.target.options.selectedIndex + 1);
-  };
-
-  const onChangeFrontCameraResolution = (event) => {
-    setSelectedFrontCameraResolution(event.target.options.selectedIndex + 1);
+    loadDisplayTechnologies(
+      event.target.options.selectedIndex + 1,
+      selectedCategory
+    );
+    loadScreenResolutions(
+      event.target.options.selectedIndex + 1,
+      selectedCategory
+    );
   };
 
   const loadCategories = async () => {
@@ -246,6 +240,17 @@ const AddProduct = () => {
     } catch (error) {}
   };
 
+  const loadCameraResolutions = async (subId, generalId) => {
+    try {
+      const response = await getCameraResolution(subId, generalId);
+      setCameraResolutions(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedCameraResolution(null);
+      }
+    } catch (error) {}
+  };
+
   const loadFrontCameraResolutions = async (subId, generalId) => {
     try {
       const response = await getFrontCameraResolution(subId, generalId);
@@ -253,6 +258,28 @@ const AddProduct = () => {
 
       if (response.data.length === 0) {
         setSelectedFrontCameraResolution(null);
+      }
+    } catch (error) {}
+  };
+
+  const loadDisplayTechnologies = async (subId, generalId) => {
+    try {
+      const response = await getDisplayTechnology(subId, generalId);
+      setDisplayTechnologies(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedDisplayTechnology(null);
+      }
+    } catch (error) {}
+  };
+
+  const loadScreenResolutions = async (subId, generalId) => {
+    try {
+      const response = await getScreenResolution(subId, generalId);
+      setScreenResolutions(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedScreenResolution(null);
       }
     } catch (error) {}
   };
@@ -268,7 +295,10 @@ const AddProduct = () => {
     loadInternalMemories(1, 1);
     loadBatteryPowers(1, 1);
     loadScreenSizes(1, 1);
+    loadCameraResolutions(1, 1);
     loadFrontCameraResolutions(1, 1);
+    loadDisplayTechnologies(1, 1);
+    loadScreenResolutions(1, 1);
   }, []);
 
   return (
@@ -293,64 +323,129 @@ const AddProduct = () => {
               {brands.length !== 0 && (
                 <Select
                   label={t("Brand")}
-                  onChangeCategory={onChangeBrand}
+                  onChangeCategory={(event) => {
+                    setSelectedBrand(event.target.options.selectedIndex + 1);
+                  }}
                   categories={brands}
                 />
               )}
               {colors.length !== 0 && (
                 <Select
                   label={t("Color")}
-                  onChangeCategory={onChangeColor}
+                  onChangeCategory={(event) => {
+                    setSelectedColor(event.target.options.selectedIndex + 1);
+                  }}
                   categories={colors}
                 />
               )}
               {operatingTypes.length !== 0 && (
                 <Select
                   label={t("Operating Type")}
-                  onChangeCategory={onChangeOperatingType}
+                  onChangeCategory={(event) => {
+                    setSelectedOperatingType(
+                      event.target.options.selectedIndex + 1
+                    );
+                  }}
                   categories={operatingTypes}
                 />
               )}
               {caseDiameters.length !== 0 && (
                 <Select
                   label={t("Case Diameter")}
-                  onChangeCategory={onChangeCaseDiameter}
+                  onChangeCategory={(event) => {
+                    setSelectedCaseDiameter(
+                      event.target.options.selectedIndex + 1
+                    );
+                  }}
                   categories={caseDiameters}
                 />
               )}
               {warrantyTypes.length !== 0 && (
                 <Select
                   label={t("Warranty Type")}
-                  onChangeCategory={onChangeWarrantyType}
+                  onChangeCategory={(event) => {
+                    setSelectedWarrantyType(
+                      event.target.options.selectedIndex + 1
+                    );
+                  }}
                   categories={warrantyTypes}
                 />
               )}
               {internalMemories.length !== 0 && (
                 <Select
                   label={t("Capacity")}
-                  onChangeCategory={onChangeInternalMemory}
+                  onChangeCategory={(event) => {
+                    setSelectedInternalMemory(
+                      event.target.options.selectedIndex + 1
+                    );
+                  }}
                   categories={internalMemories}
                 />
               )}
               {batteryPowers.length !== 0 && (
                 <Select
                   label={t("Battery Power (mAh)")}
-                  onChangeCategory={onChangeBatteryPower}
+                  onChangeCategory={(event) => {
+                    setSelectedBatteryPower(
+                      event.target.options.selectedIndex + 1
+                    );
+                  }}
                   categories={batteryPowers}
                 />
               )}
               {screenSizes.length !== 0 && (
                 <Select
                   label={t("Screen Size")}
-                  onChangeCategory={onChangeScreenSize}
+                  onChangeCategory={(event) => {
+                    setSelectedScreenSize(
+                      event.target.options.selectedIndex + 1
+                    );
+                  }}
                   categories={screenSizes}
+                />
+              )}
+              {cameraResolutions.length !== 0 && (
+                <Select
+                  label={t("Camera Resolution")}
+                  onChangeCategory={(event) => {
+                    setSelectedCameraResolution(
+                      event.target.options.selectedIndex + 1
+                    );
+                  }}
+                  categories={cameraResolutions}
                 />
               )}
               {frontCameraResolutions.length !== 0 && (
                 <Select
                   label={t("Front Camera Resolution")}
-                  onChangeCategory={onChangeFrontCameraResolution}
+                  onChangeCategory={(event) => {
+                    setSelectedFrontCameraResolution(
+                      event.target.options.selectedIndex + 1
+                    );
+                  }}
                   categories={frontCameraResolutions}
+                />
+              )}
+              {displayTechnologies.length !== 0 && (
+                <Select
+                  label={t("Display Technology")}
+                  onChangeCategory={(event) => {
+                    setSelectedDisplayTechnology(
+                      event.target.options.selectedIndex + 1
+                    );
+                  }}
+                  categories={displayTechnologies}
+                />
+              )}
+              {screenResolutions.length !== 0 && (
+                <Select
+                  label={t("Screen Resolution")}
+                  onChangeCategory={(event) => {
+                    setSelectedScreenResolution(
+                      event.target.options.selectedIndex + 1
+                    );
+                  }}
+                  categories={screenResolutions}
                 />
               )}
               <Input

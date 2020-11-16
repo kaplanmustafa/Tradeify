@@ -13,11 +13,14 @@ import javax.validation.constraints.Size;
 
 import com.tradeify.tradeify_ws.product.entities.BatteryPower;
 import com.tradeify.tradeify_ws.product.entities.Brand;
+import com.tradeify.tradeify_ws.product.entities.CameraResolution;
 import com.tradeify.tradeify_ws.product.entities.CaseDiameter;
 import com.tradeify.tradeify_ws.product.entities.Color;
+import com.tradeify.tradeify_ws.product.entities.DisplayTechnology;
 import com.tradeify.tradeify_ws.product.entities.FrontCameraResolution;
 import com.tradeify.tradeify_ws.product.entities.InternalMemory;
 import com.tradeify.tradeify_ws.product.entities.OperatingType;
+import com.tradeify.tradeify_ws.product.entities.ScreenResolution;
 import com.tradeify.tradeify_ws.product.entities.ScreenSize;
 import com.tradeify.tradeify_ws.product.entities.WarrantyType;
 
@@ -63,5 +66,14 @@ public class GeneralCategory {
 	private List<ScreenSize> screenSizes;
 	
 	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
-	private List<FrontCameraResolution> cameraResolutions;
+	private List<FrontCameraResolution> frontCameraResolutions;
+	
+	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
+	private List<CameraResolution> cameraResolutions;
+	
+	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
+	private List<DisplayTechnology> displayTechnologies;
+	
+	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
+	private List<ScreenResolution> screenResolutions;
 }

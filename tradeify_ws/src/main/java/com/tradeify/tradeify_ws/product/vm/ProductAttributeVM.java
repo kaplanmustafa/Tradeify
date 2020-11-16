@@ -2,11 +2,14 @@ package com.tradeify.tradeify_ws.product.vm;
 
 import com.tradeify.tradeify_ws.product.entities.BatteryPower;
 import com.tradeify.tradeify_ws.product.entities.Brand;
+import com.tradeify.tradeify_ws.product.entities.CameraResolution;
 import com.tradeify.tradeify_ws.product.entities.CaseDiameter;
 import com.tradeify.tradeify_ws.product.entities.Color;
+import com.tradeify.tradeify_ws.product.entities.DisplayTechnology;
 import com.tradeify.tradeify_ws.product.entities.FrontCameraResolution;
 import com.tradeify.tradeify_ws.product.entities.InternalMemory;
 import com.tradeify.tradeify_ws.product.entities.OperatingType;
+import com.tradeify.tradeify_ws.product.entities.ScreenResolution;
 import com.tradeify.tradeify_ws.product.entities.ScreenSize;
 import com.tradeify.tradeify_ws.product.entities.WarrantyType;
 
@@ -84,5 +87,26 @@ public class ProductAttributeVM {
 		this.setCategoryName(frontCameraResolution.getFrontCameraResolutionName());
 		this.setGeneralCategoryId(frontCameraResolution.getGeneralCategory().getId());
 		this.setMiddleCategoryId(frontCameraResolution.getSubCategory().getId());
+	}
+	
+	public ProductAttributeVM(CameraResolution cameraResolution) {
+		this.setId(cameraResolution.getId());
+		this.setCategoryName(cameraResolution.getCameraResolutionName());
+		this.setGeneralCategoryId(cameraResolution.getGeneralCategory().getId());
+		this.setMiddleCategoryId(cameraResolution.getSubCategory().getId());
+	}
+	
+	public ProductAttributeVM(DisplayTechnology displayTechnology) {
+		this.setId(displayTechnology.getId());
+		this.setCategoryName(displayTechnology.getDisplayTechnologyName());
+		this.setGeneralCategoryId(displayTechnology.getGeneralCategory().getId());
+		this.setMiddleCategoryId(displayTechnology.getSubCategory().getId());
+	}
+	
+	public ProductAttributeVM(ScreenResolution screenResolution) {
+		this.setId(screenResolution.getId());
+		this.setCategoryName(screenResolution.getScreenResolutionName());
+		this.setGeneralCategoryId(screenResolution.getGeneralCategory().getId());
+		this.setMiddleCategoryId(screenResolution.getSubCategory().getId());
 	}
 }
