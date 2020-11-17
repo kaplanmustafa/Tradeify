@@ -23,8 +23,9 @@ public class WarrantyTypeController {
 		List<ProductAttributeVM> attributeVM = new ArrayList<>();
 		
 		List<WarrantyType> types = warrantyTypeService.getWarrantyTypes(id, generalId);
-		for(WarrantyType type: types) {
-			attributeVM.add(new ProductAttributeVM(type));
+		for(WarrantyType item: types) {
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getWarrantyTypeName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;

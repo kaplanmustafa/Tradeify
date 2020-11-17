@@ -24,7 +24,8 @@ public class ScreenResolutionController {
 		
 		List<ScreenResolution> list = screenResolutionService.getScreenResolutions(id, generalId);
 		for(ScreenResolution item: list) {
-			attributeVM.add(new ProductAttributeVM(item));
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getScreenResolutionName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;

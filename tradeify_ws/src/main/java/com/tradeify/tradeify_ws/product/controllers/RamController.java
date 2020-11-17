@@ -24,7 +24,8 @@ public class RamController {
 		
 		List<Ram> list = ramService.getRams(id, generalId);
 		for(Ram item: list) {
-			attributeVM.add(new ProductAttributeVM(item));
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getRamName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;

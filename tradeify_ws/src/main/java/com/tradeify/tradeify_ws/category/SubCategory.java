@@ -22,9 +22,11 @@ import com.tradeify.tradeify_ws.product.entities.FrontCameraResolution;
 import com.tradeify.tradeify_ws.product.entities.GraphicsCard;
 import com.tradeify.tradeify_ws.product.entities.InternalMemory;
 import com.tradeify.tradeify_ws.product.entities.OperatingType;
+import com.tradeify.tradeify_ws.product.entities.PanelType;
 import com.tradeify.tradeify_ws.product.entities.ProcessorModel;
 import com.tradeify.tradeify_ws.product.entities.ProcessorType;
 import com.tradeify.tradeify_ws.product.entities.Ram;
+import com.tradeify.tradeify_ws.product.entities.ScreenRefreshRate;
 import com.tradeify.tradeify_ws.product.entities.ScreenResolution;
 import com.tradeify.tradeify_ws.product.entities.ScreenSize;
 import com.tradeify.tradeify_ws.product.entities.Ssd;
@@ -99,4 +101,10 @@ public class SubCategory {
 	
 	@OneToMany(mappedBy = "subCategory", cascade = CascadeType.REMOVE)
 	private List<ProcessorModel> processorModels;
+	
+	@OneToMany(mappedBy = "subCategory", cascade = CascadeType.REMOVE)
+	private List<ScreenRefreshRate> screenRefreshRates;
+	
+	@OneToMany(mappedBy = "subCategory", cascade = CascadeType.REMOVE)
+	private List<PanelType> panelTypes;
 }

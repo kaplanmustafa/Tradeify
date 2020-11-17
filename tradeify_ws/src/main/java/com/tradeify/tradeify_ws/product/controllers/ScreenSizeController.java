@@ -23,8 +23,9 @@ public class ScreenSizeController {
 		List<ProductAttributeVM> attributeVM = new ArrayList<>();
 		
 		List<ScreenSize> screenSizes = screenSizeService.getScreenSizes(id, generalId);
-		for(ScreenSize size: screenSizes) {
-			attributeVM.add(new ProductAttributeVM(size));
+		for(ScreenSize item: screenSizes) {
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getScreenSizeName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;

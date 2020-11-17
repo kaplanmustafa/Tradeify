@@ -23,8 +23,9 @@ public class ColorController {
 		List<ProductAttributeVM> attributeVM = new ArrayList<>();
 		
 		List<Color> colorList = colorService.getBrands(id, generalId);
-		for(Color colors: colorList) {
-			attributeVM.add(new ProductAttributeVM(colors));
+		for(Color item: colorList) {
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getColorName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;

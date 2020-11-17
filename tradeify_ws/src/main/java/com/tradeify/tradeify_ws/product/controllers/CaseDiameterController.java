@@ -23,8 +23,9 @@ public class CaseDiameterController {
 		List<ProductAttributeVM> attributeVM = new ArrayList<>();
 		
 		List<CaseDiameter> caseDiameters = caseDiameterService.getCaseDiameters(id, generalId);
-		for(CaseDiameter diameters: caseDiameters) {
-			attributeVM.add(new ProductAttributeVM(diameters));
+		for(CaseDiameter item: caseDiameters) {
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getCaseDiameterName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;

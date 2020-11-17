@@ -24,7 +24,8 @@ public class GraphicsCardController {
 		
 		List<GraphicsCard> list = graphicsCardService.getGraphicsCards(id, generalId);
 		for(GraphicsCard item: list) {
-			attributeVM.add(new ProductAttributeVM(item));
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getGraphicsCardName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;

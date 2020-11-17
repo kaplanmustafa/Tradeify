@@ -23,8 +23,9 @@ public class CameraResolutionController {
 		List<ProductAttributeVM> attributeVM = new ArrayList<>();
 		
 		List<CameraResolution> types = cameraResolutionService.getCameraResolutions(id, generalId);
-		for(CameraResolution type: types) {
-			attributeVM.add(new ProductAttributeVM(type));
+		for(CameraResolution item: types) {
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getCameraResolutionName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;

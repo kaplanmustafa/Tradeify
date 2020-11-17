@@ -136,3 +136,11 @@ export const getSsd = (middleId, generalId) => {
 export const getProcessorModel = (middleId, generalId) => {
   return axios.get(`/api/1.0/processorModels/${middleId}/${generalId}`);
 };
+
+export const getScreenRefreshRate = (middleId, generalId) => {
+  return axios.get(`/api/1.0/screenRefreshRates/${middleId}/${generalId}`);
+};
+
+export const getPanelType = (middleId, generalId) => {
+  return axios.get(`/api/1.0/panelTypes/${middleId}/${generalId}`);
+};

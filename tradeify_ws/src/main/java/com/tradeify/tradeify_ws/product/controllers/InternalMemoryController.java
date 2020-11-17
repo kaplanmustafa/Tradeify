@@ -23,8 +23,9 @@ public class InternalMemoryController {
 		List<ProductAttributeVM> attributeVM = new ArrayList<>();
 		
 		List<InternalMemory> memories = internalMemoryService.getInternalMemories(id, generalId);
-		for(InternalMemory type: memories) {
-			attributeVM.add(new ProductAttributeVM(type));
+		for(InternalMemory item: memories) {
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getInternalMemoryName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;

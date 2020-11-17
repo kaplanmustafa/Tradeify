@@ -24,7 +24,8 @@ public class SsdController {
 		
 		List<Ssd> list = ssdService.getSsd(id, generalId);
 		for(Ssd item: list) {
-			attributeVM.add(new ProductAttributeVM(item));
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getSsdName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;

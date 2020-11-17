@@ -22,6 +22,8 @@ import {
   getGraphicsCard,
   getSsd,
   getProcessorModel,
+  getScreenRefreshRate,
+  getPanelType,
 } from "../../api/apiCalls";
 
 const AddProduct = () => {
@@ -47,6 +49,8 @@ const AddProduct = () => {
   const [selectedGraphicsCard, setSelectedGraphicsCard] = useState(1);
   const [selectedSsd, setSelectedSsd] = useState(1);
   const [selectedProcessorModel, setSelectedProcessorModel] = useState(1);
+  const [selectedScreenRefreshRate, setSelectedScreenRefreshRate] = useState(1);
+  const [selectedPanelType, setSelectedPanelType] = useState(1);
   const [productName, setProductName] = useState();
 
   const [categories, setCategories] = useState([]);
@@ -68,6 +72,8 @@ const AddProduct = () => {
   const [graphicsCards, setGraphicsCards] = useState([]);
   const [ssd, setSsd] = useState([]);
   const [processorModels, setProcessorModels] = useState([]);
+  const [screenRefreshRates, setScreenRefreshRates] = useState([]);
+  const [panelTypes, setPanelTypes] = useState([]);
 
   const { t } = useTranslation();
 
@@ -91,6 +97,8 @@ const AddProduct = () => {
     setSelectedGraphicsCard(1);
     setSelectedSsd(1);
     setSelectedProcessorModel(1);
+    setSelectedScreenRefreshRate(1);
+    setSelectedPanelType(1);
 
     loadSubCategories(event.target.options.selectedIndex + 1);
     loadBrands(1, event.target.options.selectedIndex + 1);
@@ -110,6 +118,8 @@ const AddProduct = () => {
     loadGraphicsCards(1, event.target.options.selectedIndex + 1);
     loadSsd(1, event.target.options.selectedIndex + 1);
     loadProcessorModels(1, event.target.options.selectedIndex + 1);
+    loadScreenRefreshRates(1, event.target.options.selectedIndex + 1);
+    loadPanelTypes(1, event.target.options.selectedIndex + 1);
   };
 
   const onChangeSubCategory = (event) => {
@@ -131,6 +141,8 @@ const AddProduct = () => {
     setSelectedGraphicsCard(1);
     setSelectedSsd(1);
     setSelectedProcessorModel(1);
+    setSelectedScreenRefreshRate(1);
+    setSelectedPanelType(1);
 
     loadBrands(event.target.options.selectedIndex + 1, selectedCategory);
     loadColors(event.target.options.selectedIndex + 1, selectedCategory);
@@ -173,6 +185,11 @@ const AddProduct = () => {
       event.target.options.selectedIndex + 1,
       selectedCategory
     );
+    loadScreenRefreshRates(
+      event.target.options.selectedIndex + 1,
+      selectedCategory
+    );
+    loadPanelTypes(event.target.options.selectedIndex + 1, selectedCategory);
   };
 
   const loadCategories = async () => {
@@ -380,6 +397,28 @@ const AddProduct = () => {
     } catch (error) {}
   };
 
+  const loadScreenRefreshRates = async (subId, generalId) => {
+    try {
+      const response = await getScreenRefreshRate(subId, generalId);
+      setScreenRefreshRates(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedScreenRefreshRate(null);
+      }
+    } catch (error) {}
+  };
+
+  const loadPanelTypes = async (subId, generalId) => {
+    try {
+      const response = await getPanelType(subId, generalId);
+      setPanelTypes(response.data);
+
+      if (response.data.length === 0) {
+        setSelectedPanelType(null);
+      }
+    } catch (error) {}
+  };
+
   useEffect(() => {
     loadCategories();
     loadSubCategories(1);
@@ -399,6 +438,8 @@ const AddProduct = () => {
     loadRams(1, 1);
     loadSsd(1, 1);
     loadProcessorModels(1, 1);
+    loadScreenRefreshRates(1, 1);
+    loadPanelTypes(1, 1);
   }, []);
 
   return (
@@ -597,6 +638,28 @@ const AddProduct = () => {
                     );
                   }}
                   categories={processorModels}
+                />
+              )}
+              {screenRefreshRates.length !== 0 && (
+                <Select
+                  label={t("Screen Refresh Rate")}
+                  onChangeCategory={(event) => {
+                    setSelectedScreenRefreshRate(
+                      event.target.options.selectedIndex + 1
+                    );
+                  }}
+                  categories={screenRefreshRates}
+                />
+              )}
+              {panelTypes.length !== 0 && (
+                <Select
+                  label={t("Panel Type")}
+                  onChangeCategory={(event) => {
+                    setSelectedPanelType(
+                      event.target.options.selectedIndex + 1
+                    );
+                  }}
+                  categories={panelTypes}
                 />
               )}
               <Input

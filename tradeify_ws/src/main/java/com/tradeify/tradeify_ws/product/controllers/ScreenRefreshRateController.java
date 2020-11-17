@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tradeify.tradeify_ws.product.entities.OperatingType;
-import com.tradeify.tradeify_ws.product.services.OperatingTypeService;
+import com.tradeify.tradeify_ws.product.entities.ScreenRefreshRate;
+import com.tradeify.tradeify_ws.product.services.ScreenRefreshRateService;
 import com.tradeify.tradeify_ws.product.vm.ProductAttributeVM;
 
 @RestController
-public class OperatingTypeController {
+public class ScreenRefreshRateController {
 
 	@Autowired
-	OperatingTypeService operatingTypeService;
+	ScreenRefreshRateService screenRefreshRateService;
 	
-	@GetMapping("/api/1.0/operatingTypes/{id}/{generalId}")
+	@GetMapping("/api/1.0/screenRefreshRates/{id}/{generalId}")
 	List<ProductAttributeVM> getCategories(@PathVariable(name = "id") Long id, @PathVariable(name = "generalId") Long generalId) {
 		List<ProductAttributeVM> attributeVM = new ArrayList<>();
 		
-		List<OperatingType> operatingTypes = operatingTypeService.getOperatingTypes(id, generalId);
-		for(OperatingType item: operatingTypes) {
-			attributeVM.add(new ProductAttributeVM(item.getId(), item.getOperatingTypeName(), item.getGeneralCategory().getId(), 
+		List<ScreenRefreshRate> list = screenRefreshRateService.getScreenRefreshRates(id, generalId);
+		for(ScreenRefreshRate item: list) {
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getScreenRefreshRateName(), item.getGeneralCategory().getId(), 
 					item.getSubCategory().getId()));
 		}
 		

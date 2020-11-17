@@ -24,7 +24,8 @@ public class ProcessorModelController {
 		
 		List<ProcessorModel> list = processorModelService.getProcessorModels(id, generalId);
 		for(ProcessorModel item: list) {
-			attributeVM.add(new ProductAttributeVM(item));
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getProcessorModelName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;

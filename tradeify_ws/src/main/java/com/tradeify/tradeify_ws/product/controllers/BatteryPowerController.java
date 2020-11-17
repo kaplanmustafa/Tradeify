@@ -23,8 +23,9 @@ public class BatteryPowerController {
 		List<ProductAttributeVM> attributeVM = new ArrayList<>();
 		
 		List<BatteryPower> powers = batteryPowerService.getBatteryPowers(id, generalId);
-		for(BatteryPower power: powers) {
-			attributeVM.add(new ProductAttributeVM(power));
+		for(BatteryPower item: powers) {
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getBatteryPowerName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;

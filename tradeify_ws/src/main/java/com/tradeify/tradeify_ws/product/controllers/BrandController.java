@@ -23,8 +23,9 @@ public class BrandController {
 		List<ProductAttributeVM> attributeVM = new ArrayList<>();
 		
 		List<Brand> categories = brandService.getBrands(id, generalId);
-		for(Brand category: categories) {
-			attributeVM.add(new ProductAttributeVM(category));
+		for(Brand item: categories) {
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getBrandName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;
@@ -36,7 +37,8 @@ public class BrandController {
 		
 		List<Brand> categories = brandService.getAllBrands();
 		for(Brand category: categories) {
-			attributeVM.add(new ProductAttributeVM(category));
+			attributeVM.add(new ProductAttributeVM(category.getId(), category.getBrandName(), category.getGeneralCategory().getId(),
+					category.getSubCategory().getId()));
 		}
 		
 		return attributeVM;

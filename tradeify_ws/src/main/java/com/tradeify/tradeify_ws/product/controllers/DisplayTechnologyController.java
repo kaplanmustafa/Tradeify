@@ -24,7 +24,8 @@ public class DisplayTechnologyController {
 		
 		List<DisplayTechnology> list = displayTechnologyService.getDisplayTechnologies(id, generalId);
 		for(DisplayTechnology item: list) {
-			attributeVM.add(new ProductAttributeVM(item));
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getDisplayTechnologyName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;

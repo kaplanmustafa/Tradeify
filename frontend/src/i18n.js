@@ -196,6 +196,8 @@ i18n.use(initReactI18next).init({
         Shared: "Shared",
         "SSD Capacity": "SSD Capacity",
         "Processor Model": "Processor Model",
+        "Screen Refresh Rate": "Screen Refresh Rate",
+        "Panel Type": "Panel Type",
       },
     },
     tr: {
@@ -393,6 +395,8 @@ i18n.use(initReactI18next).init({
         Shared: "Paylaşımlı",
         "SSD Capacity": "SSD Kapasitesi",
         "Processor Model": "İşlemci Modeli",
+        "Screen Refresh Rate": "Ekran Yenileme Hızı",
+        "Panel Type": "Panel Tipi",
       },
     },
   },

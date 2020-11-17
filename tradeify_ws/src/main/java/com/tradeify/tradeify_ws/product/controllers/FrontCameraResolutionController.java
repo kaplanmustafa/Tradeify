@@ -23,8 +23,9 @@ public class FrontCameraResolutionController {
 		List<ProductAttributeVM> attributeVM = new ArrayList<>();
 		
 		List<FrontCameraResolution> types = frontCameraResolutionService.getFrontCameraResolutions(id, generalId);
-		for(FrontCameraResolution type: types) {
-			attributeVM.add(new ProductAttributeVM(type));
+		for(FrontCameraResolution item: types) {
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getFrontCameraResolutionName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;

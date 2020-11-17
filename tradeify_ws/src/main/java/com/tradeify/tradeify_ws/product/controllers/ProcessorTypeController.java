@@ -24,7 +24,8 @@ public class ProcessorTypeController {
 		
 		List<ProcessorType> list = processorTypeService.getProcessorTypes(id, generalId);
 		for(ProcessorType item: list) {
-			attributeVM.add(new ProductAttributeVM(item));
+			attributeVM.add(new ProductAttributeVM(item.getId(), item.getProcessorTypeName(), item.getGeneralCategory().getId(), 
+					item.getSubCategory().getId()));
 		}
 		
 		return attributeVM;
