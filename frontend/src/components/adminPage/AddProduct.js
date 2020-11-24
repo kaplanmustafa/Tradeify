@@ -24,7 +24,11 @@ import {
   getProcessorModel,
   getScreenRefreshRate,
   getPanelType,
+  postProductAttachment,
+  postProduct
 } from "../../api/apiCalls";
+import ProductImageWithDefault from "./ProductImageWithDefault";
+import ButtonWithProgress from "../toolbox/ButtonWithProgress";
 
 const AddProduct = () => {
   const [selectedCategory, setSelectedCategory] = useState(1);
@@ -51,7 +55,23 @@ const AddProduct = () => {
   const [selectedProcessorModel, setSelectedProcessorModel] = useState(1);
   const [selectedScreenRefreshRate, setSelectedScreenRefreshRate] = useState(1);
   const [selectedPanelType, setSelectedPanelType] = useState(1);
+
   const [productName, setProductName] = useState();
+  const [description, setDescription] = useState();
+  const [price, setPrice] = useState();
+
+  const [coverImage, setcoverImage] = useState();
+  const [image1, setImage1] = useState();
+  const [image2, setImage2] = useState();
+  const [image3, setImage3] = useState();
+  const [image4, setImage4] = useState();
+  const [coverImageId, setcoverImageId] = useState();
+  const [image1Id, setImage1Id] = useState();
+  const [image2Id, setImage2Id] = useState();
+  const [image3Id, setImage3Id] = useState();
+  const [image4Id, setImage4Id] = useState();
+
+  const [errors, setErrors] = useState({});
 
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
@@ -442,6 +462,138 @@ const AddProduct = () => {
     loadPanelTypes(1, 1);
   }, []);
 
+  const uploadFile = async (file) => {
+    const attachment = new FormData();
+    attachment.append("file", file);
+
+    const response = await postProductAttachment(attachment);
+    return response.data.id;
+  };
+
+  const onChangeCoverImage = (event) => {
+    if (event.target.files.length < 1) {
+      setcoverImage(undefined);
+      return;
+    }
+
+    const file = event.target.files[0];
+
+    const fileReader = new FileReader();
+    fileReader.onloadend = async () => {
+      setcoverImage(fileReader.result);
+      const imageId = await uploadFile(file);
+      setcoverImageId(imageId);
+    };
+    fileReader.readAsDataURL(file);
+  };
+
+  const onChangeImage1 = (event) => {
+    if (event.target.files.length < 1) {
+      setImage1(undefined);
+      return;
+    }
+
+    const file = event.target.files[0];
+
+    const fileReader = new FileReader();
+    fileReader.onloadend = async () => {
+      setImage1(fileReader.result);
+      const imageId = await uploadFile(file);
+      setImage1Id(imageId);
+    };
+    fileReader.readAsDataURL(file);
+  };
+
+  const onChangeImage2 = (event) => {
+    if (event.target.files.length < 1) {
+      setImage2(undefined);
+      return;
+    }
+
+    const file = event.target.files[0];
+
+    const fileReader = new FileReader();
+    fileReader.onloadend = async () => {
+      setImage2(fileReader.result);
+      const imageId = await uploadFile(file);
+      setImage2Id(imageId);
+    };
+    fileReader.readAsDataURL(file);
+  };
+
+  const onChangeImage3 = (event) => {
+    if (event.target.files.length < 1) {
+      setImage3(undefined);
+      return;
+    }
+
+    const file = event.target.files[0];
+
+    const fileReader = new FileReader();
+    fileReader.onloadend = async () => {
+      setImage3(fileReader.result);
+      const imageId = await uploadFile(file);
+      setImage3Id(imageId);
+    };
+    fileReader.readAsDataURL(file);
+  };
+  const onChangeImage4 = (event) => {
+    if (event.target.files.length < 1) {
+      setImage4(undefined);
+      uploadFile(file);
+      return;
+    }
+
+    const file = event.target.files[0];
+
+    const fileReader = new FileReader();
+    fileReader.onloadend = async () => {
+      setImage4(fileReader.result);
+      const imageId = await uploadFile(file);
+      setImage4Id(imageId);
+    };
+    fileReader.readAsDataURL(file);
+  };
+
+  const onClickSave = async () => {
+    const body = {
+      productName,
+      generalCategory: selectedCategory,
+      subCategory: selectedSubCategory,
+      batteryPower: selectedBatteryPower,
+      brand: selectedBrand,
+      cameraResolution: selectedCameraResolution,
+      caseDiameter: selectedCaseDiameter,
+      color: selectedColor,
+      displayTechnology: selectedDisplayTechnology,
+      frontCameraResolution: selectedFrontCameraResolution,
+      graphicsCard: selectedGraphicsCard,
+      internalMemory: selectedInternalMemory,
+      operatingType: selectedOperatingType,
+      panelType: selectedPanelType,
+      processorModel: selectedProcessorModel,
+      ram: selectedRam,
+      screenRefreshRate: selectedScreenRefreshRate,
+      screenResolution: selectedScreenResolution,
+      screenSize: selectedScreenSize,
+      ssd: selectedSsd,
+      warrantyType: selectedWarrantyType,
+      price,
+      description,
+      coverImage: coverImageId,
+      images: [image1Id, image2Id, image3Id, image4Id],
+    };
+
+    try {
+      await postProductAttachment(body);
+    } catch (error) {
+      if (error.response.data.validationErrors) {
+        setErrors(error.response.data.validationErrors);
+      }
+    }
+  };
+  const { productName: productNameError, price: priceError } = errors;
+
   return (
     <div className="card text-center">
       <div className="card-body">
@@ -667,7 +819,75 @@ const AddProduct = () => {
                 onChange={(event) => {
                   setProductName(event.target.value);
                 }}
-                //error={emailError}
+                error={productNameError}
+              />
+              <Input
+                label={t("Price") + " (₺)"}
+                onChange={(event) => {
+                  setPrice(event.target.value);
+                }}
+                error={priceError}
+              />
+              <label>{t("Description")}</label>
+              <textarea
+                className="form-control"
+                rows="3"
+                onChange={(event) => {
+                  setDescription(event.target.value);
+                }}
+              ></textarea>
+
+              <label className="mt-3">{t("Cover Photo")}</label>
+              <ProductImageWithDefault
+                className="w-100 mt-1 mb-2"
+                alt={"product-cover-image"}
+                tempimage={coverImage}
+              />
+              <Input type="file" onChange={onChangeCoverImage} />
+
+              <label>{t("Photo")} 1</label>
+              <ProductImageWithDefault
+                className="w-100 mt-1 mb-2"
+                alt={"product-image-1"}
+                tempimage={image1}
+              />
+              <Input type="file" onChange={onChangeImage1} />
+
+              <label>{t("Photo")} 2</label>
+              <ProductImageWithDefault
+                className="w-100 mt-1 mb-2"
+                alt={"product-image-2"}
+                tempimage={image2}
+              />
+              <Input type="file" onChange={onChangeImage2} />
+
+              <label>{t("Photo")} 3</label>
+              <ProductImageWithDefault
+                className="w-100 mt-1 mb-2"
+                alt={"product-image-3"}
+                tempimage={image3}
+              />
+              <Input type="file" onChange={onChangeImage3} />
+
+              <label>{t("Photo")} 4</label>
+              <ProductImageWithDefault
+                className="w-100 mt-1 mb-2"
+                alt={"product-image-4"}
+                tempimage={image4}
+              />
+              <Input type="file" onChange={onChangeImage4} />
+
+              <ButtonWithProgress
+                className="btn btn-primary d-inline-flex"
+                onClick={onClickSave}
+                //disabled={pendingApiCall}
+                //pendingApiCall={pendingApiCall}
+                text={
+                  <>
+                    <span className="material-icons">save</span>
+                    {t("Add Product")}
+                  </>
+                }
               />
             </form>
           </div>

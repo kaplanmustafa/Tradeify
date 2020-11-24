@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.tradeify.tradeify_ws.product.Product;
 import com.tradeify.tradeify_ws.product.entities.BatteryPower;
 import com.tradeify.tradeify_ws.product.entities.Brand;
 import com.tradeify.tradeify_ws.product.entities.CameraResolution;
@@ -40,6 +41,9 @@ public class GeneralCategory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
+	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
+	private List<Product> products;
 	
 	@NotNull
 	@Size(min = 1, max= 255)

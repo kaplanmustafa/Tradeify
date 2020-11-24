@@ -144,3 +144,11 @@ export const getScreenRefreshRate = (middleId, generalId) => {
 export const getPanelType = (middleId, generalId) => {
   return axios.get(`/api/1.0/panelTypes/${middleId}/${generalId}`);
 };
+
+export const postProductAttachment = (attachment) => {
+  return axios.post("/api/1.0/product-attachments", attachment);
+};
+
+export const postProduct = (product) => {
+  return axios.post("/api/1.0/products", product);
+};

@@ -12,7 +12,7 @@ public class FileController {
 	FileService fileService;
 	
 	@PostMapping("/api/1.0/product-attachments")
-	FileAttachment saveHoaxAttachment(MultipartFile file) {
+	FileAttachment saveProductAttachment(MultipartFile file) {
 		return fileService.saveProductAttachment(file);
 	}
 }

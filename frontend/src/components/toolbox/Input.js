@@ -1,8 +1,21 @@
 import React from "react";
 
 const Input = (props) => {
-  const { label, error, name, onChange, type, defaultValue, value, checked } = props;
+  const {
+    label,
+    error,
+    name,
+    onChange,
+    type,
+    defaultValue,
+    value,
+    checked,
+  } = props;
   let className = "form-control";
+
+  if (type === "file") {
+    className += "-file";
+  }
 
   if (error !== undefined) {
     className += " is-invalid";
@@ -10,7 +23,7 @@ const Input = (props) => {
 
   return (
     <div className="form-group">
-      <label>{label}</label>
+      {label && <label>{label}</label>}
       <input
         className={className}
         name={name}
