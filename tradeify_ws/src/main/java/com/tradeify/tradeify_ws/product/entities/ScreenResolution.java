@@ -32,4 +32,13 @@ public class ScreenResolution {
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public ScreenResolution() {
+		super();
+	}
+
+	public ScreenResolution(long id) {
+		super();
+		this.id = id;
+	}
 }

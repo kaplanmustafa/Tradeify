@@ -32,4 +32,13 @@ public class GraphicsCard {
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public GraphicsCard() {
+		super();
+	}
+
+	public GraphicsCard(long id) {
+		super();
+		this.id = id;
+	}
 }

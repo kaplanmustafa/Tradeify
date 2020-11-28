@@ -32,4 +32,13 @@ public class CaseDiameter {
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public CaseDiameter() {
+		super();
+	}
+
+	public CaseDiameter(long id) {
+		super();
+		this.id = id;
+	}
 }

@@ -111,4 +111,13 @@ public class SubCategory {
 	
 	@OneToMany(mappedBy = "subCategory", cascade = CascadeType.REMOVE)
 	private List<PanelType> panelTypes;
+
+	public SubCategory() {
+		super();
+	}
+
+	public SubCategory(long id) {
+		super();
+		this.id = id;
+	}
 }

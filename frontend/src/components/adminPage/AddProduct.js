@@ -25,7 +25,7 @@ import {
   getScreenRefreshRate,
   getPanelType,
   postProductAttachment,
-  postProduct
+  postProduct,
 } from "../../api/apiCalls";
 import ProductImageWithDefault from "./ProductImageWithDefault";
 import ButtonWithProgress from "../toolbox/ButtonWithProgress";
@@ -583,9 +583,10 @@ const AddProduct = () => {
       coverImage: coverImageId,
       images: [image1Id, image2Id, image3Id, image4Id],
     };
-
+    console.log("Image : " +  image1Id);
     try {
-      await postProductAttachment(body);
+      console.log(body);
+      await postProduct(body);
     } catch (error) {
       if (error.response.data.validationErrors) {
         setErrors(error.response.data.validationErrors);

@@ -32,4 +32,13 @@ public class Color {
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public Color() {
+		super();
+	}
+
+	public Color(long id) {
+		super();
+		this.id = id;
+	}
 }

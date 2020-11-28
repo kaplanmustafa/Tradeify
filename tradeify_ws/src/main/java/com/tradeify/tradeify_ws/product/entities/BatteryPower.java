@@ -32,4 +32,13 @@ public class BatteryPower {
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public BatteryPower() {
+		super();
+	}
+
+	public BatteryPower(long id) {
+		super();
+		this.id = id;
+	}
 }

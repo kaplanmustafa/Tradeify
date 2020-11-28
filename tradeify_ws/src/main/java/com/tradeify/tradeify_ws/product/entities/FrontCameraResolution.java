@@ -32,4 +32,13 @@ public class FrontCameraResolution {
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public FrontCameraResolution() {
+		super();
+	}
+
+	public FrontCameraResolution(long id) {
+		super();
+		this.id = id;
+	}
 }

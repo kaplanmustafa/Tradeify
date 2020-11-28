@@ -108,4 +108,13 @@ public class GeneralCategory {
 	
 	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
 	private List<PanelType> panelTypes;
+	
+	public GeneralCategory(long id) {
+		super();
+		this.id = id;
+	}
+
+	public GeneralCategory() {
+		super();
+	}
 }

@@ -32,4 +32,13 @@ public class Brand {
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public Brand() {
+		super();
+	}
+
+	public Brand(long id) {
+		super();
+		this.id = id;
+	}
 }

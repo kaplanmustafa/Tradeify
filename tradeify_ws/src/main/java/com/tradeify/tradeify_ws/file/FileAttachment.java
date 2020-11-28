@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 import com.tradeify.tradeify_ws.product.Product;
 
@@ -24,6 +24,6 @@ public class FileAttachment {
 	
 	private boolean isCover;
 	
-	@OneToOne
+	@ManyToOne
 	private Product product;
 }	

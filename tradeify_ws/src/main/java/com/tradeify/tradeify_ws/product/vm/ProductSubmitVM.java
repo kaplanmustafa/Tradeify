@@ -5,27 +5,6 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.tradeify.tradeify_ws.category.GeneralCategory;
-import com.tradeify.tradeify_ws.category.SubCategory;
-import com.tradeify.tradeify_ws.product.entities.BatteryPower;
-import com.tradeify.tradeify_ws.product.entities.Brand;
-import com.tradeify.tradeify_ws.product.entities.CameraResolution;
-import com.tradeify.tradeify_ws.product.entities.CaseDiameter;
-import com.tradeify.tradeify_ws.product.entities.Color;
-import com.tradeify.tradeify_ws.product.entities.DisplayTechnology;
-import com.tradeify.tradeify_ws.product.entities.FrontCameraResolution;
-import com.tradeify.tradeify_ws.product.entities.GraphicsCard;
-import com.tradeify.tradeify_ws.product.entities.InternalMemory;
-import com.tradeify.tradeify_ws.product.entities.OperatingType;
-import com.tradeify.tradeify_ws.product.entities.PanelType;
-import com.tradeify.tradeify_ws.product.entities.ProcessorModel;
-import com.tradeify.tradeify_ws.product.entities.Ram;
-import com.tradeify.tradeify_ws.product.entities.ScreenRefreshRate;
-import com.tradeify.tradeify_ws.product.entities.ScreenResolution;
-import com.tradeify.tradeify_ws.product.entities.ScreenSize;
-import com.tradeify.tradeify_ws.product.entities.Ssd;
-import com.tradeify.tradeify_ws.product.entities.WarrantyType;
-
 import lombok.Data;
 
 @Data
@@ -35,50 +14,54 @@ public class ProductSubmitVM {
 	@Size(min = 1, max= 255)
 	private String productName;
 	
-	private GeneralCategory generalCategory;
+	private String generalCategory;
 	
-	private SubCategory subCategory;
+	private String subCategory;
 	
-	private BatteryPower batteryPower;
+	private String batteryPower;
 	
-	private Brand brand;
+	private String brand;
 	
-	private CameraResolution cameraResolution;
+	private String cameraResolution;
 	
-	private CaseDiameter caseDiameter;
+	private String caseDiameter;
 	
-	private Color color;
+	private String color;
 	
-	private DisplayTechnology displayTechnology;
+	private String displayTechnology;
 	
-	private FrontCameraResolution frontCameraResolution;
+	private String frontCameraResolution;
 	
-	private GraphicsCard graphicsCard;
+	private String graphicsCard;
 	
-	private InternalMemory internalMemory;
+	private String internalMemory;
 	
-	private OperatingType operatingType;
+	private String operatingType;
 	
-	private PanelType panelType;
+	private String panelType;
 	
-	private ProcessorModel processorModel;
+	private String processorModel;
 	
-	private Ram ram;
+	private String processorType;
 	
-	private ScreenRefreshRate screenRefreshRate;
+	private String ram;
 	
-	private ScreenResolution screenResolution;
+	private String screenRefreshRate;
 	
-	private ScreenSize screenSize;
+	private String screenResolution;
 	
-	private Ssd ssd;
+	private String screenSize;
 	
-	private WarrantyType warrantyType;
+	private String ssd;
+	
+	private String warrantyType;
 	
 	@NotNull
 	@Size(min = 1, max= 255)
-	private float price;
+	private String price;
 	
+	@NotNull
+	@Size(min = 1, max= 255)
 	private String description;
 	
 	private long coverImage;

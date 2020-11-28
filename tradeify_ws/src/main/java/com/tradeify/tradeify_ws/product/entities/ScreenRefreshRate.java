@@ -32,4 +32,13 @@ public class ScreenRefreshRate{
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public ScreenRefreshRate() {
+		super();
+	}
+
+	public ScreenRefreshRate(long id) {
+		super();
+		this.id = id;
+	}
 }

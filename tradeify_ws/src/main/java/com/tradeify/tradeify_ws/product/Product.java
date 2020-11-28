@@ -28,6 +28,7 @@ import com.tradeify.tradeify_ws.product.entities.InternalMemory;
 import com.tradeify.tradeify_ws.product.entities.OperatingType;
 import com.tradeify.tradeify_ws.product.entities.PanelType;
 import com.tradeify.tradeify_ws.product.entities.ProcessorModel;
+import com.tradeify.tradeify_ws.product.entities.ProcessorType;
 import com.tradeify.tradeify_ws.product.entities.Ram;
 import com.tradeify.tradeify_ws.product.entities.ScreenRefreshRate;
 import com.tradeify.tradeify_ws.product.entities.ScreenResolution;
@@ -90,6 +91,9 @@ public class Product {
 	
 	@ManyToOne
 	private ProcessorModel processorModel;
+	
+	@ManyToOne
+	private ProcessorType processorType;
 	
 	@ManyToOne
 	private Ram ram;

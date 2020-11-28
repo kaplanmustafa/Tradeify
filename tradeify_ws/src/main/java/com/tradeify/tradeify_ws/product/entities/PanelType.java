@@ -32,4 +32,13 @@ public class PanelType{
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public PanelType() {
+		super();
+	}
+
+	public PanelType(long id) {
+		super();
+		this.id = id;
+	}
 }

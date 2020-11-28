@@ -21,6 +21,6 @@ public class ProductController {
 	@PostMapping("/products")
 	GenericResponse saveProduct(@Valid @RequestBody ProductSubmitVM product) {
 		productService.save(product);
-		return new GenericResponse("Hoax saved");
+		return new GenericResponse("Product saved");
 	}
 }

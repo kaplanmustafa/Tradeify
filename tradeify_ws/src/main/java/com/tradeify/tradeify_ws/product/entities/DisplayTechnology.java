@@ -32,4 +32,13 @@ public class DisplayTechnology {
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public DisplayTechnology() {
+		super();
+	}
+
+	public DisplayTechnology(long id) {
+		super();
+		this.id = id;
+	}
 }

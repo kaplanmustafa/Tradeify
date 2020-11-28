@@ -32,4 +32,13 @@ public class InternalMemory {
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public InternalMemory() {
+		super();
+	}
+
+	public InternalMemory(long id) {
+		super();
+		this.id = id;
+	}
 }

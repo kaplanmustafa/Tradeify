@@ -32,4 +32,13 @@ public class ScreenSize {
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public ScreenSize() {
+		super();
+	}
+
+	public ScreenSize(long id) {
+		super();
+		this.id = id;
+	}
 }

@@ -32,4 +32,13 @@ public class OperatingType {
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public OperatingType() {
+		super();
+	}
+
+	public OperatingType(long id) {
+		super();
+		this.id = id;
+	}
 }

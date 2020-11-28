@@ -32,4 +32,13 @@ public class ProcessorType {
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public ProcessorType() {
+		super();
+	}
+
+	public ProcessorType(long id) {
+		super();
+		this.id = id;
+	}
 }

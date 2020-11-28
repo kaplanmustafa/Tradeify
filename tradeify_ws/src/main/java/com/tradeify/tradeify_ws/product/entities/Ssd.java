@@ -32,4 +32,13 @@ public class Ssd {
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public Ssd() {
+		super();
+	}
+
+	public Ssd(long id) {
+		super();
+		this.id = id;
+	}
 }

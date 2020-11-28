@@ -32,4 +32,13 @@ public class WarrantyType {
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public WarrantyType() {
+		super();
+	}
+
+	public WarrantyType(long id) {
+		super();
+		this.id = id;
+	}
 }

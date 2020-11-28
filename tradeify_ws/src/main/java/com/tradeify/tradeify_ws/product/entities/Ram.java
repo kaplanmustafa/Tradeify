@@ -32,4 +32,13 @@ public class Ram {
 	
 	@ManyToOne
 	private GeneralCategory generalCategory;
+
+	public Ram() {
+		super();
+	}
+
+	public Ram(long id) {
+		super();
+		this.id = id;
+	}
 }
