@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.tradeify.tradeify_ws.product.validators.FloatValue;
+
 import lombok.Data;
 
 @Data
@@ -57,10 +59,9 @@ public class ProductSubmitVM {
 	private String warrantyType;
 	
 	@NotNull
-	@Size(min = 1, max= 255)
+	@FloatValue
 	private String price;
 	
-	@NotNull
 	@Size(min = 1, max= 255)
 	private String description;
 	

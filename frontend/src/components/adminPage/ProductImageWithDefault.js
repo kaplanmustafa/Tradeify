@@ -7,7 +7,7 @@ const ProductImageWithDefault = (props) => {
   let imageSource = defaultProductImage;
 
   if (image) {
-    imageSource = "/images/profile/" + image;
+    imageSource = "/images/attachments/" + image;
   }
 
   return (

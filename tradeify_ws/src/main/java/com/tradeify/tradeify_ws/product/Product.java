@@ -35,6 +35,7 @@ import com.tradeify.tradeify_ws.product.entities.ScreenResolution;
 import com.tradeify.tradeify_ws.product.entities.ScreenSize;
 import com.tradeify.tradeify_ws.product.entities.Ssd;
 import com.tradeify.tradeify_ws.product.entities.WarrantyType;
+import com.tradeify.tradeify_ws.product.validators.FloatValue;
 
 import lombok.Data;
 
@@ -114,6 +115,7 @@ public class Product {
 	private WarrantyType warrantyType;
 	
 	@NotNull
+	@FloatValue
 	private float price;
 	
 	private String description;

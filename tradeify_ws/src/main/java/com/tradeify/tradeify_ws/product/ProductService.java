@@ -50,7 +50,8 @@ public class ProductService {
 		Product product = new Product();
 		
 		product.setProductName(productSubmitVM.getProductName());
-		product.setDescription(productSubmitVM.getDescription());
+		if(productSubmitVM.getDescription() != null)
+			product.setDescription(productSubmitVM.getDescription());
 		product.setPrice(Float.valueOf(productSubmitVM.getPrice()));
 		
 		if(productSubmitVM.getGeneralCategory() != null)
@@ -96,12 +97,13 @@ public class ProductService {
 		if(productSubmitVM.getWarrantyType() != null)
 			product.setWarrantyType(new WarrantyType(Long.valueOf(productSubmitVM.getWarrantyType())));
 		
-		productRepository.save(product);
+		productRepository.save(product);	
 		
 		Optional<FileAttachment> optionalFileAttachment = fileAttachmentRepository.findById(productSubmitVM.getCoverImage());
 		
 		if(optionalFileAttachment.isPresent()) {
 			FileAttachment fileAttachment = optionalFileAttachment.get();
+			fileAttachment.setCover(true);
 			fileAttachment.setProduct(product);
 			fileAttachmentRepository.save(fileAttachment);
 		}
@@ -110,24 +112,12 @@ public class ProductService {
 			if(productSubmitVM.getImages().get(i) != null) {
 				Optional<FileAttachment> optional = fileAttachmentRepository.findById(productSubmitVM.getImages().get(i));
 				if(optional.isPresent()) {
-					FileAttachment fileAttachment = optionalFileAttachment.get();
+					FileAttachment fileAttachment = optional.get();
 					fileAttachment.setProduct(product);
 					fileAttachmentRepository.save(fileAttachment);
 				}
 			}
 		}
 		
-		/*if(productSubmitVM.getImages() != null) {
-			for(Long image: productSubmitVM.getImages()) {
-				Optional<FileAttachment> optional 
-				= fileAttachmentRepository.findById(image);
-				
-				if(optional.isPresent()) {
-					FileAttachment fileAttachment = optionalFileAttachment.get();
-					fileAttachment.setProduct(product);
-					fileAttachmentRepository.save(fileAttachment);
-				}
-			}
-		}*/
 	}
 }

@@ -202,6 +202,7 @@ i18n.use(initReactI18next).init({
         Price: "Price",
         "Cover Photo": "Cover Photo",
         Photo: "Photo",
+        "Product Added": "Product Added",
       },
     },
     tr: {
@@ -405,6 +406,7 @@ i18n.use(initReactI18next).init({
         Price: "Fiyat",
         "Cover Photo": "Kapak Fotoğrafı",
         Photo: "Fotoğraf",
+        "Product Added": "Ürün Eklendi",
       },
     },
   },

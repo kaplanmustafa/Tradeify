@@ -29,6 +29,8 @@ import {
 } from "../../api/apiCalls";
 import ProductImageWithDefault from "./ProductImageWithDefault";
 import ButtonWithProgress from "../toolbox/ButtonWithProgress";
+import { useApiProgress } from "../../shared/ApiProgress";
+import alertify from "alertifyjs";
 
 const AddProduct = () => {
   const [selectedCategory, setSelectedCategory] = useState(1);
@@ -483,6 +485,10 @@ const AddProduct = () => {
       setcoverImage(fileReader.result);
       const imageId = await uploadFile(file);
       setcoverImageId(imageId);
+      setErrors((previousErrors) => ({
+        ...previousErrors,
+        coverImage: undefined,
+      }));
     };
     fileReader.readAsDataURL(file);
   };
@@ -540,7 +546,6 @@ const AddProduct = () => {
   const onChangeImage4 = (event) => {
     if (event.target.files.length < 1) {
       setImage4(undefined);
-      uploadFile(file);
       return;
     }
 
@@ -572,6 +577,7 @@ const AddProduct = () => {
       operatingType: selectedOperatingType,
       panelType: selectedPanelType,
       processorModel: selectedProcessorModel,
+      processorType: selectedProcessorType,
       ram: selectedRam,
       screenRefreshRate: selectedScreenRefreshRate,
       screenResolution: selectedScreenResolution,
@@ -583,17 +589,25 @@ const AddProduct = () => {
       coverImage: coverImageId,
       images: [image1Id, image2Id, image3Id, image4Id],
     };
-    console.log("Image : " +  image1Id);
+
     try {
-      console.log(body);
       await postProduct(body);
+      window.location.reload();
+      alertify.success(t("Product Added"));
     } catch (error) {
       if (error.response.data.validationErrors) {
         setErrors(error.response.data.validationErrors);
       }
     }
   };
-  const { productName: productNameError, price: priceError } = errors;
+
+  const {
+    productName: productNameError,
+    price: priceError,
+    coverImage: coverImageError,
+  } = errors;
+
+  const pendingApiCall = useApiProgress("post", "/api/1.0/products", true);
 
   return (
     <div className="card text-center">
@@ -819,6 +833,10 @@ const AddProduct = () => {
                 label={t("Product Name")}
                 onChange={(event) => {
                   setProductName(event.target.value);
+                  setErrors((previousErrors) => ({
+                    ...previousErrors,
+                    productName: undefined,
+                  }));
                 }}
                 error={productNameError}
               />
@@ -826,6 +844,10 @@ const AddProduct = () => {
                 label={t("Price") + " (₺)"}
                 onChange={(event) => {
                   setPrice(event.target.value);
+                  setErrors((previousErrors) => ({
+                    ...previousErrors,
+                    price: undefined,
+                  }));
                 }}
                 error={priceError}
               />
@@ -844,7 +866,11 @@ const AddProduct = () => {
                 alt={"product-cover-image"}
                 tempimage={coverImage}
               />
-              <Input type="file" onChange={onChangeCoverImage} />
+              <Input
+                type="file"
+                onChange={onChangeCoverImage}
+                error={coverImageError}
+              />
 
               <label>{t("Photo")} 1</label>
               <ProductImageWithDefault
@@ -881,8 +907,8 @@ const AddProduct = () => {
               <ButtonWithProgress
                 className="btn btn-primary d-inline-flex"
                 onClick={onClickSave}
-                //disabled={pendingApiCall}
-                //pendingApiCall={pendingApiCall}
+                disabled={pendingApiCall}
+                pendingApiCall={pendingApiCall}
                 text={
                   <>
                     <span className="material-icons">save</span>
