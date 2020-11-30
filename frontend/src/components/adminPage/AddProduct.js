@@ -485,10 +485,6 @@ const AddProduct = () => {
       setcoverImage(fileReader.result);
       const imageId = await uploadFile(file);
       setcoverImageId(imageId);
-      setErrors((previousErrors) => ({
-        ...previousErrors,
-        coverImage: undefined,
-      }));
     };
     fileReader.readAsDataURL(file);
   };
@@ -601,11 +597,7 @@ const AddProduct = () => {
     }
   };
 
-  const {
-    productName: productNameError,
-    price: priceError,
-    coverImage: coverImageError,
-  } = errors;
+  const { productName: productNameError, price: priceError } = errors;
 
   const pendingApiCall = useApiProgress("post", "/api/1.0/products", true);
 
@@ -866,11 +858,7 @@ const AddProduct = () => {
                 alt={"product-cover-image"}
                 tempimage={coverImage}
               />
-              <Input
-                type="file"
-                onChange={onChangeCoverImage}
-                error={coverImageError}
-              />
+              <Input type="file" onChange={onChangeCoverImage} />
 
               <label>{t("Photo")} 1</label>
               <ProductImageWithDefault

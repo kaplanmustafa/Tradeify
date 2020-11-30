@@ -152,3 +152,7 @@ export const postProductAttachment = (attachment) => {
 export const postProduct = (product) => {
   return axios.post("/api/1.0/products", product);
 };
+
+export const getProductsByCategory = (generalId, subId) => {
+  return axios.get(`/api/1.0/products/${generalId}/${subId}?page=0&size=6`);
+};

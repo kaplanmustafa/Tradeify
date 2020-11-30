@@ -18,10 +18,10 @@ const HomePage = () => {
       </div>
 
       <div className="row">
-        <ProductHeaderCard category="fruits" />
+        <ProductHeaderCard category="Laptop" />
       </div>
       <div className="row">
-        <ProductCard category="fruits" />
+        <ProductCard generalId="3" subId="1" />
       </div>
     </div>
   );

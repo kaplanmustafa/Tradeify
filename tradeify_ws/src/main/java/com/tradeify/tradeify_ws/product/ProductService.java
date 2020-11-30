@@ -2,6 +2,8 @@ package com.tradeify.tradeify_ws.product;
 
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.tradeify.tradeify_ws.category.GeneralCategory;
@@ -119,5 +121,9 @@ public class ProductService {
 			}
 		}
 		
+	}
+
+	public Page<Product> getProductsByCategory(String generalId, String subId, Pageable page) {
+		return productRepository.findAllByGeneralCategoryIdAndSubCategoryId(Long.valueOf(generalId), Long.valueOf(subId), page);
 	}
 }

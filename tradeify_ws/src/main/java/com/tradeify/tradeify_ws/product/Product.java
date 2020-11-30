@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -120,8 +119,8 @@ public class Product {
 	
 	private String description;
 	
-	@OneToOne(mappedBy = "product", cascade = CascadeType.REMOVE)
-	private FileAttachment coverImage;
+	/*@OneToOne(mappedBy = "product", cascade = CascadeType.REMOVE)
+	private FileAttachment coverImage;*/
 	
 	@OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE) 
 	private List<FileAttachment> images;
