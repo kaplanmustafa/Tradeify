@@ -45,7 +45,7 @@ const ProductCard = (props) => {
                 id={product.id}
                 key={product.id}
                 productName={product.productName}
-                description={product.description}
+                brand={product.brand}
                 image={product.coverImage}
                 price={product.price}
               />
@@ -61,7 +61,7 @@ const ProductCard = (props) => {
                 id={product.id}
                 key={product.id}
                 productName={product.productName}
-                description={product.description}
+                brand={product.brand}
                 image={product.coverImage}
                 price={product.price}
               />

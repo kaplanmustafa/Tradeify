@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import first from "../../assets/p-f.jpg";
 
 const ProductCardItem = (props) => {
-  const { id, productName, description, image, price } = props;
+  const { id, productName, brand, image, price } = props;
 
   const { t } = useTranslation();
 
@@ -17,8 +17,8 @@ const ProductCardItem = (props) => {
         />
       )}
       <div className="card-body border-top">
-        <h5 className="card-title">{productName}</h5>
-        <p className="card-text">{description}</p>
+        <h5 className="card-title">{brand}</h5>
+        <p className="card-text">{productName}</p>
       </div>
       <div className="card-footer d-flex">
         <h5 className="mr-3 align-items-center justify-content-center d-flex">

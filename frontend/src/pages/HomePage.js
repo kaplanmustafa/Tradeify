@@ -23,6 +23,13 @@ const HomePage = () => {
       <div className="row">
         <ProductCard generalId="3" subId="1" />
       </div>
+
+      <div className="row">
+        <ProductHeaderCard category="Mobile Phone" />
+      </div>
+      <div className="row">
+        <ProductCard generalId="2" subId="1" />
+      </div>
     </div>
   );
 };

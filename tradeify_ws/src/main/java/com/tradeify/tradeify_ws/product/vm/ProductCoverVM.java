@@ -1,5 +1,6 @@
 package com.tradeify.tradeify_ws.product.vm;
 
+import com.tradeify.tradeify_ws.file.FileAttachment;
 import com.tradeify.tradeify_ws.file.vm.FileAttachmentVM;
 import com.tradeify.tradeify_ws.product.Product;
 
@@ -14,8 +15,6 @@ public class ProductCoverVM {
 	
 	private String brand;
 	
-	private String description;
-	
 	private float price;
 	
 	private FileAttachmentVM coverImage;
@@ -24,9 +23,13 @@ public class ProductCoverVM {
 		this.setId(product.getId());
 		this.setProductName(product.getProductName());
 		this.setBrand(product.getBrand().getBrandName());
-		this.setDescription(product.getDescription());
 		this.setPrice(product.getPrice());
-		if(product.getImages().get(0) != null)
-			this.coverImage = new FileAttachmentVM(product.getImages().get(0));
+		if(product.getImages().get(0) != null) {
+			for(FileAttachment image: product.getImages()) {
+				if(image.isCover() == true)
+					this.coverImage = new FileAttachmentVM(image);
+			}
+		}
+			
 	}
 }
