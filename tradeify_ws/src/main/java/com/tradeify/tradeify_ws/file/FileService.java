@@ -8,10 +8,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Base64;
+import java.util.List;
 import java.util.UUID;
 
 import org.apache.tika.Tika;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -104,16 +106,15 @@ public class FileService {
 		return fileAttachmentRepository.save(attachment);
 	}
 	
-	/*@Scheduled(fixedRate = 24 * 60 * 60 * 1000)
+	@Scheduled(fixedRate = 24 * 60 * 60 * 1000) // per 24 hours
 	public void cleanupStorage() {
-		Date twentyFourHoursAgo = new Date(System.currentTimeMillis() - (24 * 60 * 60 * 1000));
-		List<FileAttachment> filesToBeDeleted = fileAttachmentRepository.findByDateBeforeAndHoaxIsNull(twentyFourHoursAgo);
+		List<FileAttachment> filesToBeDeleted = fileAttachmentRepository.findByProductIsNull();
 		
 		for(FileAttachment file : filesToBeDeleted) {
 			deleteAttachmentFile(file.getName());
 			fileAttachmentRepository.deleteById(file.getId());
 		}
-	}*/
+	}
 
 	/*public void deleteAllStoredFiles(Users inDB) {
 		deleteProfileImage(inDB.getImage());
