@@ -30,6 +30,20 @@ const HomePage = () => {
       <div className="row">
         <ProductCard generalId="2" subId="1" />
       </div>
+
+      <div className="row">
+        <ProductHeaderCard category="Television" />
+      </div>
+      <div className="row">
+        <ProductCard generalId="4" subId="1" />
+      </div>
+
+      <div className="row">
+        <ProductHeaderCard category="Photo & Camera" />
+      </div>
+      <div className="row">
+        <ProductCard generalId="6" subId="1" />
+      </div>
     </div>
   );
 };
