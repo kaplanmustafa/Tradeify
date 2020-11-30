@@ -16,6 +16,7 @@ import Footer from "../components/common/Footer";
 import NotFoundPage from "../pages/NotFoundPage";
 import AdminPage from "../pages/AdminPage";
 import MegaMenu from "../components/common/MegaMenu";
+import ProductDetailPage from "../pages/ProductDetailPage";
 
 const App = () => {
   const { isLoggedIn, role } = useSelector((store) => ({
@@ -33,6 +34,7 @@ const App = () => {
           {!isLoggedIn && <Route path="/login" component={LoginPage} />}
           {!isLoggedIn && <Route path="/signup" component={UserSignupPage} />}
           <Route path="/reg/:keyreg" component={EmailValidationPage} />
+          <Route path="/product/:id" component={ProductDetailPage} />
           <Route exact path="/error" component={NotFoundPage} />
           {isLoggedIn && role === "user" && (
             <Route path="/myprofile" component={UserPage} />

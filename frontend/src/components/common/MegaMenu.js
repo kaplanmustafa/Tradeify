@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Dropdown from "react-multilevel-dropdown";
 import { getCategory, getAllSubCategory } from "../../api/apiCalls";
-import first from "../../assets/first.jpg";
 
 const MegaMenu = () => {
   const [categories, setCategories] = useState([]);
@@ -56,7 +55,11 @@ const MegaMenu = () => {
         >
           {subCategoryItems(key + 1)}
           <Dropdown.Item>
-            <img className="d-block w-100" src={first} alt="First slide" />
+            <img
+              className="d-block w-100"
+              src="images/attachments/first.jpg"
+              alt="First slide"
+            />
           </Dropdown.Item>
         </Dropdown>
       ))}

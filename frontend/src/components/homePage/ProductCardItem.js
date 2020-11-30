@@ -1,6 +1,5 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import first from "../../assets/p-f.jpg";
 
 const ProductCardItem = (props) => {
   const { id, productName, brand, image, price } = props;

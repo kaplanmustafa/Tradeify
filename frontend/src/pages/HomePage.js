@@ -1,13 +1,28 @@
 import React from "react";
-import ImageSlider from "../components/homePage/ImageSlider";
+import ImageSlider from "../components/toolbox/ImageSlider";
 import ProductCard from "../components/homePage/ProductCard";
 import ProductHeaderCard from "../components/homePage/ProductHeaderCard";
 
 const HomePage = () => {
+  const images = [
+    {
+      id: "1",
+      name: "first.jpg",
+    },
+    {
+      id: "2",
+      name: "second.jpg",
+    },
+    {
+      id: "3",
+      name: "third.jpg",
+    },
+  ];
+
   return (
     <div className="container">
       <div className="row">
-        <ImageSlider />
+        <ImageSlider images={images} />
       </div>
 
       <div className="row">
