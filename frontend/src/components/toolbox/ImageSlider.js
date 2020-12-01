@@ -11,17 +11,24 @@ const ImageSlider = (props) => {
   };
 
   return (
-    <div className="container mt-5 mb-5 w-75">
-      <Carousel activeIndex={index} onSelect={handleSelect}>
+    <div className="container">
+      <Carousel
+        activeIndex={index}
+        onSelect={handleSelect}
+        className="text-primary bg-primary"
+      >
         {images.map((image, index) => {
           return (
-            <Carousel.Item key={image.id}>
+            <Carousel.Item
+              key={image.id !== null ? image.id : image.name}
+              className="text-primary bg-primary"
+            >
               <img
                 className="d-block w-100"
                 src={"images/attachments/" + image.name}
                 alt="First slide"
               />
-              <Carousel.Caption>
+              <Carousel.Caption className="text-primary">
                 <h3>{image.id}. slide label</h3>
                 <p>
                   Nulla vitae elit libero, a pharetra augue mollis interdum.

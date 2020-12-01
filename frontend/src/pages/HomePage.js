@@ -21,7 +21,7 @@ const HomePage = () => {
 
   return (
     <div className="container">
-      <div className="row">
+      <div className="row mt-5 w-75 mx-auto">
         <ImageSlider images={images} />
       </div>
 

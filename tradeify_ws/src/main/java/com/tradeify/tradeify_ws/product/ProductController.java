@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tradeify.tradeify_ws.product.services.BrandService;
 import com.tradeify.tradeify_ws.product.vm.ProductCoverVM;
 import com.tradeify.tradeify_ws.product.vm.ProductSubmitVM;
+import com.tradeify.tradeify_ws.product.vm.ProductVM;
 import com.tradeify.tradeify_ws.shared.GenericResponse;
 
 @RestController
@@ -26,13 +26,15 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 	
-	@Autowired 
-	BrandService brandService;
-	
 	@PostMapping("/products")
 	GenericResponse saveProduct(@Valid @RequestBody ProductSubmitVM product) {
 		productService.save(product);
 		return new GenericResponse("Product saved");
+	}
+	
+	@GetMapping("/product/{id}") 
+	ProductVM getProduct(@PathVariable String id) {
+		return new ProductVM(productService.getProductById(Long.valueOf(id)));
 	}
 	
 	@GetMapping("/products/{generalId}/{subId}")

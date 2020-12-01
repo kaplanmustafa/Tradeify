@@ -170,4 +170,13 @@ public class ProductService {
 	public Page<Product> getProductsByCategory(String generalId, String subId, Pageable page) {
 		return productRepository.findAllByGeneralCategoryIdAndSubCategoryId(Long.valueOf(generalId), Long.valueOf(subId), page);
 	}
+	
+	public Product getProductById(Long id) {
+		Optional<Product> inDB = productRepository.findById(id); 
+		if(inDB.isPresent()) {
+			Product product = inDB.get();
+			return product;
+		}
+		return null;
+	}
 }

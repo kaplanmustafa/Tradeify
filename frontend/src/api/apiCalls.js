@@ -156,3 +156,7 @@ export const postProduct = (product) => {
 export const getProductsByCategory = (generalId, subId) => {
   return axios.get(`/api/1.0/products/${generalId}/${subId}?page=0&size=6`);
 };
+
+export const getProduct = (id) => {
+  return axios.get(`/api/1.0/product/${id}`);
+};

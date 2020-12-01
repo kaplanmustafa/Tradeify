@@ -24,7 +24,7 @@ public class ProductCoverVM {
 		this.setProductName(product.getProductName());
 		this.setBrand(product.getBrand().getBrandName());
 		this.setPrice(product.getPrice());
-		if(product.getImages().get(0) != null) {
+		if(product.getImages() != null) {
 			for(FileAttachment image: product.getImages()) {
 				if(image.isCover() == true)
 					this.coverImage = new FileAttachmentVM(image);
