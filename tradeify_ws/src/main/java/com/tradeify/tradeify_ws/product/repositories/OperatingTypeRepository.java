@@ -12,4 +12,6 @@ public interface OperatingTypeRepository extends JpaRepository<OperatingType, Lo
 	List<OperatingType> findAllBySubCategoryIdAndGeneralCategoryIdOrderById(Long subCategoryId, Long generalCategoryId);
 	
 	List<OperatingType> findAllByOrderById();
+	
+	OperatingType findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long subCategoryId, Long generalCategoryId, Long privateId);
 }

@@ -12,4 +12,6 @@ public interface ScreenSizeRepository extends JpaRepository<ScreenSize, Long>{
 	List<ScreenSize> findAllBySubCategoryIdAndGeneralCategoryIdOrderById(Long subCategoryId, Long generalCategoryId);
 	
 	List<ScreenSize> findAllByOrderById();
+	
+	ScreenSize findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long subCategoryId, Long generalCategoryId, Long privateId);
 }

@@ -18,4 +18,9 @@ public class ScreenRefreshRateService {
 		
 		return screenRefreshRateRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
 	}		
+	
+	public ScreenRefreshRate getScreenRefreshRateByCategory(String general, String sub, String brand) {
+		return screenRefreshRateRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

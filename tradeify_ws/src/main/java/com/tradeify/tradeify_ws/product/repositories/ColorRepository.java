@@ -12,4 +12,6 @@ public interface ColorRepository extends JpaRepository<Color, Long>{
 	List<Color> findAllBySubCategoryIdAndGeneralCategoryIdOrderById(Long subCategoryId, Long generalCategoryId);
 	
 	List<Color> findAllByOrderById();
+	
+	Color findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long subCategoryId, Long generalCategoryId, Long privateId);
 }

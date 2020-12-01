@@ -17,5 +17,10 @@ public class CameraResolutionService {
 	public List<CameraResolution> getCameraResolutions(Long id, Long generalId) {
 		
 		return cameraResolutionRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
-	}		
+	}	
+	
+	public CameraResolution getCameraResolutionByCategory(String general, String sub, String brand) {
+		return cameraResolutionRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

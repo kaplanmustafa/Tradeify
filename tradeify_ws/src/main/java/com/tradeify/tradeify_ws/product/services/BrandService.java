@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tradeify.tradeify_ws.category.GeneralCategory;
-import com.tradeify.tradeify_ws.category.SubCategory;
 import com.tradeify.tradeify_ws.product.entities.Brand;
 import com.tradeify.tradeify_ws.product.repositories.BrandRepository;
 
@@ -26,8 +24,8 @@ public class BrandService {
 		return brandRepository.findAllByOrderById();
 	}	
 	
-	public Brand getBrandByCategory(GeneralCategory general, SubCategory sub, Brand brand) {
-		return brandRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(sub.getId(), 
-				general.getId(), brand.getId());
+	public Brand getBrandByCategory(String general, String sub, String brand) {
+		return brandRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
 	}
 }

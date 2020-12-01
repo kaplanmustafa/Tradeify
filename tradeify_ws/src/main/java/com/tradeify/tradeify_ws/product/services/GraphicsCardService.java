@@ -18,4 +18,9 @@ public class GraphicsCardService {
 		
 		return graphicsCardRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
 	}		
+	
+	public GraphicsCard getGraphicsCardByCategory(String general, String sub, String brand) {
+		return graphicsCardRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

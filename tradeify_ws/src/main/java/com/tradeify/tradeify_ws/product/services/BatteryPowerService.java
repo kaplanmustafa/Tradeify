@@ -17,5 +17,10 @@ public class BatteryPowerService {
 	public List<BatteryPower> getBatteryPowers(Long id, Long generalId) {
 		
 		return batteryPowerRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
-	}		
+	}	
+	
+	public BatteryPower getBatteryPowerByCategory(String general, String sub, String brand) {
+		return batteryPowerRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

@@ -12,4 +12,6 @@ public interface DisplayTechnologyRepository extends JpaRepository<DisplayTechno
 	List<DisplayTechnology> findAllBySubCategoryIdAndGeneralCategoryIdOrderById(Long subCategoryId, Long generalCategoryId);
 	
 	List<DisplayTechnology> findAllByOrderById();
+	
+	DisplayTechnology findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long subCategoryId, Long generalCategoryId, Long privateId);
 }

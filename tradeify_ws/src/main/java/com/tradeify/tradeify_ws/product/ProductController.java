@@ -38,11 +38,6 @@ public class ProductController {
 	@GetMapping("/products/{generalId}/{subId}")
 	Page<ProductCoverVM> getProductsByCategory(@PathVariable String generalId, @PathVariable String subId, 
 			@PageableDefault(sort = "id", direction = Direction.DESC) Pageable page) {
-		Page<Product> products = productService.getProductsByCategory(generalId, subId, page);
-		products.forEach(product -> {
-			product.setBrand(brandService.getBrandByCategory(product.getGeneralCategory(), product.getSubCategory(),
-					product.getBrand()));
-		});
-		return products.map(ProductCoverVM::new);
+		return productService.getProductsByCategory(generalId, subId, page).map(ProductCoverVM::new);
 	}
 }

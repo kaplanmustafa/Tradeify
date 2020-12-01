@@ -12,4 +12,6 @@ public interface GraphicsCardRepository extends JpaRepository<GraphicsCard, Long
 	List<GraphicsCard> findAllBySubCategoryIdAndGeneralCategoryIdOrderById(Long subCategoryId, Long generalCategoryId);
 	
 	List<GraphicsCard> findAllByOrderById();
+	
+	GraphicsCard findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long subCategoryId, Long generalCategoryId, Long privateId);
 }

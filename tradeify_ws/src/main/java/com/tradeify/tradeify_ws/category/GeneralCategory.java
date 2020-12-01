@@ -49,7 +49,7 @@ public class GeneralCategory {
 	@Size(min = 1, max= 255)
 	private String categoryName;
 	
-	@OneToMany(mappedBy = "subPrivateId", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)
 	private List<SubCategory> subCategories;
 	
 	@OneToMany(mappedBy = "generalCategory", cascade = CascadeType.REMOVE)

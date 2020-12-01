@@ -12,4 +12,6 @@ public interface InternalMemoryRepository extends JpaRepository<InternalMemory, 
 	List<InternalMemory> findAllBySubCategoryIdAndGeneralCategoryIdOrderById(Long subCategoryId, Long generalCategoryId);
 	
 	List<InternalMemory> findAllByOrderById();
+	
+	InternalMemory findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long subCategoryId, Long generalCategoryId, Long privateId);
 }

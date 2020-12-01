@@ -17,5 +17,10 @@ public class DisplayTechnologyService {
 	public List<DisplayTechnology> getDisplayTechnologies(Long id, Long generalId) {
 		
 		return displayTechnologyRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
-	}		
+	}	
+	
+	public DisplayTechnology getDisplayTechnologyByCategory(String general, String sub, String brand) {
+		return displayTechnologyRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

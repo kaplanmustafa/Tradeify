@@ -18,4 +18,9 @@ public class PanelTypeService {
 		
 		return panelTypeRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
 	}		
+	
+	public PanelType getPanelTypeByCategory(String general, String sub, String brand) {
+		return panelTypeRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

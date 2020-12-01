@@ -17,5 +17,10 @@ public class InternalMemoryService {
 	public List<InternalMemory> getInternalMemories(Long id, Long generalId) {
 		
 		return internalMemoryRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
-	}		
+	}	
+	
+	public InternalMemory getInternalMemoryByCategory(String general, String sub, String brand) {
+		return internalMemoryRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

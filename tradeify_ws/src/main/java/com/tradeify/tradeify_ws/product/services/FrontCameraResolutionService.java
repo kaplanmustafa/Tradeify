@@ -17,5 +17,10 @@ public class FrontCameraResolutionService {
 	public List<FrontCameraResolution> getFrontCameraResolutions(Long id, Long generalId) {
 		
 		return frontCameraResolutionRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
-	}		
+	}	
+	
+	public FrontCameraResolution getFrontCameraResolutionByCategory(String general, String sub, String brand) {
+		return frontCameraResolutionRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

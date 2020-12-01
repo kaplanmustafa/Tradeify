@@ -17,5 +17,10 @@ public class ProcessorModelService {
 	public List<ProcessorModel> getProcessorModels(Long id, Long generalId) {
 		
 		return processorModelRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
-	}		
+	}	
+	
+	public ProcessorModel getProcessorModelByCategory(String general, String sub, String brand) {
+		return processorModelRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

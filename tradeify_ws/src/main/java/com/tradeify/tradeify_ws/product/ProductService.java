@@ -11,25 +11,25 @@ import com.tradeify.tradeify_ws.category.SubCategory;
 import com.tradeify.tradeify_ws.file.FileAttachment;
 import com.tradeify.tradeify_ws.file.FileAttachmentRepository;
 import com.tradeify.tradeify_ws.file.FileService;
-import com.tradeify.tradeify_ws.product.entities.BatteryPower;
-import com.tradeify.tradeify_ws.product.entities.Brand;
-import com.tradeify.tradeify_ws.product.entities.CameraResolution;
-import com.tradeify.tradeify_ws.product.entities.CaseDiameter;
-import com.tradeify.tradeify_ws.product.entities.Color;
-import com.tradeify.tradeify_ws.product.entities.DisplayTechnology;
-import com.tradeify.tradeify_ws.product.entities.FrontCameraResolution;
-import com.tradeify.tradeify_ws.product.entities.GraphicsCard;
-import com.tradeify.tradeify_ws.product.entities.InternalMemory;
-import com.tradeify.tradeify_ws.product.entities.OperatingType;
-import com.tradeify.tradeify_ws.product.entities.PanelType;
-import com.tradeify.tradeify_ws.product.entities.ProcessorModel;
-import com.tradeify.tradeify_ws.product.entities.ProcessorType;
-import com.tradeify.tradeify_ws.product.entities.Ram;
-import com.tradeify.tradeify_ws.product.entities.ScreenRefreshRate;
-import com.tradeify.tradeify_ws.product.entities.ScreenResolution;
-import com.tradeify.tradeify_ws.product.entities.ScreenSize;
-import com.tradeify.tradeify_ws.product.entities.Ssd;
-import com.tradeify.tradeify_ws.product.entities.WarrantyType;
+import com.tradeify.tradeify_ws.product.services.BatteryPowerService;
+import com.tradeify.tradeify_ws.product.services.BrandService;
+import com.tradeify.tradeify_ws.product.services.CameraResolutionService;
+import com.tradeify.tradeify_ws.product.services.CaseDiameterService;
+import com.tradeify.tradeify_ws.product.services.ColorService;
+import com.tradeify.tradeify_ws.product.services.DisplayTechnologyService;
+import com.tradeify.tradeify_ws.product.services.FrontCameraResolutionService;
+import com.tradeify.tradeify_ws.product.services.GraphicsCardService;
+import com.tradeify.tradeify_ws.product.services.InternalMemoryService;
+import com.tradeify.tradeify_ws.product.services.OperatingTypeService;
+import com.tradeify.tradeify_ws.product.services.PanelTypeService;
+import com.tradeify.tradeify_ws.product.services.ProcessorModelService;
+import com.tradeify.tradeify_ws.product.services.ProcessorTypeService;
+import com.tradeify.tradeify_ws.product.services.RamService;
+import com.tradeify.tradeify_ws.product.services.ScreenRefreshRateService;
+import com.tradeify.tradeify_ws.product.services.ScreenResolutionService;
+import com.tradeify.tradeify_ws.product.services.ScreenSizeService;
+import com.tradeify.tradeify_ws.product.services.SsdService;
+import com.tradeify.tradeify_ws.product.services.WarrantyTypeService;
 import com.tradeify.tradeify_ws.product.vm.ProductSubmitVM;
 
 
@@ -39,13 +39,57 @@ public class ProductService {
 	ProductRepository productRepository;
 	FileAttachmentRepository fileAttachmentRepository;
 	FileService fileService;
+	BatteryPowerService batteryPowerService;
+	BrandService brandService;
+	CameraResolutionService cameraResolutionService;
+	CaseDiameterService caseDiameterService;
+	ColorService colorService;
+	DisplayTechnologyService displayTechnologyService;
+	FrontCameraResolutionService frontCameraResolutionService;
+	GraphicsCardService graphicsCardService;
+	InternalMemoryService internalMemoryService;
+	OperatingTypeService operatingTypeService;
+	PanelTypeService panelTypeService;
+	ProcessorModelService processorModelService;
+	ProcessorTypeService processorTypeService;
+	RamService ramService;
+	ScreenRefreshRateService screenRefreshRateService;
+	ScreenResolutionService screenResolutionService;
+	ScreenSizeService screenSizeService;
+	SsdService ssdService;
+	WarrantyTypeService warrantyTypeService;
 
 	public ProductService(ProductRepository productRepository, FileAttachmentRepository fileAttachmentRepository,
-			FileService fileService) {
+			FileService fileService, BatteryPowerService batteryPowerService, BrandService brandService,
+			CameraResolutionService cameraResolutionService, CaseDiameterService caseDiameterService,
+			ColorService colorService, DisplayTechnologyService displayTechnologyService, FrontCameraResolutionService frontCameraResolutionService,
+			GraphicsCardService graphicsCardService, InternalMemoryService internalMemoryService, OperatingTypeService operatingTypeService,
+			PanelTypeService panelTypeService, ProcessorModelService processorModelService,	ProcessorTypeService processorTypeService,
+			RamService ramService, ScreenRefreshRateService screenRefreshRateService, ScreenResolutionService screenResolutionService,
+			ScreenSizeService screenSizeService, SsdService ssdService,	WarrantyTypeService warrantyTypeService) {
 		super();
 		this.productRepository = productRepository;
 		this.fileAttachmentRepository = fileAttachmentRepository;
 		this.fileService = fileService;
+		this.batteryPowerService = batteryPowerService;
+		this.brandService = brandService;
+		this.cameraResolutionService = cameraResolutionService;
+		this.caseDiameterService = caseDiameterService;
+		this.colorService = colorService;
+		this.displayTechnologyService = displayTechnologyService;
+		this.frontCameraResolutionService = frontCameraResolutionService;
+		this.graphicsCardService = graphicsCardService;
+		this.internalMemoryService = internalMemoryService;
+		this.operatingTypeService = operatingTypeService;
+		this.panelTypeService = panelTypeService;
+		this.processorModelService = processorModelService;
+		this.processorTypeService = processorTypeService;
+		this.ramService = ramService;
+		this.screenRefreshRateService = screenRefreshRateService;
+		this.screenResolutionService = screenResolutionService;
+		this.screenSizeService = screenSizeService;
+		this.ssdService = ssdService;
+		this.warrantyTypeService = warrantyTypeService;
 	}
 
 	public void save(ProductSubmitVM productSubmitVM) {
@@ -56,48 +100,48 @@ public class ProductService {
 			product.setDescription(productSubmitVM.getDescription());
 		product.setPrice(Float.valueOf(productSubmitVM.getPrice()));
 		
-		if(productSubmitVM.getGeneralCategory() != null)
-			product.setGeneralCategory(new GeneralCategory(Long.valueOf(productSubmitVM.getGeneralCategory())));
+		if(productSubmitVM.getGeneralCategory() != null) 
+			product.setGeneralCategory(new GeneralCategory(Long.valueOf(productSubmitVM.getGeneralCategory())));	
 		if(productSubmitVM.getSubCategory() != null)
 			product.setSubCategory(new SubCategory(Long.valueOf(productSubmitVM.getSubCategory())));
 		if(productSubmitVM.getBatteryPower() != null)
-			product.setBatteryPower(new BatteryPower(Long.valueOf(productSubmitVM.getBatteryPower())));
+			product.setBatteryPower(batteryPowerService.getBatteryPowerByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getBrand() != null)
-			product.setBrand(new Brand(Long.valueOf(productSubmitVM.getBrand())));
+			product.setBrand(brandService.getBrandByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getCameraResolution() != null)
-			product.setCameraResolution(new CameraResolution(Long.valueOf(productSubmitVM.getCameraResolution())));
+			product.setCameraResolution(cameraResolutionService.getCameraResolutionByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getCaseDiameter() != null)
-			product.setCaseDiameter(new CaseDiameter(Long.valueOf(productSubmitVM.getCaseDiameter())));
+			product.setCaseDiameter(caseDiameterService.getCaseDiameterByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getColor() != null)
-			product.setColor(new Color(Long.valueOf(productSubmitVM.getColor())));
+			product.setColor(colorService.getColorByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getDisplayTechnology() != null)
-			product.setDisplayTechnology(new DisplayTechnology(Long.valueOf(productSubmitVM.getDisplayTechnology())));
+			product.setDisplayTechnology(displayTechnologyService.getDisplayTechnologyByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getFrontCameraResolution() != null)
-			product.setFrontCameraResolution(new FrontCameraResolution(Long.valueOf(productSubmitVM.getFrontCameraResolution())));
+			product.setFrontCameraResolution(frontCameraResolutionService.getFrontCameraResolutionByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getGraphicsCard() != null)
-			product.setGraphicsCard(new GraphicsCard(Long.valueOf(productSubmitVM.getGraphicsCard())));
+			product.setGraphicsCard(graphicsCardService.getGraphicsCardByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getInternalMemory() != null)
-			product.setInternalMemory(new InternalMemory(Long.valueOf(productSubmitVM.getInternalMemory())));
+			product.setInternalMemory(internalMemoryService.getInternalMemoryByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getOperatingType() != null)
-			product.setOperatingType(new OperatingType(Long.valueOf(productSubmitVM.getOperatingType())));
+			product.setOperatingType(operatingTypeService.getOperatingTypeByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getPanelType() != null)
-			product.setPanelType(new PanelType(Long.valueOf(productSubmitVM.getPanelType())));
+			product.setPanelType(panelTypeService.getPanelTypeByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getProcessorModel() != null)
-			product.setProcessorModel(new ProcessorModel(Long.valueOf(productSubmitVM.getProcessorModel())));
+			product.setProcessorModel(processorModelService.getProcessorModelByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getProcessorType() != null)
-			product.setProcessorType(new ProcessorType(Long.valueOf(productSubmitVM.getProcessorType())));
+			product.setProcessorType(processorTypeService.getProcessorTypeByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getRam() != null)
-			product.setRam(new Ram(Long.valueOf(productSubmitVM.getRam())));
+			product.setRam(ramService.getRamByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getScreenRefreshRate() != null)
-			product.setScreenRefreshRate(new ScreenRefreshRate(Long.valueOf(productSubmitVM.getScreenRefreshRate())));
+			product.setScreenRefreshRate(screenRefreshRateService.getScreenRefreshRateByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getScreenResolution() != null)
-			product.setScreenResolution(new ScreenResolution(Long.valueOf(productSubmitVM.getScreenResolution())));
+			product.setScreenResolution(screenResolutionService.getScreenResolutionByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getScreenSize() != null)
-			product.setScreenSize(new ScreenSize(Long.valueOf(productSubmitVM.getScreenSize())));
+			product.setScreenSize(screenSizeService.getScreenSizeByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getSsd() != null)
-			product.setSsd(new Ssd(Long.valueOf(productSubmitVM.getSsd())));
+			product.setSsd(ssdService.getSsdByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getWarrantyType() != null)
-			product.setWarrantyType(new WarrantyType(Long.valueOf(productSubmitVM.getWarrantyType())));
+			product.setWarrantyType(warrantyTypeService.getWarrantyTypeByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		
 		productRepository.save(product);	
 		

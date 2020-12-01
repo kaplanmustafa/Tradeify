@@ -17,5 +17,10 @@ public class CaseDiameterService {
 	public List<CaseDiameter> getCaseDiameters(Long id, Long generalId) {
 		
 		return caseDiameterRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
-	}		
+	}	
+	
+	public CaseDiameter getCaseDiameterByCategory(String general, String sub, String brand) {
+		return caseDiameterRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

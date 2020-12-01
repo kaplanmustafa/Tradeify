@@ -17,5 +17,10 @@ public class ScreenResolutionService {
 	public List<ScreenResolution> getScreenResolutions(Long id, Long generalId) {
 		
 		return screenResolutionRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
-	}		
+	}	
+	
+	public ScreenResolution getScreenResolutionByCategory(String general, String sub, String brand) {
+		return screenResolutionRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

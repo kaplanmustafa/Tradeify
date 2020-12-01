@@ -12,4 +12,6 @@ public interface CameraResolutionRepository extends JpaRepository<CameraResoluti
 	List<CameraResolution> findAllBySubCategoryIdAndGeneralCategoryIdOrderById(Long subCategoryId, Long generalCategoryId);
 	
 	List<CameraResolution> findAllByOrderById();
+	
+	CameraResolution findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long subCategoryId, Long generalCategoryId, Long privateId);
 }

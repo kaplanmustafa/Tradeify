@@ -12,4 +12,6 @@ public interface ScreenResolutionRepository extends JpaRepository<ScreenResoluti
 	List<ScreenResolution> findAllBySubCategoryIdAndGeneralCategoryIdOrderById(Long subCategoryId, Long generalCategoryId);
 	
 	List<ScreenResolution> findAllByOrderById();
+	
+	ScreenResolution findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long subCategoryId, Long generalCategoryId, Long privateId);
 }

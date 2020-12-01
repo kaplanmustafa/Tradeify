@@ -12,4 +12,6 @@ public interface FrontCameraResolutionRepository extends JpaRepository<FrontCame
 	List<FrontCameraResolution> findAllBySubCategoryIdAndGeneralCategoryIdOrderById(Long subCategoryId, Long generalCategoryId);
 	
 	List<FrontCameraResolution> findAllByOrderById();
+	
+	FrontCameraResolution findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long subCategoryId, Long generalCategoryId, Long privateId);
 }

@@ -17,5 +17,10 @@ public class RamService {
 	public List<Ram> getRams(Long id, Long generalId) {
 		
 		return ramRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
-	}		
+	}	
+	
+	public Ram getRamByCategory(String general, String sub, String brand) {
+		return ramRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

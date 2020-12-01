@@ -12,4 +12,6 @@ public interface BatteryPowerRepository extends JpaRepository<BatteryPower, Long
 	List<BatteryPower> findAllBySubCategoryIdAndGeneralCategoryIdOrderById(Long subCategoryId, Long generalCategoryId);
 	
 	List<BatteryPower> findAllByOrderById();
+	
+	BatteryPower findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long subCategoryId, Long generalCategoryId, Long privateId);
 }

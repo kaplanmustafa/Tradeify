@@ -17,5 +17,10 @@ public class ScreenSizeService {
 	public List<ScreenSize> getScreenSizes(Long id, Long generalId) {
 		
 		return screenSizeRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
-	}		
+	}	
+	
+	public ScreenSize getScreenSizeByCategory(String general, String sub, String brand) {
+		return screenSizeRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

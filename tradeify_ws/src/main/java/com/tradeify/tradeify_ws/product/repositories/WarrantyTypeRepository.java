@@ -12,4 +12,6 @@ public interface WarrantyTypeRepository extends JpaRepository<WarrantyType, Long
 	List<WarrantyType> findAllBySubCategoryIdAndGeneralCategoryIdOrderById(Long subCategoryId, Long generalCategoryId);
 	
 	List<WarrantyType> findAllByOrderById();
+	
+	WarrantyType findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long subCategoryId, Long generalCategoryId, Long privateId);
 }

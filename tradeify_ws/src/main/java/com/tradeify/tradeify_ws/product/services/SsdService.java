@@ -17,5 +17,10 @@ public class SsdService {
 	public List<Ssd> getSsd(Long id, Long generalId) {
 		
 		return ssdRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
-	}		
+	}	
+	
+	public Ssd getSsdByCategory(String general, String sub, String brand) {
+		return ssdRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

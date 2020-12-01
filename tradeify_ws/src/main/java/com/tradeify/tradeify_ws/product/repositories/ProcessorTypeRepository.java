@@ -12,4 +12,6 @@ public interface ProcessorTypeRepository extends JpaRepository<ProcessorType, Lo
 	List<ProcessorType> findAllBySubCategoryIdAndGeneralCategoryIdOrderById(Long subCategoryId, Long generalCategoryId);
 	
 	List<ProcessorType> findAllByOrderById();
+	
+	ProcessorType findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long subCategoryId, Long generalCategoryId, Long privateId);
 }

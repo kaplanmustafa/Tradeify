@@ -12,4 +12,6 @@ public interface RamRepository extends JpaRepository<Ram, Long>{
 	List<Ram> findAllBySubCategoryIdAndGeneralCategoryIdOrderById(Long subCategoryId, Long generalCategoryId);
 	
 	List<Ram> findAllByOrderById();
+	
+	Ram findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long subCategoryId, Long generalCategoryId, Long privateId);
 }

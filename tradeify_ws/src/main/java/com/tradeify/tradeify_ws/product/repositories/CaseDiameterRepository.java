@@ -12,4 +12,6 @@ public interface CaseDiameterRepository extends JpaRepository<CaseDiameter, Long
 	List<CaseDiameter> findAllBySubCategoryIdAndGeneralCategoryIdOrderById(Long subCategoryId, Long generalCategoryId);
 	
 	List<CaseDiameter> findAllByOrderById();
+	
+	CaseDiameter findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long subCategoryId, Long generalCategoryId, Long privateId);
 }

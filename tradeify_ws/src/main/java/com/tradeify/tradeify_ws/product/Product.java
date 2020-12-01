@@ -119,9 +119,6 @@ public class Product {
 	
 	private String description;
 	
-	/*@OneToOne(mappedBy = "product", cascade = CascadeType.REMOVE)
-	private FileAttachment coverImage;*/
-	
 	@OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE) 
 	private List<FileAttachment> images;
 }

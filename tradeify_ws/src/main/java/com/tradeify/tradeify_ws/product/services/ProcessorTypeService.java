@@ -17,5 +17,10 @@ public class ProcessorTypeService {
 	public List<ProcessorType> getProcessorTypes(Long id, Long generalId) {
 		
 		return processorTypeRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
-	}		
+	}	
+	
+	public ProcessorType getProcessorTypeByCategory(String general, String sub, String brand) {
+		return processorTypeRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

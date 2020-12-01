@@ -17,5 +17,10 @@ public class ColorService {
 	public List<Color> getBrands(Long id, Long generalId) {
 		
 		return colorRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
-	}		
+	}
+	
+	public Color getColorByCategory(String general, String sub, String brand) {
+		return colorRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }

@@ -12,4 +12,6 @@ public interface ScreenRefreshRateRepository extends JpaRepository<ScreenRefresh
 	List<ScreenRefreshRate> findAllBySubCategoryIdAndGeneralCategoryIdOrderById(Long subCategoryId, Long generalCategoryId);
 	
 	List<ScreenRefreshRate> findAllByOrderById();
+	
+	ScreenRefreshRate findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long subCategoryId, Long generalCategoryId, Long privateId);
 }

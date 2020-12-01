@@ -17,5 +17,10 @@ public class OperatingTypeService {
 	public List<OperatingType> getOperatingTypes(Long id, Long generalId) {
 		
 		return operatingTypeRepository.findAllBySubCategoryIdAndGeneralCategoryIdOrderById(id, generalId);
-	}		
+	}	
+	
+	public OperatingType getOperatingTypeByCategory(String general, String sub, String brand) {
+		return operatingTypeRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
+				Long.valueOf(general), Long.valueOf(brand));
+	}
 }
