@@ -14,6 +14,10 @@ public class ProductVM {
 
 	private long id;
 	
+	private long generalId;
+	
+	private long subId;
+	
 	private String productName;
 	
 	private String batteryPower;
@@ -63,6 +67,8 @@ public class ProductVM {
 	public ProductVM(Product product) {
 		this.setId(product.getId());
 		this.setProductName(product.getProductName());
+		this.setGeneralId(product.getGeneralCategory().getId());
+		this.setSubId(product.getSubCategory().getId());
 		if(product.getBatteryPower() != null)
 			this.setBatteryPower(product.getBatteryPower().getBatteryPowerName());
 		if(product.getBrand() != null)

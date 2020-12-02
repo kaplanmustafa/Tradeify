@@ -160,3 +160,9 @@ export const getProductsByCategory = (generalId, subId) => {
 export const getProduct = (id) => {
   return axios.get(`/api/1.0/product/${id}`);
 };
+
+export const getProductsByCategoryAndBrand = (generalId, subId, productId) => {
+  return axios.get(
+    `/api/1.0/products/${generalId}/${subId}/${productId}?page=0&size=3`
+  );
+};

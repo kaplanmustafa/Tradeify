@@ -42,4 +42,10 @@ public class ProductController {
 			@PageableDefault(sort = "id", direction = Direction.DESC) Pageable page) {
 		return productService.getProductsByCategory(generalId, subId, page).map(ProductCoverVM::new);
 	}
+	
+	@GetMapping("/products/{generalId}/{subId}/{productId}")
+	Page<ProductCoverVM> getProductsByCategoryAndBrand(@PathVariable String generalId, @PathVariable String subId, 
+			@PathVariable String productId, @PageableDefault(sort = "id", direction = Direction.DESC) Pageable page) {
+		return productService.getProductsByCategoryAndBrand(generalId, subId, productId, page).map(ProductCoverVM::new);
+	}
 }

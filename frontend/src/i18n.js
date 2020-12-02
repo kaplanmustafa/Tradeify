@@ -205,6 +205,7 @@ i18n.use(initReactI18next).init({
         "Product Added": "Product Added",
         "Internal Memory": "Internal Memory",
         "Battery Power": "Battery Power",
+        "Similar Products": "Similar Products",
       },
     },
     tr: {
@@ -411,6 +412,7 @@ i18n.use(initReactI18next).init({
         "Product Added": "Ürün Eklendi",
         "Internal Memory": "Dahili Hafıza",
         "Battery Power": "Pil Gücü",
+        "Similar Products": "Benzer Ürünler",
       },
     },
   },

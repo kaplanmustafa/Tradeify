@@ -171,6 +171,14 @@ public class ProductService {
 		return productRepository.findAllByGeneralCategoryIdAndSubCategoryId(Long.valueOf(generalId), Long.valueOf(subId), page);
 	}
 	
+	public Page<Product> getProductsByCategoryAndBrand(String generalId, String subId, String productId, Pageable page) {
+		Optional<Product> inDB = productRepository.findById(Long.valueOf(productId));
+		Product product = inDB.get();
+		
+		return productRepository.findAllByIdNotAndGeneralCategoryIdAndSubCategoryIdAndBrandId(Long.valueOf(productId), 
+				Long.valueOf(generalId), Long.valueOf(subId), product.getBrand().getId(), page);
+	}
+	
 	public Product getProductById(Long id) {
 		Optional<Product> inDB = productRepository.findById(id); 
 		if(inDB.isPresent()) {
