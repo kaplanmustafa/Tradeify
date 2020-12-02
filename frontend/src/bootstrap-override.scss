@@ -1,5 +1,5 @@
-$primary: #FF6000;
-$bg-primary: #FF6000;
+$primary: #ff6000;
+$bg-primary: #ff6000;
 
 @import "~bootstrap/scss/bootstrap.scss";
 
@@ -10,4 +10,16 @@ $bg-primary: #FF6000;
 
 .btn-delete-link:hover {
   color: $danger;
+}
+
+.carousel-control-prev-icon {
+  background-color: $primary;
+}
+
+.carousel-control-next-icon {
+  background-color: $primary;
+}
+
+.carousel-indicators li {
+  background-color: $primary;
 }

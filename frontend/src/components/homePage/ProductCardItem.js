@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const ProductCardItem = (props) => {
   const { id, productName, brand, image, price } = props;
@@ -9,11 +10,13 @@ const ProductCardItem = (props) => {
   return (
     <div className="card">
       {image.fileType.startsWith("image") && (
-        <img
-          src={"images/attachments/" + image.name}
-          className="card-img-top"
-          alt="product-image"
-        />
+        <Link to={"/product/" + id} target="_blank">
+          <img
+            src={"images/attachments/" + image.name}
+            className="card-img-top"
+            alt="product-image"
+          />
+        </Link>
       )}
       <div className="card-body border-top">
         <h5 className="card-title">{brand}</h5>

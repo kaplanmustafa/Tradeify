@@ -203,6 +203,8 @@ i18n.use(initReactI18next).init({
         "Cover Photo": "Cover Photo",
         Photo: "Photo",
         "Product Added": "Product Added",
+        "Internal Memory": "Internal Memory",
+        "Battery Power": "Battery Power",
       },
     },
     tr: {
@@ -407,6 +409,8 @@ i18n.use(initReactI18next).init({
         "Cover Photo": "Kapak Fotoğrafı",
         Photo: "Fotoğraf",
         "Product Added": "Ürün Eklendi",
+        "Internal Memory": "Dahili Hafıza",
+        "Battery Power": "Pil Gücü",
       },
     },
   },

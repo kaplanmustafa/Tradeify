@@ -11,7 +11,7 @@ const ImageSlider = (props) => {
   };
 
   return (
-    <div className="container">
+    <div>
       <Carousel
         activeIndex={index}
         onSelect={handleSelect}
@@ -29,10 +29,10 @@ const ImageSlider = (props) => {
                 alt="First slide"
               />
               <Carousel.Caption className="text-primary">
-                <h3>{image.id}. slide label</h3>
+                {/* <h3>{image.id}. slide label</h3>
                 <p>
                   Nulla vitae elit libero, a pharetra augue mollis interdum.
-                </p>
+                </p> */}
               </Carousel.Caption>
             </Carousel.Item>
           );
