@@ -5,7 +5,7 @@ import { getProductsByCategory } from "../../api/apiCalls";
 import { useApiProgress } from "../../shared/ApiProgress";
 
 const ProductCard = (props) => {
-  const { generalId, subId } = props;
+  const { generalId, subId, products } = props;
   const [page, setPage] = useState({
     content: [],
   });
@@ -18,7 +18,12 @@ const ProductCard = (props) => {
   );
 
   useEffect(() => {
-    if (generalId !== undefined && subId !== undefined) loadProducts();
+    if (
+      generalId !== undefined &&
+      subId !== undefined &&
+      products === undefined
+    )
+      loadProducts();
   }, [generalId, subId]);
 
   const loadProducts = async () => {
@@ -32,13 +37,25 @@ const ProductCard = (props) => {
   };
 
   const { t } = useTranslation();
-  const { content: products } = page;
+  const { content } = page;
+
+  useEffect(() => {
+    if (products) {
+      setPage({ content: products });
+    }
+  }, [products]);
 
   return (
-    <div className="container mt-5 mb-5 w-75">
+    <div
+      className={
+        products !== undefined
+          ? "container mt-5 mb-5"
+          : "container mt-5 mb-5 w-75"
+      }
+    >
       <div className="card-deck">
         <div className="row mb-3">
-          {products.map((product, index) => {
+          {content.map((product, index) => {
             if (index >= 3) return;
             return (
               <ProductCardItem
@@ -54,7 +71,7 @@ const ProductCard = (props) => {
         </div>
 
         <div className="row">
-          {products.map((product, index) => {
+          {content.map((product, index) => {
             if (index < 3) return;
             return (
               <ProductCardItem

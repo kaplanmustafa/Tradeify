@@ -2,30 +2,23 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { getProduct, getProductsByCategoryAndBrand } from "../api/apiCalls";
-import ProductCard from "../components/homePage/ProductCard";
 import ProductCardItem from "../components/homePage/ProductCardItem";
 import ProductHeaderCard from "../components/homePage/ProductHeaderCard";
 import ImageSlider from "../components/toolbox/ImageSlider";
 import ProductAttribute from "../components/toolbox/ProductAttribute";
-import { useApiProgress } from "../shared/ApiProgress";
 
 const ProductDetailPage = () => {
   const [product, setProduct] = useState({});
   const [page, setPage] = useState({
     content: [],
   });
-  const [notFound, setNotFound] = useState(false);
 
   const { id: productId } = useParams();
 
-  const pendingApiCall = useApiProgress(
-    "get",
-    "/api/1.0/product/" + productId,
-    true
-  );
-
   useEffect(() => {
-    if (product !== undefined) loadSimilarProducts();
+    if (product.id !== undefined) {
+      loadSimilarProducts();
+    }
   }, [product]);
 
   const loadSimilarProducts = async () => {
@@ -42,17 +35,11 @@ const ProductDetailPage = () => {
   const { content: products } = page;
 
   useEffect(() => {
-    setNotFound(false);
-  }, [product]);
-
-  useEffect(() => {
     const loadProduct = async () => {
       try {
         const response = await getProduct(productId);
         setProduct(response.data);
-      } catch (error) {
-        setNotFound(true);
-      }
+      } catch (error) {}
     };
 
     loadProduct();

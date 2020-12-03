@@ -19,10 +19,7 @@ const ImageSlider = (props) => {
       >
         {images.map((image, index) => {
           return (
-            <Carousel.Item
-              key={image.id !== null ? image.id : image.name}
-              className="text-primary bg-primary"
-            >
+            <Carousel.Item key={image.name} className="text-primary bg-primary">
               <img
                 className="d-block w-100"
                 src={"images/attachments/" + image.name}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Dropdown from "react-multilevel-dropdown";
+import { Link } from "react-router-dom";
 import { getCategory, getAllSubCategory } from "../../api/apiCalls";
 
 const MegaMenu = () => {
@@ -34,12 +35,18 @@ const MegaMenu = () => {
         return category.generalCategoryId === index;
       })
       .map((sub, key) => (
-        <Dropdown.Item
-          className="btn-outline-primary"
-          key={sub.id + sub.categoryName}
+        <Link
+          to={"/all-products/" + index + "/" + (key + 1)}
+          key={sub.categoryName + sub.id}
+          style={{ textDecoration: "none" }}
         >
-          {t(sub.categoryName)}
-        </Dropdown.Item>
+          <Dropdown.Item
+            className="btn-outline-primary"
+            key={sub.id + sub.categoryName}
+          >
+            {t(sub.categoryName)}
+          </Dropdown.Item>
+        </Link>
       ));
   };
 
@@ -55,11 +62,13 @@ const MegaMenu = () => {
         >
           {subCategoryItems(key + 1)}
           <Dropdown.Item>
-            <img
-              className="d-block w-100"
-              src="images/attachments/first.jpg"
-              alt="First slide"
-            />
+            <Link to={"/all-products/" + (key + 1)}>
+              <img
+                className="d-block w-100"
+                src="images/attachments/first.jpg"
+                alt="First slide"
+              />
+            </Link>
           </Dropdown.Item>
         </Dropdown>
       ))}
