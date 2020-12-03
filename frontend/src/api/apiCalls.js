@@ -65,84 +65,84 @@ export const getAllSubCategory = () => {
   return axios.get(`/api/1.0/categories/sub`);
 };
 
-export const getBrand = (middleId, generalId) => {
-  return axios.get(`/api/1.0/brands/${middleId}/${generalId}`);
+export const getBrand = (subId, generalId) => {
+  return axios.get(`/api/1.0/brands/${subId}/${generalId}`);
 };
 
 export const getAllBrands = () => {
   return axios.get("/api/1.0/brands");
 };
 
-export const getColor = (middleId, generalId) => {
-  return axios.get(`/api/1.0/colors/${middleId}/${generalId}`);
+export const getColor = (subId, generalId) => {
+  return axios.get(`/api/1.0/colors/${subId}/${generalId}`);
 };
 
-export const getOperatingType = (middleId, generalId) => {
-  return axios.get(`/api/1.0/operatingTypes/${middleId}/${generalId}`);
+export const getOperatingType = (subId, generalId) => {
+  return axios.get(`/api/1.0/operatingTypes/${subId}/${generalId}`);
 };
 
-export const getCaseDiameter = (middleId, generalId) => {
-  return axios.get(`/api/1.0/caseDiameters/${middleId}/${generalId}`);
+export const getCaseDiameter = (subId, generalId) => {
+  return axios.get(`/api/1.0/caseDiameters/${subId}/${generalId}`);
 };
 
-export const getWarrantyType = (middleId, generalId) => {
-  return axios.get(`/api/1.0/warrantyTypes/${middleId}/${generalId}`);
+export const getWarrantyType = (subId, generalId) => {
+  return axios.get(`/api/1.0/warrantyTypes/${subId}/${generalId}`);
 };
 
-export const getInternalMemory = (middleId, generalId) => {
-  return axios.get(`/api/1.0/internalMemories/${middleId}/${generalId}`);
+export const getInternalMemory = (subId, generalId) => {
+  return axios.get(`/api/1.0/internalMemories/${subId}/${generalId}`);
 };
 
-export const getBatteryPower = (middleId, generalId) => {
-  return axios.get(`/api/1.0/batteryPowers/${middleId}/${generalId}`);
+export const getBatteryPower = (subId, generalId) => {
+  return axios.get(`/api/1.0/batteryPowers/${subId}/${generalId}`);
 };
 
-export const getScreenSize = (middleId, generalId) => {
-  return axios.get(`/api/1.0/screenSizes/${middleId}/${generalId}`);
+export const getScreenSize = (subId, generalId) => {
+  return axios.get(`/api/1.0/screenSizes/${subId}/${generalId}`);
 };
 
-export const getCameraResolution = (middleId, generalId) => {
-  return axios.get(`/api/1.0/cameraResolutions/${middleId}/${generalId}`);
+export const getCameraResolution = (subId, generalId) => {
+  return axios.get(`/api/1.0/cameraResolutions/${subId}/${generalId}`);
 };
 
-export const getFrontCameraResolution = (middleId, generalId) => {
-  return axios.get(`/api/1.0/frontCameraResolutions/${middleId}/${generalId}`);
+export const getFrontCameraResolution = (subId, generalId) => {
+  return axios.get(`/api/1.0/frontCameraResolutions/${subId}/${generalId}`);
 };
 
-export const getDisplayTechnology = (middleId, generalId) => {
-  return axios.get(`/api/1.0/displayTechnologies/${middleId}/${generalId}`);
+export const getDisplayTechnology = (subId, generalId) => {
+  return axios.get(`/api/1.0/displayTechnologies/${subId}/${generalId}`);
 };
 
-export const getScreenResolution = (middleId, generalId) => {
-  return axios.get(`/api/1.0/screenResolutions/${middleId}/${generalId}`);
+export const getScreenResolution = (subId, generalId) => {
+  return axios.get(`/api/1.0/screenResolutions/${subId}/${generalId}`);
 };
 
-export const getProcessorType = (middleId, generalId) => {
-  return axios.get(`/api/1.0/processorTypes/${middleId}/${generalId}`);
+export const getProcessorType = (subId, generalId) => {
+  return axios.get(`/api/1.0/processorTypes/${subId}/${generalId}`);
 };
 
-export const getRam = (middleId, generalId) => {
-  return axios.get(`/api/1.0/rams/${middleId}/${generalId}`);
+export const getRam = (subId, generalId) => {
+  return axios.get(`/api/1.0/rams/${subId}/${generalId}`);
 };
 
-export const getGraphicsCard = (middleId, generalId) => {
-  return axios.get(`/api/1.0/graphicsCards/${middleId}/${generalId}`);
+export const getGraphicsCard = (subId, generalId) => {
+  return axios.get(`/api/1.0/graphicsCards/${subId}/${generalId}`);
 };
 
-export const getSsd = (middleId, generalId) => {
-  return axios.get(`/api/1.0/ssd/${middleId}/${generalId}`);
+export const getSsd = (subId, generalId) => {
+  return axios.get(`/api/1.0/ssd/${subId}/${generalId}`);
 };
 
-export const getProcessorModel = (middleId, generalId) => {
-  return axios.get(`/api/1.0/processorModels/${middleId}/${generalId}`);
+export const getProcessorModel = (subId, generalId) => {
+  return axios.get(`/api/1.0/processorModels/${subId}/${generalId}`);
 };
 
-export const getScreenRefreshRate = (middleId, generalId) => {
-  return axios.get(`/api/1.0/screenRefreshRates/${middleId}/${generalId}`);
+export const getScreenRefreshRate = (subId, generalId) => {
+  return axios.get(`/api/1.0/screenRefreshRates/${subId}/${generalId}`);
 };
 
-export const getPanelType = (middleId, generalId) => {
-  return axios.get(`/api/1.0/panelTypes/${middleId}/${generalId}`);
+export const getPanelType = (subId, generalId) => {
+  return axios.get(`/api/1.0/panelTypes/${subId}/${generalId}`);
 };
 
 export const postProductAttachment = (attachment) => {
