@@ -65,8 +65,12 @@ const MegaMenu = () => {
             <Link to={"/all-products/" + (key + 1)}>
               <img
                 className="d-block w-100"
-                src="images/attachments/first.jpg"
-                alt="First slide"
+                src={
+                  "images/attachments/" +
+                  category.categoryName.split(" ").join("") +
+                  ".jpg"
+                }
+                alt={category.categoryName}
               />
             </Link>
           </Dropdown.Item>
