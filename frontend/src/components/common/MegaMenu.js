@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Dropdown from "react-multilevel-dropdown";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { getCategory, getAllSubCategory } from "../../api/apiCalls";
 
-const MegaMenu = () => {
+const MegaMenu = (props) => {
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
 
   const { t } = useTranslation();
+
+  let history = useHistory();
 
   const loadCategories = async () => {
     try {
@@ -35,18 +37,15 @@ const MegaMenu = () => {
         return category.generalCategoryId === index;
       })
       .map((sub, key) => (
-        <Link
-          to={"/all-products/" + index + "/" + (key + 1)}
-          key={sub.categoryName + sub.id}
-          style={{ textDecoration: "none" }}
+        <Dropdown.Item
+          className="btn-outline-primary"
+          key={sub.id + sub.categoryName}
+          onClick={() => {
+            history.push("/all-products/" + index + "/" + (key + 1));
+          }}
         >
-          <Dropdown.Item
-            className="btn-outline-primary"
-            key={sub.id + sub.categoryName}
-          >
-            {t(sub.categoryName)}
-          </Dropdown.Item>
-        </Link>
+          {t(sub.categoryName)}
+        </Dropdown.Item>
       ));
   };
 
