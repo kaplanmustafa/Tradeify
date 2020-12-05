@@ -23,4 +23,9 @@ public class DisplayTechnologyService {
 		return displayTechnologyRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public DisplayTechnology getById(Long id) {
+	
+		return displayTechnologyRepository.getOne(id);
+	}
 }

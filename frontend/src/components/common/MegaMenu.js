@@ -4,7 +4,7 @@ import Dropdown from "react-multilevel-dropdown";
 import { Link, useHistory } from "react-router-dom";
 import { getCategory, getAllSubCategory } from "../../api/apiCalls";
 
-const MegaMenu = (props) => {
+const MegaMenu = () => {
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
 

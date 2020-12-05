@@ -208,6 +208,8 @@ i18n.use(initReactI18next).init({
         "Similar Products": "Similar Products",
         Previous: "Previous",
         Next: "Next",
+        "Min Price": "Min Price",
+        "Max Price": "Max Price",
       },
     },
     tr: {
@@ -417,6 +419,8 @@ i18n.use(initReactI18next).init({
         "Similar Products": "Benzer Ürünler",
         Previous: "Önceki",
         Next: "Sonraki",
+        "Min Price": "Min Fiyat",
+        "Max Price": "Max Fiyat",
       },
     },
   },

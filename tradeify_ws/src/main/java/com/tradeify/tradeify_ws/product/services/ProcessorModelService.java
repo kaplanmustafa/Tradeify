@@ -23,4 +23,9 @@ public class ProcessorModelService {
 		return processorModelRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public ProcessorModel getById(Long id) {
+		
+		return processorModelRepository.getOne(id);
+	}
 }

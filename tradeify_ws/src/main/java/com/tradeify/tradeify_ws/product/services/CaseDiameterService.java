@@ -23,4 +23,9 @@ public class CaseDiameterService {
 		return caseDiameterRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public CaseDiameter getById(Long id) {
+		
+		return caseDiameterRepository.getOne(id);
+	}
 }

@@ -23,4 +23,9 @@ public class InternalMemoryService {
 		return internalMemoryRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public InternalMemory getById(Long id) {
+		
+		return internalMemoryRepository.getOne(id);
+	}
 }

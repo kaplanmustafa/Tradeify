@@ -24,6 +24,11 @@ public class BrandService {
 		return brandRepository.findAllByOrderById();
 	}	
 	
+	public Brand getById(Long id) {
+		
+		return brandRepository.getOne(id);
+	}
+	
 	public Brand getBrandByCategory(String general, String sub, String brand) {
 		return brandRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));

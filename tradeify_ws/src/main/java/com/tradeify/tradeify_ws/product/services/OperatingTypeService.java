@@ -23,4 +23,9 @@ public class OperatingTypeService {
 		return operatingTypeRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public OperatingType getById(Long id) {
+		
+		return operatingTypeRepository.getOne(id);
+	}
 }

@@ -23,4 +23,9 @@ public class ScreenSizeService {
 		return screenSizeRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public ScreenSize getById(Long id) {
+		
+		return screenSizeRepository.getOne(id);
+	}
 }

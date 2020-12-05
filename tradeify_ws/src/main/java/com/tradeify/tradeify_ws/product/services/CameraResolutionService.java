@@ -23,4 +23,9 @@ public class CameraResolutionService {
 		return cameraResolutionRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public CameraResolution getById(Long id) {
+		
+		return cameraResolutionRepository.getOne(id);
+	}
 }

@@ -10,11 +10,13 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tradeify.tradeify_ws.product.vm.ProductCoverVM;
+import com.tradeify.tradeify_ws.product.vm.ProductFilterVM;
 import com.tradeify.tradeify_ws.product.vm.ProductSubmitVM;
 import com.tradeify.tradeify_ws.product.vm.ProductVM;
 import com.tradeify.tradeify_ws.shared.GenericResponse;
@@ -41,6 +43,13 @@ public class ProductController {
 	Page<ProductCoverVM> getProductsByCategory(@PathVariable String generalId, @PathVariable String subId, 
 			@PageableDefault(sort = "id", direction = Direction.DESC) Pageable page) {
 		return productService.getProductsByCategory(generalId, subId, page).map(ProductCoverVM::new);
+	}
+	
+	@PutMapping("/productFilters/{generalId}/{subId}")
+	Page<ProductCoverVM> getProductsByFilters(@PathVariable String generalId, @PathVariable String subId, @RequestBody(required = false) ProductFilterVM filterList, 
+			@PageableDefault(sort = "id", direction = Direction.DESC) Pageable page) {
+		
+		return productService.getProductsByFilters(generalId, subId, filterList, page).map(ProductCoverVM::new);
 	}
 	
 	@GetMapping("/products/{generalId}/{subId}/{productId}")

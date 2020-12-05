@@ -23,4 +23,9 @@ public class ProcessorTypeService {
 		return processorTypeRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public ProcessorType getById(Long id) {
+		
+		return processorTypeRepository.getOne(id);
+	}
 }

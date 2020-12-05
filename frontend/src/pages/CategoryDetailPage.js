@@ -16,6 +16,7 @@ import {
   getProcessorModel,
   getProcessorType,
   getProductsByCategory,
+  getProductsByFilters,
   getRam,
   getScreenRefreshRate,
   getScreenResolution,
@@ -77,29 +78,34 @@ const CategoryDetailPage = () => {
   const [screenRefreshRates, setScreenRefreshRates] = useState([]);
   const [panelTypes, setPanelTypes] = useState([]);
 
+  const [minPrice, setMinPrice] = useState();
+  const [maxPrice, setMaxPrice] = useState();
+
   const { t } = useTranslation();
   const { categoryId, subId } = useParams();
 
   const onClickNext = (event) => {
     if (!event.target.className.includes("disabled")) {
       const nextPage = page.number + 1;
-      loadProducts(nextPage);
+      onClickSearch(nextPage);
     }
   };
 
   const onClickPage = (event) => {
     const targetPage = event.target.innerHTML - 1;
-    loadProducts(targetPage);
+    onClickSearch(targetPage);
   };
 
   const onClickPrevious = (event) => {
     if (!event.target.className.includes("disabled")) {
       const previousPage = page.number - 1;
-      loadProducts(previousPage);
+      onClickSearch(previousPage);
     }
   };
 
   useEffect(() => {
+    setBrandFilters([]);
+
     if (categoryId !== undefined && subId !== undefined) {
       loadProducts();
     }
@@ -265,7 +271,7 @@ const CategoryDetailPage = () => {
     loadScreenRefreshRates(subId, categoryId);
     loadPanelTypes(subId, categoryId);
     loadGraphicsCards(subId, categoryId);
-  }, []);
+  }, [categoryId, subId]);
 
   const onChangeBrandFilter = (event) => {
     if (brandFilters.includes(event.target.id)) {
@@ -482,12 +488,65 @@ const CategoryDetailPage = () => {
     }
   };
 
+  const onClickSearch = async (pageProduct) => {
+    const filterList = {
+      priceFilters: [minPrice, maxPrice],
+      brandFilters,
+      colorFilters,
+      operatingTypeFilters,
+      caseDiameterFilters,
+      warrantyTypeFilters,
+      internalMemoryFilters,
+      batteryPowerFilters,
+      screenSizeFilters,
+      cameraResolutionFilters,
+      frontCameraResolutionFilters,
+      displayTechnologyFilters,
+      screenResolutionFilters,
+      processorTypeFilters,
+      ramFilters,
+      graphicsCardFilters,
+      ssdFilters,
+      processorModelFilters,
+      screenRefreshRateFilters,
+      panelTypeFilters,
+    };
+
+    try {
+      const response = await getProductsByFilters(
+        categoryId,
+        subId,
+        filterList,
+        pageProduct
+      );
+      setPage(response.data);
+    } catch (error) {}
+  };
+
   const { content: products } = page;
 
   return (
     <div className="container">
       <div className="row">
         <div className="col-3 border border-solid mt-5 p-2">
+          <div className="flex-fill mb-2 font-weight-bold">
+            {t("Min Price") + " (₺)"}
+          </div>
+          <input
+            className="form-control w-50"
+            onChange={(event) => {
+              setMinPrice(event.target.value);
+            }}
+          />
+          <div className="flex-fill mb-2 font-weight-bold mt-2">
+            {t("Max Price") + " (₺)"}
+          </div>
+          <input
+            className="form-control w-50"
+            onChange={(event) => {
+              setMaxPrice(event.target.value);
+            }}
+          />
           {brands.length !== 0 && (
             <ScrollingCheckbox
               categories={brands}
@@ -621,6 +680,14 @@ const CategoryDetailPage = () => {
               onChangeCheckFilter={onChangeWarrantyTypeFilter}
             />
           )}
+          <button
+            className="btn btn-primary mt-2 flex-fill"
+            onClick={() => {
+              onClickSearch(0);
+            }}
+          >
+            {t("Search")}
+          </button>
         </div>
         <div className="col-9">
           {categoryId && subId && <ProductCard products={products} />}

@@ -23,4 +23,9 @@ public class WarrantyTypeService {
 		return warrantyTypeRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public WarrantyType getById(Long id) {
+		
+		return warrantyTypeRepository.getOne(id);
+	}
 }

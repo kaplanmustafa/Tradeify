@@ -3,12 +3,12 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 const ProductCardItem = (props) => {
-  const { id, productName, brand, image, price } = props;
+  const { id, productName, brand, image, price, hidden } = props;
 
   const { t } = useTranslation();
 
   return (
-    <div className="card">
+    <div className={hidden === undefined ? "card" : "card invisible"}>
       {image.fileType.startsWith("image") && (
         <Link to={"/product/" + id} target="_blank">
           <img

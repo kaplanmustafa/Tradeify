@@ -23,4 +23,9 @@ public class GraphicsCardService {
 		return graphicsCardRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public GraphicsCard getById(Long id) {
+		
+		return graphicsCardRepository.getOne(id);
+	}
 }

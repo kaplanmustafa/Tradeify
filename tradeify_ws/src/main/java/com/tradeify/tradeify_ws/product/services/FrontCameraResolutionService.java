@@ -23,4 +23,9 @@ public class FrontCameraResolutionService {
 		return frontCameraResolutionRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public FrontCameraResolution getById(Long id) {
+		
+		return frontCameraResolutionRepository.getOne(id);
+	}
 }

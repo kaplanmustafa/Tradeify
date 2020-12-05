@@ -23,4 +23,9 @@ public class RamService {
 		return ramRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public Ram getById(Long id) {
+		
+		return ramRepository.getOne(id);
+	}
 }

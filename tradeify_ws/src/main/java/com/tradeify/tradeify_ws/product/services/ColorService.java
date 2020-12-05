@@ -23,4 +23,9 @@ public class ColorService {
 		return colorRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public Color getById(Long id) {
+		
+		return colorRepository.getOne(id);
+	}
 }

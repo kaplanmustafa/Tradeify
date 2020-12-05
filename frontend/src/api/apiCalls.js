@@ -159,6 +159,19 @@ export const getProductsByCategory = (generalId, subId, page = 0, size = 6) => {
   );
 };
 
+export const getProductsByFilters = (
+  generalId,
+  subId,
+  filterList,
+  page = 0,
+  size = 6
+) => {
+  return axios.put(
+    `/api/1.0/productFilters/${generalId}/${subId}?page=${page}&size=${size}`,
+    filterList
+  );
+};
+
 export const getProduct = (id) => {
   return axios.get(`/api/1.0/product/${id}`);
 };

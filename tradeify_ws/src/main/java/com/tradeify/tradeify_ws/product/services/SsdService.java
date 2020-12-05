@@ -23,4 +23,9 @@ public class SsdService {
 		return ssdRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public Ssd getById(Long id) {
+		
+		return ssdRepository.getOne(id);
+	}
 }

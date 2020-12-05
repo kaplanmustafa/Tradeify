@@ -23,4 +23,9 @@ public class PanelTypeService {
 		return panelTypeRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public PanelType getById(Long id) {
+		
+		return panelTypeRepository.getOne(id);
+	}
 }

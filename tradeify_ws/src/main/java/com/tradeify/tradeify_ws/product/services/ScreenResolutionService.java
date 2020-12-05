@@ -23,4 +23,9 @@ public class ScreenResolutionService {
 		return screenResolutionRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public ScreenResolution getById(Long id) {
+		
+		return screenResolutionRepository.getOne(id);
+	}
 }

@@ -23,4 +23,9 @@ public class BatteryPowerService {
 		return batteryPowerRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public BatteryPower getById(Long id) {
+		
+		return batteryPowerRepository.getOne(id);
+	}
 }

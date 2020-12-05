@@ -45,6 +45,84 @@ const ProductCard = (props) => {
     }
   }, [products]);
 
+  const hiddenDivFirstRow = () => {
+    if (content.length === 1) {
+      return (
+        <>
+          <ProductCardItem
+            hidden="true"
+            id="0"
+            key="hidden-1"
+            productName="0"
+            brand="0"
+            image={({ name: "first.jpg" }, { fileType: "image/jpeg" })}
+            price="0"
+          />
+          <ProductCardItem
+            hidden="true"
+            id="0"
+            key="hidden-2"
+            productName="0"
+            brand="0"
+            image={({ name: "first.jpg" }, { fileType: "image/jpeg" })}
+            price="0"
+          />
+        </>
+      );
+    } else if (content.length === 2) {
+      return (
+        <ProductCardItem
+          hidden="true"
+          id="0"
+          key="hidden-3"
+          productName="0"
+          brand="0"
+          image={({ name: "first.jpg" }, { fileType: "image/jpeg" })}
+          price="0"
+        />
+      );
+    }
+  };
+
+  const hiddenDivSecondRow = () => {
+    if (content.length === 4) {
+      return (
+        <>
+          <ProductCardItem
+            hidden="true"
+            id="0"
+            key="hidden-4"
+            productName="0"
+            brand="0"
+            image={({ name: "first.jpg" }, { fileType: "image/jpeg" })}
+            price="0"
+          />
+          <ProductCardItem
+            hidden="true"
+            id="0"
+            key="hidden-5"
+            productName="0"
+            brand="0"
+            image={({ name: "first.jpg" }, { fileType: "image/jpeg" })}
+            price="0"
+          />
+        </>
+      );
+    } else if (content.length === 5) {
+      return (
+        <ProductCardItem
+          hidden="true"
+          id="0"
+          key="hidden-6"
+          productName="0"
+          brand="0"
+          image={({ name: "first.jpg" }, { fileType: "image/jpeg" })}
+          price="0"
+        />
+      );
+    }
+  };
+
   return (
     <div
       className={
@@ -68,6 +146,7 @@ const ProductCard = (props) => {
               />
             );
           })}
+          {hiddenDivFirstRow()}
         </div>
 
         <div className="row">
@@ -84,6 +163,7 @@ const ProductCard = (props) => {
               />
             );
           })}
+          {hiddenDivSecondRow()}
         </div>
       </div>
     </div>
