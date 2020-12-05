@@ -27,6 +27,7 @@ import {
 import ProductCard from "../components/homePage/ProductCard";
 import Pagination from "../components/toolbox/Pagination";
 import ScrollingCheckbox from "../components/toolbox/ScrollingCheckbox";
+import noProduct from "../assets/no-product.png";
 
 const CategoryDetailPage = () => {
   const [page, setPage] = useState({
@@ -523,7 +524,20 @@ const CategoryDetailPage = () => {
     } catch (error) {}
   };
 
-  const { content: products } = page;
+  const { content: products, empty } = page;
+
+  const notFound = () => {
+    if (empty) {
+      return (
+        <div className="container border border-solid mt-5 text-center">
+          <img src={noProduct} className="mb-3" />
+          <h2 className="container text-danger">
+            {t("We could not found the product you're looking for!")}
+          </h2>
+        </div>
+      );
+    }
+  };
 
   return (
     <div className="container">
@@ -690,6 +704,7 @@ const CategoryDetailPage = () => {
           </button>
         </div>
         <div className="col-9">
+          {notFound()}
           {categoryId && subId && <ProductCard products={products} />}
         </div>
       </div>

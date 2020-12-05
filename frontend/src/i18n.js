@@ -210,6 +210,8 @@ i18n.use(initReactI18next).init({
         Next: "Next",
         "Min Price": "Min Price",
         "Max Price": "Max Price",
+        "We could not found the product you're looking for!":
+          "We could not found the product you're looking for!",
       },
     },
     tr: {
@@ -421,6 +423,8 @@ i18n.use(initReactI18next).init({
         Next: "Sonraki",
         "Min Price": "Min Fiyat",
         "Max Price": "Max Fiyat",
+        "We could not found the product you're looking for!":
+          "Aradığınız kriterlere uygun ürün bulunamadı!",
       },
     },
   },
