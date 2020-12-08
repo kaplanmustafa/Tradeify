@@ -187,3 +187,11 @@ export const getProductsBySearch = (search, page = 0, size = 6) => {
     `/api/1.0/productFilters/${search}?page=${page}&size=${size}`
   );
 };
+
+export const saveCartItem = (productId) => {
+  return axios.post(`/api/1.0/cartItem/${productId}`);
+};
+
+export const getCartItems = (page = 0, size = 2) => {
+  return axios.get(`/api/1.0/cartItems?page=${page}&size=${size}`);
+};

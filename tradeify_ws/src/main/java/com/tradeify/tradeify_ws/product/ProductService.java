@@ -518,7 +518,6 @@ public class ProductService {
 		for(String word : words) {
 			String wordUpper = word.toLowerCase();
 			wordUpper = word.substring(0, 1).toUpperCase() + wordUpper.substring(1);
-			System.out.println(word);
 			List<Brand> brands = new ArrayList<>();
 			
 			for(GeneralCategory category : categories) {

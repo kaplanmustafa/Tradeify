@@ -1,7 +1,13 @@
+import alertify from "alertifyjs";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getProduct, getProductsByCategoryAndBrand } from "../api/apiCalls";
+import {
+  getProduct,
+  getProductsByCategoryAndBrand,
+  saveCartItem,
+} from "../api/apiCalls";
 import ProductCardItem from "../components/homePage/ProductCardItem";
 import ProductHeaderCard from "../components/homePage/ProductHeaderCard";
 import ImageSlider from "../components/toolbox/ImageSlider";
@@ -12,6 +18,10 @@ const ProductDetailPage = () => {
   const [page, setPage] = useState({
     content: [],
   });
+
+  const { isLoggedIn } = useSelector((store) => ({
+    isLoggedIn: store.isLoggedIn,
+  }));
 
   const { id: productId } = useParams();
 
@@ -47,6 +57,13 @@ const ProductDetailPage = () => {
 
   const { t } = useTranslation();
 
+  const onClickAddToCart = async (productId) => {
+    try {
+      saveCartItem(productId);
+      alertify.success(t("Product Added to Cart"));
+    } catch (error) {}
+  };
+
   return (
     <div className="container">
       <div className="row mt-5">
@@ -61,11 +78,18 @@ const ProductDetailPage = () => {
               <div className="row h3 text-primary mt-3">₺{product.price}</div>
             </div>
           </div>
-          <div className="container row mt-3 border border-solid p-4">
-            <button className="btn btn-primary flex-fill m-auto">
-              {t("Add to Cart")}
-            </button>
-          </div>
+          {isLoggedIn && (
+            <div className="container row mt-3 border border-solid p-4">
+              <button
+                className="btn btn-primary flex-fill m-auto"
+                onClick={() => {
+                  onClickAddToCart(productId);
+                }}
+              >
+                {t("Add to Cart")}
+              </button>
+            </div>
+          )}
           <div className="container row mt-3 border border-solid p-4">
             {product.description}
           </div>

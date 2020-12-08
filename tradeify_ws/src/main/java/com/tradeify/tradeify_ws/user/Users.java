@@ -25,6 +25,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.tradeify.tradeify_ws.auth.Token;
+import com.tradeify.tradeify_ws.cart.Cart;
 import com.tradeify.tradeify_ws.role.Role;
 import com.tradeify.tradeify_ws.user.validators.UniqueEmail;
 import com.tradeify.tradeify_ws.user.validators.UniquePhone;
@@ -94,6 +95,9 @@ public class Users implements UserDetails{
 	
 	@OneToOne(mappedBy="user")
 	private Role role;
+	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+	private List<Cart> carts;
 
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return AuthorityUtils.createAuthorityList("Role_" + role.getName());

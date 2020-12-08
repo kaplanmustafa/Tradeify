@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutSuccess } from "../../redux/authActions";
 import LanguageSelector from "./LanguageSelector";
 import alertify from "alertifyjs";
+import CartItem from "./CartItem";
 
 const TopBar = (props) => {
   const { t } = useTranslation();
@@ -85,6 +86,11 @@ const TopBar = (props) => {
 
     links = (
       <ul className="navbar-nav ml-auto" ref={menuArea}>
+        {role === "user" && (
+          <div className="container mr-5">
+            <CartItem />
+          </div>
+        )}
         <li className="nav-item dropdown">
           <div
             className="d-flex"

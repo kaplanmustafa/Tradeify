@@ -236,6 +236,11 @@ i18n.use(initReactI18next).init({
         Depolama: "data",
         disk: "data",
         Disk: "data",
+        "Product Added to Cart": "Product Added to Cart",
+        Quantity: "Quantity",
+        "My Shopping Cart": "My Shopping Cart",
+        Product: "Product",
+        "Go To Cart": "Go To Cart",
       },
     },
     tr: {
@@ -440,6 +445,11 @@ i18n.use(initReactI18next).init({
         "We could not found the product you're looking for!":
           "Aradığınız kriterlere uygun ürün bulunamadı!",
         "You must enter at least 3 characters": "En az 3 karakter girmelisiniz",
+        "Product Added to Cart": "Ürün Sepete Eklendi",
+        Quantity: "Miktar",
+        "My Shopping Cart": "Alışveriş Sepetim",
+        Product: "Ürün",
+        "Go To Cart": "Sepete Git",
       },
     },
   },

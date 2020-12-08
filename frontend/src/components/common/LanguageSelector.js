@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import turkishFlag from "../../assets/turkey-flag.png";
 import usaFlag from "../../assets/usa-flag.png";
 
-const LanguageSelector = (props) => {
+const LanguageSelector = () => {
   const { i18n } = useTranslation();
 
   const onChangeLanguage = (language) => {
