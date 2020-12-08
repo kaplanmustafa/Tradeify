@@ -52,6 +52,11 @@ public class ProductController {
 		return productService.getProductsByFilters(generalId, subId, filterList, page).map(ProductCoverVM::new);
 	}
 	
+	@GetMapping("/productFilters/{search}")
+	Page<ProductCoverVM> getProductsBySearch(@PathVariable String search, @PageableDefault(sort = "id", direction = Direction.DESC) Pageable page) {
+		return productService.getProductsBySearch(search, page).map(ProductCoverVM::new);
+	}
+	
 	@GetMapping("/products/{generalId}/{subId}/{productId}")
 	Page<ProductCoverVM> getProductsByCategoryAndBrand(@PathVariable String generalId, @PathVariable String subId, 
 			@PathVariable long productId, @PageableDefault(sort = "id", direction = Direction.DESC) Pageable page) {

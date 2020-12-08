@@ -33,4 +33,12 @@ public class BrandService {
 		return brandRepository.findBySubCategoryIdAndGeneralCategoryIdAndPrivateId(Long.valueOf(sub), 
 				Long.valueOf(general), Long.valueOf(brand));
 	}
+	
+	public List<Brand> getByBrandName(String name) {
+		return brandRepository.findAllByBrandNameContaining(name);
+	}
+	
+	public List<Brand> getByGeneralCategory(Long id, String name) {
+		return brandRepository.findAllByBrandNameContainingAndGeneralCategoryIdOrderById(name, id);
+	}
 }

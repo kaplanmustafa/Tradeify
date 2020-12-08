@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import logo from "../../assets/logo_s.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutSuccess } from "../../redux/authActions";
 import LanguageSelector from "./LanguageSelector";
+import alertify from "alertifyjs";
 
 const TopBar = (props) => {
   const { t } = useTranslation();
+  let history = useHistory();
 
   const { isLoggedIn, name, surname, role } = useSelector((store) => {
     return {
@@ -21,6 +23,7 @@ const TopBar = (props) => {
   const menuArea = useRef(null);
   const [menuVisible, setMenuVisible] = useState(false);
   const [userRole, setUserRole] = useState("");
+  const [searchWord, setSearchWord] = useState();
 
   useEffect(() => {
     document.addEventListener("click", menuClickTracker);
@@ -126,11 +129,25 @@ const TopBar = (props) => {
         <form className="form-inline ml-auto">
           <input
             className="form-control mr-sm-2"
-            type="search"
             placeholder={t("Search")}
-            aria-label={t("Search")}
+            onChange={(event) => {
+              event.preventDefault();
+              setSearchWord(event.target.value);
+            }}
           />
-          <button className="btn btn-outline-success" type="submit">
+          <button
+            className="btn btn-outline-success"
+            onClick={(event) => {
+              event.preventDefault();
+              if (searchWord.length >= 3) {
+                history.push(
+                  "/all-products/" + searchWord.split(" ").join("|")
+                );
+              } else {
+                alertify.error(t("You must enter at least 3 characters"));
+              }
+            }}
+          >
             {t("Search")}
           </button>
         </form>

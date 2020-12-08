@@ -181,3 +181,9 @@ export const getProductsByCategoryAndBrand = (generalId, subId, productId) => {
     `/api/1.0/products/${generalId}/${subId}/${productId}?page=0&size=3`
   );
 };
+
+export const getProductsBySearch = (search, page = 0, size = 6) => {
+  return axios.get(
+    `/api/1.0/productFilters/${search}?page=${page}&size=${size}`
+  );
+};

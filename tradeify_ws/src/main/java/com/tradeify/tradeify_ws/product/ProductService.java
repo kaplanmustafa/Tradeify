@@ -1,6 +1,9 @@
 package com.tradeify.tradeify_ws.product;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -487,6 +490,67 @@ public class ProductService {
 			return product;
 		}
 		return null;
+	}
+	
+	public Page<Product> getProductsBySearch(String search, Pageable page) {
+		String[] words = search.split("\\|");
+		
+		Specification<Product> specification = null; 
+		
+		List<GeneralCategory> categories = new ArrayList<>();
+		
+		for(String word : words) {
+			String wordUpper = word.toLowerCase();
+			wordUpper = word.substring(0, 1).toUpperCase() + wordUpper.substring(1);
+			GeneralCategory generalCategory = generalCategoryRepository.findByCategoryNameContaining(wordUpper);
+			
+			if(generalCategory != null) {
+				categories.add(generalCategory);
+				if(specification == null) {
+					specification = generalCategoryIs(generalCategory);
+				} else {
+					specification = specification.or(generalCategoryIs(generalCategory));
+				}
+			}
+		}
+		
+		int index = 0;
+		for(String word : words) {
+			String wordUpper = word.toLowerCase();
+			wordUpper = word.substring(0, 1).toUpperCase() + wordUpper.substring(1);
+			System.out.println(word);
+			List<Brand> brands = new ArrayList<>();
+			
+			for(GeneralCategory category : categories) {
+				List<Brand> result = brandService.getByGeneralCategory(category.getId(), wordUpper);
+				List<Brand> newList = new ArrayList<>();
+				Stream.of(brands, result).forEach(newList::addAll);
+				brands = newList;
+			}
+			
+			if(brands.isEmpty()) {
+				brands = brandService.getByBrandName(wordUpper);
+			}
+			
+			for(Brand brand : brands) {
+				if(specification == null) {
+					specification = brandIs(brand);
+				} else {
+					if(index == 0) {
+						specification = specification.and(brandIs(brand));
+					} else {
+						specification = specification.or(brandIs(brand));
+					}
+				}
+				index++;
+			}
+		}
+		
+		if(specification == null) {
+			return Page.empty();
+		}
+		
+		return productRepository.findAll(specification, page);
 	}
 	
 	Specification<Product> generalCategoryIs(GeneralCategory generalCategory) {

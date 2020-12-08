@@ -23,6 +23,7 @@ import {
   getScreenSize,
   getSsd,
   getWarrantyType,
+  getProductsBySearch,
 } from "../api/apiCalls";
 import ProductCard from "../components/homePage/ProductCard";
 import Pagination from "../components/toolbox/Pagination";
@@ -105,8 +106,6 @@ const CategoryDetailPage = () => {
   };
 
   useEffect(() => {
-    setBrandFilters([]);
-
     if (categoryId !== undefined && subId !== undefined) {
       loadProducts();
     }

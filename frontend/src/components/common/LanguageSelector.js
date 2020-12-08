@@ -1,6 +1,8 @@
 import React from "react";
 import { changeLanguage } from "../../api/apiCalls";
 import { useTranslation } from "react-i18next";
+import turkishFlag from "../../assets/turkey-flag.png";
+import usaFlag from "../../assets/usa-flag.png";
 
 const LanguageSelector = (props) => {
   const { i18n } = useTranslation();
@@ -14,16 +16,21 @@ const LanguageSelector = (props) => {
   return (
     <div className="container">
       <img
-        src="https://www.countryflags.io/tr/flat/24.png"
+        className="mr-1"
+        src={turkishFlag}
         alt="Turkish Flag"
+        height="20px"
+        width="32px"
         onClick={() => {
           onChangeLanguage("tr");
         }}
         style={{ cursor: "pointer" }}
       ></img>
       <img
-        src="https://www.countryflags.io/us/flat/24.png"
+        src={usaFlag}
         alt="USA Flag"
+        height="20px"
+        width="32px"
         onClick={() => {
           onChangeLanguage("en");
         }}

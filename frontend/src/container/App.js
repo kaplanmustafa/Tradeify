@@ -18,6 +18,7 @@ import AdminPage from "../pages/AdminPage";
 import MegaMenu from "../components/common/MegaMenu";
 import ProductDetailPage from "../pages/ProductDetailPage";
 import CategoryDetailPage from "../pages/CategoryDetailPage";
+import CategorySearchPage from "../pages/CategorySearchPage";
 
 const App = () => {
   const { isLoggedIn, role } = useSelector((store) => ({
@@ -39,6 +40,11 @@ const App = () => {
           <Route
             path="/all-products/:categoryId/:subId"
             component={CategoryDetailPage}
+          />
+          <Route
+            exact
+            path="/all-products/:searchWord"
+            component={CategorySearchPage}
           />
           <Route exact path="/error" component={NotFoundPage} />
           {isLoggedIn && role === "user" && (

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 const Pagination = (props) => {
-  const { number, first, last, totalPages } = props.page;
+  const { number, first, last, totalPages, empty } = props.page;
   const { onClickPage, onClickNext, onClickPrevious } = props;
   const pages = [];
 
@@ -34,7 +34,7 @@ const Pagination = (props) => {
         >
           <span className="page-link">{t("Previous")}</span>
         </li>
-        {pages}
+        {!empty && pages}
         <li
           className={last ? "page-item disabled" : "page-item"}
           onClick={onClickNext}
