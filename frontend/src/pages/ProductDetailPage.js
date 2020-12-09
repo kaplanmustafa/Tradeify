@@ -59,7 +59,7 @@ const ProductDetailPage = () => {
 
   const onClickAddToCart = async (productId) => {
     try {
-      saveCartItem(productId);
+      await saveCartItem(productId);
       alertify.success(t("Product Added to Cart"));
     } catch (error) {}
   };

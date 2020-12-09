@@ -87,7 +87,7 @@ const TopBar = (props) => {
     links = (
       <ul className="navbar-nav ml-auto" ref={menuArea}>
         {role === "user" && (
-          <div className="container mr-5">
+          <div className="container mr-5 border-right border-solid">
             <CartItem />
           </div>
         )}

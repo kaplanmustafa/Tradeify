@@ -177,8 +177,11 @@ const CartItem = () => {
               className="dropdown-item p-2 border-top border-solid flex-fill"
               key="cart-footer"
             >
-              <Link to="/" style={{ textDecoration: "none" }}>
-                <button className="btn btn-primary container text-center" style={{display: "block"}}>
+              <Link to="/cart" style={{ textDecoration: "none" }}>
+                <button
+                  className="btn btn-primary container text-center"
+                  style={{ display: "block" }}
+                >
                   {t("Go To Cart")}
                 </button>
               </Link>

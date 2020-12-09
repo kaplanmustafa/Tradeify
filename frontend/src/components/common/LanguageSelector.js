@@ -20,7 +20,7 @@ const LanguageSelector = () => {
         src={turkishFlag}
         alt="Turkish Flag"
         height="20px"
-        width="32px"
+        width="30px"
         onClick={() => {
           onChangeLanguage("tr");
         }}
@@ -30,7 +30,7 @@ const LanguageSelector = () => {
         src={usaFlag}
         alt="USA Flag"
         height="20px"
-        width="32px"
+        width="30px"
         onClick={() => {
           onChangeLanguage("en");
         }}

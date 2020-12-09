@@ -540,7 +540,7 @@ const CategoryDetailPage = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-3 border border-solid mt-5 p-2">
+        <div className="col-3 border border-solid mt-5 p-2 h-75">
           <div className="flex-fill mb-2 font-weight-bold">
             {t("Min Price") + " (₺)"}
           </div>

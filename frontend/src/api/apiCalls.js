@@ -195,3 +195,15 @@ export const saveCartItem = (productId) => {
 export const getCartItems = (page = 0, size = 2) => {
   return axios.get(`/api/1.0/cartItems?page=${page}&size=${size}`);
 };
+
+export const deleteCartItem = (cartId) => {
+  return axios.delete(`/api/1.0/cartItems/delete/${cartId}`);
+};
+
+export const updateCartItem = (cartId) => {
+  return axios.post(`/api/1.0/cartItems/update/${cartId}`);
+};
+
+export const getCartTotal = () => {
+  return axios.get("/api/1.0/cartItems/total");
+};
