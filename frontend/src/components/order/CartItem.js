@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Badge } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCartItems } from "../../api/apiCalls";
+import cartEmpty from "../../assets/cartEmpty.png";
 
 const CartItem = () => {
   const [page, setPage] = useState({
@@ -118,6 +118,14 @@ const CartItem = () => {
               {" (" + totalElements + " "}
               {t("Product") + ")"}
             </div>
+            {empty && (
+              <div className="container">
+                <img src={cartEmpty} className="mb-4 mt-4" width="350px"/>
+                <h2 className="text-danger">
+                  {t("Your shopping cart is empty!")}
+                </h2>
+              </div>
+            )}
             {!first && (
               <div
                 className="dropdown-item p-2 text-center border-bottom border-solid text-center"
@@ -173,19 +181,21 @@ const CartItem = () => {
                 </span>
               </div>
             )}
-            <div
-              className="dropdown-item p-2 border-top border-solid flex-fill"
-              key="cart-footer"
-            >
-              <Link to="/cart" style={{ textDecoration: "none" }}>
-                <button
-                  className="btn btn-primary container text-center"
-                  style={{ display: "block" }}
-                >
-                  {t("Go To Cart")}
-                </button>
-              </Link>
-            </div>
+            {!empty && (
+              <div
+                className="dropdown-item p-2 border-top border-solid flex-fill"
+                key="cart-footer"
+              >
+                <Link to="/cart" style={{ textDecoration: "none" }}>
+                  <button
+                    className="btn btn-primary container text-center"
+                    style={{ display: "block" }}
+                  >
+                    {t("Go To Cart")}
+                  </button>
+                </Link>
+              </div>
+            )}
           </div>
         </li>
       </ul>

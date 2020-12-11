@@ -10,6 +10,7 @@ import {
 } from "../api/apiCalls";
 import OrderSummary from "../components/order/OrderSummary";
 import Pagination from "../components/toolbox/Pagination";
+import cartEmpty from "../assets/cartEmpty.png";
 
 const ShoppingCartPage = () => {
   const [page, setPage] = useState({
@@ -89,6 +90,14 @@ const ShoppingCartPage = () => {
 
   return (
     <div className="container">
+      {empty && (
+        <div className="container border mt-5 text-center">
+          <img src={cartEmpty} className="mb-5 mt-5" />
+          <h2 className="container text-danger">
+            {t("Your shopping cart is empty!")}
+          </h2>
+        </div>
+      )}
       <div className="row mt-5">
         <div className="col-8">
           {cartItems.map((item) => {
@@ -169,9 +178,11 @@ const ShoppingCartPage = () => {
             );
           })}
         </div>
-        <div className="col-4 border border-solid h-75">
-          <OrderSummary refreshOrderSummary={refreshOrderSummary} />
-        </div>
+        {!empty && (
+          <div className="col-4 border border-solid h-75">
+            <OrderSummary refreshOrderSummary={refreshOrderSummary} />
+          </div>
+        )}
       </div>
       <div className="row mt-5">
         <Pagination

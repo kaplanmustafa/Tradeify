@@ -61,7 +61,7 @@ const App = () => {
           {isLoggedIn && role === "admin" && (
             <Route exact path="/admin" component={AdminPage} />
           )}
-          <Redirect to="/" />
+          <Redirect to="/error" />
         </Switch>
         <Footer />
       </Router>

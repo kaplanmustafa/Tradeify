@@ -207,3 +207,11 @@ export const updateCartItem = (cartId) => {
 export const getCartTotal = () => {
   return axios.get("/api/1.0/cartItems/total");
 };
+
+export const postOrder = (orderSubmit) => {
+  return axios.post("/api/1.0/orders", orderSubmit);
+};
+
+export const getCartsCount = () => {
+  return axios.get("/api/1.0//cartItems/count");
+};

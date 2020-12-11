@@ -153,19 +153,20 @@ const UserAddress = (props) => {
         )}
       </div>
       {!editing && (
-        <div className="d-flex justify-content-around">
+        <div className="d-flex justify-content-center">
           {adddressArray.map((item, index) =>
             item === null || item === "" ? (
               ""
             ) : (
               <div
-                className="form-check"
+                className="form-check mr-2"
                 key={"addressRadio" + " " + (index + 1)}
               >
                 <input
                   type="radio"
                   className="form-check-input text-primary"
                   name="address"
+                  value={item}
                   onChange={onChangeAddress}
                   id={"address" + " " + (index + 1)}
                 />

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import ReactTooltip from "react-tooltip";
-import { getUser } from "../api/apiCalls";
+import { getCartsCount, getUser, postOrder } from "../api/apiCalls";
 import OrderSummary from "../components/order/OrderSummary";
 import Input from "../components/toolbox/Input";
 import UserAddress from "../components/userPage/UserAddress";
+import cartEmpty from "../assets/cartEmpty.png";
 
 const PaymentPage = () => {
   const [user, setUser] = useState({});
@@ -13,24 +14,36 @@ const PaymentPage = () => {
     email: store.email,
   }));
 
-  const [currentAddress, setCurrentAddress] = useState();
+  const [cartsCount, setCartsCount] = useState();
+
+  const [address, setAddress] = useState();
   const [cardNumber, setCardNumber] = useState();
   const [fullName, setFullName] = useState();
   const [month, setMonth] = useState("1");
   const [year, setYear] = useState("2020");
   const [cvc, setCvc] = useState();
 
+  const [errors, setErrors] = useState({});
+
   const [refreshOrderSummary, setRefreshOrderSummary] = useState(false);
 
   useEffect(() => {
     loadUser();
     setRefreshOrderSummary(true);
+    loadCartsCount();
   }, []);
 
   const loadUser = async () => {
     try {
       const response = await getUser(loggedInEmail);
       setUser(response.data);
+    } catch (error) {}
+  };
+
+  const loadCartsCount = async () => {
+    try {
+      const response = await getCartsCount();
+      setCartsCount(response.data);
     } catch (error) {}
   };
 
@@ -55,24 +68,59 @@ const PaymentPage = () => {
   }
 
   const onChangeAddress = (event) => {
-    setCurrentAddress(event.target.id);
+    setAddress(event.target.value);
   };
 
-  const onClickPay = () => {};
+  const onClickPay = async (event) => {
+    event.preventDefault();
+
+    const body = {
+      cardNumber,
+      fullName,
+      month,
+      year,
+      cvc,
+      address,
+    };
+
+    try {
+      await postOrder(body);
+    } catch (error) {
+      if (error.response.data.validationErrors) {
+        setErrors(error.response.data.validationErrors);
+      }
+    }
+  };
+
+  const {
+    cardNumber: cardNumberError,
+    fullName: fullNameError,
+    cvc: cvcError,
+  } = errors;
 
   return (
     <div className="container">
-      <div className="row mt-5">
-        <div className="col-9 mx-auto">
-          <h3 className="text-primary">{t("Address Info")}</h3>
-          <UserAddress
-            user={user}
-            editing={false}
-            onChangeAddress={onChangeAddress}
-          />
+      {cartsCount === 0 && (
+        <div className="container border mt-5 text-center">
+          <img src={cartEmpty} className="mb-5 mt-5" />
+          <h2 className="container text-danger">
+            {t("Your shopping cart is empty!")}
+          </h2>
         </div>
-      </div>
-      {currentAddress && (
+      )}
+      {cartsCount !== 0 && (
+        <div className="row mt-5">
+          <div className="col-9 mx-auto">
+            <h3 className="text-primary">{t("Address Info")}</h3>
+            <UserAddress
+              user={user}
+              editing={false}
+              onChangeAddress={onChangeAddress}
+            />
+          </div>
+        </div>
+      )}
+      {address && (
         <div className="row">
           <div className="container col mt-5 border w-75 mx-auto">
             <h3 className="text-primary text-center mt-2">
@@ -84,15 +132,25 @@ const PaymentPage = () => {
                   label={t("Card Number")}
                   placeHolder="••••  ••••  ••••  ••••"
                   maxLength="16"
+                  error={cardNumberError}
                   onChange={(event) => {
                     setCardNumber(event.target.value);
+                    setErrors((previousErrors) => ({
+                      ...previousErrors,
+                      cardNumber: undefined,
+                    }));
                   }}
                 />
                 <Input
                   label={t("Name on the card")}
                   placeHolder={t("Card owner's name and last name")}
+                  error={fullNameError}
                   onChange={(event) => {
                     setFullName(event.target.value);
+                    setErrors((previousErrors) => ({
+                      ...previousErrors,
+                      fullName: undefined,
+                    }));
                   }}
                 />
                 <div className="row">
@@ -122,8 +180,13 @@ const PaymentPage = () => {
                     <Input
                       label={t("CVC/CVV")}
                       maxLength="3"
+                      error={cvcError}
                       onChange={(event) => {
                         setCvc(event.target.value);
+                        setErrors((previousErrors) => ({
+                          ...previousErrors,
+                          cvc: undefined,
+                        }));
                       }}
                     />
                   </div>

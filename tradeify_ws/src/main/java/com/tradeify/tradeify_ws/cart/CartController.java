@@ -53,4 +53,9 @@ public class CartController {
 	CartTotalVM getCartOfUser(@CurrentUser Users user) {
 		return cartService.getCartOfUser(user);
 	}
+	
+	@GetMapping("/cartItems/count")
+	Long getCartCountOfUser(@CurrentUser Users user) {
+		return cartService.getCartCountOfUser(user);
+	}
 }

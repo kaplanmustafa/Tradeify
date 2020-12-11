@@ -43,13 +43,19 @@ public class CartService {
 	}
 	
 	public Cart findByUserAndProduct(Long userId, Long productId) {
-		return cartRepository.findByUserIdAndProductId(userId, productId);
+		return cartRepository.findByUserIdAndProductIdAndOrderIsNull(userId, productId);
 	}
 
 	public Page<Cart> getCartItems(Users user, Pageable page) {
 
 		Specification<Cart> specification = userIs(user);
+		specification = specification.and(orderIsNull());
 		return cartRepository.findAll(specification, page);
+	}
+	
+	public List<Cart> getCartItemsNoOrder(Users user) {
+
+		return cartRepository.findAllByUserId(user.getId());
 	}
 
 	public void deleteCartItem(long cartId) {
@@ -65,7 +71,7 @@ public class CartService {
 
 	public CartTotalVM getCartOfUser(Users user) {
 		
-		List<Cart> carts = cartRepository.findAllByUserId(user.getId());
+		List<Cart> carts = cartRepository.findAllByUserIdAndOrderIsNull(user.getId());
 		
 		int totalProduct = 0;
 		float totalPrice = 0;
@@ -78,9 +84,20 @@ public class CartService {
 		return new CartTotalVM(totalProduct, totalPrice);
 	}
 	
+	public long getCartCountOfUser(Users user) {
+		
+		return cartRepository.countByUserIdAndOrderIsNull(user.getId());
+	}
+	
 	Specification<Cart> userIs(Users user) {
 		return (root, query, criteriaBuilder) -> {
 				return criteriaBuilder.equal(root.get("user"), user); 
+		};
+	}
+	
+	Specification<Cart> orderIsNull() {
+		return (root, query, criteriaBuilder) -> {
+				return criteriaBuilder.isNull(root.get("order")); 
 		};
 	}
 }

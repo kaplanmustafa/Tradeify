@@ -28,11 +28,11 @@ const OrderSummary = (props) => {
   return (
     <div>
       <h3 className="container text-center mt-2">{t("Order Summary")}</h3>
-      <h5 className="mt-4 mr-4 text-right">
+      <h6 className="mt-4 mr-4 text-right">
         {t("Total Product") + ": "}
         {cartTotal.totalProduct}
-      </h5>
-      <h5 className="mt-3 mr-4 text-right">
+      </h6>
+      <h5 className="mt-3 mr-4 text-right text-primary">
         {t("Total") + ": "}
         {"₺" + cartTotal.totalPrice}
       </h5>

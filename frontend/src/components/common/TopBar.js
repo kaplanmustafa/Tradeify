@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutSuccess } from "../../redux/authActions";
 import LanguageSelector from "./LanguageSelector";
 import alertify from "alertifyjs";
-import CartItem from "./CartItem";
+import CartItem from "../order/CartItem";
 
 const TopBar = (props) => {
   const { t } = useTranslation();

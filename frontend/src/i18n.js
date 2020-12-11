@@ -259,6 +259,7 @@ i18n.use(initReactI18next).init({
         "Card owner's name and last name": "Card owner's name and last name",
         "Name on the card": "Name on the card",
         Pay: "Pay",
+        "Your shopping cart is empty!": "Your shopping cart is empty!",
       },
     },
     tr: {
@@ -485,6 +486,7 @@ i18n.use(initReactI18next).init({
         "Card owner's name and last name": "Kart sahibinin adı ve soyadı",
         "Name on the card": "Kart üzerindeki isim",
         Pay: "Ödeme Yap",
+        "Your shopping cart is empty!": "Alışveriş sepetiniz boş!",
       },
     },
   },

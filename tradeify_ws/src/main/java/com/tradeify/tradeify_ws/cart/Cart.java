@@ -1,6 +1,5 @@
 package com.tradeify.tradeify_ws.cart;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.tradeify.tradeify_ws.order.Orders;
 import com.tradeify.tradeify_ws.product.Product;
 import com.tradeify.tradeify_ws.user.Users;
 
@@ -24,7 +24,10 @@ public class Cart {
 	@ManyToOne
 	private Users user;
 	
-	@OneToOne(cascade = CascadeType.REMOVE)
+	@ManyToOne
+	private Orders order;
+	
+	@OneToOne
 	private Product product;
 	
 	private int quantity;

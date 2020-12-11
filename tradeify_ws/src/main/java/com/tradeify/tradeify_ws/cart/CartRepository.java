@@ -8,7 +8,11 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 public interface CartRepository extends JpaRepository<Cart, Long>, JpaSpecificationExecutor<Cart>{
 	
-	Cart findByUserIdAndProductId(Long userId, Long productId);
+	Cart findByUserIdAndProductIdAndOrderIsNull(Long userId, Long productId);
 	
 	List<Cart> findAllByUserId(Long userId);
+	
+	List<Cart> findAllByUserIdAndOrderIsNull(Long userId);
+	
+	Long countByUserIdAndOrderIsNull(Long userId);
 }
