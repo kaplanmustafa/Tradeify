@@ -7,8 +7,8 @@ import {
   saveCartItem,
   deleteCartItem,
   updateCartItem,
-  getCartTotal,
 } from "../api/apiCalls";
+import OrderSummary from "../components/order/OrderSummary";
 import Pagination from "../components/toolbox/Pagination";
 
 const ShoppingCartPage = () => {
@@ -18,14 +18,15 @@ const ShoppingCartPage = () => {
     number: 0,
   });
 
+  const [refreshOrderSummary, setRefreshOrderSummary] = useState(false);
+
   const [cartTotal, setCartTotal] = useState([]);
 
   const { t } = useTranslation();
-  let history = useHistory();
 
   useEffect(() => {
     loadCartItems();
-    getCartTotalOfUser();
+    setRefreshOrderSummary(true);
   }, []);
 
   const loadCartItems = async (page) => {
@@ -35,33 +36,32 @@ const ShoppingCartPage = () => {
     } catch (error) {}
   };
 
-  const getCartTotalOfUser = async () => {
-    try {
-      const response = await getCartTotal();
-      setCartTotal(response.data);
-    } catch (error) {}
-  };
-
   const onClickAddToCart = async (productId) => {
     try {
+      setRefreshOrderSummary(false);
       await saveCartItem(productId);
       loadCartItems(page.number);
+      setRefreshOrderSummary(true);
       alertify.success(t("Cart Updated Successfully"));
     } catch (error) {}
   };
 
   const onClickRemoveFromCart = async (productId) => {
     try {
+      setRefreshOrderSummary(false);
       await updateCartItem(productId);
       loadCartItems(page.number);
+      setRefreshOrderSummary(true);
       alertify.success(t("Cart Updated Successfully"));
     } catch (error) {}
   };
 
   const onClickDeleteCartItem = async (cartId) => {
     try {
+      setRefreshOrderSummary(false);
       await deleteCartItem(cartId);
       loadCartItems(page.number);
+      setRefreshOrderSummary(true);
       alertify.success(t("Cart Updated Successfully"));
     } catch (error) {}
   };
@@ -170,25 +170,7 @@ const ShoppingCartPage = () => {
           })}
         </div>
         <div className="col-4 border border-solid h-75">
-          <h3 className="container text-center mt-2">{t("Order Summary")}</h3>
-          <h5 className="mt-4 mr-4 text-right">
-            {t("Total Product") + ": "}
-            {cartTotal.totalProduct}
-          </h5>
-          <h5 className="mt-3 mr-4 text-right">
-            {t("Total") + ": "}
-            {"₺" + cartTotal.totalPrice}
-          </h5>
-          <div className="container row mt-4 mb-4 mx-auto">
-            <button
-              className="btn btn-primary flex-fill m-auto"
-              onClick={() => {
-                history.push("/payment");
-              }}
-            >
-              {t("Checkout")}
-            </button>
-          </div>
+          <OrderSummary refreshOrderSummary={refreshOrderSummary} />
         </div>
       </div>
       <div className="row mt-5">

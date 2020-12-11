@@ -23,6 +23,7 @@ const UserAddress = (props) => {
   }, [props.user]);
 
   const { address1, address2, address3 } = user;
+  const { editing, onChangeAddress } = props;
 
   const { t } = useTranslation();
 
@@ -67,7 +68,10 @@ const UserAddress = (props) => {
         {!inEditMode && (
           <div className="container row">
             {adddressArray.map((item, index) => (
-              <div className="container col-4" key={index}>
+              <div
+                className="container col-4"
+                key={"address" + " " + (index + 1)}
+              >
                 <div className="card">
                   <div className="card-body">
                     <h5 className="card-title text-left">
@@ -84,13 +88,15 @@ const UserAddress = (props) => {
                 </div>
               </div>
             ))}
-            <button
-              className="btn btn-success d-inline-flex mt-3 ml-3"
-              onClick={() => setInEditMode(true)}
-            >
-              <span className="material-icons">edit</span>
-              {t("Edit")}
-            </button>
+            {editing && (
+              <button
+                className="btn btn-success d-inline-flex mt-3 ml-3"
+                onClick={() => setInEditMode(true)}
+              >
+                <span className="material-icons">edit</span>
+                {t("Edit")}
+              </button>
+            )}
           </div>
         )}
         {inEditMode && (
@@ -146,6 +152,29 @@ const UserAddress = (props) => {
           </div>
         )}
       </div>
+      {!editing && (
+        <div className="d-flex justify-content-around">
+          {adddressArray.map((item, index) =>
+            item === null || item === "" ? (
+              ""
+            ) : (
+              <div
+                className="form-check"
+                key={"addressRadio" + " " + (index + 1)}
+              >
+                <input
+                  type="radio"
+                  className="form-check-input text-primary"
+                  name="address"
+                  onChange={onChangeAddress}
+                  id={"address" + " " + (index + 1)}
+                />
+                {t("Address") + " " + (index + 1)}
+              </div>
+            )
+          )}
+        </div>
+      )}
     </div>
   );
 };

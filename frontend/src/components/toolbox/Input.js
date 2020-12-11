@@ -10,6 +10,8 @@ const Input = (props) => {
     defaultValue,
     value,
     checked,
+    placeHolder,
+    maxLength,
   } = props;
   let className = "form-control";
 
@@ -32,6 +34,8 @@ const Input = (props) => {
         defaultValue={defaultValue}
         value={value}
         checked={checked}
+        placeholder={placeHolder}
+        maxLength={maxLength}
       ></input>
       <div className="invalid-feedback">{error}</div>
     </div>

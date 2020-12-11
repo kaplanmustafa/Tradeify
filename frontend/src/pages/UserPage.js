@@ -64,7 +64,7 @@ const UserPage = () => {
     } else if (currentCategory === "My Orders") {
       return <UserOrders />;
     } else if (currentCategory === "My Address Information") {
-      return <UserAddress user={user} />;
+      return <UserAddress user={user} editing={true} />;
     }
   };
 
