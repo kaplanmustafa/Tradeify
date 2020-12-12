@@ -7,6 +7,7 @@ import {
   getProduct,
   getProductsByCategoryAndBrand,
   saveCartItem,
+  saveProductView,
 } from "../api/apiCalls";
 import ProductCardItem from "../components/homePage/ProductCardItem";
 import ProductHeaderCard from "../components/homePage/ProductHeaderCard";
@@ -30,7 +31,12 @@ const ProductDetailPage = () => {
     if (product.id !== undefined) {
       loadSimilarProducts();
     }
-  }, [product]);
+
+    if (productId !== undefined && isLoggedIn && role === "user") {
+      console.log("HELLO");
+      saveView(productId);
+    }
+  }, [isLoggedIn, role, productId]);
 
   const loadSimilarProducts = async () => {
     try {
@@ -40,6 +46,12 @@ const ProductDetailPage = () => {
         product.id
       );
       setPage(response.data);
+    } catch (error) {}
+  };
+
+  const saveView = async (id) => {
+    try {
+      await saveProductView(id);
     } catch (error) {}
   };
 

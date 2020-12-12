@@ -12,6 +12,9 @@ spring:
       pageable:
         default-page-size: 10
         max-page-size: 100
+    mongodb:      host: localhost
+      port: 27017
+      database: tradeify
 # Oracle Settings
   datasource:
     url: jdbc:oracle:thin:@localhost:1521:xe

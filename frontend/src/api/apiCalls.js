@@ -223,3 +223,7 @@ export const getCartsCount = () => {
 export const getOrders = (page = 0, size = 4) => {
   return axios.get(`/api/1.0/orders?page=${page}&size=${size}`);
 };
+
+export const saveProductView = (productId) => {
+  return axios.put(`/api/1.0/views/${productId}`);
+};
