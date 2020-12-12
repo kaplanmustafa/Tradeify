@@ -37,6 +37,12 @@ public class CartController {
 		return cartService.getCartItems(user, page).map(CartVM::new);
 	}
 	
+	@GetMapping("/cartItems/{orderId}")
+	Page<CartVM> getCartItemsByOrder(@CurrentUser Users user, @PathVariable long orderId,
+			@PageableDefault(sort = "id", direction = Direction.DESC) Pageable page) {
+		return cartService.getCartItemsByOrder(user, orderId, page).map(CartVM::new);
+	}
+	
 	@DeleteMapping("/cartItems/delete/{cartId}")
 	GenericResponse deleteCartItem(@PathVariable long cartId) {
 		cartService.deleteCartItem(cartId);

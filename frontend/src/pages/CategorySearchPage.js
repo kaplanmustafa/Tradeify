@@ -52,8 +52,6 @@ const CategorySearchPage = () => {
       searchWord += en(element) + "|";
     });
 
-    console.log(searchWord);
-
     try {
       const response = await getProductsBySearch(searchWord, page);
       setPage(response.data);

@@ -28,8 +28,10 @@ const UserOrders = () => {
   };
 
   const onClickNext = (event) => {
-    const nextPage = page.number + 1;
-    loadOrders(nextPage);
+    if (!event.target.className.includes("disabled")) {
+      const nextPage = page.number + 1;
+      loadOrders(nextPage);
+    }
   };
 
   const onClickPage = (event) => {
@@ -38,8 +40,10 @@ const UserOrders = () => {
   };
 
   const onClickPrevious = (event) => {
-    const previousPage = page.number - 1;
-    loadOrders(previousPage);
+    if (!event.target.className.includes("disabled")) {
+      const previousPage = page.number - 1;
+      loadOrders(previousPage);
+    }
   };
 
   const { content: orders, empty } = page;

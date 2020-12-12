@@ -196,6 +196,10 @@ export const getCartItems = (page = 0, size = 2) => {
   return axios.get(`/api/1.0/cartItems?page=${page}&size=${size}`);
 };
 
+export const getCartItemsByOrder = (orderId, page = 0, size = 4) => {
+  return axios.get(`/api/1.0/cartItems/${orderId}?page=${page}&size=${size}`);
+};
+
 export const deleteCartItem = (cartId) => {
   return axios.delete(`/api/1.0/cartItems/delete/${cartId}`);
 };

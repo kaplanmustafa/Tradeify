@@ -61,6 +61,11 @@ public class OrderService {
 		return orderRepository.findAll(specification, page);
 	}
 	
+	public Orders getOrderById(Long orderId) {
+		
+		return orderRepository.getOne(orderId);
+	}
+	
 	Specification<Orders> userIs(Users user) {
 		return (root, query, criteriaBuilder) -> {
 				return criteriaBuilder.equal(root.get("user"), user); 
