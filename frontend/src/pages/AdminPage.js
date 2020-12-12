@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import AddProduct from "../components/adminPage/AddProduct";
-import EditProduct from "../components/adminPage/EditProduct";
-import Users from "../components/adminPage/Users";
-import Reviews from "../components/adminPage/Reviews";
 import UserMenu from "../components/toolbox/ComponentList";
 
 const AdminPage = () => {
@@ -11,18 +8,6 @@ const AdminPage = () => {
     {
       id: "1",
       categoryName: "Add Product",
-    },
-    {
-      id: "2",
-      categoryName: "Edit Product",
-    },
-    {
-      id: "3",
-      categoryName: "Users",
-    },
-    {
-      id: "4",
-      categoryName: "Reviews",
     },
   ];
 
@@ -33,12 +18,6 @@ const AdminPage = () => {
   const returnActiveComponent = () => {
     if (currentCategory === "Add Product") {
       return <AddProduct />;
-    } else if (currentCategory === "Edit Product") {
-      return <EditProduct />;
-    } else if (currentCategory === "Users") {
-      return <Users />;
-    } else if (currentCategory === "Reviews") {
-      return <Reviews />;
     }
   };
 

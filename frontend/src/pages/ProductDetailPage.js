@@ -19,8 +19,9 @@ const ProductDetailPage = () => {
     content: [],
   });
 
-  const { isLoggedIn } = useSelector((store) => ({
+  const { isLoggedIn, role } = useSelector((store) => ({
     isLoggedIn: store.isLoggedIn,
+    role: store.role,
   }));
 
   const { id: productId } = useParams();
@@ -64,6 +65,84 @@ const ProductDetailPage = () => {
     } catch (error) {}
   };
 
+  const hiddenDivFirstRow = () => {
+    if (products.length === 1) {
+      return (
+        <>
+          <ProductCardItem
+            hidden="true"
+            id="0"
+            key="hidden-1"
+            productName="0"
+            brand="0"
+            image={({ name: "first.jpg" }, { fileType: "image/jpeg" })}
+            price="0"
+          />
+          <ProductCardItem
+            hidden="true"
+            id="0"
+            key="hidden-2"
+            productName="0"
+            brand="0"
+            image={({ name: "first.jpg" }, { fileType: "image/jpeg" })}
+            price="0"
+          />
+        </>
+      );
+    } else if (products.length === 2) {
+      return (
+        <ProductCardItem
+          hidden="true"
+          id="0"
+          key="hidden-3"
+          productName="0"
+          brand="0"
+          image={({ name: "first.jpg" }, { fileType: "image/jpeg" })}
+          price="0"
+        />
+      );
+    }
+  };
+
+  const hiddenDivSecondRow = () => {
+    if (products.length === 4) {
+      return (
+        <>
+          <ProductCardItem
+            hidden="true"
+            id="0"
+            key="hidden-4"
+            productName="0"
+            brand="0"
+            image={({ name: "first.jpg" }, { fileType: "image/jpeg" })}
+            price="0"
+          />
+          <ProductCardItem
+            hidden="true"
+            id="0"
+            key="hidden-5"
+            productName="0"
+            brand="0"
+            image={({ name: "first.jpg" }, { fileType: "image/jpeg" })}
+            price="0"
+          />
+        </>
+      );
+    } else if (products.length === 5) {
+      return (
+        <ProductCardItem
+          hidden="true"
+          id="0"
+          key="hidden-6"
+          productName="0"
+          brand="0"
+          image={({ name: "first.jpg" }, { fileType: "image/jpeg" })}
+          price="0"
+        />
+      );
+    }
+  };
+
   return (
     <div className="container">
       <div className="row mt-5">
@@ -78,7 +157,7 @@ const ProductDetailPage = () => {
               <div className="row h3 text-primary mt-3">₺{product.price}</div>
             </div>
           </div>
-          {isLoggedIn && (
+          {isLoggedIn && role === "user" && (
             <div className="container row mt-3 border border-solid p-4">
               <button
                 className="btn btn-primary flex-fill m-auto"
@@ -180,6 +259,7 @@ const ProductDetailPage = () => {
                   />
                 );
               })}
+              {hiddenDivFirstRow()}
             </div>
 
             <div className="row">
@@ -196,6 +276,7 @@ const ProductDetailPage = () => {
                   />
                 );
               })}
+              {hiddenDivSecondRow()}
             </div>
           </div>
         </div>

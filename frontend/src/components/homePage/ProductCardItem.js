@@ -8,8 +8,9 @@ import alertify from "alertifyjs";
 const ProductCardItem = (props) => {
   const { id, productName, brand, image, price, hidden } = props;
 
-  const { isLoggedIn } = useSelector((store) => ({
+  const { isLoggedIn, role } = useSelector((store) => ({
     isLoggedIn: store.isLoggedIn,
+    role: store.role,
   }));
 
   const { t } = useTranslation();
@@ -40,7 +41,7 @@ const ProductCardItem = (props) => {
         <h5 className="mr-3 align-items-center justify-content-center d-flex">
           ₺{price}
         </h5>
-        {isLoggedIn && (
+        {isLoggedIn && role === "user" && (
           <button
             className="btn btn-outline-primary flex-fill m-auto"
             onClick={() => {
