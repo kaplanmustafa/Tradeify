@@ -55,7 +55,7 @@ public class CartService {
 	
 	public List<Cart> getCartItemsNoOrder(Users user) {
 
-		return cartRepository.findAllByUserId(user.getId());
+		return cartRepository.findAllByUserIdAndOrderIsNull(user.getId());
 	}
 
 	public void deleteCartItem(long cartId) {

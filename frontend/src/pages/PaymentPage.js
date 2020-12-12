@@ -7,6 +7,8 @@ import OrderSummary from "../components/order/OrderSummary";
 import Input from "../components/toolbox/Input";
 import UserAddress from "../components/userPage/UserAddress";
 import cartEmpty from "../assets/cartEmpty.png";
+import alertify from "alertifyjs";
+import { useHistory } from "react-router-dom";
 
 const PaymentPage = () => {
   const [user, setUser] = useState({});
@@ -26,6 +28,8 @@ const PaymentPage = () => {
   const [errors, setErrors] = useState({});
 
   const [refreshOrderSummary, setRefreshOrderSummary] = useState(false);
+
+  let history = useHistory();
 
   useEffect(() => {
     loadUser();
@@ -85,6 +89,8 @@ const PaymentPage = () => {
 
     try {
       await postOrder(body);
+      history.push("/");
+      alertify.success(t("Your order has been received"));
     } catch (error) {
       if (error.response.data.validationErrors) {
         setErrors(error.response.data.validationErrors);
@@ -102,7 +108,7 @@ const PaymentPage = () => {
     <div className="container">
       {cartsCount === 0 && (
         <div className="container border mt-5 text-center">
-          <img src={cartEmpty} className="mb-5 mt-5" />
+          <img src={cartEmpty} className="mb-5 mt-5" alt="empty-cart" />
           <h2 className="container text-danger">
             {t("Your shopping cart is empty!")}
           </h2>

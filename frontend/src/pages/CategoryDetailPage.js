@@ -104,18 +104,18 @@ const CategoryDetailPage = () => {
     }
   };
 
-  useEffect(() => {
-    if (categoryId !== undefined && subId !== undefined) {
-      loadProducts();
-    }
-  }, [categoryId, subId]);
-
   const loadProducts = async (page) => {
     try {
       const response = await getProductsByCategory(categoryId, subId, page);
       setPage(response.data);
     } catch (error) {}
   };
+
+  useEffect(() => {
+    if (categoryId !== undefined && subId !== undefined) {
+      loadProducts();
+    }
+  }, [categoryId, subId]);
 
   const loadBrands = async (subId, generalId) => {
     try {
@@ -528,7 +528,7 @@ const CategoryDetailPage = () => {
     if (empty) {
       return (
         <div className="container border border-solid mt-5 text-center">
-          <img src={noProduct} className="mb-3" />
+          <img src={noProduct} className="mb-3" alt="no-product" />
           <h2 className="container text-danger">
             {t("We could not found the product you're looking for!")}
           </h2>

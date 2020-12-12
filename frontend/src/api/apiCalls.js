@@ -213,5 +213,9 @@ export const postOrder = (orderSubmit) => {
 };
 
 export const getCartsCount = () => {
-  return axios.get("/api/1.0//cartItems/count");
+  return axios.get("/api/1.0/cartItems/count");
+};
+
+export const getOrders = (page = 0, size = 4) => {
+  return axios.get(`/api/1.0/orders?page=${page}&size=${size}`);
 };

@@ -168,7 +168,7 @@ const ProductDetailPage = () => {
           <div className="card-deck">
             <div className="row mb-3">
               {products.map((product, index) => {
-                if (index >= 3) return;
+                if (index >= 3) return <></>;
                 return (
                   <ProductCardItem
                     id={product.id}
@@ -184,7 +184,7 @@ const ProductDetailPage = () => {
 
             <div className="row">
               {products.map((product, index) => {
-                if (index < 3) return;
+                if (index < 3) return <></>;
                 return (
                   <ProductCardItem
                     id={product.id}

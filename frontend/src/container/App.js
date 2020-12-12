@@ -21,6 +21,7 @@ import CategoryDetailPage from "../pages/CategoryDetailPage";
 import CategorySearchPage from "../pages/CategorySearchPage";
 import ShoppingCartPage from "../pages/ShoppingCartPage";
 import PaymentPage from "../pages/PaymentPage";
+import OrderDetailPage from "../pages/OrderDetailPage";
 
 const App = () => {
   const { isLoggedIn, role } = useSelector((store) => ({
@@ -54,6 +55,9 @@ const App = () => {
           )}
           {isLoggedIn && role === "user" && (
             <Route exact path="/payment" component={PaymentPage} />
+          )}
+          {isLoggedIn && role === "user" && (
+            <Route exact path="/order/:orderId" component={OrderDetailPage} />
           )}
           {isLoggedIn && role === "user" && (
             <Route path="/myprofile" component={UserPage} />

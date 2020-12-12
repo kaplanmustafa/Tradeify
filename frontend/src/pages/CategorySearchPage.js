@@ -69,7 +69,7 @@ const CategorySearchPage = () => {
     if (empty || resultNotFound) {
       return (
         <div className="container border border-solid mt-5 text-center">
-          <img src={noProduct} className="mb-3" />
+          <img src={noProduct} className="mb-3" alt="no-product" />
           <h2 className="container text-danger">
             {t("We could not found the product you're looking for!")}
           </h2>

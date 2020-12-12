@@ -28,7 +28,7 @@ const ProductCardItem = (props) => {
           <img
             src={"images/attachments/" + image.name}
             className="card-img-top"
-            alt="product-image"
+            alt="product"
           />
         </Link>
       )}
