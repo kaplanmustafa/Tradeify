@@ -61,17 +61,16 @@ const MegaMenu = () => {
         >
           {subCategoryItems(key + 1)}
           <Dropdown.Item>
-            <Link to={"/all-products/" + (key + 1)}>
-              <img
-                className="d-block w-100 shadow"
-                src={
-                  "images/attachments/" +
-                  category.categoryName.split(" ").join("") +
-                  ".jpg"
-                }
-                alt={category.categoryName}
-              />
-            </Link>
+            <img
+              className="d-block w-100 shadow"
+              style={{ cursor: "auto" }}
+              src={
+                "images/attachments/" +
+                category.categoryName.split(" ").join("") +
+                ".jpg"
+              }
+              alt={category.categoryName}
+            />
           </Dropdown.Item>
         </Dropdown>
       ))}

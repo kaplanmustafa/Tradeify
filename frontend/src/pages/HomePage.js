@@ -13,15 +13,15 @@ const HomePage = () => {
   const images = [
     {
       id: "1",
-      name: "first.jpg",
+      name: "first.png",
     },
     {
       id: "2",
-      name: "second.jpg",
+      name: "second.png",
     },
     {
       id: "3",
-      name: "third.jpg",
+      name: "third.png",
     },
   ];
 
