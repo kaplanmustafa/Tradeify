@@ -33,28 +33,28 @@ const HomePage = () => {
       </div>
 
       <div className="row">
-        <ProductHeaderCard category="Laptop" />
+        <ProductHeaderCard category="Laptop" generalId="3" subId="1" />
       </div>
       <div className="row">
         <ProductCard generalId="3" subId="1" />
       </div>
 
       <div className="row">
-        <ProductHeaderCard category="Mobile Phone" />
+        <ProductHeaderCard category="Mobile Phone" generalId="2" subId="1" />
       </div>
       <div className="row">
         <ProductCard generalId="2" subId="1" />
       </div>
 
       <div className="row">
-        <ProductHeaderCard category="Television" />
+        <ProductHeaderCard category="Television" generalId="4" subId="1" />
       </div>
       <div className="row">
         <ProductCard generalId="4" subId="1" />
       </div>
 
       <div className="row">
-        <ProductHeaderCard category="Photo & Camera" />
+        <ProductHeaderCard category="Photo & Camera" generalId="6" subId="1" />
       </div>
       <div className="row">
         <ProductCard generalId="6" subId="1" />

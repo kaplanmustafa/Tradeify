@@ -1,9 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import background from "../../assets/product_header.jpg";
 
 const ProductHeaderCard = (props) => {
-  const { category } = props;
+  const { category, generalId, subId } = props;
   const { t } = useTranslation();
 
   return (
@@ -18,9 +19,16 @@ const ProductHeaderCard = (props) => {
         <div className="card-img-overlay">
           <h1 className="card-title text-center">{t(`${category}`)}</h1>
           <div className="text-center">
-            <button className="btn btn-light text-primary ">
-              {t("DISCOVER ALL PRODUCTS")}
-            </button>
+            {generalId !== undefined && (
+              <Link
+                to={"/all-products/" + generalId + "/" + subId}
+                target="_blank"
+              >
+                <button className="btn btn-light text-primary ">
+                  {t("DISCOVER ALL PRODUCTS")}
+                </button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

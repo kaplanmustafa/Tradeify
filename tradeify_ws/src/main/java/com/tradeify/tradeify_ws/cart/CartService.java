@@ -107,15 +107,30 @@ public class CartService {
 	}
 	
 	public List<ProductCoverVM> getBestSellingProducts(Pageable page) {
-
 		Specification<Cart> specification = orderIsNotNull();
+		
 		Page<Cart> carts = cartRepository.findAll(specification, page);
 		
 		List<ProductCoverVM> coverVM = new ArrayList<>();
+		ArrayList<Long> productIdList = new ArrayList<>();
 		
-		for(Cart cart : carts) {
-			Product product = productService.getProductById(cart.getProduct().getId());
-			coverVM.add(new ProductCoverVM(product));
+		while(true) {
+			for(Cart cart : carts) {
+				if(!productIdList.contains(cart.getProduct().getId())) {
+					productIdList.add(cart.getProduct().getId());
+					Product product = productService.getProductById(cart.getProduct().getId());
+					coverVM.add(new ProductCoverVM(product));
+				} else {
+					Product product = productService.getProductById(cart.getProduct().getId());
+					specification = specification.and(productIsNot(product));
+				}
+			}
+			
+			if(productIdList.size() == 6) {
+				break;
+			}
+			
+			carts = cartRepository.findAll(specification, page);
 		}
 		
 		return coverVM;
@@ -136,6 +151,12 @@ public class CartService {
 	Specification<Cart> orderIsNotNull() {
 		return (root, query, criteriaBuilder) -> {
 				return criteriaBuilder.isNotNull(root.get("order")); 
+		};
+	}
+	
+	Specification<Cart> productIsNot(Product product) {
+		return (root, query, criteriaBuilder) -> {
+				return criteriaBuilder.notEqual(root.get("product"), product); 
 		};
 	}
 	

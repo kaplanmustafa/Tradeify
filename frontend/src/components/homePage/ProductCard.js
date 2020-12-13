@@ -138,11 +138,11 @@ const ProductCard = (props) => {
       <div className="card-deck">
         <div className="row mb-3">
           {content.map((product, index) => {
-            if (index >= 3) return <></>;
+            if (index >= 3) return;
             return (
               <ProductCardItem
                 id={product.id}
-                key={product.id + "product"}
+                key={product.id + "-" + index + " " + Math.random() * 10}
                 productName={product.productName}
                 brand={product.brand}
                 image={product.coverImage}
@@ -155,11 +155,11 @@ const ProductCard = (props) => {
 
         <div className="row">
           {content.map((product, index) => {
-            if (index < 3) return <></>;
+            if (index < 3) return;
             return (
               <ProductCardItem
                 id={product.id}
-                key={product.id + "product"}
+                key={product.id + "-" + index + " " + Math.random() * 10}
                 productName={product.productName}
                 brand={product.brand}
                 image={product.coverImage}
