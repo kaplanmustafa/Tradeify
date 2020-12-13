@@ -44,6 +44,7 @@ const TopBar = (props) => {
 
   const onLogoutSuccess = () => {
     dispatch(logoutSuccess());
+    history.push("/");
   };
 
   useEffect(() => {

@@ -21,6 +21,6 @@ public class ProductViewsController {
 	GenericResponse saveProductView(@CurrentUser Users user, @PathVariable long productId) {
 		
 		productViewsService.save(user, productId);
-		return new GenericResponse("Order saved");
+		return new GenericResponse("Product view saved");
 	}
 }

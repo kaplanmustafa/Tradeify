@@ -22,6 +22,7 @@ public class ProductViewsService {
 		
 		if(view != null) {
 			view.setViewCount(view.getViewCount() + 1);
+			view.setTimestamp(new Date());
 		} else {
 			view = new ProductViews();
 		

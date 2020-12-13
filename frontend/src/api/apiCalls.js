@@ -227,3 +227,7 @@ export const getOrders = (page = 0, size = 4) => {
 export const saveProductView = (productId) => {
   return axios.put(`/api/1.0/views/${productId}`);
 };
+
+export const getPopularProducts = (page = 0, size = 6) => {
+  return axios.get(`/api/1.0/cartItems/bestSelling?page=${page}&size=${size}`);
+};

@@ -1,5 +1,7 @@
 package com.tradeify.tradeify_ws.cart;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tradeify.tradeify_ws.cart.vm.CartTotalVM;
 import com.tradeify.tradeify_ws.cart.vm.CartVM;
+import com.tradeify.tradeify_ws.product.vm.ProductCoverVM;
 import com.tradeify.tradeify_ws.shared.CurrentUser;
 import com.tradeify.tradeify_ws.shared.GenericResponse;
 import com.tradeify.tradeify_ws.user.Users;
@@ -63,5 +66,11 @@ public class CartController {
 	@GetMapping("/cartItems/count")
 	Long getCartCountOfUser(@CurrentUser Users user) {
 		return cartService.getCartCountOfUser(user);
+	}
+	
+	@GetMapping("/cartItems/bestSelling")
+	List<ProductCoverVM> getBestSellingProducts(@PageableDefault(sort = "quantity", direction = Direction.DESC) Pageable page) {
+		
+		return cartService.getBestSellingProducts(page);
 	}
 }

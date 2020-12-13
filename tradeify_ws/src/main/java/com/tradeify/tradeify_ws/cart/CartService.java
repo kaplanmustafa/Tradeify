@@ -1,5 +1,6 @@
 package com.tradeify.tradeify_ws.cart;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import com.tradeify.tradeify_ws.order.OrderService;
 import com.tradeify.tradeify_ws.order.Orders;
 import com.tradeify.tradeify_ws.product.Product;
 import com.tradeify.tradeify_ws.product.ProductService;
+import com.tradeify.tradeify_ws.product.vm.ProductCoverVM;
 import com.tradeify.tradeify_ws.user.Users;
 
 @Service
@@ -104,6 +106,21 @@ public class CartService {
 		return cartRepository.countByUserIdAndOrderIsNull(user.getId());
 	}
 	
+	public List<ProductCoverVM> getBestSellingProducts(Pageable page) {
+
+		Specification<Cart> specification = orderIsNotNull();
+		Page<Cart> carts = cartRepository.findAll(specification, page);
+		
+		List<ProductCoverVM> coverVM = new ArrayList<>();
+		
+		for(Cart cart : carts) {
+			Product product = productService.getProductById(cart.getProduct().getId());
+			coverVM.add(new ProductCoverVM(product));
+		}
+		
+		return coverVM;
+	}
+	
 	Specification<Cart> userIs(Users user) {
 		return (root, query, criteriaBuilder) -> {
 				return criteriaBuilder.equal(root.get("user"), user); 
@@ -113,6 +130,12 @@ public class CartService {
 	Specification<Cart> orderIsNull() {
 		return (root, query, criteriaBuilder) -> {
 				return criteriaBuilder.isNull(root.get("order")); 
+		};
+	}
+	
+	Specification<Cart> orderIsNotNull() {
+		return (root, query, criteriaBuilder) -> {
+				return criteriaBuilder.isNotNull(root.get("order")); 
 		};
 	}
 	
