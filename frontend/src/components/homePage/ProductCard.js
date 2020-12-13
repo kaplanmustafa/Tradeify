@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ProductCardItem from "./ProductCardItem";
-import { getPopularProducts, getProductsByCategory } from "../../api/apiCalls";
+import {
+  getPopularProducts,
+  getProductsByCategory,
+  getRecommendedProducts,
+} from "../../api/apiCalls";
 
 const ProductCard = (props) => {
   const { generalId, subId, products, category } = props;
@@ -8,6 +12,7 @@ const ProductCard = (props) => {
     content: [],
   });
   const [popularProducts, setPopularProducts] = useState([]);
+  const [recommendedProducts, setRecommendedProducts] = useState([]);
 
   useEffect(() => {
     if (
@@ -18,6 +23,8 @@ const ProductCard = (props) => {
       loadProducts();
     } else if (category !== undefined && category === "discover") {
       loadPopularProducts();
+    } else if (category !== undefined && category === "suggestions") {
+      loadRecommendedProducts();
     }
   }, [generalId, subId, products]);
 
@@ -35,11 +42,20 @@ const ProductCard = (props) => {
     } catch (error) {}
   };
 
+  const loadRecommendedProducts = async () => {
+    try {
+      const response = await getRecommendedProducts();
+      setRecommendedProducts(response.data);
+    } catch (error) {}
+  };
+
   let content;
 
   if (category === undefined) {
     content = page.content;
-  } else {
+  } else if (category === "suggestions") {
+    content = recommendedProducts;
+  } else if (category === "discover") {
     content = popularProducts;
   }
 

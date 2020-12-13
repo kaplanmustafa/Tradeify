@@ -2,8 +2,14 @@ import React from "react";
 import ImageSlider from "../components/toolbox/ImageSlider";
 import ProductCard from "../components/homePage/ProductCard";
 import ProductHeaderCard from "../components/homePage/ProductHeaderCard";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
+  const { isLoggedIn, role } = useSelector((store) => ({
+    isLoggedIn: store.isLoggedIn,
+    role: store.role,
+  }));
+
   const images = [
     {
       id: "1",
@@ -31,6 +37,17 @@ const HomePage = () => {
       <div className="row">
         <ProductCard category="discover" />
       </div>
+
+      {isLoggedIn && role === "user" && (
+        <>
+          <div className="row">
+            <ProductHeaderCard category="Recommended Products" />
+          </div>
+          <div className="row">
+            <ProductCard category="suggestions" />
+          </div>
+        </>
+      )}
 
       <div className="row">
         <ProductHeaderCard category="Laptop" generalId="3" subId="1" />

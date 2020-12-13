@@ -269,6 +269,7 @@ i18n.use(initReactI18next).init({
         "Was delivered": "Was delivered",
         "Order Detail": "Order Detail",
         "You've Never Ordered Before!": "You've Never Ordered Before!",
+        "Recommended Products": "Recommended Products",
       },
     },
     tr: {
@@ -505,6 +506,7 @@ i18n.use(initReactI18next).init({
         "Was delivered": "Teslim Edildi",
         "Order Detail": "Sipariş Detayı",
         "You've Never Ordered Before!": "Daha Önce Hiç Sipariş Vermediniz!",
+        "Recommended Products": "Önerilen Ürünler",
       },
     },
   },
