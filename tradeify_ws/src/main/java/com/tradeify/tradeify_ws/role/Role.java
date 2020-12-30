@@ -18,8 +18,8 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	String name;
+	private String name;
 	 
 	@OneToOne
-	Users user;
+	private Users user;
 }
