@@ -33,13 +33,13 @@ const ProductDetailPage = () => {
     }
 
     if (productId !== undefined && isLoggedIn && role === "user") {
-      console.log("HELLO");
       saveView(productId);
     }
-  }, [isLoggedIn, role, productId]);
+  }, [isLoggedIn, role, productId, product]);
 
   const loadSimilarProducts = async () => {
     try {
+      console.log("HELLO");
       const response = await getProductsByCategoryAndBrand(
         product.generalId,
         product.subId,
