@@ -28,7 +28,7 @@ public class CartController {
 	@Autowired
 	CartService cartService;
 	
-	@PostMapping("cartItem/{productId}")
+	@PostMapping("/cartItem/{productId}")
 	GenericResponse saveCart(@CurrentUser Users user, @PathVariable long productId) {
 		cartService.save(user, productId);
 		return new GenericResponse("Cart item saved");
