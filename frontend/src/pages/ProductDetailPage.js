@@ -39,7 +39,6 @@ const ProductDetailPage = () => {
 
   const loadSimilarProducts = async () => {
     try {
-      console.log("HELLO");
       const response = await getProductsByCategoryAndBrand(
         product.generalId,
         product.subId,
@@ -251,48 +250,50 @@ const ProductDetailPage = () => {
           </div>
         </div>
       </div>
-      <div className="mt-5 border border-solid">
-        <div className="row">
-          <ProductHeaderCard category="Similar Products" />
-        </div>
-        <div className="container  mt-5 mb-5 w-75">
-          <div className="card-deck">
-            <div className="row mb-3">
-              {products.map((product, index) => {
-                if (index >= 3) return <></>;
-                return (
-                  <ProductCardItem
-                    id={product.id}
-                    key={product.id}
-                    productName={product.productName}
-                    brand={product.brand}
-                    image={product.coverImage}
-                    price={product.price}
-                  />
-                );
-              })}
-              {hiddenDivFirstRow()}
-            </div>
+      {products.length !== 0 && (
+        <div className="mt-5 border border-solid">
+          <div className="row">
+            <ProductHeaderCard category="Similar Products" />
+          </div>
+          <div className="container  mt-5 mb-5 w-75">
+            <div className="card-deck">
+              <div className="row mb-3">
+                {products.map((product, index) => {
+                  if (index >= 3) return <></>;
+                  return (
+                    <ProductCardItem
+                      id={product.id}
+                      key={product.id}
+                      productName={product.productName}
+                      brand={product.brand}
+                      image={product.coverImage}
+                      price={product.price}
+                    />
+                  );
+                })}
+                {hiddenDivFirstRow()}
+              </div>
 
-            <div className="row">
-              {products.map((product, index) => {
-                if (index < 3) return <></>;
-                return (
-                  <ProductCardItem
-                    id={product.id}
-                    key={product.id}
-                    productName={product.productName}
-                    brand={product.brand}
-                    image={product.coverImage}
-                    price={product.price}
-                  />
-                );
-              })}
-              {hiddenDivSecondRow()}
+              <div className="row">
+                {products.map((product, index) => {
+                  if (index < 3) return <></>;
+                  return (
+                    <ProductCardItem
+                      id={product.id}
+                      key={product.id}
+                      productName={product.productName}
+                      brand={product.brand}
+                      image={product.coverImage}
+                      price={product.price}
+                    />
+                  );
+                })}
+                {hiddenDivSecondRow()}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
