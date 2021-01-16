@@ -239,3 +239,11 @@ export const getRecommendedProducts = (page = 0, size = 6) => {
 export const deleteProduct = (id) => {
   return axios.delete(`/api/1.0/products/${id}`);
 };
+
+export const getProductForEdit = (id) => {
+  return axios.get(`/api/1.0/products/edit/${id}`);
+};
+
+export const updateProduct = (id, product) => {
+  return axios.put(`/api/1.0/products/update/${id}`, product);
+};

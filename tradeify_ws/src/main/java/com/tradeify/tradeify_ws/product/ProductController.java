@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tradeify.tradeify_ws.product.vm.ProductCoverVM;
+import com.tradeify.tradeify_ws.product.vm.ProductEditVM;
 import com.tradeify.tradeify_ws.product.vm.ProductFilterVM;
 import com.tradeify.tradeify_ws.product.vm.ProductSubmitVM;
 import com.tradeify.tradeify_ws.product.vm.ProductVM;
@@ -33,6 +34,12 @@ public class ProductController {
 	GenericResponse saveProduct(@Valid @RequestBody ProductSubmitVM product) {
 		productService.save(product);
 		return new GenericResponse("Product saved");
+	}
+	
+	@PutMapping("/products/update/{id}")
+	ProductEditVM updateUser(@Valid @RequestBody ProductSubmitVM updatedProduct, @PathVariable long id) {
+		Product product = productService.updateProduct(id, updatedProduct);
+		return new ProductEditVM(product);
 	}
 	
 	@GetMapping("/product/{id}") 
@@ -62,6 +69,11 @@ public class ProductController {
 	Page<ProductCoverVM> getProductsByCategoryAndBrand(@PathVariable String generalId, @PathVariable String subId, 
 			@PathVariable long productId, @PageableDefault(sort = "id", direction = Direction.DESC) Pageable page) {
 		return productService.getProductsByCategoryAndBrand(generalId, subId, productId, page).map(ProductCoverVM::new);
+	}
+	
+	@GetMapping("/products/edit/{id}")
+	ProductEditVM getProductForEdit(@PathVariable long id) {
+		return productService.getProductForEdit(id);
 	}
 	
 	@DeleteMapping("/products/{id}")

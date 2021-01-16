@@ -1,6 +1,7 @@
 package com.tradeify.tradeify_ws.product.vm;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.tradeify.tradeify_ws.file.FileAttachment;
@@ -110,8 +111,11 @@ public class ProductVM {
 			this.setPrice(product.getPrice());
 		if(product.getDescription() != null)
 			this.setDescription(product.getDescription());
+		
+		List<FileAttachment> images = product.getImages();
+		Collections.sort(images, (a, b) -> Long.compare(a.getId(), b.getId()));
 		if(product.getImages() != null) {
-			for(FileAttachment image: product.getImages()) {
+			for(FileAttachment image: images) {
 				if(image != null) {
 					this.images.add(new FileAttachmentVM(image));
 				}

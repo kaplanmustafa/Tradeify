@@ -9,5 +9,7 @@ public interface FileAttachmentRepository extends JpaRepository<FileAttachment, 
 
 	List<FileAttachment> findByProductIsNull();
 	
-	//List<FileAttachment> findByProductUser(Users user); 
+	FileAttachment findByProductIdAndIsCoverTrue(Long productId); 
+	
+	List<FileAttachment> findByProductIdAndIsCoverFalseOrderById(Long productId); 
 }

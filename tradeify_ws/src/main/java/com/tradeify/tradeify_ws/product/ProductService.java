@@ -55,6 +55,7 @@ import com.tradeify.tradeify_ws.product.services.ScreenResolutionService;
 import com.tradeify.tradeify_ws.product.services.ScreenSizeService;
 import com.tradeify.tradeify_ws.product.services.SsdService;
 import com.tradeify.tradeify_ws.product.services.WarrantyTypeService;
+import com.tradeify.tradeify_ws.product.vm.ProductEditVM;
 import com.tradeify.tradeify_ws.product.vm.ProductFilterVM;
 import com.tradeify.tradeify_ws.product.vm.ProductSubmitVM;
 
@@ -552,6 +553,13 @@ public class ProductService {
 		return productRepository.findAll(specification, page);
 	}
 	
+	public ProductEditVM getProductForEdit(long productId) {
+		
+		Product product = productRepository.getOne(productId);
+		
+		return new ProductEditVM(product);
+	}
+	
 	public void deleteProduct(long id) {
 		Optional<Product> inDB = productRepository.findById(id);
 		
@@ -559,6 +567,71 @@ public class ProductService {
 			Product product = inDB.get();
 			productRepository.delete(product);
 		} 		
+	}
+	
+	public Product updateProduct(long id, ProductSubmitVM updatedProduct) {
+		
+		Product inDB = productRepository.getOne(id);
+		inDB.setProductName(updatedProduct.getProductName());
+		inDB.setDescription(updatedProduct.getDescription());
+		inDB.setPrice(Float.valueOf(updatedProduct.getPrice()));
+		
+		productRepository.save(inDB);
+		
+		FileAttachment oldProductCover = fileAttachmentRepository.findByProductIdAndIsCoverTrue(id);
+		
+		if(oldProductCover.getId() != updatedProduct.getCoverImage()) {
+			Optional<FileAttachment> optionalFileAttachment = fileAttachmentRepository.findById(updatedProduct.getCoverImage());
+			
+			if(optionalFileAttachment.isPresent()) {
+				if(oldProductCover != null) {
+					oldProductCover.setProduct(null);
+					fileAttachmentRepository.save(oldProductCover);
+				}
+				
+				FileAttachment fileAttachment = optionalFileAttachment.get();
+				fileAttachment.setCover(true);
+				fileAttachment.setProduct(inDB);
+				fileAttachmentRepository.save(fileAttachment);
+			}
+		}
+		
+		List<FileAttachment> oldImages = fileAttachmentRepository.findByProductIdAndIsCoverFalseOrderById(id);
+		
+		for(int i=0; i<4; i++) {
+			if(updatedProduct.getImages().get(i) == null) {
+				continue;
+			}
+			
+			if(oldImages.size() < (i+1)) {
+				Optional<FileAttachment> optional = fileAttachmentRepository.findById(updatedProduct.getImages().get(i));
+				
+				if(optional.isPresent()) {
+					FileAttachment fileAttachment = optional.get();
+					fileAttachment.setProduct(inDB);
+					fileAttachmentRepository.save(fileAttachment);
+				}
+				continue;
+			}
+			
+			if(oldImages.get(i).getId() != updatedProduct.getImages().get(i)) {
+				Optional<FileAttachment> optional = fileAttachmentRepository.findById(updatedProduct.getImages().get(i));
+				
+				if(optional.isPresent()) {
+					FileAttachment fileAttachment = optional.get();
+					
+					if(oldImages.get(i) != null) {
+						oldImages.get(i).setProduct(null);
+						fileAttachmentRepository.save(oldImages.get(i));
+					}
+					
+					fileAttachment.setProduct(inDB);
+					fileAttachmentRepository.save(fileAttachment);
+				}
+			}
+		}
+		
+		return inDB;
 	}
 	
 	Specification<Product> generalCategoryIs(GeneralCategory generalCategory) {
