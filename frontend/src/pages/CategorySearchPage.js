@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { getProductsBySearch } from "../api/apiCalls";
-import ProductCard from "../components/homePage/ProductCard";
+import ProductCard from "../components/product/ProductCard";
 import Pagination from "../components/toolbox/Pagination";
 import noProduct from "../assets/no-product.png";
 

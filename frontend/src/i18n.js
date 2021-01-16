@@ -270,6 +270,7 @@ i18n.use(initReactI18next).init({
         "Order Detail": "Order Detail",
         "You've Never Ordered Before!": "You've Never Ordered Before!",
         "Recommended Products": "Recommended Products",
+        "Delete This Product": "Delete This Product",
       },
     },
     tr: {
@@ -507,6 +508,7 @@ i18n.use(initReactI18next).init({
         "Order Detail": "Sipariş Detayı",
         "You've Never Ordered Before!": "Daha Önce Hiç Sipariş Vermediniz!",
         "Recommended Products": "Önerilen Ürünler",
+        "Delete This Product": "Bu Ürünü Sil",
       },
     },
   },

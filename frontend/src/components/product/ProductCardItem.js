@@ -51,6 +51,13 @@ const ProductCardItem = (props) => {
             {t("Add to Cart")}
           </button>
         )}
+        {isLoggedIn && role === "admin" && (
+          <Link to={"/editProduct/" + id} target="_blank">
+            <button className="btn btn-outline-success m-auto flex-fill">
+              {t("Edit")}
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );

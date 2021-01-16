@@ -1,7 +1,7 @@
 import React from "react";
 import ImageSlider from "../components/toolbox/ImageSlider";
-import ProductCard from "../components/homePage/ProductCard";
-import ProductHeaderCard from "../components/homePage/ProductHeaderCard";
+import ProductCard from "../components/product/ProductCard";
+import ProductHeaderCard from "../components/product/ProductHeaderCard";
 import { useSelector } from "react-redux";
 
 const HomePage = () => {

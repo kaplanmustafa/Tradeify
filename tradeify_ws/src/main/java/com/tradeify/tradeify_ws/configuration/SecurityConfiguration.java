@@ -41,7 +41,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 				.antMatchers(HttpMethod.POST, "/api/1.0/cartItems/update/{cartId}").authenticated()
 				.antMatchers(HttpMethod.GET, "/api/1.0/cartItems/total").authenticated()
 				.antMatchers(HttpMethod.GET, "/api/1.0/cartItems/count").authenticated()
-				.antMatchers(HttpMethod.GET, "/api/1.0/cartItems/bestSelling").authenticated()
 			.and()
 			.authorizeRequests().anyRequest().permitAll();
 		

@@ -552,6 +552,15 @@ public class ProductService {
 		return productRepository.findAll(specification, page);
 	}
 	
+	public void deleteProduct(long id) {
+		Optional<Product> inDB = productRepository.findById(id);
+		
+		if(inDB.isPresent()) {
+			Product product = inDB.get();
+			productRepository.delete(product);
+		} 		
+	}
+	
 	Specification<Product> generalCategoryIs(GeneralCategory generalCategory) {
 		return (root, query, criteriaBuilder) -> {
 				return criteriaBuilder.equal(root.get("generalCategory"), generalCategory); 

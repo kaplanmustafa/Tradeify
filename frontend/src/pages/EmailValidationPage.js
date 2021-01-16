@@ -9,9 +9,9 @@ const EmailValidationPage = (props) => {
   const { push } = history;
 
   useEffect(() => {
-    const loadUser = () => {
+    const loadUser = async () => {
       try {
-        verifyEmail(keyreg);
+        await verifyEmail(keyreg);
       } catch (error) {
         push("/error");
       }

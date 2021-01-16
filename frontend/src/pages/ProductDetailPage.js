@@ -9,8 +9,8 @@ import {
   saveCartItem,
   saveProductView,
 } from "../api/apiCalls";
-import ProductCardItem from "../components/homePage/ProductCardItem";
-import ProductHeaderCard from "../components/homePage/ProductHeaderCard";
+import ProductCardItem from "../components/product/ProductCardItem";
+import ProductHeaderCard from "../components/product/ProductHeaderCard";
 import ImageSlider from "../components/toolbox/ImageSlider";
 import ProductAttribute from "../components/toolbox/ProductAttribute";
 

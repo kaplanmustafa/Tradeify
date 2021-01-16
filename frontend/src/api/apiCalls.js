@@ -235,3 +235,7 @@ export const getPopularProducts = (page = 0, size = 6) => {
 export const getRecommendedProducts = (page = 0, size = 6) => {
   return axios.get(`/api/1.0/views?page=${page}&size=${size}`);
 };
+
+export const deleteProduct = (id) => {
+  return axios.delete(`/api/1.0/products/${id}`);
+};

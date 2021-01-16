@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,5 +62,11 @@ public class ProductController {
 	Page<ProductCoverVM> getProductsByCategoryAndBrand(@PathVariable String generalId, @PathVariable String subId, 
 			@PathVariable long productId, @PageableDefault(sort = "id", direction = Direction.DESC) Pageable page) {
 		return productService.getProductsByCategoryAndBrand(generalId, subId, productId, page).map(ProductCoverVM::new);
+	}
+	
+	@DeleteMapping("/products/{id}")
+	GenericResponse deleteProduct(@PathVariable long id) {
+		productService.deleteProduct(id);
+		return new GenericResponse("Product removed");
 	}
 }

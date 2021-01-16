@@ -22,6 +22,7 @@ import CategorySearchPage from "../pages/CategorySearchPage";
 import ShoppingCartPage from "../pages/ShoppingCartPage";
 import PaymentPage from "../pages/PaymentPage";
 import OrderDetailPage from "../pages/OrderDetailPage";
+import EditProductPage from "../pages/EditProductPage";
 
 const App = () => {
   const { isLoggedIn, role } = useSelector((store) => ({
@@ -38,7 +39,9 @@ const App = () => {
           <Route exact path="/" component={HomePage} />
           {!isLoggedIn && <Route path="/login" component={LoginPage} />}
           {!isLoggedIn && <Route path="/signup" component={UserSignupPage} />}
-          <Route path="/reg/:keyreg" component={EmailValidationPage} />
+          {!isLoggedIn && (
+            <Route path="/reg/:keyreg" component={EmailValidationPage} />
+          )}
           <Route path="/product/:id" component={ProductDetailPage} />
           <Route
             path="/all-products/:categoryId/:subId"
@@ -64,6 +67,9 @@ const App = () => {
           )}
           {isLoggedIn && role === "admin" && (
             <Route exact path="/admin" component={AdminPage} />
+          )}
+          {isLoggedIn && role === "admin" && (
+            <Route exact path="/editProduct/:id" component={EditProductPage} />
           )}
           <Redirect to="/error" />
         </Switch>

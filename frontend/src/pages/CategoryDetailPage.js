@@ -24,7 +24,7 @@ import {
   getSsd,
   getWarrantyType,
 } from "../api/apiCalls";
-import ProductCard from "../components/homePage/ProductCard";
+import ProductCard from "../components/product/ProductCard";
 import Pagination from "../components/toolbox/Pagination";
 import ScrollingCheckbox from "../components/toolbox/ScrollingCheckbox";
 import noProduct from "../assets/no-product.png";
