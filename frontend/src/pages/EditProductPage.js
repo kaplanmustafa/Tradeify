@@ -87,8 +87,8 @@ const EditProductPage = () => {
 
     try {
       const response = await updateProduct(productId, body);
-      alertify.success(t("Product Updated"));
       setInEditMode(false);
+      alertify.success(t("Product Updated"));
       setProduct(response.data);
     } catch (error) {
       if (error.response.data.validationErrors) {

@@ -48,7 +48,7 @@ public class ErrorHandler implements ErrorController{
 			
 			String errorHeader="";
 			for(ObjectError objectError: objectErrors) {
-				if(objectError.getDefaultMessage().contains("password"))
+				if(objectError.getDefaultMessage().contains("password") || objectError.getDefaultMessage().contains("Şifreniz yanlış"))
 					errorHeader = "password";
 				else if(objectError.getDefaultMessage().contains("email"))
 					errorHeader = "email";

@@ -9,7 +9,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.tradeify.tradeify_ws.shared.MailService;
+import com.tradeify.tradeify_ws.shared.RandomPasswordService;
 import com.tradeify.tradeify_ws.user.UserRepository;
+import com.tradeify.tradeify_ws.user.UserService;
 import com.tradeify.tradeify_ws.user.Users;
 import com.tradeify.tradeify_ws.user.vm.UserVM;
 
@@ -19,12 +22,19 @@ public class AuthService {
 	UserRepository userRepository;
 	PasswordEncoder passwordEncoder;
 	TokenRepository tokenRepository;
+	RandomPasswordService randomPasswordService;
+	UserService userService;
+	MailService mailService;
 	
-	public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, TokenRepository tokenRepository) {
+	public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, TokenRepository tokenRepository,
+			RandomPasswordService randomPasswordService, UserService userService, MailService mailService) {
 		super();
 		this.userRepository = userRepository;
 		this.passwordEncoder = passwordEncoder;
 		this.tokenRepository = tokenRepository;
+		this.randomPasswordService = randomPasswordService;
+		this.userService = userService;
+		this.mailService = mailService;
 	}
 
 	public AuthResponse authenticate(Credentials credentials) {
@@ -53,6 +63,24 @@ public class AuthService {
 		response.setToken(token);
 		response.setUser(userVM);
 		return response;
+	}
+	
+	public void resetPassword(Credentials credentials) {
+		Users inDB = userRepository.findByEmail(credentials.getEmail());
+		if(inDB == null) {
+			throw new AuthException();
+		} else if(!inDB.isActive()) {
+			throw new EmailVerificationException();
+		} else if(inDB.getRole().getName().equals("admin")) {
+			throw new AuthException();
+		}
+		
+		Users user = userService.getByEmail(credentials.getEmail());
+		String newPassword = randomPasswordService.generatePassword(8);
+		user.setPassword(this.passwordEncoder.encode(newPassword));
+		userRepository.save(user);
+		
+		mailService.sendPasswordResetMail(user, newPassword);
 	}
 
 	@Transactional

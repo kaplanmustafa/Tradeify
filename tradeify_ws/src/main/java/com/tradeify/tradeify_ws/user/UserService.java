@@ -37,7 +37,7 @@ public class UserService {
 		userRepository.save(user);
 		
 		roleService.saveUserRole(user);
-		mailService.sendMail(user, uuid);
+		mailService.sendVerificationMail(user, uuid);
 	}
 
 	public void verifyEmail(String keyreg) {
@@ -87,7 +87,7 @@ public class UserService {
 			inDB.setKeyreg(uuid);
 			inDB.setActive(false);
 			
-			mailService.sendMail(inDB, uuid);
+			mailService.sendVerificationMail(inDB, uuid);
 		}
 				
 		return userRepository.save(inDB);

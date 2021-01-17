@@ -272,6 +272,10 @@ i18n.use(initReactI18next).init({
         "Recommended Products": "Recommended Products",
         "Delete This Product": "Delete This Product",
         Save: "Save",
+        "Forgotten password?": "Forgotten password?",
+        "Enter your e-mail address to reset your password":
+          "Enter your e-mail address to reset your password",
+        Reset: "Reset",
       },
     },
     tr: {
@@ -511,6 +515,10 @@ i18n.use(initReactI18next).init({
         "Recommended Products": "Önerilen Ürünler",
         "Delete This Product": "Bu Ürünü Sil",
         Save: "Kaydet",
+        "Forgotten password?": "Şifreni mi Unuttun?",
+        "Enter your e-mail address to reset your password":
+          "Şifrenizi sıfırlamak için e-posta adresinizi girin",
+        Reset: "Sıfırla",
       },
     },
   },

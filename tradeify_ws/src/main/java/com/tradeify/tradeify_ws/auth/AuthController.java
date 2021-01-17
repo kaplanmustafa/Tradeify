@@ -19,6 +19,12 @@ public class AuthController {
 		return authService.authenticate(credentials);
 	}
 	
+	@PostMapping("api/1.0/resetPassword")
+	GenericResponse resetPassword(@RequestBody Credentials credentials) {
+		authService.resetPassword(credentials);
+		return new GenericResponse("Password reset success");
+	}
+	
 	@PostMapping("/api/1.0/logout")
 	GenericResponse handleLogout(@RequestHeader(name = "Authorization") String authorization) {
 		String token = authorization.substring(7);

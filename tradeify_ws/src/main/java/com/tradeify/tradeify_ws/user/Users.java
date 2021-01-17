@@ -94,7 +94,7 @@ public class Users implements UserDetails{
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
 	private List<Token> tokens;
 	
-	@OneToOne(mappedBy="user")
+	@OneToOne(mappedBy="user", cascade = CascadeType.REMOVE)
 	private Role role;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
