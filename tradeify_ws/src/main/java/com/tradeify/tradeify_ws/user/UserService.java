@@ -46,9 +46,9 @@ public class UserService {
 		if(inDB != null && !inDB.isActive()) {
 			inDB.setActive(true);
 			userRepository.save(inDB);
-		}
-			
-		throw new NotFoundException();
+		} else  {
+			throw new NotFoundException();
+		}	
 	}
 	
 	public Users getByKeyreg(String keyreg) {
