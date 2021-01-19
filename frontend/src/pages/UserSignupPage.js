@@ -107,15 +107,6 @@ const UserSignupPage = (props) => {
         style={{ borderRadius: "50px" }}
       >
         <h1 className="text-center text-primary">{t("Sign Up")}</h1>
-        {verification && (
-          <div className="container text-center mt-5">
-            <div className="alert alert-info">
-              {t("Registration Successful!")}
-              <br />
-              {t("Please verify your email address")}
-            </div>
-          </div>
-        )}
         <form id="user-info">
           <Input
             name="email"
@@ -192,6 +183,15 @@ const UserSignupPage = (props) => {
             onChange={onChange}
             type="password"
           />
+          {verification && (
+            <div className="container text-center mt-2">
+              <div className="alert alert-info">
+                {t("Registration Successful!")}
+                <br />
+                {t("Please verify your email address")}
+              </div>
+            </div>
+          )}
           <div className="text-center">
             <ButtonWithProgress
               disabled={pendingApiCall || passwordRepeatError !== undefined}

@@ -589,7 +589,12 @@ const AddProduct = () => {
     try {
       await postProduct(body);
       window.location.reload();
-      alertify.success(t("Product Added"));
+
+      const delayInMilliseconds = 2000; //2 second
+
+      setTimeout(() => {
+        alertify.success(t("Product Added"));
+      }, delayInMilliseconds);
     } catch (error) {
       if (error.response.data.validationErrors) {
         setErrors(error.response.data.validationErrors);

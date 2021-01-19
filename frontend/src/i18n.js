@@ -276,6 +276,8 @@ i18n.use(initReactI18next).init({
         "Enter your e-mail address to reset your password":
           "Enter your e-mail address to reset your password",
         Reset: "Reset",
+        "Password Reset Successful!": "Password Reset Successful!",
+        "Please Check Your Email Address": "Please Check Your Email Address",
       },
     },
     tr: {
@@ -519,6 +521,9 @@ i18n.use(initReactI18next).init({
         "Enter your e-mail address to reset your password":
           "Şifrenizi sıfırlamak için e-posta adresinizi girin",
         Reset: "Sıfırla",
+        "Password Reset Successful!": "Şifre Sıfırlama Başarılı!",
+        "Please Check Your Email Address":
+          "Lütfen E-posta adresinizi Kontrol Edin",
       },
     },
   },

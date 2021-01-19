@@ -136,43 +136,43 @@ public class ProductService {
 		if(productSubmitVM.getSubCategory() != null)
 			product.setSubCategory(new SubCategory(Long.valueOf(productSubmitVM.getSubCategory())));
 		if(productSubmitVM.getBatteryPower() != null)
-			product.setBatteryPower(batteryPowerService.getBatteryPowerByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setBatteryPower(batteryPowerService.getBatteryPowerByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBatteryPower()));
 		if(productSubmitVM.getBrand() != null)
 			product.setBrand(brandService.getBrandByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
 		if(productSubmitVM.getCameraResolution() != null)
-			product.setCameraResolution(cameraResolutionService.getCameraResolutionByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setCameraResolution(cameraResolutionService.getCameraResolutionByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getCameraResolution()));
 		if(productSubmitVM.getCaseDiameter() != null)
-			product.setCaseDiameter(caseDiameterService.getCaseDiameterByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setCaseDiameter(caseDiameterService.getCaseDiameterByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getCaseDiameter()));
 		if(productSubmitVM.getColor() != null)
-			product.setColor(colorService.getColorByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setColor(colorService.getColorByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getColor()));
 		if(productSubmitVM.getDisplayTechnology() != null)
-			product.setDisplayTechnology(displayTechnologyService.getDisplayTechnologyByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setDisplayTechnology(displayTechnologyService.getDisplayTechnologyByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getDisplayTechnology()));
 		if(productSubmitVM.getFrontCameraResolution() != null)
-			product.setFrontCameraResolution(frontCameraResolutionService.getFrontCameraResolutionByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setFrontCameraResolution(frontCameraResolutionService.getFrontCameraResolutionByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getFrontCameraResolution()));
 		if(productSubmitVM.getGraphicsCard() != null)
-			product.setGraphicsCard(graphicsCardService.getGraphicsCardByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setGraphicsCard(graphicsCardService.getGraphicsCardByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getGraphicsCard()));
 		if(productSubmitVM.getInternalMemory() != null)
-			product.setInternalMemory(internalMemoryService.getInternalMemoryByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setInternalMemory(internalMemoryService.getInternalMemoryByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getInternalMemory()));
 		if(productSubmitVM.getOperatingType() != null)
-			product.setOperatingType(operatingTypeService.getOperatingTypeByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setOperatingType(operatingTypeService.getOperatingTypeByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getOperatingType()));
 		if(productSubmitVM.getPanelType() != null)
-			product.setPanelType(panelTypeService.getPanelTypeByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setPanelType(panelTypeService.getPanelTypeByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getPanelType()));
 		if(productSubmitVM.getProcessorModel() != null)
-			product.setProcessorModel(processorModelService.getProcessorModelByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setProcessorModel(processorModelService.getProcessorModelByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getProcessorModel()));
 		if(productSubmitVM.getProcessorType() != null)
-			product.setProcessorType(processorTypeService.getProcessorTypeByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setProcessorType(processorTypeService.getProcessorTypeByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getProcessorType()));
 		if(productSubmitVM.getRam() != null)
-			product.setRam(ramService.getRamByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setRam(ramService.getRamByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getRam()));
 		if(productSubmitVM.getScreenRefreshRate() != null)
-			product.setScreenRefreshRate(screenRefreshRateService.getScreenRefreshRateByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setScreenRefreshRate(screenRefreshRateService.getScreenRefreshRateByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getScreenRefreshRate()));
 		if(productSubmitVM.getScreenResolution() != null)
-			product.setScreenResolution(screenResolutionService.getScreenResolutionByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setScreenResolution(screenResolutionService.getScreenResolutionByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getScreenResolution()));
 		if(productSubmitVM.getScreenSize() != null)
-			product.setScreenSize(screenSizeService.getScreenSizeByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setScreenSize(screenSizeService.getScreenSizeByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getScreenSize()));
 		if(productSubmitVM.getSsd() != null)
-			product.setSsd(ssdService.getSsdByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setSsd(ssdService.getSsdByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getSsd()));
 		if(productSubmitVM.getWarrantyType() != null)
-			product.setWarrantyType(warrantyTypeService.getWarrantyTypeByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getBrand()));
+			product.setWarrantyType(warrantyTypeService.getWarrantyTypeByCategory(productSubmitVM.getGeneralCategory(), productSubmitVM.getSubCategory(),productSubmitVM.getWarrantyType()));
 		
 		productRepository.save(product);	
 		

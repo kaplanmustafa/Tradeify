@@ -13,6 +13,7 @@ const LoginPage = (props) => {
   const [password, setPassword] = useState();
   const [error, setError] = useState();
   const [inPasswordForgot, setInPasswordForgot] = useState(false);
+  const [verification, setVerification] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -60,6 +61,7 @@ const LoginPage = (props) => {
 
     try {
       await resetPassword(creds);
+      setVerification(true);
     } catch (apiError) {
       let errorMessage;
 
@@ -138,6 +140,15 @@ const LoginPage = (props) => {
                 pendingApiCall={pendingApiCall}
                 text={t("Login")}
               ></ButtonWithProgress>
+            </div>
+          )}
+          {verification && (
+            <div className="container text-center mt-2">
+              <div className="alert alert-info">
+                {t("Password Reset Successful!")}
+                <br />
+                {t("Please Check Your Email Address")}
+              </div>
             </div>
           )}
           {inPasswordForgot && (

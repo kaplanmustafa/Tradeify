@@ -19,6 +19,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 		http.exceptionHandling().authenticationEntryPoint(new AuthEntryPoint()); 
+		http.headers().frameOptions().disable();
 				
 		http
 			.authorizeRequests()
@@ -36,11 +37,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 				.antMatchers(HttpMethod.POST, "/api/1.0/product-attachments").authenticated()
 				.antMatchers(HttpMethod.POST, "/api/1.0/cartItem/{productId}").authenticated()
 				.antMatchers(HttpMethod.GET, "/api/1.0/cartItems").authenticated()
-				.antMatchers(HttpMethod.GET, "/api/1.0/cartItems/{orderId}").authenticated()
+				//.antMatchers(HttpMethod.GET, "/api/1.0/cartItems/{orderId}").authenticated()
 				.antMatchers(HttpMethod.DELETE, "/api/1.0/cartItems/delete/{cartId}").authenticated()
 				.antMatchers(HttpMethod.POST, "/api/1.0/cartItems/update/{cartId}").authenticated()
 				.antMatchers(HttpMethod.GET, "/api/1.0/cartItems/total").authenticated()
 				.antMatchers(HttpMethod.GET, "/api/1.0/cartItems/count").authenticated()
+				.antMatchers(HttpMethod.PUT, "/api/1.0/products/update/{id}").authenticated()
+				.antMatchers(HttpMethod.GET, "/api/1.0/products/edit/{id").authenticated()
 			.and()
 			.authorizeRequests().anyRequest().permitAll();
 		
