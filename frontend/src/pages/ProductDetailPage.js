@@ -13,6 +13,11 @@ import ProductCardItem from "../components/product/ProductCardItem";
 import ProductHeaderCard from "../components/product/ProductHeaderCard";
 import ImageSlider from "../components/toolbox/ImageSlider";
 import ProductAttribute from "../components/toolbox/ProductAttribute";
+import ReactHtmlParser, {
+  processNodes,
+  convertNodeToElement,
+  htmlparser2,
+} from "react-html-parser";
 
 const ProductDetailPage = () => {
   const [product, setProduct] = useState({});
@@ -161,7 +166,7 @@ const ProductDetailPage = () => {
           {product.images && <ImageSlider images={product.images} />}
         </div>
         <div className="col ml-5">
-          <div className="container row border border-solid pt-2">
+          <div className="container row border border-solid pt-2 mb-3">
             <div className="container p-4">
               <div className="row h4">{product.brand}</div>
               <div className="row">{product.productName}</div>
@@ -169,7 +174,7 @@ const ProductDetailPage = () => {
             </div>
           </div>
           {isLoggedIn && role === "user" && (
-            <div className="container row mt-3 border border-solid p-4">
+            <div className="container row mt-3 mb-3 border border-solid p-4">
               <button
                 className="btn btn-primary flex-fill m-auto"
                 onClick={() => {
@@ -180,9 +185,7 @@ const ProductDetailPage = () => {
               </button>
             </div>
           )}
-          <div className="container row mt-3 border border-solid p-4">
-            {product.description}
-          </div>
+          {ReactHtmlParser(product.description)}
           <div className="container row mt-3 border border-solid p-4">
             <ProductAttribute
               attribute={product.batteryPower}

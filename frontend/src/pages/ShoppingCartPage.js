@@ -1,7 +1,7 @@
 import alertify from "alertifyjs";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   getCartItems,
   saveCartItem,
@@ -20,8 +20,6 @@ const ShoppingCartPage = () => {
   });
 
   const [refreshOrderSummary, setRefreshOrderSummary] = useState(false);
-
-  const [cartTotal, setCartTotal] = useState([]);
 
   const { t } = useTranslation();
 
@@ -86,13 +84,13 @@ const ShoppingCartPage = () => {
     }
   };
 
-  const { content: cartItems, empty, totalElements, first, last } = page;
+  const { content: cartItems, empty } = page;
 
   return (
     <div className="container">
       {empty && (
         <div className="container border mt-5 text-center">
-          <img src={cartEmpty} className="mb-5 mt-5" />
+          <img src={cartEmpty} className="mb-5 mt-5" alt="empty-cart" />
           <h2 className="container text-danger">
             {t("Your shopping cart is empty!")}
           </h2>

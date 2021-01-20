@@ -31,6 +31,8 @@ import ProductImageWithDefault from "./ProductImageWithDefault";
 import ButtonWithProgress from "../toolbox/ButtonWithProgress";
 import { useApiProgress } from "../../shared/ApiProgress";
 import alertify from "alertifyjs";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const AddProduct = () => {
   const [selectedCategory, setSelectedCategory] = useState(1);
@@ -849,13 +851,19 @@ const AddProduct = () => {
                 error={priceError}
               />
               <label>{t("Description")}</label>
-              <textarea
-                className="form-control"
+              {/* <textarea
+                className="form-control mb-3"
                 rows="3"
                 onChange={(event) => {
                   setDescription(event.target.value);
                 }}
-              ></textarea>
+              ></textarea> */}
+
+              <ReactQuill
+                theme="snow"
+                value={description}
+                onChange={setDescription}
+              />
 
               <label className="mt-3">{t("Cover Photo")}</label>
               <ProductImageWithDefault

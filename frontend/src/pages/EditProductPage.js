@@ -15,6 +15,8 @@ import ButtonWithProgress from "../components/toolbox/ButtonWithProgress";
 import Input from "../components/toolbox/Input";
 import Modal from "../components/toolbox/Modal";
 import { useApiProgress } from "../shared/ApiProgress";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const EditProductPage = () => {
   const [product, setProduct] = useState({});
@@ -253,14 +255,19 @@ const EditProductPage = () => {
                     error={priceError}
                   />
                   <label>{t("Description")}</label>
-                  <textarea
+                  {/* <textarea
                     className="form-control"
                     defaultValue={product.description}
                     rows="3"
                     onChange={(event) => {
                       setDescription(event.target.value);
                     }}
-                  ></textarea>
+                  ></textarea> */}
+                  <ReactQuill
+                    theme="snow"
+                    value={description}
+                    onChange={setDescription}
+                  />
                   <label className="mt-3">{t("Cover Photo")}</label>
                   <ProductImageWithDefault
                     className="w-100 mt-1 mb-2"
