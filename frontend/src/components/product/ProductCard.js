@@ -7,7 +7,7 @@ import {
 } from "../../api/apiCalls";
 
 const ProductCard = (props) => {
-  const { generalId, subId, products, category } = props;
+  const { generalId, subId, products, category, onChangeSuggestions } = props;
   const [page, setPage] = useState({
     content: [],
   });
@@ -46,6 +46,12 @@ const ProductCard = (props) => {
     try {
       const response = await getRecommendedProducts();
       setRecommendedProducts(response.data);
+
+      if (response.data.length === 0) {
+        onChangeSuggestions(true);
+      } else {
+        onChangeSuggestions(false);
+      }
     } catch (error) {}
   };
 

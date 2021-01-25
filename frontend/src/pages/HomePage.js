@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ImageSlider from "../components/toolbox/ImageSlider";
 import ProductCard from "../components/product/ProductCard";
 import ProductHeaderCard from "../components/product/ProductHeaderCard";
@@ -9,6 +9,8 @@ const HomePage = () => {
     isLoggedIn: store.isLoggedIn,
     role: store.role,
   }));
+
+  const [suggestionsIsEmpty, setSuggestionsIsEmpty] = useState(false);
 
   const images = [
     {
@@ -25,6 +27,10 @@ const HomePage = () => {
     },
   ];
 
+  const onChangeSuggestions = (isEmpty) => {
+    setSuggestionsIsEmpty(isEmpty);
+  };
+
   return (
     <div className="container">
       <div className="row mt-3 w-75 mx-auto">
@@ -38,13 +44,16 @@ const HomePage = () => {
         <ProductCard category="discover" />
       </div>
 
-      {isLoggedIn && role === "user" && (
+      {isLoggedIn && role === "user" && !suggestionsIsEmpty && (
         <>
           <div className="row">
             <ProductHeaderCard category="Recommended Products" />
           </div>
           <div className="row">
-            <ProductCard category="suggestions" />
+            <ProductCard
+              category="suggestions"
+              onChangeSuggestions={onChangeSuggestions}
+            />
           </div>
         </>
       )}
